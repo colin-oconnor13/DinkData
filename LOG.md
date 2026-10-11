@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-10-11 — plainer wording, no GitHub terms shown
+- Jargon removed from visible text (Your performance, Recent rating changes, "DUPR change",
+  "Expected…", "Could be luck" signal) and the Partner Index note rewritten in plain English.
+- No "GitHub" wording appears anywhere a visitor can see it (data is kept in their browser).
+
 ## 2026-10-11 — easier mobile sync
 - **Sync now** button (header, sync card, stale banner) opens dashboard.dupr.com and copies the
   "PB Sync" keyword with a reminder, so syncing after setup is nearly one tap.
