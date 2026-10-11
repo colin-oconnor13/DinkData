@@ -20,6 +20,14 @@ ratings expected**; your form over time; close games; streaks and bounce-back.
 Sync again whenever you've played. On Android, use **Chrome** to sync: Edge doesn't run
 bookmarks like this one. iPhone Safari should work but hasn't been tested.
 
+## Viewing other players
+
+- Open another player's profile on dashboard.dupr.com and run the bookmark there: it asks
+  whether to sync **their** matches (view only) or yours.
+- On your own sync you can also choose **Me + my 14 most recent people**.
+- Switch between yourself and them with the **👁 Viewing** bar at the top, which also removes
+  them. They're kept in this browser only, like your own data.
+
 ## Your privacy
 
 - The sync runs **in your own browser**, using the DUPR login you already have. Your password
