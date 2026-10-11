@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-10-11 — easier mobile sync
+- **Sync now** button (header, sync card, stale banner) opens dashboard.dupr.com and copies the
+  "PB Sync" keyword with a reminder, so syncing after setup is nearly one tap.
+- Phone bookmark setup is now 3 numbered visual step cards instead of a paragraph.
+- Rating Over Time gains 3M / 6M / 1Y range pills (phones default to 3M).
+
 ## 2026-10-11 — view other players
 - Run the Sync bookmark on another player's DUPR page to view their stats, or choose
   "Me + my 14 most recent people" on your own sync. Their data stays in this browser only
