@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-10-11 — "How to read this" guide tab
+- New 4th tab (**Guide** on mobile): a plain-language explainer of the three views, filters,
+  every metric, the expected-vs-actual idea, the reliability signals and small-sample rules, the
+  charts, and viewing other players. Static and data-free, so it works before a first sync.
+
 ## 2026-10-11 — plainer wording, no GitHub terms shown
 - Jargon removed from visible text (Your performance, Recent rating changes, "DUPR change",
   "Expected…", "Could be luck" signal) and the Partner Index note rewritten in plain English.
