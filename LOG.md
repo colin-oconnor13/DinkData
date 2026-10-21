@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-10-20 — ported from PBStats: Signal uses points too; Leaning ↑/↓
+- Signal now weighs points (margin vs expected) as well as wins, without double-counting.
+- New **Leaning ↑/↓** label for a direction that's still within luck; arrows on every pill;
+  the tap text explains the numbers behind each label. SW rj-v78.
+
 ## 2026-10-20 — ported from PBStats: sync-link hardening, stricter Signal, tap-to-explain
 - Recent players bundled in a sync link are stored only after you choose Save / Open app / Keep.
 - Signal allows for how many people a table tests (Strong ≈ 3.3× for 45 people; Some ≥ 2×).
