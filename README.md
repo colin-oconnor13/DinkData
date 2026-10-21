@@ -13,8 +13,9 @@ ratings expected**; your form over time; close games; streaks and bounce-back.
    - **Computer:** drag the **🔄 Sync to Pickleball** button to your bookmarks bar.
    - **Phone:** you need a *second* bookmark just for syncing; your normal bookmark of the app
      stays. Tap **📌 Set up on this phone**: a setup-only page at its own address, titled
-     "PB Sync", so Chrome's ☆ makes a new, already-named bookmark. Tap **📋 Copy code**,
-     bookmark that page (⋮ → ☆), tap **Edit** and replace its URL with the code.
+     "PB Sync", so Chrome's ☆ makes a new, already-named bookmark. It shows the steps for your
+     browser (Chrome/Brave, Edge, Safari or other): copy the code, bookmark that page, edit the
+     bookmark and replace its URL with the code.
 3. Log in at <https://dashboard.dupr.com> as usual (2FA included) and run the bookmark there.
    On a phone, type **PB Sync** in the address bar and tap the bookmark suggestion.
 4. A panel on the DUPR page shows progress, then the app opens. Tap **Save**.
