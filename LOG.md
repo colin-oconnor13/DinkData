@@ -2,6 +2,10 @@
 
 Newest first.
 
+## 2026-10-20 — ported from PBStats: Standouts colours
+- Toughest partner / Nemesis are always red and only name someone below expected; otherwise the
+  tile says "Nobody" (and the same for Best / Favourite above expected). SW rj-v79.
+
 ## 2026-10-20 — ported from PBStats: Signal uses points too; Leaning ↑/↓
 - Signal now weighs points (margin vs expected) as well as wins, without double-counting.
 - New **Leaning ↑/↓** label for a direction that's still within luck; arrows on every pill;
