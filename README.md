@@ -7,7 +7,7 @@ ratings expected**; your form over time; close games; streaks and bounce-back.
 **Open the app:** <https://colin-oconnor13.github.io/PickleballStats/>
 
 **Just looking?** Open the [demo](https://colin-oconnor13.github.io/PickleballStats/?demo=1): the whole app
-with made-up players and matches, nothing to set up.
+on real match history with every name, event and venue made up, nothing to set up.
 
 ## Getting started (about two minutes)
 

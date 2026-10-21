@@ -2,6 +2,14 @@
 
 Newest first.
 
+## 2026-10-21 — demo uses real, anonymised matches
+- `data/demo.json` is now Colin's 234 synced matches run through **`tools/anonymize_demo.py`**:
+  every player gets a fictional name and id (consistently, so partner/opponent stats hold; no
+  fictional first/last name matches a real player's), events and venues get fictional names that
+  keep tournament/league type and skill level, each player's ratings shift by a fixed ±0.04, match
+  ids are renumbered; scores, results and order are kept. The script refuses to write if any real
+  name, id, event or venue string survives. `tools/make_demo.py` (synthetic data) removed.
+
 ## 2026-10-21 — demo mode with made-up data
 - PBStats is retired; this shared copy is the one app now (changes no longer ported).
 - **👀 See a demo first** on the welcome card opens `?demo=1`: the full app on `data/demo.json`,
