@@ -19,8 +19,8 @@ ratings expected**; your form over time; close games; streaks and bounce-back.
    On a phone, type **PB Sync** in the address bar and tap the bookmark suggestion.
 4. A panel on the DUPR page shows progress, then the app opens. Tap **Save**.
 
-Sync again whenever you've played. On Android, use **Chrome** to sync: Edge doesn't run
-bookmarks like this one. iPhone Safari should work but hasn't been tested.
+Sync again whenever you've played. Tested on Android in Chrome and Edge; iPhone Safari should
+work but hasn't been tested.
 
 ## Viewing other players
 
