@@ -2,6 +2,10 @@
 
 Newest first.
 
+## 2026-10-20 — ported from PBStats: phone setup via a bookmark helper page
+- Phone setup now starts with **📌 Open bookmark helper** (the app at `?bm=1`), so the ☆ makes a
+  new bookmark to turn into PB Sync instead of editing your normal bookmark of the app. SW rj-v80.
+
 ## 2026-10-20 — ported from PBStats: Standouts colours
 - Toughest partner / Nemesis are always red and only name someone below expected; otherwise the
   tile says "Nobody" (and the same for Best / Favourite above expected). SW rj-v79.
