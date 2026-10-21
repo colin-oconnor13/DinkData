@@ -1,4 +1,4 @@
-# Pickleball — your DUPR history, analysed
+# Dink Data — your DUPR history, analysed
 
 A free web app that turns your DUPR match history into something you can learn from: how you do
 by event, partner and opponent; who you play best and worst with **compared with what the
@@ -10,7 +10,7 @@ ratings expected**; your form over time; close games; streaks and bounce-back.
 
 1. Open the app and tap **Set up the Sync bookmark**.
 2. Add the bookmark:
-   - **Computer:** drag the **🔄 Sync to Pickleball** button to your bookmarks bar.
+   - **Computer:** drag the **🔄 Sync to Dink Data** button to your bookmarks bar.
    - **Phone:** you need a *second* bookmark just for syncing; your normal bookmark of the app
      stays. Tap **📌 Set up on this phone**: a setup-only page at its own address, titled
      "PB Sync", so Chrome's ☆ makes a new, already-named bookmark. It shows the steps for your
