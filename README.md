@@ -55,7 +55,8 @@ Anyone or anything with fewer than 4 matches is shown separately as a small samp
 Expected win % = `1 / (1 + 10^(−Δ / S))`, where Δ is (your DUPR + partner's) / 2 minus the
 opponents' average, everyone's rating going into the match. S is fitted to **your own** matches.
 **Wins vs expected** = actual wins − expected wins; **Signal** says whether that gap is bigger than
-chance (Strong over 2×, Some 1–2×, otherwise Noise).
+chance. Strong means beyond chance even allowing for how many people the table lists (about 3.3×
+for 45 people, never below 2×); Some is 2× or more; otherwise Could be luck.
 
 ## Good to know
 
