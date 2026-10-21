@@ -2,6 +2,19 @@
 
 Newest first.
 
+## 2026-10-21 — demo mode with made-up data
+- PBStats is retired; this shared copy is the one app now (changes no longer ported).
+- **👀 See a demo first** on the welcome card opens `?demo=1`: the full app on `data/demo.json`,
+  ~190 matches of fictional players over ~18 months (ladder leagues + tournaments) from
+  `tools/make_demo.py` (fixed seed). Built-in patterns so every view has something to show: the
+  player outgrows their rating, a chemistry partner and a weak partnership, a nemesis pair and a
+  favourite opponent, deuce games, best-of-3 tournament matches, and DUPR-style score-based rating
+  moves (some losses raise the rating). Dates shift so the newest match is yesterday.
+- The demo never reads or writes the visitor's data: no viewed players, saved edits ignored,
+  `save()` no-op, Clean-up (export/import/delete) hidden, idpill "Demo data", a banner with
+  **Set up with my DUPR →** (`?setup=1` opens the sync card) and **Exit demo**.
+- `serve_local.py` serves the committed `data/demo.json` (other `/data/` files stay local). SW rj-v87.
+
 ## 2026-10-20 — renamed Dink Data, new logo
 - App name **Dink Data**, tagline *your DUPR history, analysed* (header, tab title, home-screen
   name, manifest, welcome card, setup page, the bookmark button and the on-DUPR sync panel

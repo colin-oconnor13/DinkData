@@ -68,6 +68,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         p = urllib.parse.unquote(urllib.parse.urlsplit(path).path)
         if p.startswith("/data/"):
             name = os.path.basename(p)
+            if name == "demo.json":  # the demo's made-up data is the committed file, same as on Pages
+                return os.path.join(ROOT, "data", name)
             return os.path.join(DATA, name)
         if p.startswith("/local/"):  # never serve config or data straight from local/
             return os.path.join(ROOT, "__nope__")

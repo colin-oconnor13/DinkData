@@ -1,0 +1,8024 @@
+{
+ "player": {
+  "id": 9099990001,
+  "name": "Demo Player",
+  "currentDoubles": 3.823
+ },
+ "generated": "2026-10-15",
+ "syncedAt": "2026-10-15T12:00:00.000Z",
+ "demo": true,
+ "matches": [
+  {
+   "matchId": 7000001,
+   "date": "2025-04-08",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100002888,
+    "name": "Corin Ashdown",
+    "ratingThen": 3.709,
+    "ratingPre": 3.696,
+    "ratingNow": 3.602
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.405,
+     "ratingPre": 3.416,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100005628,
+     "name": "Jamie Thistledown",
+     "ratingThen": 3.35,
+     "ratingPre": 3.361,
+     "ratingNow": 3.354
+    }
+   ],
+   "preRating": 3.31,
+   "impact": 0.0132,
+   "postRating": 3.3232
+  },
+  {
+   "matchId": 7000034,
+   "date": "2025-04-08",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001518,
+    "name": "Darcy Dunmore",
+    "ratingThen": 3.871,
+    "ratingPre": 3.909,
+    "ratingNow": 3.731
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.45,
+     "ratingPre": 3.4051,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.554,
+     "ratingPre": 3.509,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3232,
+   "impact": -0.0382,
+   "postRating": 3.285
+  },
+  {
+   "matchId": 7000048,
+   "date": "2025-04-08",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100002340,
+    "name": "Kendall Ingram",
+    "ratingThen": 3.5,
+    "ratingPre": 3.426,
+    "ratingNow": 3.622
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.761,
+     "ratingPre": 3.84,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.885,
+     "ratingPre": 3.964,
+     "ratingNow": 3.724
+    }
+   ],
+   "preRating": 3.285,
+   "impact": 0.0744,
+   "postRating": 3.3594
+  },
+  {
+   "matchId": 7000067,
+   "date": "2025-04-08",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007409,
+    "name": "Darcy Thistledown",
+    "ratingThen": 3.223,
+    "ratingPre": 3.245,
+    "ratingNow": 3.213
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.467,
+     "ratingPre": 3.45,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.571,
+     "ratingPre": 3.5539,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3594,
+   "impact": -0.0217,
+   "postRating": 3.3377
+  },
+  {
+   "matchId": 7000079,
+   "date": "2025-04-15",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003299,
+    "name": "Finley Rookwood",
+    "ratingThen": 3.653,
+    "ratingPre": 3.622,
+    "ratingNow": 3.531
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.733,
+     "ratingPre": 3.7613,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.392,
+     "ratingPre": 3.42,
+     "ratingNow": 3.264
+    }
+   ],
+   "preRating": 3.3377,
+   "impact": 0.0307,
+   "postRating": 3.3684
+  },
+  {
+   "matchId": 7000096,
+   "date": "2025-04-15",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.552,
+    "ratingPre": 3.549,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100004806,
+     "name": "Sage Dunmore",
+     "ratingThen": 3.218,
+     "ratingPre": 3.222,
+     "ratingNow": 3.27
+    },
+    {
+     "id": 9100005628,
+     "name": "Jamie Thistledown",
+     "ratingThen": 3.346,
+     "ratingPre": 3.3501,
+     "ratingNow": 3.354
+    }
+   ],
+   "preRating": 3.3684,
+   "impact": 0.0032,
+   "postRating": 3.3716
+  },
+  {
+   "matchId": 7000131,
+   "date": "2025-04-15",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003984,
+    "name": "Kendall Fairbank",
+    "ratingThen": 4.25,
+    "ratingPre": 4.248,
+    "ratingNow": 4.138
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.465,
+     "ratingPre": 3.4666,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.569,
+     "ratingPre": 3.5705,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3716,
+   "impact": 0.0024,
+   "postRating": 3.374
+  },
+  {
+   "matchId": 7000167,
+   "date": "2025-04-22",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    9
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007957,
+    "name": "Bellamy Quarry",
+    "ratingThen": 3.573,
+    "ratingPre": 3.562,
+    "ratingNow": 3.769
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.722,
+     "ratingPre": 3.7331,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.725,
+     "ratingPre": 3.736,
+     "ratingNow": 3.714
+    }
+   ],
+   "preRating": 3.374,
+   "impact": 0.0114,
+   "postRating": 3.3854
+  },
+  {
+   "matchId": 7000201,
+   "date": "2025-04-22",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    13
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100008642,
+    "name": "Harper Northcott",
+    "ratingThen": 3.364,
+    "ratingPre": 3.358,
+    "ratingNow": 3.373
+   },
+   "opponents": [
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.354,
+     "ratingPre": 3.36,
+     "ratingNow": 3.317
+    },
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.349,
+     "ratingPre": 3.355,
+     "ratingNow": 3.366
+    }
+   ],
+   "preRating": 3.3854,
+   "impact": 0.0059,
+   "postRating": 3.3913
+  },
+  {
+   "matchId": 7000217,
+   "date": "2025-04-22",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100004121,
+    "name": "Kendall Brightwater",
+    "ratingThen": 3.208,
+    "ratingPre": 3.236,
+    "ratingNow": 3.198
+   },
+   "opponents": [
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.945,
+     "ratingPre": 3.925,
+     "ratingNow": 3.939
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.799,
+     "ratingPre": 3.779,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.3913,
+   "impact": -0.028,
+   "postRating": 3.3633
+  },
+  {
+   "matchId": 7000247,
+   "date": "2025-04-22",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100001929,
+    "name": "Finley Kestrel",
+    "ratingThen": 3.759,
+    "ratingPre": 3.704,
+    "ratingNow": 3.911
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.677,
+     "ratingPre": 3.7224,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.624,
+     "ratingPre": 3.67,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.3633,
+   "impact": 0.0549,
+   "postRating": 3.4182
+  },
+  {
+   "matchId": 7000271,
+   "date": "2025-05-13",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    0
+   ],
+   "partner": {
+    "id": 9100004532,
+    "name": "Teagan Underhill",
+    "ratingThen": 3.884,
+    "ratingPre": 3.823,
+    "ratingNow": 3.982
+   },
+   "opponents": [
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.451,
+     "ratingPre": 3.507,
+     "ratingNow": 3.421
+    },
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.299,
+     "ratingPre": 3.3545,
+     "ratingNow": 3.317
+    }
+   ],
+   "preRating": 3.4182,
+   "impact": 0.0605,
+   "postRating": 3.4787
+  },
+  {
+   "matchId": 7000287,
+   "date": "2025-05-13",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006724,
+    "name": "Rowan Everly",
+    "ratingThen": 3.687,
+    "ratingPre": 3.7253,
+    "ratingNow": 3.714
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.657,
+     "ratingPre": 3.6243,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.311,
+     "ratingPre": 3.279,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.4787,
+   "impact": -0.0387,
+   "postRating": 3.44
+  },
+  {
+   "matchId": 7000322,
+   "date": "2025-05-13",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000833,
+    "name": "Finley Everly",
+    "ratingThen": 3.358,
+    "ratingPre": 3.3918,
+    "ratingNow": 3.264
+   },
+   "opponents": [
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.831,
+     "ratingPre": 3.7987,
+     "ratingNow": 3.665
+    },
+    {
+     "id": 9100006587,
+     "name": "Oakley Pennington",
+     "ratingThen": 3.286,
+     "ratingPre": 3.254,
+     "ratingNow": 3.348
+    }
+   ],
+   "preRating": 3.44,
+   "impact": -0.0339,
+   "postRating": 3.4061
+  },
+  {
+   "matchId": 7000361,
+   "date": "2025-05-17",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6,
+    11,
+    2
+   ],
+   "oppScores": [
+    11,
+    5,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.502,
+    "ratingPre": 3.509,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.306,
+     "ratingPre": 3.299,
+     "ratingNow": 3.317
+    },
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.774,
+     "ratingPre": 3.767,
+     "ratingNow": 3.795
+    }
+   ],
+   "preRating": 3.4061,
+   "impact": -0.0075,
+   "postRating": 3.3986
+  },
+  {
+   "matchId": 7000391,
+   "date": "2025-05-17",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1,
+    4
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.48,
+    "ratingPre": 3.5015,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.815,
+     "ratingPre": 3.79,
+     "ratingNow": 3.893
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.97,
+     "ratingPre": 3.9447,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.3986,
+   "impact": -0.0211,
+   "postRating": 3.3775
+  },
+  {
+   "matchId": 7000401,
+   "date": "2025-05-17",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3,
+    0
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.449,
+    "ratingPre": 3.4804,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.719,
+     "ratingPre": 3.6866,
+     "ratingNow": 3.714
+    },
+    {
+     "id": 9100006313,
+     "name": "Wren Ingram",
+     "ratingThen": 3.807,
+     "ratingPre": 3.774,
+     "ratingNow": 3.815
+    }
+   ],
+   "preRating": 3.3775,
+   "impact": -0.0312,
+   "postRating": 3.3463
+  },
+  {
+   "matchId": 7000428,
+   "date": "2025-05-17",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    6,
+    7
+   ],
+   "oppScores": [
+    0,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.461,
+    "ratingPre": 3.4492,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.343,
+     "ratingPre": 3.3579,
+     "ratingNow": 3.264
+    },
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.705,
+     "ratingPre": 3.7193,
+     "ratingNow": 3.714
+    }
+   ],
+   "preRating": 3.3463,
+   "impact": 0.0114,
+   "postRating": 3.3577
+  },
+  {
+   "matchId": 7000461,
+   "date": "2025-05-20",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.599,
+    "ratingPre": 3.5522,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.637,
+     "ratingPre": 3.6767,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.231,
+     "ratingPre": 3.271,
+     "ratingNow": 3.251
+    }
+   ],
+   "preRating": 3.3577,
+   "impact": 0.0467,
+   "postRating": 3.4044
+  },
+  {
+   "matchId": 7000464,
+   "date": "2025-05-20",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003710,
+    "name": "Indy Juniper",
+    "ratingThen": 3.29,
+    "ratingPre": 3.322,
+    "ratingNow": 3.367
+   },
+   "opponents": [
+    {
+     "id": 9100006998,
+     "name": "Marlow Larkspur",
+     "ratingThen": 3.645,
+     "ratingPre": 3.5989,
+     "ratingNow": 3.624
+    },
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.534,
+     "ratingPre": 3.488,
+     "ratingNow": 3.534
+    }
+   ],
+   "preRating": 3.4044,
+   "impact": -0.0321,
+   "postRating": 3.3723
+  },
+  {
+   "matchId": 7000482,
+   "date": "2025-05-20",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001655,
+    "name": "Sage Merriwether",
+    "ratingThen": 3.928,
+    "ratingPre": 3.9699,
+    "ratingNow": 3.939
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.501,
+     "ratingPre": 3.4648,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.605,
+     "ratingPre": 3.5687,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3723,
+   "impact": -0.0419,
+   "postRating": 3.3304
+  },
+  {
+   "matchId": 7000521,
+   "date": "2025-05-20",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100008094,
+    "name": "Avery Dunmore",
+    "ratingThen": 3.839,
+    "ratingPre": 3.81,
+    "ratingNow": 3.802
+   },
+   "opponents": [
+    {
+     "id": 9100006313,
+     "name": "Wren Ingram",
+     "ratingThen": 3.773,
+     "ratingPre": 3.8067,
+     "ratingNow": 3.815
+    },
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.467,
+     "ratingPre": 3.5012,
+     "ratingNow": 3.403
+    }
+   ],
+   "preRating": 3.3304,
+   "impact": 0.029,
+   "postRating": 3.3594
+  },
+  {
+   "matchId": 7000547,
+   "date": "2025-05-27",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001929,
+    "name": "Finley Kestrel",
+    "ratingThen": 3.732,
+    "ratingPre": 3.7589,
+    "ratingNow": 3.911
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.498,
+     "ratingPre": 3.4675,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.636,
+     "ratingPre": 3.6051,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3594,
+   "impact": -0.0268,
+   "postRating": 3.3326
+  },
+  {
+   "matchId": 7000559,
+   "date": "2025-05-27",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005491,
+    "name": "Blake Rookwood",
+    "ratingThen": 3.311,
+    "ratingPre": 3.3114,
+    "ratingNow": 3.386
+   },
+   "opponents": [
+    {
+     "id": 9100003847,
+     "name": "Oakley Underhill",
+     "ratingThen": 3.933,
+     "ratingPre": 3.933,
+     "ratingNow": 3.923
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.831,
+     "ratingPre": 3.8309,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.3326,
+   "impact": -0.0,
+   "postRating": 3.3326
+  },
+  {
+   "matchId": 7000595,
+   "date": "2025-05-27",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005080,
+    "name": "Reese Kestrel",
+    "ratingThen": 3.524,
+    "ratingPre": 3.525,
+    "ratingNow": 3.601
+   },
+   "opponents": [
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.91,
+     "ratingPre": 3.909,
+     "ratingNow": 3.907
+    },
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.224,
+     "ratingPre": 3.2233,
+     "ratingNow": 3.213
+    }
+   ],
+   "preRating": 3.3326,
+   "impact": -0.001,
+   "postRating": 3.3316
+  },
+  {
+   "matchId": 7000601,
+   "date": "2025-05-27",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002477,
+    "name": "Finley Brightwater",
+    "ratingThen": 3.811,
+    "ratingPre": 3.8309,
+    "ratingNow": 3.665
+   },
+   "opponents": [
+    {
+     "id": 9100001518,
+     "name": "Darcy Dunmore",
+     "ratingThen": 3.891,
+     "ratingPre": 3.8708,
+     "ratingNow": 3.731
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.835,
+     "ratingPre": 3.8152,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.3316,
+   "impact": -0.0204,
+   "postRating": 3.3112
+  },
+  {
+   "matchId": 7000607,
+   "date": "2025-06-03",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002203,
+    "name": "Bellamy Calloway",
+    "ratingThen": 3.745,
+    "ratingPre": 3.7739,
+    "ratingNow": 3.795
+   },
+   "opponents": [
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.376,
+     "ratingPre": 3.3432,
+     "ratingNow": 3.264
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.685,
+     "ratingPre": 3.6527,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.3112,
+   "impact": -0.0286,
+   "postRating": 3.2826
+  },
+  {
+   "matchId": 7000641,
+   "date": "2025-06-03",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100003025,
+    "name": "Gray Fairbank",
+    "ratingThen": 3.272,
+    "ratingPre": 3.206,
+    "ratingNow": 3.212
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.442,
+     "ratingPre": 3.4984,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.579,
+     "ratingPre": 3.636,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.2826,
+   "impact": 0.0661,
+   "postRating": 3.3487
+  },
+  {
+   "matchId": 7000677,
+   "date": "2025-06-03",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005765,
+    "name": "Kendall Thistledown",
+    "ratingThen": 3.851,
+    "ratingPre": 3.8853,
+    "ratingNow": 3.724
+   },
+   "opponents": [
+    {
+     "id": 9100002340,
+     "name": "Kendall Ingram",
+     "ratingThen": 3.538,
+     "ratingPre": 3.5004,
+     "ratingNow": 3.622
+    },
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.489,
+     "ratingPre": 3.4515,
+     "ratingNow": 3.421
+    }
+   ],
+   "preRating": 3.3487,
+   "impact": -0.0346,
+   "postRating": 3.3141
+  },
+  {
+   "matchId": 7000697,
+   "date": "2025-06-10",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003847,
+    "name": "Oakley Underhill",
+    "ratingThen": 3.906,
+    "ratingPre": 3.933,
+    "ratingNow": 3.923
+   },
+   "opponents": [
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.249,
+     "ratingPre": 3.2245,
+     "ratingNow": 3.213
+    },
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.275,
+     "ratingPre": 4.2504,
+     "ratingNow": 4.138
+    }
+   ],
+   "preRating": 3.3141,
+   "impact": -0.0266,
+   "postRating": 3.2875
+  },
+  {
+   "matchId": 7000732,
+   "date": "2025-06-10",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.567,
+    "ratingPre": 3.572,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.711,
+     "ratingPre": 3.7046,
+     "ratingNow": 3.714
+    },
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.31,
+     "ratingPre": 3.304,
+     "ratingNow": 3.326
+    }
+   ],
+   "preRating": 3.2875,
+   "impact": -0.0049,
+   "postRating": 3.2826
+  },
+  {
+   "matchId": 7000771,
+   "date": "2025-06-10",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100002340,
+    "name": "Kendall Ingram",
+    "ratingThen": 3.575,
+    "ratingPre": 3.5383,
+    "ratingNow": 3.622
+   },
+   "opponents": [
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.797,
+     "ratingPre": 3.839,
+     "ratingNow": 3.802
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.769,
+     "ratingPre": 3.8105,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.2826,
+   "impact": 0.037,
+   "postRating": 3.3196
+  },
+  {
+   "matchId": 7000806,
+   "date": "2025-06-17",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    0
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000696,
+    "name": "Arden Vale",
+    "ratingThen": 3.582,
+    "ratingPre": 3.6369,
+    "ratingNow": 3.61
+   },
+   "opponents": [
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.986,
+     "ratingPre": 3.928,
+     "ratingNow": 3.939
+    },
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.767,
+     "ratingPre": 3.7092,
+     "ratingNow": 3.602
+    }
+   ],
+   "preRating": 3.3196,
+   "impact": -0.0545,
+   "postRating": 3.2651
+  },
+  {
+   "matchId": 7000829,
+   "date": "2025-06-17",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100008094,
+    "name": "Avery Dunmore",
+    "ratingThen": 3.787,
+    "ratingPre": 3.7973,
+    "ratingNow": 3.802
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.595,
+     "ratingPre": 3.5824,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.78,
+     "ratingPre": 3.7667,
+     "ratingNow": 3.602
+    }
+   ],
+   "preRating": 3.2651,
+   "impact": -0.01,
+   "postRating": 3.2551
+  },
+  {
+   "matchId": 7000843,
+   "date": "2025-06-17",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100007272,
+    "name": "Corin Hollis",
+    "ratingThen": 4.025,
+    "ratingPre": 4.002,
+    "ratingNow": 4.006
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.571,
+     "ratingPre": 3.5954,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.224,
+     "ratingPre": 3.2487,
+     "ratingNow": 3.213
+    }
+   ],
+   "preRating": 3.2551,
+   "impact": 0.0233,
+   "postRating": 3.2784
+  },
+  {
+   "matchId": 7000879,
+   "date": "2025-06-17",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100007272,
+    "name": "Corin Hollis",
+    "ratingThen": 4.074,
+    "ratingPre": 4.0253,
+    "ratingNow": 4.006
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.386,
+     "ratingPre": 3.4416,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.93,
+     "ratingPre": 3.9855,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.2784,
+   "impact": 0.049,
+   "postRating": 3.3274
+  },
+  {
+   "matchId": 7000888,
+   "date": "2025-06-24",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    0
+   ],
+   "partner": {
+    "id": 9100001792,
+    "name": "Bellamy Glenholm",
+    "ratingThen": 3.909,
+    "ratingPre": 3.8353,
+    "ratingNow": 3.893
+   },
+   "opponents": [
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.507,
+     "ratingPre": 3.5671,
+     "ratingNow": 3.526
+    },
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.17,
+     "ratingPre": 3.23,
+     "ratingNow": 3.07
+    }
+   ],
+   "preRating": 3.3274,
+   "impact": 0.0732,
+   "postRating": 3.4006
+  },
+  {
+   "matchId": 7000899,
+   "date": "2025-06-24",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100008642,
+    "name": "Harper Northcott",
+    "ratingThen": 3.363,
+    "ratingPre": 3.3639,
+    "ratingNow": 3.373
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.571,
+     "ratingPre": 3.5705,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100007546,
+     "name": "Blake Merriwether",
+     "ratingThen": 3.828,
+     "ratingPre": 3.827,
+     "ratingNow": 3.785
+    }
+   ],
+   "preRating": 3.4006,
+   "impact": -0.0009,
+   "postRating": 3.3997
+  },
+  {
+   "matchId": 7000936,
+   "date": "2025-06-24",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003025,
+    "name": "Gray Fairbank",
+    "ratingThen": 3.247,
+    "ratingPre": 3.2721,
+    "ratingNow": 3.212
+   },
+   "opponents": [
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.814,
+     "ratingPre": 3.7873,
+     "ratingNow": 3.802
+    },
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.23,
+     "ratingPre": 3.204,
+     "ratingNow": 3.082
+    }
+   ],
+   "preRating": 3.3997,
+   "impact": -0.0253,
+   "postRating": 3.3744
+  },
+  {
+   "matchId": 7000942,
+   "date": "2025-06-24",
+   "event": "Riverside Spring Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    2
+   ],
+   "partner": {
+    "id": 9100005765,
+    "name": "Kendall Thistledown",
+    "ratingThen": 3.887,
+    "ratingPre": 3.8507,
+    "ratingNow": 3.724
+   },
+   "opponents": [
+    {
+     "id": 9100006313,
+     "name": "Wren Ingram",
+     "ratingThen": 3.737,
+     "ratingPre": 3.773,
+     "ratingNow": 3.815
+    },
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.133,
+     "ratingPre": 3.1695,
+     "ratingNow": 3.07
+    }
+   ],
+   "preRating": 3.3744,
+   "impact": 0.0359,
+   "postRating": 3.4103
+  },
+  {
+   "matchId": 7000981,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    0,
+    2
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.716,
+    "ratingPre": 3.666,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.32,
+     "ratingPre": 3.363,
+     "ratingNow": 3.373
+    },
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.187,
+     "ratingPre": 3.2304,
+     "ratingNow": 3.082
+    }
+   ],
+   "preRating": 3.4103,
+   "impact": 0.05,
+   "postRating": 3.4603
+  },
+  {
+   "matchId": 7000989,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7,
+    2
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.692,
+    "ratingPre": 3.716,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100002340,
+     "name": "Kendall Ingram",
+     "ratingThen": 3.603,
+     "ratingPre": 3.5753,
+     "ratingNow": 3.622
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.684,
+     "ratingPre": 3.6567,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.4603,
+   "impact": -0.0236,
+   "postRating": 3.4367
+  },
+  {
+   "matchId": 7000997,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    7,
+    5
+   ],
+   "oppScores": [
+    1,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.682,
+    "ratingPre": 3.6924,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.536,
+     "ratingPre": 3.524,
+     "ratingNow": 3.601
+    },
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.317,
+     "ratingPre": 3.3059,
+     "ratingNow": 3.317
+    }
+   ],
+   "preRating": 3.4367,
+   "impact": -0.0105,
+   "postRating": 3.4262
+  },
+  {
+   "matchId": 7001005,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    6,
+    7
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.714,
+    "ratingPre": 3.6819,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100007272,
+     "name": "Corin Hollis",
+     "ratingThen": 4.043,
+     "ratingPre": 4.0743,
+     "ratingNow": 4.006
+    },
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.259,
+     "ratingPre": 3.2899,
+     "ratingNow": 3.367
+    }
+   ],
+   "preRating": 3.4262,
+   "impact": 0.0324,
+   "postRating": 3.4586
+  },
+  {
+   "matchId": 7001044,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    2,
+    4
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.73,
+    "ratingPre": 3.7143,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.115,
+     "ratingPre": 3.1331,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.169,
+     "ratingPre": 3.187,
+     "ratingNow": 3.082
+    }
+   ],
+   "preRating": 3.4586,
+   "impact": 0.016,
+   "postRating": 3.4746
+  },
+  {
+   "matchId": 7001072,
+   "date": "2025-07-12",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    2,
+    11
+   ],
+   "oppScores": [
+    6,
+    11,
+    4
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.746,
+    "ratingPre": 3.7303,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.896,
+     "ratingPre": 3.9102,
+     "ratingNow": 3.907
+    },
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.493,
+     "ratingPre": 3.5066,
+     "ratingNow": 3.526
+    }
+   ],
+   "preRating": 3.4746,
+   "impact": 0.0159,
+   "postRating": 3.4905
+  },
+  {
+   "matchId": 7001097,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    8,
+    9
+   ],
+   "oppScores": [
+    7,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.68,
+    "ratingPre": 3.69,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.322,
+     "ratingPre": 3.3101,
+     "ratingNow": 3.326
+    },
+    {
+     "id": 9100006998,
+     "name": "Marlow Larkspur",
+     "ratingThen": 3.657,
+     "ratingPre": 3.6447,
+     "ratingNow": 3.624
+    }
+   ],
+   "preRating": 3.4905,
+   "impact": -0.0098,
+   "postRating": 3.4807
+  },
+  {
+   "matchId": 7001122,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    12,
+    11
+   ],
+   "oppScores": [
+    10,
+    6
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.689,
+    "ratingPre": 3.6802,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.248,
+     "ratingPre": 3.2588,
+     "ratingNow": 3.367
+    },
+    {
+     "id": 9100007546,
+     "name": "Blake Merriwether",
+     "ratingThen": 3.817,
+     "ratingPre": 3.8279,
+     "ratingNow": 3.785
+    }
+   ],
+   "preRating": 3.4807,
+   "impact": 0.0092,
+   "postRating": 3.4899
+  },
+  {
+   "matchId": 7001154,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4,
+    8
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.644,
+    "ratingPre": 3.6894,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.277,
+     "ratingPre": 3.2312,
+     "ratingNow": 3.251
+    },
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.538,
+     "ratingPre": 3.4925,
+     "ratingNow": 3.526
+    }
+   ],
+   "preRating": 3.4899,
+   "impact": -0.045,
+   "postRating": 3.4449
+  },
+  {
+   "matchId": 7001168,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3,
+    10
+   ],
+   "oppScores": [
+    11,
+    12
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.604,
+    "ratingPre": 3.6444,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.389,
+     "ratingPre": 3.3495,
+     "ratingNow": 3.366
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.351,
+     "ratingPre": 3.3114,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.4449,
+   "impact": -0.0403,
+   "postRating": 3.4046
+  },
+  {
+   "matchId": 7001200,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3,
+    6
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.567,
+    "ratingPre": 3.6041,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.575,
+     "ratingPre": 3.5379,
+     "ratingNow": 3.526
+    },
+    {
+     "id": 9100006587,
+     "name": "Oakley Pennington",
+     "ratingThen": 3.324,
+     "ratingPre": 3.2862,
+     "ratingNow": 3.348
+    }
+   ],
+   "preRating": 3.4046,
+   "impact": -0.0369,
+   "postRating": 3.3677
+  },
+  {
+   "matchId": 7001214,
+   "date": "2025-08-23",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3,
+    10
+   ],
+   "oppScores": [
+    11,
+    12
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.552,
+    "ratingPre": 3.5672,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.748,
+     "ratingPre": 3.7321,
+     "ratingNow": 3.911
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.367,
+     "ratingPre": 3.3514,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.3677,
+   "impact": -0.0154,
+   "postRating": 3.3523
+  },
+  {
+   "matchId": 7001244,
+   "date": "2025-09-09",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100001381,
+    "name": "Quinn Dunmore",
+    "ratingThen": 3.219,
+    "ratingPre": 3.1692,
+    "ratingNow": 3.082
+   },
+   "opponents": [
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.528,
+     "ratingPre": 3.5734,
+     "ratingNow": 3.769
+    },
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.162,
+     "ratingPre": 3.208,
+     "ratingNow": 3.198
+    }
+   ],
+   "preRating": 3.3523,
+   "impact": 0.0495,
+   "postRating": 3.4018
+  },
+  {
+   "matchId": 7001272,
+   "date": "2025-09-09",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100005491,
+    "name": "Blake Rookwood",
+    "ratingThen": 3.387,
+    "ratingPre": 3.3673,
+    "ratingNow": 3.386
+   },
+   "opponents": [
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.555,
+     "ratingPre": 3.5752,
+     "ratingNow": 3.526
+    },
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.37,
+     "ratingPre": 3.3895,
+     "ratingNow": 3.366
+    }
+   ],
+   "preRating": 3.4018,
+   "impact": 0.0195,
+   "postRating": 3.4213
+  },
+  {
+   "matchId": 7001308,
+   "date": "2025-09-09",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100002066,
+    "name": "Arden Thistledown",
+    "ratingThen": 3.715,
+    "ratingPre": 3.6843,
+    "ratingNow": 3.66
+   },
+   "opponents": [
+    {
+     "id": 9100002751,
+     "name": "Teagan Rookwood",
+     "ratingThen": 3.248,
+     "ratingPre": 3.278,
+     "ratingNow": 3.217
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.878,
+     "ratingPre": 3.9085,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.4213,
+   "impact": 0.0307,
+   "postRating": 3.452
+  },
+  {
+   "matchId": 7001311,
+   "date": "2025-09-09",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.235,
+    "ratingPre": 3.2476,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.541,
+     "ratingPre": 3.5276,
+     "ratingNow": 3.769
+    },
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.9,
+     "ratingPre": 3.8866,
+     "ratingNow": 3.724
+    }
+   ],
+   "preRating": 3.452,
+   "impact": -0.0131,
+   "postRating": 3.4389
+  },
+  {
+   "matchId": 7001338,
+   "date": "2025-09-16",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    10
+   ],
+   "oppScores": [
+    12
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.542,
+    "ratingPre": 3.5554,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.586,
+     "ratingPre": 3.5714,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100002751,
+     "name": "Teagan Rookwood",
+     "ratingThen": 3.249,
+     "ratingPre": 3.2345,
+     "ratingNow": 3.217
+    }
+   ],
+   "preRating": 3.4389,
+   "impact": -0.0135,
+   "postRating": 3.4254
+  },
+  {
+   "matchId": 7001345,
+   "date": "2025-09-16",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100004532,
+    "name": "Teagan Underhill",
+    "ratingThen": 3.928,
+    "ratingPre": 3.8835,
+    "ratingNow": 3.982
+   },
+   "opponents": [
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.831,
+     "ratingPre": 3.8781,
+     "ratingNow": 3.893
+    },
+    {
+     "id": 9100003025,
+     "name": "Gray Fairbank",
+     "ratingThen": 3.2,
+     "ratingPre": 3.2468,
+     "ratingNow": 3.212
+    }
+   ],
+   "preRating": 3.4254,
+   "impact": 0.0448,
+   "postRating": 3.4702
+  },
+  {
+   "matchId": 7001351,
+   "date": "2025-09-16",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.296,
+    "ratingPre": 3.3463,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.633,
+     "ratingPre": 3.5855,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.21,
+     "ratingPre": 3.1622,
+     "ratingNow": 3.198
+    }
+   ],
+   "preRating": 3.4702,
+   "impact": -0.0503,
+   "postRating": 3.4199
+  },
+  {
+   "matchId": 7001383,
+   "date": "2025-09-16",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005354,
+    "name": "Corin Brightwater",
+    "ratingThen": 3.272,
+    "ratingPre": 3.279,
+    "ratingNow": 3.228
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.392,
+     "ratingPre": 3.386,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.585,
+     "ratingPre": 3.5792,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.4199,
+   "impact": -0.0073,
+   "postRating": 3.4126
+  },
+  {
+   "matchId": 7001419,
+   "date": "2025-09-23",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100006724,
+    "name": "Rowan Everly",
+    "ratingThen": 3.722,
+    "ratingPre": 3.7107,
+    "ratingNow": 3.714
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.703,
+     "ratingPre": 3.715,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.357,
+     "ratingPre": 3.3697,
+     "ratingNow": 3.366
+    }
+   ],
+   "preRating": 3.4126,
+   "impact": 0.0114,
+   "postRating": 3.424
+  },
+  {
+   "matchId": 7001449,
+   "date": "2025-09-23",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007409,
+    "name": "Darcy Thistledown",
+    "ratingThen": 3.201,
+    "ratingPre": 3.2238,
+    "ratingNow": 3.213
+   },
+   "opponents": [
+    {
+     "id": 9100006313,
+     "name": "Wren Ingram",
+     "ratingThen": 3.767,
+     "ratingPre": 3.7366,
+     "ratingNow": 3.815
+    },
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.406,
+     "ratingPre": 3.3755,
+     "ratingNow": 3.264
+    }
+   ],
+   "preRating": 3.424,
+   "impact": -0.0226,
+   "postRating": 3.4014
+  },
+  {
+   "matchId": 7001467,
+   "date": "2025-09-23",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003436,
+    "name": "Tatum Quarry",
+    "ratingThen": 3.287,
+    "ratingPre": 3.3175,
+    "ratingNow": 3.317
+   },
+   "opponents": [
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.434,
+     "ratingPre": 3.406,
+     "ratingNow": 3.264
+    },
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.348,
+     "ratingPre": 3.3196,
+     "ratingNow": 3.373
+    }
+   ],
+   "preRating": 3.4014,
+   "impact": -0.0307,
+   "postRating": 3.3707
+  },
+  {
+   "matchId": 7001506,
+   "date": "2025-10-07",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003025,
+    "name": "Gray Fairbank",
+    "ratingThen": 3.187,
+    "ratingPre": 3.1999,
+    "ratingNow": 3.212
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.652,
+     "ratingPre": 3.6331,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.916,
+     "ratingPre": 3.8961,
+     "ratingNow": 3.907
+    }
+   ],
+   "preRating": 3.3707,
+   "impact": -0.0134,
+   "postRating": 3.3573
+  },
+  {
+   "matchId": 7001542,
+   "date": "2025-10-07",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003162,
+    "name": "Emery Pennington",
+    "ratingThen": 3.539,
+    "ratingPre": 3.5338,
+    "ratingNow": 3.534
+   },
+   "opponents": [
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.196,
+     "ratingPre": 3.2012,
+     "ratingNow": 3.213
+    },
+    {
+     "id": 9100006861,
+     "name": "Emery Kestrel",
+     "ratingThen": 3.218,
+     "ratingPre": 3.224,
+     "ratingNow": 3.109
+    }
+   ],
+   "preRating": 3.3573,
+   "impact": 0.005,
+   "postRating": 3.3623
+  },
+  {
+   "matchId": 7001556,
+   "date": "2025-10-07",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001518,
+    "name": "Darcy Dunmore",
+    "ratingThen": 3.861,
+    "ratingPre": 3.8909,
+    "ratingNow": 3.731
+   },
+   "opponents": [
+    {
+     "id": 9100004532,
+     "name": "Teagan Underhill",
+     "ratingThen": 3.958,
+     "ratingPre": 3.9283,
+     "ratingNow": 3.982
+    },
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.422,
+     "ratingPre": 3.3915,
+     "ratingNow": 3.403
+    }
+   ],
+   "preRating": 3.3623,
+   "impact": -0.0295,
+   "postRating": 3.3328
+  },
+  {
+   "matchId": 7001592,
+   "date": "2025-10-07",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    0
+   ],
+   "partner": {
+    "id": 9100007957,
+    "name": "Bellamy Quarry",
+    "ratingThen": 3.63,
+    "ratingPre": 3.541,
+    "ratingNow": 3.769
+   },
+   "opponents": [
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.813,
+     "ratingPre": 3.9,
+     "ratingNow": 3.724
+    },
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.189,
+     "ratingPre": 3.2766,
+     "ratingNow": 3.251
+    }
+   ],
+   "preRating": 3.3328,
+   "impact": 0.0886,
+   "postRating": 3.4214
+  },
+  {
+   "matchId": 7001599,
+   "date": "2025-10-11",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    5,
+    7
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.752,
+    "ratingPre": 3.7462,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.482,
+     "ratingPre": 3.4894,
+     "ratingNow": 3.421
+    },
+    {
+     "id": 9100005354,
+     "name": "Corin Brightwater",
+     "ratingThen": 3.264,
+     "ratingPre": 3.2717,
+     "ratingNow": 3.228
+    }
+   ],
+   "preRating": 3.4214,
+   "impact": 0.0057,
+   "postRating": 3.4271
+  },
+  {
+   "matchId": 7001612,
+   "date": "2025-10-11",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    5,
+    5
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.784,
+    "ratingPre": 3.7519,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.897,
+     "ratingPre": 3.9299,
+     "ratingNow": 3.939
+    },
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.289,
+     "ratingPre": 3.3223,
+     "ratingNow": 3.326
+    }
+   ],
+   "preRating": 3.4271,
+   "impact": 0.0317,
+   "postRating": 3.4588
+  },
+  {
+   "matchId": 7001630,
+   "date": "2025-10-11",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    3,
+    5
+   ],
+   "oppScores": [
+    2,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.791,
+    "ratingPre": 3.7836,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.809,
+     "ratingPre": 3.8137,
+     "ratingNow": 3.802
+    },
+    {
+     "id": 9100007546,
+     "name": "Blake Merriwether",
+     "ratingThen": 3.812,
+     "ratingPre": 3.8171,
+     "ratingNow": 3.785
+    }
+   ],
+   "preRating": 3.4588,
+   "impact": 0.0069,
+   "postRating": 3.4657
+  },
+  {
+   "matchId": 7001656,
+   "date": "2025-10-11",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    6,
+    2
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.803,
+    "ratingPre": 3.7905,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005354,
+     "name": "Corin Brightwater",
+     "ratingThen": 3.248,
+     "ratingPre": 3.2642,
+     "ratingNow": 3.228
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.37,
+     "ratingPre": 3.3868,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.4657,
+   "impact": 0.0121,
+   "postRating": 3.4778
+  },
+  {
+   "matchId": 7001684,
+   "date": "2025-10-11",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (3.5) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    12,
+    11
+   ],
+   "oppScores": [
+    10,
+    6
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.812,
+    "ratingPre": 3.8026,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.524,
+     "ratingPre": 3.5356,
+     "ratingNow": 3.601
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.673,
+     "ratingPre": 3.685,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.4778,
+   "impact": 0.009,
+   "postRating": 3.4868
+  },
+  {
+   "matchId": 7001715,
+   "date": "2025-10-14",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001381,
+    "name": "Quinn Dunmore",
+    "ratingThen": 3.213,
+    "ratingPre": 3.2187,
+    "ratingNow": 3.082
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.658,
+     "ratingPre": 3.6525,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.354,
+     "ratingPre": 3.3481,
+     "ratingNow": 3.373
+    }
+   ],
+   "preRating": 3.4868,
+   "impact": -0.0056,
+   "postRating": 3.4812
+  },
+  {
+   "matchId": 7001740,
+   "date": "2025-10-14",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.509,
+    "ratingPre": 3.5419,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.383,
+     "ratingPre": 3.3574,
+     "ratingNow": 3.366
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.396,
+     "ratingPre": 3.3701,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.4812,
+   "impact": -0.0332,
+   "postRating": 3.448
+  },
+  {
+   "matchId": 7001771,
+   "date": "2025-10-14",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.204,
+    "ratingPre": 3.2486,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.24,
+     "ratingPre": 3.1894,
+     "ratingNow": 3.251
+    },
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.796,
+     "ratingPre": 3.7453,
+     "ratingNow": 3.795
+    }
+   ],
+   "preRating": 3.448,
+   "impact": -0.0441,
+   "postRating": 3.4039
+  },
+  {
+   "matchId": 7001783,
+   "date": "2025-10-21",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100004121,
+    "name": "Kendall Brightwater",
+    "ratingThen": 3.201,
+    "ratingPre": 3.2098,
+    "ratingNow": 3.198
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.429,
+     "ratingPre": 3.4216,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.592,
+     "ratingPre": 3.5847,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.4039,
+   "impact": -0.0089,
+   "postRating": 3.395
+  },
+  {
+   "matchId": 7001814,
+   "date": "2025-10-21",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007409,
+    "name": "Darcy Thistledown",
+    "ratingThen": 3.151,
+    "ratingPre": 3.1955,
+    "ratingNow": 3.213
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.48,
+     "ratingPre": 3.4289,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.643,
+     "ratingPre": 3.592,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.395,
+   "impact": -0.0449,
+   "postRating": 3.3501
+  },
+  {
+   "matchId": 7001825,
+   "date": "2025-10-21",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003162,
+    "name": "Emery Pennington",
+    "ratingThen": 3.517,
+    "ratingPre": 3.5388,
+    "ratingNow": 3.534
+   },
+   "opponents": [
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.501,
+     "ratingPre": 3.4819,
+     "ratingNow": 3.421
+    },
+    {
+     "id": 9100002340,
+     "name": "Kendall Ingram",
+     "ratingThen": 3.622,
+     "ratingPre": 3.6029,
+     "ratingNow": 3.622
+    }
+   ],
+   "preRating": 3.3501,
+   "impact": -0.0219,
+   "postRating": 3.3282
+  },
+  {
+   "matchId": 7001863,
+   "date": "2025-10-28",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100006039,
+    "name": "Reese Fairbank",
+    "ratingThen": 3.195,
+    "ratingPre": 3.1153,
+    "ratingNow": 3.07
+   },
+   "opponents": [
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.406,
+     "ratingPre": 3.5006,
+     "ratingNow": 3.421
+    },
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.423,
+     "ratingPre": 3.5169,
+     "ratingNow": 3.534
+    }
+   ],
+   "preRating": 3.3282,
+   "impact": 0.0801,
+   "postRating": 3.4083
+  },
+  {
+   "matchId": 7001902,
+   "date": "2025-10-28",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100003299,
+    "name": "Finley Rookwood",
+    "ratingThen": 3.638,
+    "ratingPre": 3.6731,
+    "ratingNow": 3.531
+   },
+   "opponents": [
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.42,
+     "ratingPre": 3.383,
+     "ratingNow": 3.366
+    },
+    {
+     "id": 9100006587,
+     "name": "Oakley Pennington",
+     "ratingThen": 3.36,
+     "ratingPre": 3.3235,
+     "ratingNow": 3.348
+    }
+   ],
+   "preRating": 3.4083,
+   "impact": -0.0347,
+   "postRating": 3.3736
+  },
+  {
+   "matchId": 7001927,
+   "date": "2025-10-28",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100002477,
+    "name": "Finley Brightwater",
+    "ratingThen": 3.791,
+    "ratingPre": 3.7688,
+    "ratingNow": 3.665
+   },
+   "opponents": [
+    {
+     "id": 9100006450,
+     "name": "Oakley Northcott",
+     "ratingThen": 3.393,
+     "ratingPre": 3.4197,
+     "ratingNow": 3.366
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.622,
+     "ratingPre": 3.649,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.3736,
+   "impact": 0.0225,
+   "postRating": 3.3961
+  },
+  {
+   "matchId": 7001967,
+   "date": "2025-11-04",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.174,
+    "ratingPre": 3.2045,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.748,
+     "ratingPre": 3.7221,
+     "ratingNow": 3.714
+    },
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.774,
+     "ratingPre": 3.748,
+     "ratingNow": 3.911
+    }
+   ],
+   "preRating": 3.3961,
+   "impact": -0.0305,
+   "postRating": 3.3656
+  },
+  {
+   "matchId": 7001978,
+   "date": "2025-11-04",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006450,
+    "name": "Oakley Northcott",
+    "ratingThen": 3.354,
+    "ratingPre": 3.3928,
+    "ratingNow": 3.366
+   },
+   "opponents": [
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.237,
+     "ratingPre": 3.2009,
+     "ratingNow": 3.198
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.679,
+     "ratingPre": 3.6428,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3656,
+   "impact": -0.039,
+   "postRating": 3.3266
+  },
+  {
+   "matchId": 7001986,
+   "date": "2025-11-04",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100006450,
+    "name": "Oakley Northcott",
+    "ratingThen": 3.366,
+    "ratingPre": 3.3538,
+    "ratingNow": 3.366
+   },
+   "opponents": [
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.606,
+     "ratingPre": 3.6221,
+     "ratingNow": 3.589
+    },
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.134,
+     "ratingPre": 3.1506,
+     "ratingNow": 3.213
+    }
+   ],
+   "preRating": 3.3266,
+   "impact": 0.0127,
+   "postRating": 3.3393
+  },
+  {
+   "matchId": 7002003,
+   "date": "2025-11-11",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    10
+   ],
+   "oppScores": [
+    12
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.657,
+    "ratingPre": 3.6569,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.524,
+     "ratingPre": 3.5237,
+     "ratingNow": 3.601
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.639,
+     "ratingPre": 3.6384,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.3393,
+   "impact": -0.0003,
+   "postRating": 3.339
+  },
+  {
+   "matchId": 7002041,
+   "date": "2025-11-11",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003162,
+    "name": "Emery Pennington",
+    "ratingThen": 3.45,
+    "ratingPre": 3.4226,
+    "ratingNow": 3.534
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.164,
+     "ratingPre": 3.1954,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.748,
+     "ratingPre": 3.7797,
+     "ratingNow": 3.602
+    }
+   ],
+   "preRating": 3.339,
+   "impact": 0.0272,
+   "postRating": 3.3662
+  },
+  {
+   "matchId": 7002050,
+   "date": "2025-11-11",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000833,
+    "name": "Finley Everly",
+    "ratingThen": 3.412,
+    "ratingPre": 3.4345,
+    "ratingNow": 3.264
+   },
+   "opponents": [
+    {
+     "id": 9100005354,
+     "name": "Corin Brightwater",
+     "ratingThen": 3.269,
+     "ratingPre": 3.2475,
+     "ratingNow": 3.228
+    },
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.545,
+     "ratingPre": 3.524,
+     "ratingNow": 3.601
+    }
+   ],
+   "preRating": 3.3662,
+   "impact": -0.0222,
+   "postRating": 3.344
+  },
+  {
+   "matchId": 7002085,
+   "date": "2025-11-11",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001792,
+    "name": "Bellamy Glenholm",
+    "ratingThen": 3.781,
+    "ratingPre": 3.8312,
+    "ratingNow": 3.893
+   },
+   "opponents": [
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.443,
+     "ratingPre": 3.3957,
+     "ratingNow": 3.386
+    },
+    {
+     "id": 9100006313,
+     "name": "Wren Ingram",
+     "ratingThen": 3.815,
+     "ratingPre": 3.7671,
+     "ratingNow": 3.815
+    }
+   ],
+   "preRating": 3.344,
+   "impact": -0.0502,
+   "postRating": 3.2938
+  },
+  {
+   "matchId": 7002103,
+   "date": "2025-11-18",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.506,
+    "ratingPre": 3.5087,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100004532,
+     "name": "Teagan Underhill",
+     "ratingThen": 3.962,
+     "ratingPre": 3.9584,
+     "ratingNow": 3.982
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.706,
+     "ratingPre": 3.7027,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.2938,
+   "impact": -0.0027,
+   "postRating": 3.2911
+  },
+  {
+   "matchId": 7002130,
+   "date": "2025-11-18",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100007546,
+    "name": "Blake Merriwether",
+    "ratingThen": 3.844,
+    "ratingPre": 3.8122,
+    "ratingNow": 3.785
+   },
+   "opponents": [
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.61,
+     "ratingPre": 3.6387,
+     "ratingNow": 3.531
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.577,
+     "ratingPre": 3.6058,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.2911,
+   "impact": 0.0313,
+   "postRating": 3.3224
+  },
+  {
+   "matchId": 7002152,
+   "date": "2025-11-18",
+   "event": "Riverside Fall Ladder League 3.5",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100002477,
+    "name": "Finley Brightwater",
+    "ratingThen": 3.796,
+    "ratingPre": 3.7913,
+    "ratingNow": 3.665
+   },
+   "opponents": [
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.401,
+     "ratingPre": 3.4063,
+     "ratingNow": 3.421
+    },
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.243,
+     "ratingPre": 3.248,
+     "ratingNow": 3.367
+    }
+   ],
+   "preRating": 3.3224,
+   "impact": 0.0046,
+   "postRating": 3.327
+  },
+  {
+   "matchId": 7002180,
+   "date": "2026-01-20",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005491,
+    "name": "Blake Rookwood",
+    "ratingThen": 3.42,
+    "ratingPre": 3.4434,
+    "ratingNow": 3.386
+   },
+   "opponents": [
+    {
+     "id": 9100004532,
+     "name": "Teagan Underhill",
+     "ratingThen": 3.98,
+     "ratingPre": 3.9619,
+     "ratingNow": 3.982
+    },
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.524,
+     "ratingPre": 3.506,
+     "ratingNow": 3.526
+    }
+   ],
+   "preRating": 3.327,
+   "impact": -0.0236,
+   "postRating": 3.3034
+  },
+  {
+   "matchId": 7002208,
+   "date": "2026-01-20",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007957,
+    "name": "Bellamy Quarry",
+    "ratingThen": 3.628,
+    "ratingPre": 3.6296,
+    "ratingNow": 3.769
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.659,
+     "ratingPre": 3.658,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.898,
+     "ratingPre": 3.8965,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.3034,
+   "impact": -0.0012,
+   "postRating": 3.3022
+  },
+  {
+   "matchId": 7002245,
+   "date": "2026-01-20",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.525,
+    "ratingPre": 3.5244,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.679,
+     "ratingPre": 3.6789,
+     "ratingNow": 3.596
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.61,
+     "ratingPre": 3.6102,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.3022,
+   "impact": 0.0001,
+   "postRating": 3.3023
+  },
+  {
+   "matchId": 7002265,
+   "date": "2026-01-27",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100008094,
+    "name": "Avery Dunmore",
+    "ratingThen": 3.782,
+    "ratingPre": 3.8088,
+    "ratingNow": 3.802
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.825,
+     "ratingPre": 3.7962,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.272,
+     "ratingPre": 3.2429,
+     "ratingNow": 3.367
+    }
+   ],
+   "preRating": 3.3023,
+   "impact": -0.0268,
+   "postRating": 3.2755
+  },
+  {
+   "matchId": 7002297,
+   "date": "2026-01-27",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001107,
+    "name": "Frankie Ingram",
+    "ratingThen": 3.24,
+    "ratingPre": 3.2403,
+    "ratingNow": 3.251
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.164,
+     "ratingPre": 3.1638,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100006998,
+     "name": "Marlow Larkspur",
+     "ratingThen": 3.657,
+     "ratingPre": 3.6566,
+     "ratingNow": 3.624
+    }
+   ],
+   "preRating": 3.2755,
+   "impact": -0.0001,
+   "postRating": 3.2754
+  },
+  {
+   "matchId": 7002305,
+   "date": "2026-01-27",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100004806,
+    "name": "Sage Dunmore",
+    "ratingThen": 3.258,
+    "ratingPre": 3.2182,
+    "ratingNow": 3.27
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.446,
+     "ratingPre": 3.4797,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.645,
+     "ratingPre": 3.6788,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.2754,
+   "impact": 0.0402,
+   "postRating": 3.3156
+  },
+  {
+   "matchId": 7002308,
+   "date": "2026-02-03",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100004806,
+    "name": "Sage Dunmore",
+    "ratingThen": 3.26,
+    "ratingPre": 3.2584,
+    "ratingNow": 3.27
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.445,
+     "ratingPre": 3.4463,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.644,
+     "ratingPre": 3.6454,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3156,
+   "impact": 0.0015,
+   "postRating": 3.3171
+  },
+  {
+   "matchId": 7002336,
+   "date": "2026-02-03",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.353,
+    "ratingPre": 3.296,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.756,
+     "ratingPre": 3.8252,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100005354,
+     "name": "Corin Brightwater",
+     "ratingThen": 3.2,
+     "ratingPre": 3.2688,
+     "ratingNow": 3.228
+    }
+   ],
+   "preRating": 3.3171,
+   "impact": 0.0566,
+   "postRating": 3.3737
+  },
+  {
+   "matchId": 7002360,
+   "date": "2026-02-03",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.175,
+    "ratingPre": 3.174,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.781,
+     "ratingPre": 3.782,
+     "ratingNow": 3.802
+    },
+    {
+     "id": 9100004532,
+     "name": "Teagan Underhill",
+     "ratingThen": 3.98,
+     "ratingPre": 3.9803,
+     "ratingNow": 3.982
+    }
+   ],
+   "preRating": 3.3737,
+   "impact": 0.0007,
+   "postRating": 3.3744
+  },
+  {
+   "matchId": 7002378,
+   "date": "2026-02-03",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100007820,
+    "name": "Darcy Quarry",
+    "ratingThen": 3.331,
+    "ratingPre": 3.2889,
+    "ratingNow": 3.326
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.662,
+     "ratingPre": 3.7062,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.376,
+     "ratingPre": 3.4198,
+     "ratingNow": 3.386
+    }
+   ],
+   "preRating": 3.3744,
+   "impact": 0.042,
+   "postRating": 3.4164
+  },
+  {
+   "matchId": 7002402,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4,
+    5
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.447,
+    "ratingPre": 3.4606,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.675,
+     "ratingPre": 3.6621,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.787,
+     "ratingPre": 3.7742,
+     "ratingNow": 3.911
+    }
+   ],
+   "preRating": 3.4164,
+   "impact": -0.0134,
+   "postRating": 3.403
+  },
+  {
+   "matchId": 7002438,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1,
+    7
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.431,
+    "ratingPre": 3.4472,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.776,
+     "ratingPre": 3.7562,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.63,
+     "ratingPre": 3.6101,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.403,
+   "impact": -0.0162,
+   "postRating": 3.3868
+  },
+  {
+   "matchId": 7002477,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1,
+    4
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.397,
+    "ratingPre": 3.431,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.476,
+     "ratingPre": 3.4498,
+     "ratingNow": 3.534
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.807,
+     "ratingPre": 3.781,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.3868,
+   "impact": -0.0337,
+   "postRating": 3.3531
+  },
+  {
+   "matchId": 7002502,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6,
+    8
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.39,
+    "ratingPre": 3.3973,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.784,
+     "ratingPre": 3.7762,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.244,
+     "ratingPre": 3.237,
+     "ratingNow": 3.198
+    }
+   ],
+   "preRating": 3.3531,
+   "impact": -0.0077,
+   "postRating": 3.3454
+  },
+  {
+   "matchId": 7002531,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    8,
+    5
+   ],
+   "oppScores": [
+    4,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.386,
+    "ratingPre": 3.3896,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100006587,
+     "name": "Oakley Pennington",
+     "ratingThen": 3.364,
+     "ratingPre": 3.3602,
+     "ratingNow": 3.348
+    },
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.357,
+     "ratingPre": 3.3536,
+     "ratingNow": 3.373
+    }
+   ],
+   "preRating": 3.3454,
+   "impact": -0.0037,
+   "postRating": 3.3417
+  },
+  {
+   "matchId": 7002534,
+   "date": "2026-02-07",
+   "event": "Frostbite Indoor Classic - Mens Doubles Skill: (3.5)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    6,
+    1
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.431,
+    "ratingPre": 3.3859,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.369,
+     "ratingPre": 3.4123,
+     "ratingNow": 3.264
+    },
+    {
+     "id": 9100001244,
+     "name": "Sage Rookwood",
+     "ratingThen": 3.358,
+     "ratingPre": 3.4012,
+     "ratingNow": 3.421
+    }
+   ],
+   "preRating": 3.3417,
+   "impact": 0.0448,
+   "postRating": 3.3865
+  },
+  {
+   "matchId": 7002571,
+   "date": "2026-02-10",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000833,
+    "name": "Finley Everly",
+    "ratingThen": 3.291,
+    "ratingPre": 3.3691,
+    "ratingNow": 3.264
+   },
+   "opponents": [
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.192,
+     "ratingPre": 3.1343,
+     "ratingNow": 3.213
+    },
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.298,
+     "ratingPre": 3.2402,
+     "ratingNow": 3.251
+    }
+   ],
+   "preRating": 3.3865,
+   "impact": -0.0778,
+   "postRating": 3.3087
+  },
+  {
+   "matchId": 7002590,
+   "date": "2026-02-10",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001381,
+    "name": "Quinn Dunmore",
+    "ratingThen": 3.159,
+    "ratingPre": 3.2131,
+    "ratingNow": 3.082
+   },
+   "opponents": [
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.377,
+     "ratingPre": 3.3309,
+     "ratingNow": 3.326
+    },
+    {
+     "id": 9100003025,
+     "name": "Gray Fairbank",
+     "ratingThen": 3.233,
+     "ratingPre": 3.1865,
+     "ratingNow": 3.212
+    }
+   ],
+   "preRating": 3.3087,
+   "impact": -0.0546,
+   "postRating": 3.2541
+  },
+  {
+   "matchId": 7002596,
+   "date": "2026-02-10",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100001792,
+    "name": "Bellamy Glenholm",
+    "ratingThen": 3.82,
+    "ratingPre": 3.8073,
+    "ratingNow": 3.893
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.434,
+     "ratingPre": 3.4448,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.633,
+     "ratingPre": 3.6439,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.2541,
+   "impact": 0.0129,
+   "postRating": 3.267
+  },
+  {
+   "matchId": 7002625,
+   "date": "2026-02-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    2
+   ],
+   "partner": {
+    "id": 9100007135,
+    "name": "Casey Everly",
+    "ratingThen": 4.016,
+    "ratingPre": 3.989,
+    "ratingNow": 3.949
+   },
+   "opponents": [
+    {
+     "id": 9100003025,
+     "name": "Gray Fairbank",
+     "ratingThen": 3.205,
+     "ratingPre": 3.2329,
+     "ratingNow": 3.212
+    },
+    {
+     "id": 9100000833,
+     "name": "Finley Everly",
+     "ratingThen": 3.264,
+     "ratingPre": 3.2913,
+     "ratingNow": 3.264
+    }
+   ],
+   "preRating": 3.267,
+   "impact": 0.0265,
+   "postRating": 3.2935
+  },
+  {
+   "matchId": 7002637,
+   "date": "2026-02-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100007272,
+    "name": "Corin Hollis",
+    "ratingThen": 4.058,
+    "ratingPre": 4.0432,
+    "ratingNow": 4.006
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.149,
+     "ratingPre": 3.1639,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.51,
+     "ratingPre": 3.5245,
+     "ratingNow": 3.526
+    }
+   ],
+   "preRating": 3.2935,
+   "impact": 0.0143,
+   "postRating": 3.3078
+  },
+  {
+   "matchId": 7002666,
+   "date": "2026-02-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.384,
+    "ratingPre": 3.3526,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.628,
+     "ratingPre": 3.6595,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.118,
+     "ratingPre": 3.1493,
+     "ratingNow": 3.07
+    }
+   ],
+   "preRating": 3.3078,
+   "impact": 0.0318,
+   "postRating": 3.3396
+  },
+  {
+   "matchId": 7002676,
+   "date": "2026-03-17",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100004806,
+    "name": "Sage Dunmore",
+    "ratingThen": 3.248,
+    "ratingPre": 3.2599,
+    "ratingNow": 3.27
+   },
+   "opponents": [
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.299,
+     "ratingPre": 3.2868,
+     "ratingNow": 3.317
+    },
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.311,
+     "ratingPre": 3.2983,
+     "ratingNow": 3.251
+    }
+   ],
+   "preRating": 3.3396,
+   "impact": -0.0114,
+   "postRating": 3.3282
+  },
+  {
+   "matchId": 7002708,
+   "date": "2026-03-17",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100001929,
+    "name": "Finley Kestrel",
+    "ratingThen": 3.823,
+    "ratingPre": 3.7868,
+    "ratingNow": 3.911
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.079,
+     "ratingPre": 3.1181,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.756,
+     "ratingPre": 3.7959,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.3282,
+   "impact": 0.0362,
+   "postRating": 3.3644
+  },
+  {
+   "matchId": 7002711,
+   "date": "2026-03-17",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001381,
+    "name": "Quinn Dunmore",
+    "ratingThen": 3.138,
+    "ratingPre": 3.1585,
+    "ratingNow": 3.082
+   },
+   "opponents": [
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.845,
+     "ratingPre": 3.823,
+     "ratingNow": 3.911
+    },
+    {
+     "id": 9100007546,
+     "name": "Blake Merriwether",
+     "ratingThen": 3.866,
+     "ratingPre": 3.8435,
+     "ratingNow": 3.785
+    }
+   ],
+   "preRating": 3.3644,
+   "impact": -0.0206,
+   "postRating": 3.3438
+  },
+  {
+   "matchId": 7002715,
+   "date": "2026-03-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100001655,
+    "name": "Sage Merriwether",
+    "ratingThen": 3.922,
+    "ratingPre": 3.898,
+    "ratingNow": 3.939
+   },
+   "opponents": [
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.6,
+     "ratingPre": 3.6284,
+     "ratingNow": 3.769
+    },
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.756,
+     "ratingPre": 3.7837,
+     "ratingNow": 3.795
+    }
+   ],
+   "preRating": 3.3438,
+   "impact": 0.0244,
+   "postRating": 3.3682
+  },
+  {
+   "matchId": 7002736,
+   "date": "2026-03-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100007135,
+    "name": "Casey Everly",
+    "ratingThen": 4.066,
+    "ratingPre": 4.0155,
+    "ratingNow": 3.949
+   },
+   "opponents": [
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.457,
+     "ratingPre": 3.5099,
+     "ratingNow": 3.526
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.577,
+     "ratingPre": 3.6301,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.3682,
+   "impact": 0.0501,
+   "postRating": 3.4183
+  },
+  {
+   "matchId": 7002770,
+   "date": "2026-03-24",
+   "event": "Northside Indoor Winter League 3.5",
+   "venue": "Northside Rec Center, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003162,
+    "name": "Emery Pennington",
+    "ratingThen": 3.504,
+    "ratingPre": 3.4761,
+    "ratingNow": 3.534
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.404,
+     "ratingPre": 3.4338,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.603,
+     "ratingPre": 3.6329,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.4183,
+   "impact": 0.0275,
+   "postRating": 3.4458
+  },
+  {
+   "matchId": 7002778,
+   "date": "2026-04-14",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000696,
+    "name": "Arden Vale",
+    "ratingThen": 3.556,
+    "ratingPre": 3.6283,
+    "ratingNow": 3.61
+   },
+   "opponents": [
+    {
+     "id": 9100004806,
+     "name": "Sage Dunmore",
+     "ratingThen": 3.326,
+     "ratingPre": 3.2485,
+     "ratingNow": 3.27
+    },
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.678,
+     "ratingPre": 3.6003,
+     "ratingNow": 3.769
+    }
+   ],
+   "preRating": 3.4458,
+   "impact": -0.0723,
+   "postRating": 3.3735
+  },
+  {
+   "matchId": 7002814,
+   "date": "2026-04-14",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007135,
+    "name": "Casey Everly",
+    "ratingThen": 4.034,
+    "ratingPre": 4.0656,
+    "ratingNow": 3.949
+   },
+   "opponents": [
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.632,
+     "ratingPre": 3.6026,
+     "ratingNow": 3.596
+    },
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.842,
+     "ratingPre": 3.8128,
+     "ratingNow": 3.724
+    }
+   ],
+   "preRating": 3.3735,
+   "impact": -0.0312,
+   "postRating": 3.3423
+  },
+  {
+   "matchId": 7002853,
+   "date": "2026-04-14",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100006724,
+    "name": "Rowan Everly",
+    "ratingThen": 3.779,
+    "ratingPre": 3.7483,
+    "ratingNow": 3.714
+   },
+   "opponents": [
+    {
+     "id": 9100006861,
+     "name": "Emery Kestrel",
+     "ratingThen": 3.192,
+     "ratingPre": 3.2183,
+     "ratingNow": 3.109
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.648,
+     "ratingPre": 3.6747,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.3423,
+   "impact": 0.0309,
+   "postRating": 3.3732
+  },
+  {
+   "matchId": 7002885,
+   "date": "2026-04-28",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    9
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001518,
+    "name": "Darcy Dunmore",
+    "ratingThen": 3.848,
+    "ratingPre": 3.8614,
+    "ratingNow": 3.731
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.42,
+     "ratingPre": 3.4035,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.648,
+     "ratingPre": 3.632,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3732,
+   "impact": -0.0139,
+   "postRating": 3.3593
+  },
+  {
+   "matchId": 7002906,
+   "date": "2026-04-28",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    7
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.381,
+    "ratingPre": 3.3844,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.424,
+     "ratingPre": 3.4199,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.652,
+     "ratingPre": 3.6484,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.3593,
+   "impact": -0.0035,
+   "postRating": 3.3558
+  },
+  {
+   "matchId": 7002921,
+   "date": "2026-04-28",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    0
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006861,
+    "name": "Emery Kestrel",
+    "ratingThen": 3.151,
+    "ratingPre": 3.1921,
+    "ratingNow": 3.109
+   },
+   "opponents": [
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.897,
+     "ratingPre": 3.8454,
+     "ratingNow": 3.911
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.872,
+     "ratingPre": 3.8202,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.3558,
+   "impact": -0.0411,
+   "postRating": 3.3147
+  },
+  {
+   "matchId": 7002940,
+   "date": "2026-04-28",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    2
+   ],
+   "partner": {
+    "id": 9100003710,
+    "name": "Indy Juniper",
+    "ratingThen": 3.355,
+    "ratingPre": 3.2719,
+    "ratingNow": 3.367
+   },
+   "opponents": [
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.772,
+     "ratingPre": 3.8422,
+     "ratingNow": 3.724
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.686,
+     "ratingPre": 3.7563,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.3147,
+   "impact": 0.0829,
+   "postRating": 3.3976
+  },
+  {
+   "matchId": 7002949,
+   "date": "2026-05-05",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100001244,
+    "name": "Sage Rookwood",
+    "ratingThen": 3.393,
+    "ratingPre": 3.358,
+    "ratingNow": 3.421
+   },
+   "opponents": [
+    {
+     "id": 9100007272,
+     "name": "Corin Hollis",
+     "ratingThen": 4.028,
+     "ratingPre": 4.0575,
+     "ratingNow": 4.006
+    },
+    {
+     "id": 9100003025,
+     "name": "Gray Fairbank",
+     "ratingThen": 3.176,
+     "ratingPre": 3.2055,
+     "ratingNow": 3.212
+    }
+   ],
+   "preRating": 3.3976,
+   "impact": 0.0354,
+   "postRating": 3.433
+  },
+  {
+   "matchId": 7002962,
+   "date": "2026-05-05",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100001244,
+    "name": "Sage Rookwood",
+    "ratingThen": 3.429,
+    "ratingPre": 3.3934,
+    "ratingNow": 3.421
+   },
+   "opponents": [
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.319,
+     "ratingPre": 3.3548,
+     "ratingNow": 3.367
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.887,
+     "ratingPre": 3.9224,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.433,
+   "impact": 0.036,
+   "postRating": 3.469
+  },
+  {
+   "matchId": 7002996,
+   "date": "2026-05-05",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100000696,
+    "name": "Arden Vale",
+    "ratingThen": 3.602,
+    "ratingPre": 3.556,
+    "ratingNow": 3.61
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.599,
+     "ratingPre": 3.6485,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.636,
+     "ratingPre": 3.6858,
+     "ratingNow": 3.665
+    }
+   ],
+   "preRating": 3.469,
+   "impact": 0.0457,
+   "postRating": 3.5147
+  },
+  {
+   "matchId": 7003014,
+   "date": "2026-05-12",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    12
+   ],
+   "oppScores": [
+    10
+   ],
+   "partner": {
+    "id": 9100001244,
+    "name": "Sage Rookwood",
+    "ratingThen": 3.439,
+    "ratingPre": 3.4294,
+    "ratingNow": 3.421
+   },
+   "opponents": [
+    {
+     "id": 9100005628,
+     "name": "Jamie Thistledown",
+     "ratingThen": 3.373,
+     "ratingPre": 3.3809,
+     "ratingNow": 3.354
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.591,
+     "ratingPre": 3.5988,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.5147,
+   "impact": 0.0098,
+   "postRating": 3.5245
+  },
+  {
+   "matchId": 7003035,
+   "date": "2026-05-12",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100006587,
+    "name": "Oakley Pennington",
+    "ratingThen": 3.381,
+    "ratingPre": 3.3641,
+    "ratingNow": 3.348
+   },
+   "opponents": [
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.524,
+     "ratingPre": 3.5453,
+     "ratingNow": 3.601
+    },
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.223,
+     "ratingPre": 3.2445,
+     "ratingNow": 3.198
+    }
+   ],
+   "preRating": 3.5245,
+   "impact": 0.0164,
+   "postRating": 3.5409
+  },
+  {
+   "matchId": 7003072,
+   "date": "2026-05-12",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    9
+   ],
+   "partner": {
+    "id": 9100002340,
+    "name": "Kendall Ingram",
+    "ratingThen": 3.622,
+    "ratingPre": 3.6216,
+    "ratingNow": 3.622
+   },
+   "opponents": [
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.192,
+     "ratingPre": 3.1924,
+     "ratingNow": 3.213
+    },
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.781,
+     "ratingPre": 3.7813,
+     "ratingNow": 3.802
+    }
+   ],
+   "preRating": 3.5409,
+   "impact": 0.0,
+   "postRating": 3.5409
+  },
+  {
+   "matchId": 7003092,
+   "date": "2026-05-12",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006587,
+    "name": "Oakley Pennington",
+    "ratingThen": 3.348,
+    "ratingPre": 3.3805,
+    "ratingNow": 3.348
+   },
+   "opponents": [
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.677,
+     "ratingPre": 3.6361,
+     "ratingNow": 3.665
+    },
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.544,
+     "ratingPre": 3.5036,
+     "ratingNow": 3.534
+    }
+   ],
+   "preRating": 3.5409,
+   "impact": -0.0322,
+   "postRating": 3.5087
+  },
+  {
+   "matchId": 7003108,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    9,
+    4
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.809,
+    "ratingPre": 3.8116,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.277,
+     "ratingPre": 4.2746,
+     "ratingNow": 4.138
+    },
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.526,
+     "ratingPre": 3.5236,
+     "ratingNow": 3.601
+    }
+   ],
+   "preRating": 3.5087,
+   "impact": -0.0022,
+   "postRating": 3.5065
+  },
+  {
+   "matchId": 7003142,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    7,
+    3
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.861,
+    "ratingPre": 3.8094,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.221,
+     "ratingPre": 4.277,
+     "ratingNow": 4.138
+    },
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.724,
+     "ratingPre": 3.7792,
+     "ratingNow": 3.714
+    }
+   ],
+   "preRating": 3.5065,
+   "impact": 0.0518,
+   "postRating": 3.5583
+  },
+  {
+   "matchId": 7003146,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    3,
+    8
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.897,
+    "ratingPre": 3.8612,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100001929,
+     "name": "Finley Kestrel",
+     "ratingThen": 3.858,
+     "ratingPre": 3.8973,
+     "ratingNow": 3.911
+    },
+    {
+     "id": 9100004258,
+     "name": "Indy Quarry",
+     "ratingThen": 3.874,
+     "ratingPre": 3.913,
+     "ratingNow": 3.851
+    }
+   ],
+   "preRating": 3.5583,
+   "impact": 0.0359,
+   "postRating": 3.5942
+  },
+  {
+   "matchId": 7003152,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8,
+    11
+   ],
+   "oppScores": [
+    11,
+    13
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.882,
+    "ratingPre": 3.8971,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.59,
+     "ratingPre": 3.5773,
+     "ratingNow": 3.589
+    },
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.768,
+     "ratingPre": 3.7556,
+     "ratingNow": 3.795
+    }
+   ],
+   "preRating": 3.5942,
+   "impact": -0.0149,
+   "postRating": 3.5793
+  },
+  {
+   "matchId": 7003187,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    7,
+    11,
+    12
+   ],
+   "oppScores": [
+    11,
+    2,
+    10
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.895,
+    "ratingPre": 3.8822,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.762,
+     "ratingPre": 3.7717,
+     "ratingNow": 3.724
+    },
+    {
+     "id": 9100006724,
+     "name": "Rowan Everly",
+     "ratingThen": 3.714,
+     "ratingPre": 3.7235,
+     "ratingNow": 3.714
+    }
+   ],
+   "preRating": 3.5793,
+   "impact": 0.0124,
+   "postRating": 3.5917
+  },
+  {
+   "matchId": 7003207,
+   "date": "2026-05-16",
+   "event": "Lakeside Spring Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    10,
+    6
+   ],
+   "oppScores": [
+    12,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.881,
+    "ratingPre": 3.8946,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100004395,
+     "name": "Bellamy Rookwood",
+     "ratingThen": 3.943,
+     "ratingPre": 3.933,
+     "ratingNow": 3.921
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.6,
+     "ratingPre": 3.5901,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.5917,
+   "impact": -0.0135,
+   "postRating": 3.5782
+  },
+  {
+   "matchId": 7003222,
+   "date": "2026-05-19",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100005354,
+    "name": "Corin Brightwater",
+    "ratingThen": 3.232,
+    "ratingPre": 3.1998,
+    "ratingNow": 3.228
+   },
+   "opponents": [
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.105,
+     "ratingPre": 3.1379,
+     "ratingNow": 3.082
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.619,
+     "ratingPre": 3.6522,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.5782,
+   "impact": 0.0317,
+   "postRating": 3.6099
+  },
+  {
+   "matchId": 7003249,
+   "date": "2026-05-19",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100004532,
+    "name": "Teagan Underhill",
+    "ratingThen": 3.977,
+    "ratingPre": 3.9796,
+    "ratingNow": 3.982
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.427,
+     "ratingPre": 3.4237,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.303,
+     "ratingPre": 3.2993,
+     "ratingNow": 3.317
+    }
+   ],
+   "preRating": 3.6099,
+   "impact": -0.0031,
+   "postRating": 3.6068
+  },
+  {
+   "matchId": 7003274,
+   "date": "2026-05-19",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001244,
+    "name": "Sage Rookwood",
+    "ratingThen": 3.421,
+    "ratingPre": 3.4392,
+    "ratingNow": 3.421
+   },
+   "opponents": [
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.906,
+     "ratingPre": 3.8869,
+     "ratingNow": 3.939
+    },
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.322,
+     "ratingPre": 3.3025,
+     "ratingNow": 3.317
+    }
+   ],
+   "preRating": 3.6068,
+   "impact": -0.018,
+   "postRating": 3.5888
+  },
+  {
+   "matchId": 7003286,
+   "date": "2026-05-19",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    4
+   ],
+   "partner": {
+    "id": 9100005765,
+    "name": "Kendall Thistledown",
+    "ratingThen": 3.783,
+    "ratingPre": 3.7624,
+    "ratingNow": 3.724
+   },
+   "opponents": [
+    {
+     "id": 9100004121,
+     "name": "Kendall Brightwater",
+     "ratingThen": 3.198,
+     "ratingPre": 3.2228,
+     "ratingNow": 3.198
+    },
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.724,
+     "ratingPre": 3.7481,
+     "ratingNow": 3.602
+    }
+   ],
+   "preRating": 3.5888,
+   "impact": 0.021,
+   "postRating": 3.6098
+  },
+  {
+   "matchId": 7003296,
+   "date": "2026-06-02",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.644,
+    "ratingPre": 3.6567,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100005491,
+     "name": "Blake Rookwood",
+     "ratingThen": 3.386,
+     "ratingPre": 3.3757,
+     "ratingNow": 3.386
+    },
+    {
+     "id": 9100002751,
+     "name": "Teagan Rookwood",
+     "ratingThen": 3.185,
+     "ratingPre": 3.1747,
+     "ratingNow": 3.217
+    }
+   ],
+   "preRating": 3.6098,
+   "impact": -0.0123,
+   "postRating": 3.5975
+  },
+  {
+   "matchId": 7003316,
+   "date": "2026-06-02",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100000696,
+    "name": "Arden Vale",
+    "ratingThen": 3.593,
+    "ratingPre": 3.6017,
+    "ratingNow": 3.61
+   },
+   "opponents": [
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.688,
+     "ratingPre": 3.6783,
+     "ratingNow": 3.769
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.882,
+     "ratingPre": 3.8721,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.5975,
+   "impact": -0.0085,
+   "postRating": 3.589
+  },
+  {
+   "matchId": 7003320,
+   "date": "2026-06-02",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.37,
+    "ratingPre": 3.3732,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.595,
+     "ratingPre": 3.5911,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.91,
+     "ratingPre": 3.9062,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.589,
+   "impact": -0.0033,
+   "postRating": 3.5857
+  },
+  {
+   "matchId": 7003331,
+   "date": "2026-06-09",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.637,
+    "ratingPre": 3.6444,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.112,
+     "ratingPre": 3.1049,
+     "ratingNow": 3.082
+    },
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.385,
+     "ratingPre": 3.3773,
+     "ratingNow": 3.326
+    }
+   ],
+   "preRating": 3.5857,
+   "impact": -0.0073,
+   "postRating": 3.5784
+  },
+  {
+   "matchId": 7003367,
+   "date": "2026-06-09",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.497,
+    "ratingPre": 3.4571,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100007135,
+     "name": "Casey Everly",
+     "ratingThen": 3.998,
+     "ratingPre": 4.0344,
+     "ratingNow": 3.949
+    },
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.489,
+     "ratingPre": 3.526,
+     "ratingNow": 3.601
+    }
+   ],
+   "preRating": 3.5784,
+   "impact": 0.0398,
+   "postRating": 3.6182
+  },
+  {
+   "matchId": 7003401,
+   "date": "2026-06-09",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.178,
+    "ratingPre": 3.1847,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100007135,
+     "name": "Casey Everly",
+     "ratingThen": 4.004,
+     "ratingPre": 3.9978,
+     "ratingNow": 3.949
+    },
+    {
+     "id": 9100004532,
+     "name": "Teagan Underhill",
+     "ratingThen": 3.982,
+     "ratingPre": 3.9765,
+     "ratingNow": 3.982
+    }
+   ],
+   "preRating": 3.6182,
+   "impact": -0.0065,
+   "postRating": 3.6117
+  },
+  {
+   "matchId": 7003422,
+   "date": "2026-06-13",
+   "event": "Sunset Paddle Festival - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5,
+    6
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.537,
+    "ratingPre": 3.5518,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.787,
+     "ratingPre": 3.7684,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.614,
+     "ratingPre": 3.5951,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.6117,
+   "impact": -0.0149,
+   "postRating": 3.5968
+  },
+  {
+   "matchId": 7003443,
+   "date": "2026-06-13",
+   "event": "Sunset Paddle Festival - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    2,
+    11,
+    4
+   ],
+   "oppScores": [
+    11,
+    5,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.534,
+    "ratingPre": 3.5369,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.913,
+     "ratingPre": 3.9102,
+     "ratingNow": 3.939
+    },
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.616,
+     "ratingPre": 3.6137,
+     "ratingNow": 3.66
+    }
+   ],
+   "preRating": 3.5968,
+   "impact": -0.003,
+   "postRating": 3.5938
+  },
+  {
+   "matchId": 7003454,
+   "date": "2026-06-13",
+   "event": "Sunset Paddle Festival - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4,
+    7
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.525,
+    "ratingPre": 3.5339,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.922,
+     "ratingPre": 3.9155,
+     "ratingNow": 3.907
+    },
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.695,
+     "ratingPre": 3.6882,
+     "ratingNow": 3.769
+    }
+   ],
+   "preRating": 3.5938,
+   "impact": -0.0085,
+   "postRating": 3.5853
+  },
+  {
+   "matchId": 7003490,
+   "date": "2026-06-13",
+   "event": "Sunset Paddle Festival - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    0,
+    2
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000285,
+    "name": "Harper Pennington",
+    "ratingThen": 3.487,
+    "ratingPre": 3.5254,
+    "ratingNow": 3.487
+   },
+   "opponents": [
+    {
+     "id": 9100003573,
+     "name": "Teagan Oakhurst",
+     "ratingThen": 4.431,
+     "ratingPre": 4.393,
+     "ratingNow": 4.45
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.951,
+     "ratingPre": 3.9128,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.5853,
+   "impact": -0.0383,
+   "postRating": 3.547
+  },
+  {
+   "matchId": 7003507,
+   "date": "2026-06-16",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001518,
+    "name": "Darcy Dunmore",
+    "ratingThen": 3.8,
+    "ratingPre": 3.8475,
+    "ratingNow": 3.731
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.64,
+     "ratingPre": 3.5932,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.591,
+     "ratingPre": 3.5442,
+     "ratingNow": 3.534
+    }
+   ],
+   "preRating": 3.547,
+   "impact": -0.0472,
+   "postRating": 3.4998
+  },
+  {
+   "matchId": 7003529,
+   "date": "2026-06-16",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100001929,
+    "name": "Finley Kestrel",
+    "ratingThen": 3.853,
+    "ratingPre": 3.8579,
+    "ratingNow": 3.911
+   },
+   "opponents": [
+    {
+     "id": 9100003847,
+     "name": "Oakley Underhill",
+     "ratingThen": 3.911,
+     "ratingPre": 3.9064,
+     "ratingNow": 3.923
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.956,
+     "ratingPre": 3.9508,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.4998,
+   "impact": -0.0049,
+   "postRating": 3.4949
+  },
+  {
+   "matchId": 7003535,
+   "date": "2026-06-16",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    9
+   ],
+   "partner": {
+    "id": 9100003710,
+    "name": "Indy Juniper",
+    "ratingThen": 3.323,
+    "ratingPre": 3.3193,
+    "ratingNow": 3.367
+   },
+   "opponents": [
+    {
+     "id": 9100006998,
+     "name": "Marlow Larkspur",
+     "ratingThen": 3.634,
+     "ratingPre": 3.6371,
+     "ratingNow": 3.624
+    },
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.075,
+     "ratingPre": 3.0785,
+     "ratingNow": 3.07
+    }
+   ],
+   "preRating": 3.4949,
+   "impact": 0.004,
+   "postRating": 3.4989
+  },
+  {
+   "matchId": 7003549,
+   "date": "2026-06-16",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100003299,
+    "name": "Finley Rookwood",
+    "ratingThen": 3.614,
+    "ratingPre": 3.5773,
+    "ratingNow": 3.531
+   },
+   "opponents": [
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.558,
+     "ratingPre": 3.5911,
+     "ratingNow": 3.534
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.568,
+     "ratingPre": 3.6003,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.4989,
+   "impact": 0.0366,
+   "postRating": 3.5355
+  },
+  {
+   "matchId": 7003559,
+   "date": "2026-06-23",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100001929,
+    "name": "Finley Kestrel",
+    "ratingThen": 3.911,
+    "ratingPre": 3.853,
+    "ratingNow": 3.911
+   },
+   "opponents": [
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.259,
+     "ratingPre": 3.3108,
+     "ratingNow": 3.251
+    },
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.671,
+     "ratingPre": 3.7236,
+     "ratingNow": 3.602
+    }
+   ],
+   "preRating": 3.5355,
+   "impact": 0.0578,
+   "postRating": 3.5933
+  },
+  {
+   "matchId": 7003574,
+   "date": "2026-06-23",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006039,
+    "name": "Reese Fairbank",
+    "ratingThen": 3.069,
+    "ratingPre": 3.0754,
+    "ratingNow": 3.07
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.434,
+     "ratingPre": 3.4269,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.627,
+     "ratingPre": 3.6192,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.5933,
+   "impact": -0.0064,
+   "postRating": 3.5869
+  },
+  {
+   "matchId": 7003611,
+   "date": "2026-06-23",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100002203,
+    "name": "Bellamy Calloway",
+    "ratingThen": 3.821,
+    "ratingPre": 3.787,
+    "ratingNow": 3.795
+   },
+   "opponents": [
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.355,
+     "ratingPre": 3.3845,
+     "ratingNow": 3.326
+    },
+    {
+     "id": 9100001381,
+     "name": "Quinn Dunmore",
+     "ratingThen": 3.082,
+     "ratingPre": 3.1121,
+     "ratingNow": 3.082
+    }
+   ],
+   "preRating": 3.5869,
+   "impact": 0.0343,
+   "postRating": 3.6212
+  },
+  {
+   "matchId": 7003651,
+   "date": "2026-06-23",
+   "event": "Riverside Spring Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    8
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100005628,
+    "name": "Jamie Thistledown",
+    "ratingThen": 3.348,
+    "ratingPre": 3.3699,
+    "ratingNow": 3.354
+   },
+   "opponents": [
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.515,
+     "ratingPre": 3.4894,
+     "ratingNow": 3.601
+    },
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.219,
+     "ratingPre": 3.1924,
+     "ratingNow": 3.213
+    }
+   ],
+   "preRating": 3.6212,
+   "impact": -0.022,
+   "postRating": 3.5992
+  },
+  {
+   "matchId": 7003659,
+   "date": "2026-07-18",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5,
+    4
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.873,
+    "ratingPre": 3.8811,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100003573,
+     "name": "Teagan Oakhurst",
+     "ratingThen": 4.439,
+     "ratingPre": 4.431,
+     "ratingNow": 4.45
+    },
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.829,
+     "ratingPre": 3.8213,
+     "ratingNow": 3.795
+    }
+   ],
+   "preRating": 3.5992,
+   "impact": -0.0084,
+   "postRating": 3.5908
+  },
+  {
+   "matchId": 7003693,
+   "date": "2026-07-18",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    2,
+    11
+   ],
+   "oppScores": [
+    2,
+    11,
+    3
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.904,
+    "ratingPre": 3.8727,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100001518,
+     "name": "Darcy Dunmore",
+     "ratingThen": 3.76,
+     "ratingPre": 3.8003,
+     "ratingNow": 3.731
+    },
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.181,
+     "ratingPre": 4.2213,
+     "ratingNow": 4.138
+    }
+   ],
+   "preRating": 3.5908,
+   "impact": 0.0314,
+   "postRating": 3.6222
+  },
+  {
+   "matchId": 7003733,
+   "date": "2026-07-18",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    4,
+    11
+   ],
+   "oppScores": [
+    3,
+    11,
+    9
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.936,
+    "ratingPre": 3.9041,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100007272,
+     "name": "Corin Hollis",
+     "ratingThen": 3.998,
+     "ratingPre": 4.0284,
+     "ratingNow": 4.006
+    },
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.151,
+     "ratingPre": 4.1805,
+     "ratingNow": 4.138
+    }
+   ],
+   "preRating": 3.6222,
+   "impact": 0.0318,
+   "postRating": 3.654
+  },
+  {
+   "matchId": 7003751,
+   "date": "2026-07-18",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    5,
+    11,
+    11
+   ],
+   "oppScores": [
+    11,
+    3,
+    4
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.962,
+    "ratingPre": 3.9359,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100004258,
+     "name": "Indy Quarry",
+     "ratingThen": 3.851,
+     "ratingPre": 3.8736,
+     "ratingNow": 3.851
+    },
+    {
+     "id": 9100004395,
+     "name": "Bellamy Rookwood",
+     "ratingThen": 3.921,
+     "ratingPre": 3.9432,
+     "ratingNow": 3.921
+    }
+   ],
+   "preRating": 3.654,
+   "impact": 0.0266,
+   "postRating": 3.6806
+  },
+  {
+   "matchId": 7003788,
+   "date": "2026-07-18",
+   "event": "Prairie Summer Classic - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    7,
+    7
+   ],
+   "oppScores": [
+    3,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.965,
+    "ratingPre": 3.9625,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.78,
+     "ratingPre": 3.7834,
+     "ratingNow": 3.724
+    },
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.92,
+     "ratingPre": 3.9225,
+     "ratingNow": 3.907
+    }
+   ],
+   "preRating": 3.6806,
+   "impact": 0.0023,
+   "postRating": 3.6829
+  },
+  {
+   "matchId": 7003800,
+   "date": "2026-08-22",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    1,
+    4
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.505,
+    "ratingPre": 3.4307,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100008368,
+     "name": "Sage Oakhurst",
+     "ratingThen": 4.219,
+     "ratingPre": 4.3,
+     "ratingNow": 4.219
+    },
+    {
+     "id": 9100007546,
+     "name": "Blake Merriwether",
+     "ratingThen": 3.785,
+     "ratingPre": 3.8659,
+     "ratingNow": 3.785
+    }
+   ],
+   "preRating": 3.6829,
+   "impact": 0.0739,
+   "postRating": 3.7568
+  },
+  {
+   "matchId": 7003810,
+   "date": "2026-08-22",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    2,
+    3
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.574,
+    "ratingPre": 3.5046,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.762,
+     "ratingPre": 3.8291,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.714,
+     "ratingPre": 3.7804,
+     "ratingNow": 3.724
+    }
+   ],
+   "preRating": 3.7568,
+   "impact": 0.069,
+   "postRating": 3.8258
+  },
+  {
+   "matchId": 7003839,
+   "date": "2026-08-22",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    4,
+    11,
+    5
+   ],
+   "oppScores": [
+    11,
+    1,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.587,
+    "ratingPre": 3.5736,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100007135,
+     "name": "Casey Everly",
+     "ratingThen": 3.991,
+     "ratingPre": 4.0038,
+     "ratingNow": 3.949
+    },
+    {
+     "id": 9100004943,
+     "name": "Teagan Northcott",
+     "ratingThen": 3.907,
+     "ratingPre": 3.9195,
+     "ratingNow": 3.907
+    }
+   ],
+   "preRating": 3.8258,
+   "impact": 0.0138,
+   "postRating": 3.8396
+  },
+  {
+   "matchId": 7003866,
+   "date": "2026-08-22",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    1,
+    3
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.55,
+    "ratingPre": 3.5874,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100002203,
+     "name": "Bellamy Calloway",
+     "ratingThen": 3.796,
+     "ratingPre": 3.7624,
+     "ratingNow": 3.795
+    },
+    {
+     "id": 9100006176,
+     "name": "Finley Whitlock",
+     "ratingThen": 4.14,
+     "ratingPre": 4.107,
+     "ratingNow": 4.127
+    }
+   ],
+   "preRating": 3.8396,
+   "impact": -0.0377,
+   "postRating": 3.8019
+  },
+  {
+   "matchId": 7003872,
+   "date": "2026-08-22",
+   "event": "Harbor Dink Shootout - Mens Doubles Skill: (4.0)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11,
+    1,
+    3
+   ],
+   "oppScores": [
+    0,
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000148,
+    "name": "Marlow Kestrel",
+    "ratingThen": 3.563,
+    "ratingPre": 3.5497,
+    "ratingNow": 3.563
+   },
+   "opponents": [
+    {
+     "id": 9100003984,
+     "name": "Kendall Fairbank",
+     "ratingThen": 4.138,
+     "ratingPre": 4.1506,
+     "ratingNow": 4.138
+    },
+    {
+     "id": 9100006176,
+     "name": "Finley Whitlock",
+     "ratingThen": 4.127,
+     "ratingPre": 4.1401,
+     "ratingNow": 4.127
+    }
+   ],
+   "preRating": 3.8019,
+   "impact": 0.0132,
+   "postRating": 3.8151
+  },
+  {
+   "matchId": 7003886,
+   "date": "2026-09-08",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100005354,
+    "name": "Corin Brightwater",
+    "ratingThen": 3.261,
+    "ratingPre": 3.2315,
+    "ratingNow": 3.228
+   },
+   "opponents": [
+    {
+     "id": 9100000696,
+     "name": "Arden Vale",
+     "ratingThen": 3.61,
+     "ratingPre": 3.6401,
+     "ratingNow": 3.61
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.583,
+     "ratingPre": 3.6139,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.8151,
+   "impact": 0.0297,
+   "postRating": 3.8448
+  },
+  {
+   "matchId": 7003905,
+   "date": "2026-09-08",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    8
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.498,
+    "ratingPre": 3.4969,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.433,
+     "ratingPre": 3.4343,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.626,
+     "ratingPre": 3.6266,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.8448,
+   "impact": 0.0011,
+   "postRating": 3.8459
+  },
+  {
+   "matchId": 7003913,
+   "date": "2026-09-08",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    3
+   ],
+   "partner": {
+    "id": 9100005217,
+    "name": "Kendall Quarry",
+    "ratingThen": 3.517,
+    "ratingPre": 3.498,
+    "ratingNow": 3.526
+   },
+   "opponents": [
+    {
+     "id": 9100003162,
+     "name": "Emery Pennington",
+     "ratingThen": 3.534,
+     "ratingPre": 3.5584,
+     "ratingNow": 3.534
+    },
+    {
+     "id": 9100006861,
+     "name": "Emery Kestrel",
+     "ratingThen": 3.126,
+     "ratingPre": 3.151,
+     "ratingNow": 3.109
+    }
+   ],
+   "preRating": 3.8459,
+   "impact": 0.0187,
+   "postRating": 3.8646
+  },
+  {
+   "matchId": 7003924,
+   "date": "2026-09-15",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.184,
+    "ratingPre": 3.1782,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100007409,
+     "name": "Darcy Thistledown",
+     "ratingThen": 3.213,
+     "ratingPre": 3.2185,
+     "ratingNow": 3.213
+    },
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.352,
+     "ratingPre": 3.3575,
+     "ratingNow": 3.373
+    }
+   ],
+   "preRating": 3.8646,
+   "impact": 0.006,
+   "postRating": 3.8706
+  },
+  {
+   "matchId": 7003964,
+   "date": "2026-09-15",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    2
+   ],
+   "partner": {
+    "id": 9100007135,
+    "name": "Casey Everly",
+    "ratingThen": 4.022,
+    "ratingPre": 3.9913,
+    "ratingNow": 3.949
+   },
+   "opponents": [
+    {
+     "id": 9100000422,
+     "name": "Blake Vale",
+     "ratingThen": 3.403,
+     "ratingPre": 3.4333,
+     "ratingNow": 3.403
+    },
+    {
+     "id": 9100000559,
+     "name": "Rowan Brightwater",
+     "ratingThen": 3.596,
+     "ratingPre": 3.6256,
+     "ratingNow": 3.596
+    }
+   ],
+   "preRating": 3.8706,
+   "impact": 0.0306,
+   "postRating": 3.9012
+  },
+  {
+   "matchId": 7003988,
+   "date": "2026-09-15",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100003025,
+    "name": "Gray Fairbank",
+    "ratingThen": 3.187,
+    "ratingPre": 3.1764,
+    "ratingNow": 3.212
+   },
+   "opponents": [
+    {
+     "id": 9100002477,
+     "name": "Finley Brightwater",
+     "ratingThen": 3.665,
+     "ratingPre": 3.6767,
+     "ratingNow": 3.665
+    },
+    {
+     "id": 9100001107,
+     "name": "Frankie Ingram",
+     "ratingThen": 3.247,
+     "ratingPre": 3.2586,
+     "ratingNow": 3.251
+    }
+   ],
+   "preRating": 3.9012,
+   "impact": 0.0106,
+   "postRating": 3.9118
+  },
+  {
+   "matchId": 7003995,
+   "date": "2026-09-15",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    7
+   ],
+   "partner": {
+    "id": 9100003436,
+    "name": "Tatum Quarry",
+    "ratingThen": 3.316,
+    "ratingPre": 3.3218,
+    "ratingNow": 3.317
+   },
+   "opponents": [
+    {
+     "id": 9100006861,
+     "name": "Emery Kestrel",
+     "ratingThen": 3.132,
+     "ratingPre": 3.1261,
+     "ratingNow": 3.109
+    },
+    {
+     "id": 9100005628,
+     "name": "Jamie Thistledown",
+     "ratingThen": 3.354,
+     "ratingPre": 3.3479,
+     "ratingNow": 3.354
+    }
+   ],
+   "preRating": 3.9118,
+   "impact": -0.0061,
+   "postRating": 3.9057
+  },
+  {
+   "matchId": 7004029,
+   "date": "2026-09-22",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    6
+   ],
+   "partner": {
+    "id": 9100003025,
+    "name": "Gray Fairbank",
+    "ratingThen": 3.212,
+    "ratingPre": 3.187,
+    "ratingNow": 3.212
+   },
+   "opponents": [
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.33,
+     "ratingPre": 3.3547,
+     "ratingNow": 3.326
+    },
+    {
+     "id": 9100001518,
+     "name": "Darcy Dunmore",
+     "ratingThen": 3.735,
+     "ratingPre": 3.7595,
+     "ratingNow": 3.731
+    }
+   ],
+   "preRating": 3.9057,
+   "impact": 0.0246,
+   "postRating": 3.9303
+  },
+  {
+   "matchId": 7004038,
+   "date": "2026-09-22",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    6
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100006861,
+    "name": "Emery Kestrel",
+    "ratingThen": 3.109,
+    "ratingPre": 3.1321,
+    "ratingNow": 3.109
+   },
+   "opponents": [
+    {
+     "id": 9100008642,
+     "name": "Harper Northcott",
+     "ratingThen": 3.373,
+     "ratingPre": 3.3524,
+     "ratingNow": 3.373
+    },
+    {
+     "id": 9100008094,
+     "name": "Avery Dunmore",
+     "ratingThen": 3.802,
+     "ratingPre": 3.7813,
+     "ratingNow": 3.802
+    }
+   ],
+   "preRating": 3.9303,
+   "impact": -0.0229,
+   "postRating": 3.9074
+  },
+  {
+   "matchId": 7004051,
+   "date": "2026-09-22",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    13
+   ],
+   "partner": {
+    "id": 9100006998,
+    "name": "Marlow Larkspur",
+    "ratingThen": 3.624,
+    "ratingPre": 3.634,
+    "ratingNow": 3.624
+   },
+   "opponents": [
+    {
+     "id": 9100005217,
+     "name": "Kendall Quarry",
+     "ratingThen": 3.526,
+     "ratingPre": 3.5167,
+     "ratingNow": 3.526
+    },
+    {
+     "id": 9100003847,
+     "name": "Oakley Underhill",
+     "ratingThen": 3.92,
+     "ratingPre": 3.9112,
+     "ratingNow": 3.923
+    }
+   ],
+   "preRating": 3.9074,
+   "impact": -0.0101,
+   "postRating": 3.8973
+  },
+  {
+   "matchId": 7004086,
+   "date": "2026-09-29",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    12
+   ],
+   "oppScores": [
+    10
+   ],
+   "partner": {
+    "id": 9100001107,
+    "name": "Frankie Ingram",
+    "ratingThen": 3.251,
+    "ratingPre": 3.247,
+    "ratingNow": 3.251
+   },
+   "opponents": [
+    {
+     "id": 9100001518,
+     "name": "Darcy Dunmore",
+     "ratingThen": 3.731,
+     "ratingPre": 3.7348,
+     "ratingNow": 3.731
+    },
+    {
+     "id": 9100007820,
+     "name": "Darcy Quarry",
+     "ratingThen": 3.326,
+     "ratingPre": 3.33,
+     "ratingNow": 3.326
+    }
+   ],
+   "preRating": 3.8973,
+   "impact": 0.0038,
+   "postRating": 3.9011
+  },
+  {
+   "matchId": 7004107,
+   "date": "2026-09-29",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100004806,
+    "name": "Sage Dunmore",
+    "ratingThen": 3.27,
+    "ratingPre": 3.3265,
+    "ratingNow": 3.27
+   },
+   "opponents": [
+    {
+     "id": 9100002066,
+     "name": "Arden Thistledown",
+     "ratingThen": 3.66,
+     "ratingPre": 3.6163,
+     "ratingNow": 3.66
+    },
+    {
+     "id": 9100003710,
+     "name": "Indy Juniper",
+     "ratingThen": 3.367,
+     "ratingPre": 3.3233,
+     "ratingNow": 3.367
+    }
+   ],
+   "preRating": 3.9011,
+   "impact": -0.0567,
+   "postRating": 3.8444
+  },
+  {
+   "matchId": 7004113,
+   "date": "2026-09-29",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    1
+   ],
+   "partner": {
+    "id": 9100001792,
+    "name": "Bellamy Glenholm",
+    "ratingThen": 3.926,
+    "ratingPre": 3.882,
+    "ratingNow": 3.893
+   },
+   "opponents": [
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.619,
+     "ratingPre": 3.6714,
+     "ratingNow": 3.602
+    },
+    {
+     "id": 9100003299,
+     "name": "Finley Rookwood",
+     "ratingThen": 3.531,
+     "ratingPre": 3.5833,
+     "ratingNow": 3.531
+    }
+   ],
+   "preRating": 3.8444,
+   "impact": 0.0443,
+   "postRating": 3.8887
+  },
+  {
+   "matchId": 7004136,
+   "date": "2026-10-03",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    7,
+    11
+   ],
+   "oppScores": [
+    7,
+    11,
+    4
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.95,
+    "ratingPre": 3.9648,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.579,
+     "ratingPre": 3.5676,
+     "ratingNow": 3.589
+    },
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.526,
+     "ratingPre": 3.5155,
+     "ratingNow": 3.601
+    }
+   ],
+   "preRating": 3.8887,
+   "impact": -0.0149,
+   "postRating": 3.8738
+  },
+  {
+   "matchId": 7004169,
+   "date": "2026-10-03",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11,
+    11
+   ],
+   "oppScores": [
+    13,
+    6,
+    6
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.948,
+    "ratingPre": 3.9499,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100003847,
+     "name": "Oakley Underhill",
+     "ratingThen": 3.923,
+     "ratingPre": 3.9204,
+     "ratingNow": 3.923
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.581,
+     "ratingPre": 3.5785,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.8738,
+   "impact": -0.0021,
+   "postRating": 3.8717
+  },
+  {
+   "matchId": 7004179,
+   "date": "2026-10-03",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    13,
+    9,
+    11
+   ],
+   "oppScores": [
+    11,
+    11,
+    9
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.942,
+    "ratingPre": 3.9478,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100007272,
+     "name": "Corin Hollis",
+     "ratingThen": 4.006,
+     "ratingPre": 3.9985,
+     "ratingNow": 4.006
+    },
+    {
+     "id": 9100008505,
+     "name": "Bellamy Ingram",
+     "ratingThen": 3.589,
+     "ratingPre": 3.5808,
+     "ratingNow": 3.589
+    }
+   ],
+   "preRating": 3.8717,
+   "impact": -0.0058,
+   "postRating": 3.8659
+  },
+  {
+   "matchId": 7004202,
+   "date": "2026-10-03",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    5,
+    6
+   ],
+   "oppScores": [
+    11,
+    11
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.928,
+    "ratingPre": 3.942,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100005765,
+     "name": "Kendall Thistledown",
+     "ratingThen": 3.724,
+     "ratingPre": 3.7137,
+     "ratingNow": 3.724
+    },
+    {
+     "id": 9100003573,
+     "name": "Teagan Oakhurst",
+     "ratingThen": 4.45,
+     "ratingPre": 4.4388,
+     "ratingNow": 4.45
+    }
+   ],
+   "preRating": 3.8659,
+   "impact": -0.0143,
+   "postRating": 3.8516
+  },
+  {
+   "matchId": 7004237,
+   "date": "2026-10-03",
+   "event": "Maple Leaf Fall Open - Mens Doubles Skill: (4.0) Age: (Any)",
+   "venue": "Lakeside Pickleball Center",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11,
+    11
+   ],
+   "oppScores": [
+    6,
+    6
+   ],
+   "partner": {
+    "id": 9100000011,
+    "name": "Reese Merriwether",
+    "ratingThen": 3.94,
+    "ratingPre": 3.9277,
+    "ratingNow": 3.94
+   },
+   "opponents": [
+    {
+     "id": 9100002888,
+     "name": "Corin Ashdown",
+     "ratingThen": 3.602,
+     "ratingPre": 3.6187,
+     "ratingNow": 3.602
+    },
+    {
+     "id": 9100001655,
+     "name": "Sage Merriwether",
+     "ratingThen": 3.939,
+     "ratingPre": 3.9556,
+     "ratingNow": 3.939
+    }
+   ],
+   "preRating": 3.8516,
+   "impact": 0.0124,
+   "postRating": 3.864
+  },
+  {
+   "matchId": 7004266,
+   "date": "2026-10-06",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100002751,
+    "name": "Teagan Rookwood",
+    "ratingThen": 3.217,
+    "ratingPre": 3.1842,
+    "ratingNow": 3.217
+   },
+   "opponents": [
+    {
+     "id": 9100005354,
+     "name": "Corin Brightwater",
+     "ratingThen": 3.228,
+     "ratingPre": 3.2612,
+     "ratingNow": 3.228
+    },
+    {
+     "id": 9100001792,
+     "name": "Bellamy Glenholm",
+     "ratingThen": 3.893,
+     "ratingPre": 3.9263,
+     "ratingNow": 3.893
+    }
+   ],
+   "preRating": 3.864,
+   "impact": 0.0332,
+   "postRating": 3.8972
+  },
+  {
+   "matchId": 7004281,
+   "date": "2026-10-06",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": false,
+   "scores": [
+    3
+   ],
+   "oppScores": [
+    11
+   ],
+   "partner": {
+    "id": 9100007135,
+    "name": "Casey Everly",
+    "ratingThen": 3.949,
+    "ratingPre": 4.0219,
+    "ratingNow": 3.949
+   },
+   "opponents": [
+    {
+     "id": 9100007957,
+     "name": "Bellamy Quarry",
+     "ratingThen": 3.769,
+     "ratingPre": 3.6952,
+     "ratingNow": 3.769
+    },
+    {
+     "id": 9100005080,
+     "name": "Reese Kestrel",
+     "ratingThen": 3.601,
+     "ratingPre": 3.5264,
+     "ratingNow": 3.601
+    }
+   ],
+   "preRating": 3.8972,
+   "impact": -0.0732,
+   "postRating": 3.824
+  },
+  {
+   "matchId": 7004290,
+   "date": "2026-10-06",
+   "event": "Riverside Fall Ladder League 4.0",
+   "venue": "Riverside Courts, Lakeside",
+   "format": "DOUBLES",
+   "confirmed": true,
+   "winner": true,
+   "scores": [
+    11
+   ],
+   "oppScores": [
+    5
+   ],
+   "partner": {
+    "id": 9100002203,
+    "name": "Bellamy Calloway",
+    "ratingThen": 3.795,
+    "ratingPre": 3.7955,
+    "ratingNow": 3.795
+   },
+   "opponents": [
+    {
+     "id": 9100006039,
+     "name": "Reese Fairbank",
+     "ratingThen": 3.07,
+     "ratingPre": 3.069,
+     "ratingNow": 3.07
+    },
+    {
+     "id": 9100003436,
+     "name": "Tatum Quarry",
+     "ratingThen": 3.317,
+     "ratingPre": 3.3157,
+     "ratingNow": 3.317
+    }
+   ],
+   "preRating": 3.824,
+   "impact": -0.001,
+   "postRating": 3.823
+  }
+ ]
+}

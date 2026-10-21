@@ -315,6 +315,10 @@
   [hidden]{display:none!important}
   .banner{background:var(--loss-soft);border:1px solid var(--loss);border-radius:12px;padding:12px 16px;margin-bottom:14px;font-size:13px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .banner b{color:var(--loss)}
+  .demobar{background:var(--accent-soft);border-color:var(--accent)} .demobar b{color:var(--accent)}
+  .demobar span{flex:1;min-width:200px}
+  .dbtn{border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:6px 13px;font-weight:600;font-size:12.5px;text-decoration:none;white-space:nowrap}
+  .dbtn.prim{background:var(--accent);color:var(--bg)}
   .banner button{margin-left:auto;background:var(--loss);color:#fff;border:0;border-radius:8px;padding:6px 13px;font-family:inherit;font-weight:600;font-size:12.5px;cursor:pointer}
   .tokenhelp{margin-top:16px}
   .th-head{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:"Archivo",sans-serif;font-weight:800;font-size:14px}
@@ -556,8 +560,11 @@
     </ol>
     <p class="muted br-only">Your matches stay in this browser. They aren’t sent to this site or anyone else. The sync uses your normal DUPR login in your browser, so your password and 2FA are never seen.</p>
     <button class="syncbtn prim" id="welcomeGo">Set up the Sync bookmark →</button>
+    <a class="syncbtn" href="./?demo=1" style="display:inline-block;text-decoration:none;margin-left:6px">👀 See a demo first</a>
   </div>
   <div class="viewbar" id="viewBar" hidden></div>
+  <div class="banner demobar" id="demoBar" hidden>👀 <span><b>Demo:</b> made-up players and matches, to show what Dink Data does with your DUPR history.</span>
+    <a class="dbtn prim" href="./?setup=1">Set up with my DUPR →</a><a class="dbtn" href="./">Exit demo</a></div>
   <div class="banner" id="staleBanner" hidden>⏰ Last synced from DUPR <b><span id="staleDays"></span> days ago</b>. Played since?<button id="bannerFix">🔄 Sync now</button></div>
   <div class="synctip" id="syncTip" hidden></div>
   <div class="syncov" id="syncOv" hidden><div class="card synccard"><h3>🔄 Sync from DUPR</h3><div class="syncstat" id="syncStat">Waiting for DUPR…</div><div class="syncact" id="syncAct"></div></div></div>
@@ -920,14 +927,23 @@
   const LOCAL=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);   // tools/serve_local.py
   const BROWSER=!LOCAL&&SITE.storage==='browser',DKEY='pb-data-v1';
   const EMPTY={player:{id:'',name:'',currentDoubles:null},generated:null,syncedAt:'',matches:[]};
-  if(BROWSER){try{const s=JSON.parse(localStorage.getItem(DKEY)||'null');if(s&&Array.isArray(s.matches))DATA=s;}catch(e){}}
+  // Demo (?demo=1): made-up matches from tools/make_demo.py, never saved and never mixed with the
+  // visitor's own data. Dates are moved so the newest match is yesterday, so it never looks stale.
+  const DEMO=/[?&]demo=1/.test(location.search);
+  if(DEMO){try{const d=await fetch('./data/demo.json').then(r=>{if(!r.ok)throw 0;return r.json();});
+      const last=d.matches.reduce((a,m)=>m.date>a?m.date:a,''),day=86400000;
+      const shift=Math.floor((Date.now()-Date.parse(last+'T00:00:00Z'))/day)-1;
+      const mv=s=>new Date(Date.parse(s+'T00:00:00Z')+shift*day).toISOString().slice(0,10);
+      d.matches.forEach(m=>{m.date=mv(m.date);});d.generated=new Date().toISOString().slice(0,10);d.syncedAt=new Date().toISOString();
+      DATA=d;}catch(e){DATA=EMPTY;}}
+  else if(BROWSER){try{const s=JSON.parse(localStorage.getItem(DKEY)||'null');if(s&&Array.isArray(s.matches))DATA=s;}catch(e){}}
   if(!DATA)try{DATA=await fetch('./data/data.json?_='+Date.now()).then(r=>{if(!r.ok)throw 0;return r.json();});}
   catch(e){if(BROWSER)DATA=EMPTY;else{document.body.innerHTML='<div style="max-width:560px;margin:60px auto;padding:0 24px;font-family:system-ui;line-height:1.6">'
     +'<h2>Couldn’t load your data</h2><p>The app reads <code>data/data.json</code>, which didn’t load. '
     +'If this is a fresh deploy, sync from DUPR with the 🔄 Sync to Dink Data bookmark.</p></div>';return;}}
   try{COMMITTED=await fetch('./data/overrides.json?_='+Date.now()).then(r=>r.ok?r.json():{});}catch(e){COMMITTED={};}
   // A just-synced data.json, used until GitHub Pages serves the new commit (~1 min).
-  try{const f=JSON.parse(sessionStorage.getItem('pb-fresh')||'null');
+  if(!DEMO)try{const f=JSON.parse(sessionStorage.getItem('pb-fresh')||'null');
     if(f&&Array.isArray(f.matches)&&(f.syncedAt||'')>(DATA.syncedAt||''))DATA=f;else sessionStorage.removeItem('pb-fresh');}catch(e){}
   // Other players synced from their DUPR page ("scouted") live only in this browser, keyed by
   // DUPR id, and are never saved to GitHub. VIEW = whose matches the whole app shows; OWN stays
@@ -940,10 +956,10 @@
     return {all:()=>open().then(d=>new Promise((res,rej)=>{const out={},c=d.transaction('s').objectStore('s').openCursor();
         c.onsuccess=()=>{const cu=c.result;if(cu){out[cu.key]=cu.value;cu.continue();}else res(out);};c.onerror=()=>rej(c.error);})),
       put:(k,v)=>run('readwrite',s=>s.put(v,k)),del:k=>run('readwrite',s=>s.delete(k)),clear:()=>run('readwrite',s=>s.clear())};})();
-  let SCOUTS={};try{SCOUTS=await IDB.all();}catch(e){}
+  let SCOUTS={};if(!DEMO)try{SCOUTS=await IDB.all();}catch(e){}
   // Players scouted before IndexedDB was used (localStorage), moved over once.
   try{const old=JSON.parse(localStorage.getItem(SKEY)||'null');if(old){for(const k in old){if(!SCOUTS[k]){SCOUTS[k]=old[k];await IDB.put(k,old[k]);}}localStorage.removeItem(SKEY);}}catch(e){}
-  let VIEW='';try{VIEW=localStorage.getItem(VKEY)||'';}catch(e){}
+  let VIEW='';if(!DEMO)try{VIEW=localStorage.getItem(VKEY)||'';}catch(e){}
   if(VIEW&&SCOUTS[VIEW]&&Array.isArray(SCOUTS[VIEW].matches))DATA=SCOUTS[VIEW];else VIEW='';
   // Viewing another player: we only hold their (capped) history, so hide the "you"-centric and
   // full-history pieces that can't update — the matchup predictor, rating goal, teasers and Highlights.
@@ -951,7 +967,7 @@
   document.documentElement.setAttribute('data-viewing',VIEWING_OTHER?'other':'self');
   const setView=id=>{try{if(id)localStorage.setItem(VKEY,id);else localStorage.removeItem(VKEY);}catch(e){}location.replace(location.pathname);};
   const ME_NOW=DATA.player.currentDoubles;
-  document.getElementById('idpill').textContent=DATA.player.id?'DUPR · '+DATA.player.id:'DUPR';
+  document.getElementById('idpill').textContent=DEMO?'Demo data':DATA.player.id?'DUPR · '+DATA.player.id:'DUPR';
   const num=v=>(v==null||v==='NR')?null:+v;
   const byId=i=>document.getElementById(i);
   const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -999,9 +1015,9 @@
 
   const TKEY='dupr-tags-v1', MKEY='dupr-meta-v1';
   const load=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
-  const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+  const save=(k,v)=>{if(DEMO)return;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
   const _cm=(COMMITTED&&COMMITTED.meta)||{}, _ct=(COMMITTED&&COMMITTED.tags)||{};
-  const _lm=load(MKEY,null), _lt=load(TKEY,null);
+  const _lm=DEMO?null:load(MKEY,null), _lt=DEMO?null:load(TKEY,null);
   let meta={events:{...(_cm.events||{}),...((_lm&&_lm.events)||{})},
             partnersHidden:[...new Set([...(_cm.partnersHidden||[]),...((_lm&&_lm.partnersHidden)||[])])]};
   let tags={...(_ct||{}),...(_lt||{})};
@@ -2162,7 +2178,11 @@
       const del=byId('viewDel');if(del)del.onclick=()=>{if(!del.dataset.sure){del.dataset.sure=1;del.textContent='Tap again to remove';return;}
         IDB.del(VIEW).catch(()=>{}).then(()=>setView(''));};}
     if(VIEW)byId('staleBanner').hidden=true;
-    if(!DATA.matches.length){byId('welcome').hidden=false;
+    // Demo: say so, and keep the data tools (export / import / delete) out of reach.
+    if(DEMO){byId('demoBar').hidden=false;byId('staleBanner').hidden=true;byId('cleanup').hidden=true;}
+    // From the demo's "Set up with my DUPR": open the sync card's setup steps.
+    if(/[?&]setup=1/.test(location.search)){toggle(true);setTimeout(()=>byId('tokenHelp').scrollIntoView({block:'start'}),60);}
+    if(!DATA.matches.length&&!DEMO){byId('welcome').hidden=false;
       byId('welcomeGo').onclick=()=>{toggle(true);byId('tokenHelp').scrollIntoView({behavior:'smooth',block:'start'});};}
     // Phones can't drag a link to the bookmarks bar, so hand over the same javascript: URL as text.
     // The Copy button lives on the bookmark helper page (?bm=1, #bmPage): a page of its own, so
