@@ -2,6 +2,15 @@
 
 Newest first.
 
+## 2026-10-20 — short loader bookmark (phone sync did nothing)
+- On Chrome for Android the pasted bookmark was cut off at ~2,000 of its 9,100 characters, so it
+  was a syntax error and nothing ran. `build_bookmarklet.py` now writes **`sync.js`** (the
+  bookmarklet source with site.json values) and the published bookmark is a ~300-char loader
+  that adds `<site>/sync.js?<time>` to the DUPR page, with an alert if it can't load. dashboard.dupr.com
+  sends no Content-Security-Policy, so the script is allowed. Sync fixes now reach users without
+  re-making the bookmark. Old long bookmarks keep working. `serve_local.py` still inlines the
+  full code (an https page may refuse http://localhost scripts). SW rj-v81.
+
 ## 2026-10-20 — ported from PBStats: phone setup via a bookmark helper page
 - Phone setup now starts with **📌 Open bookmark helper** (the app at `?bm=1`), so the ☆ makes a
   new bookmark to turn into PB Sync instead of editing your normal bookmark of the app. SW rj-v80.
