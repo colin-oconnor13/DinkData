@@ -7,11 +7,11 @@
 // data after "#pb=". A #fragment never leaves the browser. The app asks before saving.
 //
 // After editing, run:  python tools/build_bookmarklet.py   (injects it into index.html)
-// https://colin-oconnor13.github.io/PickleballStats/?sync=1 /  /  are filled in by the build (tools/serve_local.py fills them for a
+// https://colin-oconnor13.github.io/DinkData/?sync=1 /  /  are filled in by the build (tools/serve_local.py fills them for a
 // local copy). ID '' means "whoever is logged in", checked against CODE (the short DUPR id).
 // No inline comments below a code line, and no double slash outside https: (the build joins lines).
 (async () => {
-  const APP = 'https://colin-oconnor13.github.io/PickleballStats/?sync=1';
+  const APP = 'https://colin-oconnor13.github.io/DinkData/?sync=1';
   const CODE = '', API = 'https://api.dupr.com';
   let ID = '';
   const RECENT = 14, SCOUT_CAP = 150;

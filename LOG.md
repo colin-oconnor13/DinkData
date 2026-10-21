@@ -2,6 +2,15 @@
 
 Newest first.
 
+## 2026-10-21 — moved to colin-oconnor13.github.io/DinkData
+- Repo renamed PickleballStats → **DinkData**; `site.json` app URL, README links, the Sync
+  bookmark loader and `sync.js` now point at `/DinkData/`. GitHub doesn't redirect Pages sites on
+  a rename, so a separate tiny repo named **PickleballStats** serves a redirect: every old path,
+  query and #fragment forwards to the same place here (sync hand-offs, ?demo, ?bm keep working),
+  and its `sync.js` loads this one, so existing PB Sync bookmarks keep working unchanged.
+  localStorage / IndexedDB are per origin (colin-oconnor13.github.io), so visitors keep their data.
+  Home-screen installs of the old URL should be reinstalled. SW rj-v88.
+
 ## 2026-10-21 — demo uses real, anonymised matches
 - `data/demo.json` is now Colin's 234 synced matches run through **`tools/anonymize_demo.py`**:
   every player gets a fictional name and id (consistently, so partner/opponent stats hold; no

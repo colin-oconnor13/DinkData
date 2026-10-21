@@ -4,9 +4,9 @@ A free web app that turns your DUPR match history into something you can learn f
 by event, partner and opponent; who you play best and worst with **compared with what the
 ratings expected**; your form over time; close games; streaks and bounce-back.
 
-**Open the app:** <https://colin-oconnor13.github.io/PickleballStats/>
+**Open the app:** <https://colin-oconnor13.github.io/DinkData/>
 
-**Just looking?** Open the [demo](https://colin-oconnor13.github.io/PickleballStats/?demo=1): the whole app
+**Just looking?** Open the [demo](https://colin-oconnor13.github.io/DinkData/?demo=1): the whole app
 on real match history with every name, event and venue made up, nothing to set up.
 
 ## Getting started (about two minutes)
