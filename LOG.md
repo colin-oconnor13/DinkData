@@ -2,6 +2,15 @@
 
 Newest first.
 
+## 2026-10-26 — Overview record strip
+- Picked from mock-ups (option B, with the latest day instead of the last 10): a full-width strip
+  at the top of Your performance (`#wlStrip`): **W – L** large in green/red and a win % bar, both
+  following the filters, plus **Latest · <date>**: W/L chips for the latest day's matches (the
+  same matches as Latest matches, unfiltered, in processing order) with the day's record; tapping
+  them scrolls to Latest matches.
+- Win % moved out of the Results group (the strip carries it): Results is now Points won +
+  Margin; Context is Value + Avg opponent. SW rj-v90.
+
 ## 2026-10-26 — Rating Over Time no longer drops recent days
 - Reported: a viewed player (Troy, 324 matches) had months of recent days missing from Rating
   Over Time while Form showed them. Cause: the chart leaves out days whose matches are all

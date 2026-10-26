@@ -179,6 +179,21 @@
   .cluster .dot{width:8px;height:8px;border-radius:50%;flex:none}
   .cluster .dot.r{background:var(--blue)} .cluster .dot.w{background:var(--win)} .cluster .dot.c{background:var(--accent)}
   .tiles{display:flex;flex-direction:column;gap:14px}
+  /* Overview record strip: W–L (follows the filters), win % bar, and the latest day's results. */
+  .wl-strip{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+  .wl-strip .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:7px}
+  .wl-strip .lbl b{color:var(--ink)}
+  .wl-big{font-family:"Archivo",sans-serif;font-weight:800;font-size:40px;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+  .wl-big .u{font-size:20px;color:var(--muted)} .wl-big .dash{color:var(--muted)}
+  .wl-w{color:var(--win)} .wl-l{color:var(--loss)}
+  .wl-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--loss)}
+  .wl-bar i{display:block;background:var(--win)}
+  .wl-latest{cursor:pointer}
+  .wl-chips{display:flex;gap:4px;flex-wrap:wrap}
+  .wl-chip{width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#0E1512}
+  .wl-chip.w{background:var(--win)} .wl-chip.l{background:var(--loss)}
+  .wl-day{font-weight:600;font-size:12px;color:var(--muted);margin-left:6px;align-self:center}
+  @media(max-width:760px){.wl-strip{grid-template-columns:1fr;gap:16px}}
   .tile{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
   .tile .lhs{min-width:0}
   .tile .v{font-family:"Archivo",sans-serif;font-weight:800;font-size:26px;line-height:1;letter-spacing:-.02em}
@@ -600,7 +615,7 @@
 
   <!-- ===== OVERVIEW ===== -->
   <div id="tab-overview">
-    <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Your performance</div><div class="clusters" id="kpis"></div></div>
+    <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Your performance</div><div class="wl-strip" id="wlStrip" hidden></div><div class="clusters" id="kpis"></div></div>
 
     <div class="card pad" style="margin-bottom:16px">
       <div class="chart-head"><h3>Rating Over Time</h3><div class="zoom" id="zoom"></div></div>
@@ -1257,6 +1272,15 @@
     const a=agg(list,'then');   // always the at-the-time ratings; only the filters move it
     // KPIs
     const k=byId('kpis');
+    // Record strip: W–L and win % follow the filters; the chips are the latest day's matches,
+    // the same ones as "Latest matches" below (tap to jump there).
+    const ws=byId('wlStrip');ws.hidden=!a;
+    if(a){const last=M.reduce((x,m)=>m.date>x?m.date:x,''),day=M.filter(m=>m.date===last).sort((x,y)=>ordOf(x)-ordOf(y)),dw=day.filter(m=>m.won).length;
+      ws.innerHTML=`<div><div class="lbl">Record</div><div class="wl-big"><span class="wl-w">${a.wins}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${a.losses}</span><span class="u"> L</span></div></div>`
+        +`<div><div class="lbl">Win % <b>${pct(a.winFrac)}</b> · ${a.n} matches</div><div class="wl-bar"><i style="width:${(a.winFrac*100).toFixed(1)}%"></i></div></div>`
+        +`<div class="wl-latest" title="Your latest day of play: see Latest matches below"><div class="lbl">Latest · ${dayLabel(last)}</div>`
+        +`<div class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}<span class="wl-day">${dw}–${day.length-dw}</span></div></div>`;
+      ws.querySelector('.wl-latest').onclick=()=>byId('lastDay').scrollIntoView({behavior:'smooth',block:'center'});}
     if(!a)k.innerHTML='<div class="cluster"><div class="tile"><div class="lhs"><div class="v mono">—</div><div class="l">No matches match these filters</div></div></div></div>';
     else{
       const sp=(data,sc)=>(data&&data.length>1)?sparkSvg(data,'var(--'+sc+')'):'';
@@ -1268,12 +1292,11 @@
           +tile(pct(a.upFrac),'','Rating rose','Share of matches your rating went up — a good loss against a strong team can still raise it.',a.lossRated?`${a.lossUp} of ${a.lossRated} losses too`:'',sp(SPARK.rose,'win'))
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot w"></span>Results</div><div class="tiles">`
-          +tile(pct(a.winFrac),'','Win %','Share of matches you won.',`${a.wins}–${a.losses} (${a.n})`,sp(SPARK.win,'win'))
           +tile(pct(a.ptsFrac),'','Points won','Of all points played, the share you won — a truer read of how close matches were.','',sp(SPARK.pts,'win'))
+          +tile(sgn(a.normMargin),'','Margin','Average points you win or lose a game by, scaled to an 11-point game.','per 11')
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot c"></span>Context</div><div class="tiles">`
           +tile(a.value.toFixed(1),'accent','Value','Win %, points won and opponent strength in one score. ~60 is even, 90+ strong; can exceed 100.','')
-          +tile(sgn(a.normMargin),'','Margin','Average points you win or lose a game by, scaled to an 11-point game.','per 11')
           +tile(f2(a.oThen),'','Avg opponent','Average rating of the opponents you faced.',`now ${f2(a.oNow)}`)
         +`</div></div>`;
     }
