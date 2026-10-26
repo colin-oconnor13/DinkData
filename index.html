@@ -1155,6 +1155,25 @@
   // was played (league entries can land after a later tournament has already moved the rating),
   // so the rating an event *ended on* is the last one played on time, not the last processed.
   const LATE=lateSet();
+  // Days left out of Rating Over Time need a stricter test than LATE: ORDER bridges every break
+  // in the rating chain (DUPR restating a rating) with the closest continuation, and one wrong
+  // jump ahead makes weeks of normal matches look late, which hid months of a viewed player's
+  // chart. Here only exact links count, a link that goes back in time is taken only when it is
+  // the only one, and a match is late only if it was rated after one dated over a week later
+  // (a league typed in afterwards). Where the chain breaks, nothing is assumed.
+  const CHART_LATE=(function(){
+    const s=new Set(),link=(a,b)=>Math.abs(b.preRating-a.postRating)<EXACT;
+    let left=M.filter(m=>m.preRating!=null&&m.postRating!=null).sort((a,b)=>a.date.localeCompare(b.date)||(a.matchId-b.matchId));
+    while(left.length){
+      let cur=left.find(m=>!left.some(o=>o!==m&&link(o,m)))||left[0],mx='';
+      while(cur){
+        const c=cur;left=left.filter(m=>m!==c);
+        if(mx&&(tms(mx)-tms(c.date))/864e5>7)s.add(c.matchId);else if(c.date>mx)mx=c.date;
+        const ex=left.filter(m=>link(c,m)),back=m=>m.date<c.date;
+        cur=ex.length?ex.reduce((b,m)=>(back(m)!==back(b)?!back(m):m.date<b.date)?m:b):null;
+      }
+    }
+    return s;})();
   const byDate=list=>{const g={};list.forEach(m=>{(g[m.date]=g[m.date]||[]).push(m);});return g;};
   // Last match of a set in processing order, ignoring late entries when real ones exist.
   function lastPlayed(list){
@@ -1466,7 +1485,7 @@
     const allDays=byDate(M.filter(inZoom));   // includes unrated matches, for the count shown
     // A day whose every match was entered late has no rating that DUPR ever held on that
     // date, so plotting it would invent a spike. Those days sit out of the curve.
-    const dates=Object.keys(days).sort().filter(d=>!days[d].every(m=>LATE.has(m.matchId)));
+    const dates=Object.keys(days).sort().filter(d=>!days[d].every(m=>CHART_LATE.has(m.matchId)));
     let prev=null;
     const pts=dates.map(d=>{
       const ms=days[d].slice().sort((a,b)=>ordOf(a)-ordOf(b));

@@ -2,6 +2,18 @@
 
 Newest first.
 
+## 2026-10-26 — Rating Over Time no longer drops recent days
+- Reported: a viewed player (Troy, 324 matches) had months of recent days missing from Rating
+  Over Time while Form showed them. Cause: the chart leaves out days whose matches are all
+  "late" (rated after later-dated ones), and `ORDER` bridges every break in the rating chain
+  (DUPR restating a rating) with the closest continuation; one wrong jump ahead made weeks of
+  normal matches look late. Reproduced on real data with 4 restated ratings: 10 of 30 days hidden.
+- The chart now uses `CHART_LATE`: exact links only, a backwards link taken only when it is the
+  only one, and late only if rated after a match dated over a week later. Same test: all 30 days
+  drawn; clean data unchanged. `LATE` / the 📅 offer in Clean up are unchanged.
+- The 150-match cap on "Me + recent people" already keeps the *most recent* 150 (history comes
+  newest-first); players synced from their own DUPR page aren't capped. SW rj-v89.
+
 ## 2026-10-21 — moved to colin-oconnor13.github.io/DinkData
 - Repo renamed PickleballStats → **DinkData**; `site.json` app URL, README links, the Sync
   bookmark loader and `sync.js` now point at `/DinkData/`. GitHub doesn't redirect Pages sites on
