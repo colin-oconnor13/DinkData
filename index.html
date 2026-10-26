@@ -1272,15 +1272,7 @@
     const a=agg(list,'then');   // always the at-the-time ratings; only the filters move it
     // KPIs
     const k=byId('kpis');
-    // Record strip: W–L and win % follow the filters; the chips are the latest day's matches,
-    // the same ones as "Latest matches" below (tap to jump there).
-    const ws=byId('wlStrip');ws.hidden=!a;
-    if(a){const last=M.reduce((x,m)=>m.date>x?m.date:x,''),day=M.filter(m=>m.date===last).sort((x,y)=>ordOf(x)-ordOf(y)),dw=day.filter(m=>m.won).length;
-      ws.innerHTML=`<div><div class="lbl">Record</div><div class="wl-big"><span class="wl-w">${a.wins}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${a.losses}</span><span class="u"> L</span></div></div>`
-        +`<div><div class="lbl">Win % <b>${pct(a.winFrac)}</b> · ${a.n} matches</div><div class="wl-bar"><i style="width:${(a.winFrac*100).toFixed(1)}%"></i></div></div>`
-        +`<div class="wl-latest" title="Your latest day of play: see Latest matches below"><div class="lbl">Latest · ${dayLabel(last)}</div>`
-        +`<div class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}<span class="wl-day">${dw}–${day.length-dw}</span></div></div>`;
-      ws.querySelector('.wl-latest').onclick=()=>byId('lastDay').scrollIntoView({behavior:'smooth',block:'center'});}
+    WL_LIST=list;renderWL();
     if(!a)k.innerHTML='<div class="cluster"><div class="tile"><div class="lhs"><div class="v mono">—</div><div class="l">No matches match these filters</div></div></div></div>';
     else{
       const sp=(data,sc)=>(data&&data.length>1)?sparkSvg(data,'var(--'+sc+')'):'';
@@ -1452,6 +1444,21 @@
     return {dupr,win,pts,rose};
   })();
   // Overview "Latest matches": the most recent day you played (filter-independent).
+  // Record strip: W–L and win % for the filtered matches inside the Rating Over Time zoom window
+  // (3M / 6M / 1Y / All / a year), redrawn when the zoom changes. The chips are the latest day's
+  // matches, the same ones as "Latest matches" below (tap to jump there).
+  let WL_LIST=[];
+  function renderWL(){
+    const ws=byId('wlStrip');ws.hidden=!M.length;if(!M.length)return;
+    const list=WL_LIST.filter(inZoom),w=list.filter(m=>m.won).length,n=list.length,wf=n?w/n:0;
+    const win=Z.months?(Z.months===12?'last 12 months':`last ${Z.months} months`):Z.year?Z.year:'all time';
+    const last=M.reduce((x,m)=>m.date>x?m.date:x,''),day=M.filter(m=>m.date===last).sort((x,y)=>ordOf(x)-ordOf(y)),dw=day.filter(m=>m.won).length;
+    ws.innerHTML=`<div><div class="lbl">Record · ${win}</div><div class="wl-big"><span class="wl-w">${w}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${n-w}</span><span class="u"> L</span></div></div>`
+      +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i></div></div>`
+      +`<div class="wl-latest" title="Your latest day of play: see Latest matches below"><div class="lbl">Latest · ${dayLabel(last)}</div>`
+      +`<div class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}<span class="wl-day">${dw}–${day.length-dw}</span></div></div>`;
+    ws.querySelector('.wl-latest').onclick=()=>byId('lastDay').scrollIntoView({behavior:'smooth',block:'center'});
+  }
   function renderLatest(){
     if(!M.length){byId('lastDay').innerHTML='<div class="caphint" style="padding:26px 20px;text-align:center">No matches yet — sync from DUPR.</div>';byId('lastDaySub').textContent='';return;}
     const maxDate=M.reduce((a,m)=>m.date>a?m.date:a,'');
@@ -1472,7 +1479,7 @@
       yearsPresent.map(y=>`<span class="chip ${Z.year===y?'on':''}" data-z="y:${y}">${y}</span>`).join('');
     z.querySelectorAll('[data-z]').forEach(c=>c.onclick=()=>{const v=c.dataset.z;
       if(v==='all'){Z.year='';Z.months=0;}else if(v[0]==='m'){Z.months=+v.slice(2);Z.year='';}else{Z.year=v.slice(2);Z.months=0;}
-      drawZoom();drawOverall();});
+      drawZoom();drawOverall();renderWL();});
   }
   // opt.step / opt.fmt: grid spacing and label format (default: DUPR, 0.25 steps).
   function drawSeries(boxId,tipId,pts,label,opt){

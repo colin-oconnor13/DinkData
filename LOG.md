@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-10-26 — record strip follows the Rating Over Time zoom
+- The strip's W–L and win % now cover the filtered matches inside the Rating Over Time zoom
+  window (3M / 6M / 1Y / All / a year), labelled "Record · last 3 months" etc., and redraw when
+  the zoom changes (`renderWL`, `WL_LIST`). Phones open that chart on 3M, so the strip does too.
+  The Latest chips are unchanged. SW rj-v91.
+
 ## 2026-10-26 — Overview record strip
 - Picked from mock-ups (option B, with the latest day instead of the last 10): a full-width strip
   at the top of Your performance (`#wlStrip`): **W – L** large in green/red and a win % bar, both
