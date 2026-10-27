@@ -212,6 +212,8 @@
   .months{margin-top:6px} .months .mh{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin:4px 0 2px}
   .chartlegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:4px}
   .chartlegend i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .chartlegend i.dash{height:0;width:16px;border-top:2px dashed var(--blue);border-radius:0}
+  .chartnote{flex-basis:100%;font-size:12px;line-height:1.5;color:var(--muted);margin-top:2px}
   .effcell .rng{display:block;font-size:11px;color:var(--muted);font-weight:500}
   @media(max-width:620px){.crow{grid-template-columns:1fr 64px}.crow .cbar{grid-column:1/-1;grid-row:2}}
   /* Tap-to-explain bubble: touch screens never show title text, so a tap shows it here instead. */
@@ -1567,7 +1569,8 @@
     // Optional overlay: another line with a shaded range (the "playing at" rating and its luck band).
     const ovs=ov.filter(p=>p.t>=t0&&p.t<=t1).sort((a,b)=>a.t-b.t);
     const ovBand=ovs.length>1?`<path d="${ovs.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.hi).toFixed(1)).join(' ')} ${ovs.slice().reverse().map(p=>'L'+X(p.t).toFixed(1)+' '+Y(p.lo).toFixed(1)).join(' ')}Z" fill="var(--accent)" opacity=".13" clip-path="url(#cp_${boxId})"/>`:'';
-    const ovLine=ovs.length>1?`<path d="${ovs.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.y).toFixed(1)).join(' ')}" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="5 3"><title>Playing at (last 20 matches)</title></path>`:'';
+    const ovLine=ovs.length>1?`<path d="${ovs.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.y).toFixed(1)).join(' ')}" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="5 3"><title>Playing at (last 20 matches)</title></path>`
+      +(()=>{const p=ovs[ovs.length-1],x=X(p.t),y=Y(p.y);return `<text x="${(x-4).toFixed(1)}" y="${(y-7).toFixed(1)}" font-size="10" font-weight="700" text-anchor="end" fill="var(--blue)">Playing at ${p.y.toFixed(2)}</text>`;})():'';
     box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img"><defs><clipPath id="cp_${boxId}"><rect x="${pl}" y="${pt}" width="${W-pl-pr}" height="${H-pt-pb}"/></clipPath><linearGradient id="fl_${boxId}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--optic)" stop-opacity=".22"/><stop offset="1" stop-color="var(--optic)" stop-opacity="0"/></linearGradient></defs>${grid}${xax}<path d="${line} L${X(pts[pts.length-1].t).toFixed(1)} ${H-pb} L${X(pts[0].t).toFixed(1)} ${H-pb} Z" fill="url(#fl_${boxId})"/>${ovBand}<path d="${line}" fill="none" stroke="var(--optic)" stroke-width="2" stroke-linejoin="round"/>${ovLine}${dots}</svg>`;
     const tip=tipId&&byId(tipId);if(tip)tip.textContent=label||'';
   }
@@ -1597,8 +1600,9 @@
       if(r&&r.se!=null)ovl.push({t:tms(seqAll[i].date),y:r.R,lo:r.R-2*r.se,hi:r.R+2*r.se});}
     drawSeries('chart',null,pts,'',{overlay:ovl});
     const lp=ovl[ovl.length-1];
-    byId('chartLegend').innerHTML=`<span><i style="background:var(--optic)"></i>DUPR (▲ up / ▼ down that day)</span>`
-      +(ovl.length?`<span><i style="background:var(--blue)"></i>Playing at, last 20 matches${lp?`: <b>${lp.y.toFixed(2)}</b> (${lp.lo.toFixed(2)}–${lp.hi.toFixed(2)})`:''}</span><span><i style="background:var(--accent);opacity:.4"></i>range luck could explain</span>`:'');
+    byId('chartLegend').innerHTML=`<span><i style="background:var(--optic)"></i>Your DUPR (▲ up / ▼ down that day)</span>`
+      +(ovl.length?`<span><i class="dash"></i>“Playing at”</span><span><i style="background:var(--accent);opacity:.4"></i>range luck could explain</span>`
+        +(lp?`<div class="chartnote">The <b>blue dashed line</b> is the rating your last 20 matches were worth: if everyone had played to their rating, your results would fit a <b>${lp.y.toFixed(2)}</b> player. Luck alone could explain anything from ${lp.lo.toFixed(2)} to ${lp.hi.toFixed(2)} (the shaded band), so read it as a direction: when it stays above your DUPR for a while, your DUPR has room to rise.</div>`:''):'');
     // Matches per month in the same window: quiet months and busy months read differently.
     const mc={};M.filter(inZoom).forEach(m=>{const k=m.date.slice(0,7);mc[k]=(mc[k]||0)+1;});
     const ks=Object.keys(mc).sort(),mx=Math.max(1,...Object.values(mc));
