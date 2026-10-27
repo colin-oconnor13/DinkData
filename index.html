@@ -335,6 +335,7 @@
   .m-score{font-size:14px;font-weight:600}
   .m-date{font-size:11.5px;color:var(--muted);margin-top:2px}
   .m-imp{font-size:12px;font-weight:600;margin-top:3px}
+  .m-exp{font-size:12px;color:var(--muted);margin-top:3px} .m-exp b{color:var(--ink)} .m-exp .ptag{margin-left:4px}
   .imp-up{color:var(--win)} .imp-dn{color:var(--loss)}
   .collapsed .match:nth-child(n+13){display:none}
   .showmore{width:100%;padding:12px;background:none;border:0;border-top:1px solid var(--line);color:var(--accent);font-family:inherit;font-weight:600;font-size:13px;cursor:pointer}
@@ -1888,8 +1889,11 @@
       const partner=m.partnerName==='—'?'':'with '+m.partnerName+(pv==null?'':' ('+pv.toFixed(2)+')');
       const sc=m.scores.length?m.scores.map((s,i)=>s+'-'+(m.oppScores[i]??'')).join(', '):'—';
       const imp=m.impact,ih=imp==null?'':`<div class="m-imp ${imp>=0?'imp-up':'imp-dn'} mono">${ptsTxt(imp,true)}</div>`;
+      // The win chance the ratings gave this match, with the same upset rule as Highlights.
+      const pw=pOf(m),ex=pw==null?'':`<div class="m-exp">Ratings gave you <b>${Math.round(pw*100)}%</b> to win`
+        +(m.won&&pw<0.40?' <span class="ptag best">Upset ▲</span>':!m.won&&pw>0.60?' <span class="ptag worst">Given up ▼</span>':'')+`</div>`;
       return`<div class="match" data-mid="${m.matchId}"><div class="wl ${m.won?'W':'L'}">${m.won?'W':'L'}</div>
-        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}<div class="m-event">${enc(((levelOf(m)?levelOf(m)+' ':'')+typeOf(m))+' - '+evName(m)+(m.confirmed===false?' · unconfirmed in DUPR':''))}</div></div>
+        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}<div class="m-event">${enc(((levelOf(m)?levelOf(m)+' ':'')+typeOf(m))+' - '+evName(m)+(m.confirmed===false?' · unconfirmed in DUPR':''))}</div>${ex}</div>
         <div class="m-right"><div class="m-score mono">${sc}</div><div class="m-date mono">${m.date}</div>${ih}</div></div>`;}).join('')+
       (rows.length>12?`<button class="showmore">Show all ${rows.length}</button>`:'');
     const sm=log.querySelector('.showmore');if(sm)sm.onclick=()=>{log.classList.remove('collapsed');sm.remove();};
