@@ -2,6 +2,30 @@
 
 Newest first.
 
+## 2026-10-27 — UX review fixes (batch 1, branch review-all)
+From two UX reviews (the first on the live site, the second on this branch).
+- **Trust:** Signal words Clear ●●● / Likely ●●○ / Leaning ●○○ / Too early ○○○; "vs expected"
+  numbers coloured only at Likely or Clear (`woeCls`); 0.000 changes uncoloured; on phones the
+  Signal is a full-width line under the name (`td.sigcell`); predictor inputs fit; card labels don't
+  break at dashes. Chemistry rows whose luck range crosses 0 are grey, no arrow, grouped under
+  "Too early to tell". Standouts name someone only at Clear.
+- **First run:** with no data, only the welcome card and the open set-up steps (`.nodata`); no
+  Sync now until the first sync. One name, **PB Sync**, everywhere (incl. the on-DUPR panel).
+- **Freshness:** header shows "Colin · synced 2 days ago"; stale banner after 7 days (was 21).
+- **Overview:** "played like a 3.61–4.56 player (your DUPR is 3.61)" leads with the range; What
+  to work on is one line when nothing clears, otherwise an action; Latest matches compact (no
+  date / event line), 3 rows + "All N"; tile copy rewritten; matches per month moved to Form.
+- **Trends:** Form "Playing at" compared with your DUPR; Tournament results after Event Matches;
+  Performance by Event has W–L vs expected; Performance by Date shows 6 days + "Show all"; rating
+  goal is a range of months, at the bottom; recent rating changes read "±"; no gender aside.
+- **Highlights:** hint no longer styled as a card; Peak and Current merge when equal.
+- **Theme / a11y:** phones follow the system theme; light-theme lime / gold / loss darkened to
+  ≥ 4.5:1; tabs have role=tab + aria-selected; W/L chips are buttons; 44 px targets on touch;
+  reduced motion also stops smooth scrolling; touch wording ("Tap") on touch screens.
+- **Sync:** your own account with new matches gets one step ("8 new matches · Oct 26 · 6–2 ·
+  +0.086 → See your last session"); other cases keep the careful three-button wording.
+- Snapshot updated (wording, labels, the new event column). SW rj-v96.
+
 ## 2026-10-27 — review build: every mock-up from the stats/coaching review (branch review-all)
 Built from the approved mock-up gallery; reviewed locally on Colin's Oct 26 export before publishing.
 - **Value retired** (option A): gone from the Overview, event / date / people tables and Form;
