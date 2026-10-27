@@ -21,6 +21,9 @@ Newest first.
   the top of the filter bar, part of `pass`. Gone: the Year filter, both Last-60-days switches,
   Highlights' own switch; the record strip follows the Period, not the chart zoom. Period counts as
   a filter (gold outline, ✕ Clear) but doesn't open the Filters panel.
+- Partner list rows explain themselves (tap, or hover on desktop): record vs expected, whether
+  the points agree, the luck range, the verdict, and roughly how many more matches would make it
+  Likely / Clear at the same rate.
 - Guide text updated. SW cache rj-v99.
 
 ## 2026-10-27 — Chemistry: "Worth watching" group (branch review-all)
