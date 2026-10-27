@@ -2,6 +2,14 @@
 
 Newest first.
 
+## 2026-10-27 — Highlights for other players with a full history
+- Viewing another player now shows the Upsets / Notable results and the all-time range, unless
+  their history was cut off at 150 matches (`HL_PARTIAL`: the `capped` flag from a "me + recent
+  people" sync, or exactly 150 matches). Under 150 is everything they've played; over 150 came
+  from a sync on their own DUPR page. Root `data-hl="off"` hides the cards. SW cache rj-v102.
+- Header pill links to DUPR (dashboard before a sync, your player page after); the computer
+  set-up step links to dashboard.dupr.com.
+
 ## 2026-10-27 — UX review 3: plain words everywhere (branch review-b2)
 - **One "why" for every Signal** (`explain()`): the partner-row template (what happened / vs
   expected / could it be luck) now backs every How-sure pill, on hover (360 px box, any

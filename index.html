@@ -298,7 +298,7 @@
   @keyframes flash{0%,30%{background:var(--accent-soft)}100%{background:transparent}}
   /* Viewing another player: hide pieces that need your own / full history and can't update. */
   :root[data-viewing="other"] #predictCard,:root[data-viewing="other"] #goalCard,
-  :root[data-viewing="other"] #hlSec,:root[data-viewing="other"] #rangeWrap{display:none!important}
+  :root[data-hl="off"] #hlSec,:root[data-hl="off"] #rangeWrap{display:none!important}
   @media(max-width:620px){.notable{grid-template-columns:1fr}}
 
   /* tables / breakdown */
@@ -1088,9 +1088,13 @@
   let VIEW='';if(!DEMO)try{VIEW=localStorage.getItem(VKEY)||'';}catch(e){}
   if(VIEW&&SCOUTS[VIEW]&&Array.isArray(SCOUTS[VIEW].matches))DATA=SCOUTS[VIEW];else VIEW='';
   // Viewing another player: we only hold their (capped) history, so hide the "you"-centric and
-  // full-history pieces that can't update — the matchup predictor, rating goal and highlights.
+  // full-history pieces that can't update — the matchup predictor and rating goal (highlights too, if their history was cut off at 150).
   const VIEWING_OTHER=!!VIEW;
+  // Highlights need the whole history. Under 150 matches is everything they've played; over 150
+  // came from a sync on their own DUPR page. Exactly 150 (or the capped flag) is a cut-off sample.
+  const HL_PARTIAL=VIEWING_OTHER&&(!!DATA.capped||DATA.matches.length===150);
   document.documentElement.setAttribute('data-viewing',VIEWING_OTHER?'other':'self');
+  document.documentElement.setAttribute('data-hl',HL_PARTIAL?'off':'on');
   const setView=id=>{try{if(id)localStorage.setItem(VKEY,id);else localStorage.removeItem(VKEY);}catch(e){}location.replace(location.pathname);};
   const ME_NOW=DATA.player.currentDoubles;
   // Header: whose data and how fresh it is ("Colin · synced 2 days ago"), not a DUPR id.
@@ -1506,7 +1510,7 @@
     drawZoom();drawOverall();renderManage();
     const recentList=list;
     renderLog(recentList,'log');renderLatest();
-    renderPeople(recentList);renderIndex(recentList);renderPL(recentList);renderPatterns(recentList);renderPairs(recentList);renderClose(list);renderSplits(list);renderWTW(list);if(!VIEWING_OTHER)renderHighlights(list);renderStreaks(list);drawForm(list);
+    renderPeople(recentList);renderIndex(recentList);renderPL(recentList);renderPatterns(recentList);renderPairs(recentList);renderClose(list);renderSplits(list);renderWTW(list);if(!HL_PARTIAL)renderHighlights(list);renderStreaks(list);drawForm(list);
     if(F.event.length){byId('eventLogTitle').textContent=F.event.length===1?'Matches — '+F.event[0]:F.event.length+' events selected';renderLog(list,'eventLog');}
     else{byId('eventLogTitle').textContent='Event Matches';
       byId('eventLog').innerHTML='<div class="caphint" style="padding:32px 20px;text-align:center">'+TAP+' an event in <b>Performance by Event</b> above to see its matches here.</div>';}
@@ -2344,7 +2348,7 @@
       byId('rangeTiles').innerHTML=
         // At your peak right now: one tile, not two showing the same number.
         (ME_NOW!=null&&Math.abs(hi.postRating-ME_NOW)<0.0005
-          ?`<div class="ut"><div class="v imp-up mono">${ME_NOW.toFixed(3)}</div><div class="l">Current · <b>your all-time high</b></div></div>`
+          ?`<div class="ut"><div class="v imp-up mono">${ME_NOW.toFixed(3)}</div><div class="l">Current · <b>${VIEWING_OTHER?'their':'your'} all-time high</b></div></div>`
           :`<div class="ut"><div class="v imp-up mono">${hi.postRating.toFixed(3)}</div><div class="l">Peak <span class="sub">${dayLabel(hi.date)}</span></div></div>`
             +`<div class="ut"><div class="v blue mono">${ME_NOW==null?'—':ME_NOW.toFixed(3)}</div><div class="l">Current</div></div>`)
         +`<div class="ut"><div class="v imp-dn mono">${lo.postRating.toFixed(3)}</div><div class="l">Lowest <span class="sub">${dayLabel(lo.date)}</span></div></div>`;}
