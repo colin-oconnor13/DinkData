@@ -1098,6 +1098,11 @@
     const mi=Math.max(0,(Date.now()-t)/6e4);return mi<60?'just now':mi<1440?Math.round(mi/60)+' h ago':mi<2880?'yesterday':Math.round(mi/1440)+' days ago';};
   document.getElementById('idpill').textContent=DEMO?'Demo data'
     :(DATA.player.name?String(DATA.player.name).trim().split(/\s+/)[0]:'DUPR')+((DATA.syncedAt||DATA.generated)?' · synced '+agoTxt(DATA.syncedAt||DATA.generated):'');
+  // The pill opens DUPR: your player page once synced, the dashboard (where PB Sync runs) before.
+  if(!DEMO){const pid=DATA.player&&DATA.player.id,el=document.getElementById('idpill'),a=document.createElement('a');
+    a.className='idpill mono';a.id='idpill';a.textContent=el.textContent+' ↗';a.target='_blank';a.rel='noopener';
+    a.href=pid!=null&&/^\d+$/.test(String(pid))?`https://dashboard.dupr.com/dashboard/player/${pid}`:'https://dashboard.dupr.com/';
+    a.title='Open on DUPR';a.style.textDecoration='none';a.style.color='var(--accent)';el.replaceWith(a);}
   const num=v=>(v==null||v==='NR')?null:+v;
   const byId=i=>document.getElementById(i);
   // Respect reduced motion for scrolling too, not only CSS transitions.
