@@ -2,6 +2,31 @@
 
 Newest first.
 
+## 2026-10-27 — fixes from the stats/coaching review (checked on real data)
+Checked against Colin's Oct 26 export before and after (241 matches → 238 doubles).
+- **Ratings going into the match everywhere** (`diff = diffPre`, `oppThen` / `partnerThen` from
+  `ratingPre`): post-match ratings contain the result. Matchup Strength "Favored" was 83%, really
+  55%; "Underdog" 30% → 37%. Also Value's schedule term, Avg opponent, buckets, match-log ratings.
+- **Hindsight basis** (was "DUPR now"): your rating then + everyone else's current rating; it used
+  to apply your *current* rating to every old match. Toggle reads "DUPR at the time / Hindsight".
+- **Signal on one baseline:** expected margin is fitted through zero (`MODEL.a = 0`), so the margin
+  half compares against the ratings like the wins half (it measured "vs your usual margin").
+- **Signal table:** the Strong cutoff counts every row, not just the name-search matches; a line
+  says what luck alone gives ("about 14 of these 45 … Leaning or stronger, about 2.0 … Some").
+- **Best / Worst tags** only when |z| ≥ 2 (all 6 partner tags were luck), with ↑/↓.
+- **Repeat Meetings** counts a match once per row (151 matches were counted twice).
+- **Streaks** use DUPR's processing order, like the current-streak teaser (they disagreed: L1 vs
+  W2); the hint gives the typical longest streak by chance (~W6 / L7).
+- **Singles excluded** (`M` is doubles only): 3 singles were in the record, Win %, Close Games.
+- **Rally scoring:** games to 21 are scaled to 21 for Margin.
+- **Late-entered matches** (`CHART_LATE`) sit out the S fit and the Signal.
+- **Rating went up** (one name everywhere; was Rating rose / Beat exp.) leaves 0.000 changes out.
+- **Predictor** keys players by DUPR id (two people with one name no longer collapse).
+- **Guide:** tab names (Form is on Trends), every view that ignores the filters, doubles only,
+  Strong/Some no longer overclaim, Margin is an average of games with ±5-point game noise, Points
+  won is pooled, Hindsight explained; removed "your rating may be about to follow".
+- Not changed yet (decisions pending): opponent-strength buckets, Value. SW rj-v92.
+
 ## 2026-10-26 — record strip follows the Rating Over Time zoom
 - The strip's W–L and win % now cover the filtered matches inside the Rating Over Time zoom
   window (3M / 6M / 1Y / All / a year), labelled "Record · last 3 months" etc., and redraw when

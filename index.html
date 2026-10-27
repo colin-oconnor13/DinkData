@@ -674,7 +674,7 @@
     <div class="card bd">
       <div class="bd-head">
         <div><div class="sect-h" style="margin:0">Performance by Matchup Strength</div></div>
-        <div class="toggle basisToggle"><button data-b="then" class="on">DUPR actual</button><button data-b="now">DUPR now</button></div>
+        <div class="toggle basisToggle"><button data-b="then" class="on" title="Everyone's DUPR going into each match">DUPR at the time</button><button data-b="now" title="Your rating at the time, everyone else's rating today: who were they really?">Hindsight</button></div>
       </div>
       <div class="tblscroll"><table id="bdTable"></table></div>
     </div>
@@ -811,7 +811,7 @@
             <option value="pts">Rank by Pts %</option>
             <option value="margin">Rank by Margin</option>
             <option value="impact">Rank by DUPR change</option>
-            <option value="beat">Rank by Beat expectations</option>
+            <option value="beat">Rank by Rating went up</option>
             <option value="now">Sort by DUPR now</option>
           </select>
         </div>
@@ -842,24 +842,30 @@
 
     <div class="card pad guide">
       <h3>The tabs at the top</h3>
-      <div class="gdef"><b>Overview</b><span class="d">Your headline numbers, your rating over time, and your most recent day's matches.</span></div>
+      <div class="gdef"><b>Overview</b><span class="d">Your record, your headline numbers, your rating over time, and your most recent day's matches.</span></div>
       <div class="gdef"><b>Trends</b><span class="d">The deep dives: recent form, performance by event and by date, matchup strength, who you struggle with by opponent level, close games, and streaks.</span></div>
       <div class="gdef"><b>Opponents &amp; Partners</b><span class="d">Who you play best and worst <em>with</em> (partners) and <em>against</em> (opponents), vs what the ratings expect — plus a matchup predictor and partner chemistry.</span></div>
       <div class="gdef"><b>Matches</b><span class="d">Your full match log, filterable and sortable.</span></div>
       <div class="gdef"><b>Highlights</b><span class="d">The fun stuff: your upset record, and standout matches like your biggest upset win and biggest blowout.</span></div>
-      <p style="margin-top:12px"><b>Filters</b> (the bar near the top) narrow everything to a slice — one year, only tournaments, one partner, and so on. Every number updates to match. The one exception is “Recent rating changes” on Trends, which always shows your latest matches on purpose.</p>
+      <div class="gdef"><b>How to read this</b><span class="d">This page.</span></div>
+      <p style="margin-top:12px"><b>Filters</b> (the bar near the top) narrow most of the app to a slice: one year, only tournaments, one partner, and so on. A few things ignore them on purpose:</p>
+      <ul>
+        <li><b>Always your latest:</b> Recent rating changes (Trends), Latest matches and the Latest tiles in the record strip, the Overview sparklines, and the rating goal and matchup predictor.</li>
+        <li><b>Their own switch:</b> Highlights has Recent / All-time; Opponents &amp; Partners and Matches have a Last-60-days switch; the record strip's W–L also follows the Rating Over Time zoom.</li>
+      </ul>
+      <p>Only doubles matches are counted; any singles in your DUPR history are left out.</p>
     </div>
 
     <div class="card pad guide">
       <h3>The numbers</h3>
       <div class="gdef"><b>DUPR</b><span class="d">Your official rating from DUPR. Higher is stronger.</span></div>
       <div class="gdef"><b>Win %</b><span class="d">The share of matches you won.</span></div>
-      <div class="gdef"><b>Points won %</b><span class="d">Of all the points played, how many you won. A truer measure of how close things were than win–loss alone.</span></div>
-      <div class="gdef"><b>Margin</b><span class="d">On average, how many points you win or lose a game by — rescaled to an 11-point game so an 11–9 and a 15–12 compare fairly. <em>+2.0 means you typically win by about 2; −2.0 means you lose by about 2.</em></span></div>
+      <div class="gdef"><b>Points won %</b><span class="d">Of all the points played, how many you won. A truer measure of how close things were than win–loss alone. It pools every point, so a game to 15 counts a little more than a game to 11.</span></div>
+      <div class="gdef"><b>Margin</b><span class="d">On average, how many points you win or lose a game by — rescaled to an 11-point game (games to 15 and 21 are scaled down) so an 11–9 and a 15–12 compare fairly. It's an average of games. <em>+2.0 means you typically win by about 2; −2.0 means you lose by about 2.</em> A single game swings a lot, typically by about 5 points either way of what the ratings expect, so one night is never a trend.</span></div>
       <div class="gdef"><b>Value</b><span class="d">One overall score combining your win %, points won, and how strong your opponents were. Higher is better — around 60 is a solid, even run; 90+ is a strong one; below 40 is a rough patch. It can go above 100 for a dominant stretch, or against opponents you consistently beat.</span></div>
       <div class="gdef"><b>DUPR change</b><span class="d">How much a match (or a group of matches) moved your rating — DUPR’s own number, shown as a rating amount like <b>+0.013</b>. It already takes the strength of everyone on court into account.</span></div>
-      <div class="gdef"><b>Rating rose</b> <span class="d">(a.k.a. “beat expectations”) How often your rating went <em>up</em>. You can lose a match and still gain rating if you played a strong team closely — that counts here.</span></div>
-      <div class="gdef"><b>Avg Opp</b><span class="d">The average DUPR of the opponents in that slice. Shows how tough your schedule was.</span></div>
+      <div class="gdef"><b>Rating went up</b> <span class="d">How often your rating went <em>up</em> after a match. You can lose a match and still gain rating if you played a strong team closely, and that counts here. Matches with no rating change (0.000) are left out.</span></div>
+      <div class="gdef"><b>Avg opponent</b><span class="d">The average DUPR of the opponents in that slice, going into each match. Shows how tough your schedule was.</span></div>
     </div>
 
     <div class="card pad guide">
@@ -874,14 +880,15 @@
     <div class="card pad guide">
       <h3>How much to trust a row</h3>
       <p>A few good or bad nights can make any split look dramatic. Two things help you tell a real pattern from a fluke:</p>
-      <div class="gdef"><b>Signal</b><span class="d">Weighs your wins <em>and</em> your points against what the ratings expected; the arrow says which way (↑ better, ↓ worse). <span class="pill-ex pe-good">Strong</span> a real pattern, beyond luck even allowing for how many people the table lists. <span class="pill-ex pe-mid">Some</span> would be convincing on its own, but in a long list one or two like it turn up by chance. <span class="pill-ex pe-mid">Leaning</span> a direction only, well within luck so far. <span class="pill-ex pe-mid">Could be luck</span> within the range of normal chance — don’t read into it.</span></div>
+      <div class="gdef"><b>Signal</b><span class="d">Weighs your wins <em>and</em> your points against what the ratings expected; the arrow says which way (↑ better, ↓ worse). <span class="pill-ex pe-good">Strong</span> unlikely to be luck alone, even allowing for how many people the table lists. Still worth checking against what you see on court. <span class="pill-ex pe-mid">Some</span> worth watching: on its own it would be unusual, but in a long list one or two like it turn up by chance. <span class="pill-ex pe-mid">Leaning</span> a direction only, well within luck so far. <span class="pill-ex pe-mid">Could be luck</span> within the range of normal chance: don’t read into it. Each table says how many of each to expect from luck alone. Matches entered into DUPR weeks after they were played are left out, since their ratings are from the wrong time.</span></div>
       <div class="gdef"><b>Small samples</b><span class="d">Anyone you’ve played fewer than <b>4</b> times (or fewer than <b>10</b> games, in the games table) is listed separately and greyed out. One result swings these a lot, so treat them as early hints, not conclusions.</span></div>
     </div>
 
     <div class="card pad guide">
       <h3>The charts and the rating line</h3>
       <p><b>Rating Over Time</b> plots your DUPR after each day of play. The <b>3M / 6M / 1Y / All</b> pills zoom the time range.</p>
-      <p><b>Form</b> (on Analysis) smooths out the noise: each dot is your last 20 matches rolled together. When the line sits <em>above</em> the dashed line, you’ve been playing better than your own average lately — a sign your rating may be about to follow.</p>
+      <p><b>Form</b> (on Trends) smooths out some of the noise: each dot is your last 20 matches rolled together. When the line sits <em>above</em> the dashed line, you’ve been doing better than your own average lately. Twenty matches is still a small sample, so read the overall direction, not single bumps.</p>
+      <p><b>DUPR at the time / Hindsight</b> (the switch on Performance by Matchup Strength, which also sets the ratings shown in the match log): “at the time” uses everyone’s rating going into each match. “Hindsight” keeps your rating from then but uses everyone else’s rating today, which shows who you were really playing.</p>
     </div>
 
     <div class="card pad guide">
@@ -998,31 +1005,33 @@
     return e.split(/ - Mens| - Womens| - Coed| - Mixed| Skill:| Powered by/i)[0].replace(/\s+/g,' ').trim().slice(0,46);}
   function autoLevel(e){const m=(e||'').match(/([2-5]\.[05])/);return m?m[1]:'';}
 
-  const M=DATA.matches.map(m=>{
+  // Doubles only: DUPR's history also holds singles (no partner, a separate rating), which would
+  // otherwise land in the doubles record, Win %, close games and streaks.
+  const M=DATA.matches.filter(m=>String(m.format||'DOUBLES').toUpperCase()!=='SINGLES').map(m=>{
     const sc=m.scores||[],op=m.oppScores||[];let mp=0,op_=0,ms=0,g=0;
     for(let i=0;i<Math.min(sc.length,op.length);i++){const a=sc[i],b=op[i];mp+=a;op_+=b;
-      const target=Math.max(a,b)>=15?15:11;ms+=(a-b)*11/target;g++;}
+      const hi=Math.max(a,b),target=hi>=21?21:hi>=15?15:11;ms+=(a-b)*11/target;g++;}
     const avg=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:null;
-    const oT=(m.opponents||[]).map(o=>num(o.ratingThen)).filter(v=>v!=null);
     const oN=(m.opponents||[]).map(o=>num(o.ratingNow)).filter(v=>v!=null);
-    const pThen=m.partner?num(m.partner.ratingThen):null,pNow=m.partner?num(m.partner.ratingNow):null;
-    const oThen=avg(oT),oNow=avg(oN),myPre=num(m.preRating);
-    const teamThen=(myPre!=null&&pThen!=null)?(myPre+pThen)/2:null;
-    const teamNow=(pNow!=null)?(ME_NOW+pNow)/2:null;
-    // Edge with everyone's rating *going into* the match (synced since 2026-10-11); falls back to
-    // the post-match value per player when an older sync didn't store it. Used by MODEL.
+    // Everyone's rating *going into* the match (synced since 2026-10-11; falls back to the
+    // post-match value per player when an older sync didn't store it). Post-match ratings already
+    // contain the result (winners' go up), which flattered wins as "favored": 83% vs 55% real.
     const preOf=p=>p?num(p.ratingPre!=null?p.ratingPre:p.ratingThen):null;
     const oP=(m.opponents||[]).map(preOf).filter(v=>v!=null),pPre=preOf(m.partner);
+    const pNow=m.partner?num(m.partner.ratingNow):null,myPre=num(m.preRating);
+    const oThen=avg(oP),oNow=avg(oN);
+    // "Hindsight": your rating then with everyone else's current rating. (It used to apply your
+    // *current* rating to every old match, which made past underdog matches look even.)
+    const teamNow=(myPre!=null&&pNow!=null)?(myPre+pNow)/2:null;
     const allPre=!!m.partner&&m.partner.ratingPre!=null&&(m.opponents||[]).length>0&&(m.opponents||[]).every(o=>o.ratingPre!=null);
-    const diffPre=(myPre!=null&&pPre!=null&&oP.length)?(myPre+pPre)/2-avg(oP):null;
+    const diffPre=(myPre!=null&&pPre!=null&&oP.length)?(myPre+pPre)/2-avg(oP):null,diff=diffPre;
     return {...m,year:m.date.slice(0,4),
       autoType:eventType(m.event),autoLvl:autoLevel(m.event),evRaw:m.event||'',autoName:autoShort(m.event),
       partnerName:m.partner?titleCase(m.partner.name):'—',
       opponents:(m.opponents||[]).map(o=>({...o,name:titleCase(o.name)})),
       myPts:mp,oPts:op_,games:g,normMargin:g?ms/g:null,
-      partnerThen:pThen,partnerNow:pNow,oppThen:oThen,oppNow:oNow,myPre,
-      diff:(teamThen!=null&&oThen!=null)?teamThen-oThen:null,
-      diffNow:(teamNow!=null&&oNow!=null)?teamNow-oNow:null,diffPre,allPre,
+      partnerThen:pPre,partnerNow:pNow,oppThen:oThen,oppNow:oNow,myPre,
+      diff,diffNow:(teamNow!=null&&oNow!=null)?teamNow-oNow:null,diffPre,allPre,
       // you − partner, and the gap between the two opponents (pre-match where synced)
       gapPre:(myPre!=null&&pPre!=null)?myPre-pPre:null,sprPre:oP.length===2?Math.abs(oP[0]-oP[1]):null,
       won:!!m.winner};
@@ -1109,14 +1118,14 @@
     const n=list.length,wins=list.filter(m=>m.won).length;let mp=0,op=0,ms=0,mg=0,sosSum=0,sosN=0;
     // DUPR's own rating change already prices in who you played, so it doubles as an
     // opponent-adjusted result: up = beat DUPR's expectation, even in a loss.
-    let rN=0,imp=0,up=0,lN=0,lUp=0;
+    let rN=0,imp=0,up=0,uN=0,lN=0,lUp=0;   // uN: rated matches whose rating moved
     const avg=a=>{a=a.filter(v=>v!=null);return a.length?a.reduce((s,v)=>s+v,0)/a.length:null};
     list.forEach(m=>{mp+=m.myPts;op+=m.oPts;if(m.normMargin!=null){ms+=m.normMargin*m.games;mg+=m.games;}
       const d=bas==='now'?m.diffNow:m.diff;if(d!=null){sosSum+=(-d);sosN++;}
-      if(m.impact!=null){rN++;imp+=m.impact;if(m.impact>0)up++;if(!m.won){lN++;if(m.impact>0)lUp++;}}});
+      if(m.impact!=null){rN++;imp+=m.impact;if(m.impact!==0){uN++;if(m.impact>0)up++;if(!m.won){lN++;if(m.impact>0)lUp++;}}}});
     const wf=wins/n,pf=(mp+op)?mp/(mp+op):0,sos=sosN?sosSum/sosN:0;
     return {n,wins,losses:n-wins,winFrac:wf,ptsFrac:pf,normMargin:mg?ms/mg:null,sos,
-      rated:rN,impSum:rN?imp:null,impAvg:rN?imp/rN:null,upFrac:rN?up/rN:null,lossRated:lN,lossUp:lUp,
+      rated:rN,impSum:rN?imp:null,impAvg:rN?imp/rN:null,upFrac:uN?up/uN:null,lossRated:lN,lossUp:lUp,
       value:wf*100+25*pf+VALUE_K*sos,
       oThen:avg(list.map(m=>m.oppThen)),oNow:avg(list.map(m=>m.oppNow))};
   }
@@ -1281,7 +1290,7 @@
       k.innerHTML=
         `<div class="cluster"><div class="cluster-h"><span class="dot r"></span>Rating</div><div class="tiles">`
           +tile(ME_NOW==null?'—':ME_NOW.toFixed(3),'blue','Current DUPR','Your official DUPR doubles rating.','',sp(SPARK.dupr,'blue'))
-          +tile(pct(a.upFrac),'','Rating rose','Share of matches your rating went up — a good loss against a strong team can still raise it.',a.lossRated?`${a.lossUp} of ${a.lossRated} losses too`:'',sp(SPARK.rose,'win'))
+          +tile(pct(a.upFrac),'','Rating went up','Share of matches your rating went up — a good loss against a strong team can still raise it.',a.lossRated?`${a.lossUp} of ${a.lossRated} losses too`:'',sp(SPARK.rose,'win'))
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot w"></span>Results</div><div class="tiles">`
           +tile(pct(a.ptsFrac),'','Points won','Of all points played, the share you won — a truer read of how close matches were.','',sp(SPARK.pts,'win'))
@@ -1545,7 +1554,7 @@
   const FORM={value:{label:'Value',step:10,fmt:v=>v.toFixed(0),of:g=>g.value},
     margin:{label:'Margin',step:1,fmt:v=>(v>0?'+':'')+v.toFixed(1),of:g=>g.normMargin},
     win:{label:'Win %',step:10,fmt:v=>v.toFixed(0)+'%',of:g=>g.winFrac*100},
-    beat:{label:'Beat exp.',step:10,fmt:v=>v.toFixed(0)+'%',of:g=>g.upFrac==null?null:g.upFrac*100}};
+    beat:{label:'Rating went up',step:10,fmt:v=>v.toFixed(0)+'%',of:g=>g.upFrac==null?null:g.upFrac*100}};
   function drawForm(list){
     const fm=FORM[formMetric],box=byId('chartForm');
     byId('formN').textContent=ROLL;
@@ -1559,7 +1568,7 @@
       if(y!=null)byDay.set(seq[i].date,{y,g,m:seq[i]});}
     const pts=[...byDay.entries()].map(([d,p])=>({t:tms(d),y:p.y,color:'var(--optic)',
       name:`${d} · last ${ROLL}: ${p.g.wins}–${p.g.losses}, Value ${p.g.value.toFixed(1)}, Margin ${sgn(p.g.normMargin)}, `
-        +`beat exp. ${pct(p.g.upFrac)}${p.m.postRating!=null?' · DUPR '+p.m.postRating.toFixed(3):''}`}));
+        +`rating went up ${pct(p.g.upFrac)}${p.m.postRating!=null?' · DUPR '+p.m.postRating.toFixed(3):''}`}));
     const whole=fm.of(agg(seq,'then')),last=pts.length?pts[pts.length-1].y:null;
     drawSeries('chartForm',null,pts,'',{step:fm.step,fmt:fm.fmt,ref:whole,refLabel:'Overall: '+(whole==null?'—':fm.fmt(whole))});
     if(last!=null&&whole!=null){
@@ -1746,7 +1755,7 @@
     log.innerHTML=rows.map(m=>{
       // Ratings follow the DUPR actual / now toggle, but the order is always by
       // rating AT THE TIME, strongest opponent first.
-      const oRt=o=>{const v=num(basis==='now'?o.ratingNow:o.ratingThen);return v==null?'':` (${v.toFixed(2)})`;};
+      const oRt=o=>{const v=num(basis==='now'?o.ratingNow:(o.ratingPre!=null?o.ratingPre:o.ratingThen));return v==null?'':` (${v.toFixed(2)})`;};
       const opps=(m.opponents||[]).slice().sort((a,b)=>(num(b.ratingThen)??-1)-(num(a.ratingThen)??-1));
       const opp=opps.map(o=>o.name+oRt(o)).join(' & ')||'—';
       const pv=num(basis==='now'?m.partnerNow:m.partnerThen);
@@ -1798,13 +1807,17 @@
   // player's pre-match rating (m.diffPre), so the match's own result isn't baked into the edge;
   // matches synced before those were stored fall back to post-match values (m.allPre false).
   const MODEL=(function(){
-    const X=M.filter(m=>m.diffPre!=null);
+    // Late-entered matches carry ratings from when DUPR processed them, not when they were
+    // played, so their edge is from the wrong time: they sit out the fit (and the Signal).
+    const X=M.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId));
     const ll=S=>X.reduce((s,m)=>{const p=1/(1+Math.pow(10,-m.diffPre/S));return s+Math.log(Math.max(1e-12,m.won?p:1-p));},0);
     let S=0.4,fitted=false;
     if(X.length>=30){let best=-Infinity;for(let i=10;i<=300;i++){const s=i/100,v=ll(s);if(v>best){best=v;S=s;}}fitted=true;}
     const Y=X.filter(m=>m.normMargin!=null);let a=0,b=0;
-    if(Y.length>=10){const mx=Y.reduce((s,m)=>s+m.diffPre,0)/Y.length,my=Y.reduce((s,m)=>s+m.normMargin,0)/Y.length;
-      const sxx=Y.reduce((s,m)=>s+(m.diffPre-mx)**2,0);b=sxx?Y.reduce((s,m)=>s+(m.diffPre-mx)*(m.normMargin-my),0)/sxx:0;a=my-b*mx;}
+    // Expected margin = b·edge, fitted through zero: an even matchup is expected to be even,
+    // the same baseline as the win curve. (With an intercept, your usual margin at an even
+    // matchup was baked into "expected", so the Signal's margin half measured "vs your normal".)
+    if(Y.length>=10){const sxx=Y.reduce((s,m)=>s+m.diffPre**2,0);b=sxx?Y.reduce((s,m)=>s+m.diffPre*m.normMargin,0)/sxx:0;}
     const pWin=d=>1/(1+Math.pow(10,-d/S)),margin=d=>a+b*d;
     // For the Signal: how much a match's margin normally strays from the expected one (sig), and
     // how closely that tracks the win/loss surprise (rho; ~0.85, since points and wins move
@@ -1820,7 +1833,7 @@
   })();
   // Expected-vs-actual for any set of matches (same maths as the index), one table row each.
   function expStats(ms){
-    ms=ms.filter(m=>m.diffPre!=null);if(!ms.length)return null;
+    ms=ms.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId));if(!ms.length)return null;
     const ps=ms.map(m=>MODEL.pWin(m.diffPre)),exp=ps.reduce((s,p)=>s+p,0),w=ms.filter(m=>m.won).length;
     const sd=Math.sqrt(ps.reduce((s,p)=>s+p*(1-p),0)),mr=ms.filter(m=>m.normMargin!=null).map(m=>m.normMargin-MODEL.margin(m.diffPre));
     const im=ms.filter(m=>m.impact!=null).map(m=>m.impact);
@@ -1880,9 +1893,10 @@
       ['Some gap','0.10–0.25 apart',g(0.10,0.25,m=>m.sprPre)],
       ['Lopsided','0.25+ apart',g(0.25,9,m=>m.sprPre)]]);
     const opp=pplMode==='opp';
-    // Opponent mode counts each match once per opponent, at that opponent's meeting number.
+    // Opponent mode places a match at each opponent's meeting number (deduplicated per row below).
     const meet=opp?list.flatMap(m=>(m.oppMeet||[]).map(c=>({m,c}))):list.filter(m=>m.partnerMeet).map(m=>({m,c:m.partnerMeet}));
-    const mb=(lo,hi)=>meet.filter(x=>x.c>=lo&&x.c<=hi).map(x=>x.m);
+    // A match against two repeat opponents counts once per row, not once per opponent.
+    const mb=(lo,hi)=>[...new Set(meet.filter(x=>x.c>=lo&&x.c<=hi).map(x=>x.m))];
     byId('rptTitle').textContent=opp?'Repeat Meetings — Opponents':'Repeat Meetings — Partners';
     byId('rptHint').textContent=opp
       ?'Your results by how many times you’d faced that opponent. Each match counts once per opponent. Do you adapt to people, or do they figure you out?'
@@ -1892,7 +1906,9 @@
   }
   // ---- streaks & bounce-back (tab 2): entry order within a night = playing order ----
   function renderStreaks(list){
-    const seq=list.slice().sort((a,b)=>a.date.localeCompare(b.date)||(a.matchId-b.matchId));
+    // Within a day, the order DUPR rated the matches (as the current-streak teaser uses);
+    // matchId isn't chronological.
+    const seq=list.slice().sort((a,b)=>a.date.localeCompare(b.date)||(ordOf(a)-ordOf(b))||(a.matchId-b.matchId));
     const after=[],first=[];let runs=[];
     seq.forEach((m,i)=>{const p=seq[i-1];
       if(!p||p.date!==m.date){first.push(m);return;}
@@ -1913,22 +1929,28 @@
       ['After a loss','same night',after.filter(x=>!x.won).map(x=>x.m)],
       ['After 2+ wins in a row','same night',after.filter(x=>x.won&&x.k>=2).map(x=>x.m)],
       ['After 2+ losses in a row','same night',after.filter(x=>!x.won&&x.k>=2).map(x=>x.m)]]);
-    byId('stkHint').textContent='Matches in the order they were entered in DUPR, taken as the order you played them. '
-      +'“After a loss” compares your next match that night with what the ratings expected, so a tough next draw doesn’t count against you.';
+    // Typical longest run by chance for n matches at win rate p: about ln(n·(1−p)) / ln(1/p).
+    const n=seq.length,p=n?seq.filter(m=>m.won).length/n:0,run=(q,r)=>q>0&&q<1&&n*r>1?Math.round(Math.log(n*r)/Math.log(1/q)):null;
+    const cw=run(p,1-p),cl=run(1-p,p);
+    byId('stkHint').textContent='Matches in the order DUPR rated them, taken as the order you played them. '
+      +'“After a loss” compares your next match that night with what the ratings expected, so a tough next draw doesn’t count against you.'
+      +(cw!=null&&cl!=null?` With your ${Math.round(p*100)}% win rate over ${n} matches, chance alone typically produces a longest win streak of about ${cw} and a longest losing streak of about ${cl}.`:'');
   }
   let pxSort='under',pxAll=false;
   function renderIndex(list){
     const opp=pplMode==='opp',who=opp?'Opponent':'Partner';
     let unrated=0;
-    const rows=peopleOf(list).map(r=>{
+    let rows=peopleOf(list).map(r=>{
       const s=expStats(r.ms);if(!s){unrated++;return null;}
       const ms=r.ms.filter(m=>m.diffPre!=null);
       return {...r,...s,edge:ms.reduce((s,m)=>s+m.diffPre,0)/ms.length};
-    }).filter(Boolean).filter(matchName);
+    }).filter(Boolean);
+    // The Strong cutoff allows for every person in the table, so count them before the name search.
+    const kSig=rows.filter(r=>r.n>=PPL_MIN).length;rows=rows.filter(matchName);
     const ord={under:(a,b)=>a.woe-b.woe,over:(a,b)=>b.woe-a.woe,exp:(a,b)=>b.expPct-a.expPct}[pxSort];
     rows.sort((a,b)=>ord(a,b)||(b.n-a.n)||a.name.localeCompare(b.name));
     const solid=rows.filter(r=>r.n>=PPL_MIN),low=rows.filter(r=>r.n<PPL_MIN);
-    const conf=r=>sigPill(r,solid.length);
+    const conf=r=>sigPill(r,kSig);
     const row=(r,tags)=>{
       // Tagged only when the signal is Some or Strong, whatever the odds were.
       const tag=!tags?'':r.z<=-2?'<span class="ptag worst">Below expected</span>'
@@ -1943,6 +1965,8 @@
     byId('pxHint').textContent=opp
       ?'How you should do against each opponent given everyone’s DUPR at the time, against how you actually did. Top of the list: the opponents you should be beating more.'
       :'How each partnership should do given everyone’s DUPR at the time, against how it actually did. Top of the list: the partners you should be winning more with.';
+    // What chance alone produces in a table this size (|z|≥1 ≈ 31.7% of rows, |z|≥2 ≈ 4.6%).
+    if(kSig>=3)byId('pxHint').textContent+=` By luck alone, about ${Math.round(.317*kSig)} of these ${kSig} would show Leaning or stronger, and about ${(.0455*kSig).toFixed(1)} would show Some.`;
     byId('pxTable').innerHTML=`<thead><tr><th>${who}</th><th>M</th><th title="On average, how often the ratings say you should win these">Expected win%</th><th>Win%</th>`
       +`<th title="The win–loss record the ratings predict">Expected W–L</th><th>W–L</th><th title="Your real wins minus the wins the ratings predicted. Positive = you did better than expected">Wins vs expected</th>`
       +`<th title="How your point margin compares with what the ratings predicted. Positive = you win by more than expected">Margin vs expected</th><th title="How sure we can be this is a real pattern and not just luck">Signal</th></tr></thead><tbody>`
@@ -2065,16 +2089,18 @@
     const tagN=pplSort==='now'?0:solid.length>=6?3:solid.length>=2?1:0;
     const head=`<thead><tr><th>${who}</th><th>M</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>Value</th>`
       +`<th title="Your average DUPR change per match">DUPR change / match</th><th title="Your total DUPR change across these matches">DUPR change total</th>`
-      +`<th title="Share of matches where your rating went up, i.e. you did better than DUPR expected">Beat exp.</th><th>DUPR now</th></tr></thead>`;
+      +`<th title="Share of matches where your rating went up (a 0.000 change isn't counted)">Rating went up</th><th>DUPR now</th></tr></thead>`;
     const row=(r,i,n,tags)=>{
-      const tag=!tags?'':i<tagN?'<span class="ptag best">Best</span>':i>=n-tagN?'<span class="ptag worst">Worst</span>':'';
+      // Only when the Signal clears |z| ≥ 2: a top-of-the-list spot alone is usually luck.
+      const z=tags?(expStats(r.ms)||{z:0}).z:0;
+      const tag=!tags?'':i<tagN&&z>=2?'<span class="ptag best">Best ↑</span>':i>=n-tagN&&z<=-2?'<span class="ptag worst">Worst ↓</span>':'';
       return`<tr class="clk${pplSel===r.id?' on':''}" data-pid="${enc(r.id)}"><td><span class="evname" title="${enc(r.name)}">${enc(r.name)}</span>${tag}`
         +`<span class="evtd">${lastPlayedTxt(r.last)}</span></td>`
         +`<td class="mono" data-l="M">${r.g.n}</td><td class="mono" data-l="W–L">${r.g.wins}–${r.g.losses}</td>`
         +`<td class="mono" data-l="Win %">${pct(r.g.winFrac)}</td><td class="mono" data-l="Pts %">${pct(r.g.ptsFrac)}</td>`
         +`<td class="mono" data-l="Margin">${sgn(r.g.normMargin)}</td><td class="mono valcell" data-l="Value">${r.g.value.toFixed(1)}</td>`
         +impCell(r.g.impAvg,'DUPR change / match')+impCell(r.g.impSum,'DUPR change total')
-        +`<td class="mono" data-l="Beat exp.">${pct(r.g.upFrac)}</td>`
+        +`<td class="mono" data-l="Rating went up">${pct(r.g.upFrac)}</td>`
         +`<td class="mono" data-l="DUPR now">${f2(r.now)}</td></tr>`;};
     const empty=t=>`<tr class="dim"><td colspan="11" class="caphint">${t}</td></tr>`;
     byId('pplTitle').textContent=(opp?'Opponents':'Partners')+` — ${PPL_MIN}+ matches`;
@@ -2108,11 +2134,14 @@
   document.querySelectorAll('.recentT button').forEach(b=>b.onclick=()=>{recent60=b.dataset.r==='1';syncRecent();render();});
   // ---- matchup predictor (independent of filters; reuses MODEL) ----
   (function initPredict(){
-    const players={};   // name -> current rating, from your own match history
-    OWN.matches.forEach(m=>{const add=p=>{if(!p||!p.name)return;const r=num(p.ratingNow);if(r!=null)players[p.name]=r;};
+    // Players from your own history, keyed by DUPR id so two people with the same name stay
+    // apart (each option carries its rating, which is what gets used).
+    const byPid=new Map();
+    OWN.matches.forEach(m=>{const add=p=>{if(!p||!p.name||p.id==null)return;const r=num(p.ratingNow);if(r!=null)byPid.set(String(p.id),{name:titleCase(p.name),r});};
       (m.opponents||[]).forEach(add);if(m.partner)add(m.partner);});
-    const list=Object.keys(players).sort((a,b)=>a.localeCompare(b));
-    byId('pdPlayers').innerHTML=list.map(n=>`<option value="${enc(n+' ('+players[n].toFixed(2)+')')}"></option>`).join('');
+    const ppl=[...byPid.values()].sort((a,b)=>a.name.localeCompare(b.name)||b.r-a.r);
+    const players={};ppl.forEach(p=>{if(players[p.name]==null)players[p.name]=p.r;});   // typed exact name -> first match
+    byId('pdPlayers').innerHTML=ppl.map(p=>`<option value="${enc(p.name+' ('+p.r.toFixed(2)+')')}"></option>`).join('');
     const resolve=v=>{v=(v||'').trim();if(!v)return null;
       const mm=v.match(/\(([\d.]+)\)\s*$/);if(mm)return +mm[1];            // "Name (3.52)"
       if(players[v]!=null)return players[v];                               // exact name

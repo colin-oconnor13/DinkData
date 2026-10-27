@@ -48,8 +48,8 @@ work but hasn't been tested.
 
 - **Overview:** headline numbers for any filter (year, event type, level, event, partner),
   performance by event, rating by event.
-- **Analysis:** rating over time, rolling 20-match form, performance by date and by matchup
-  strength, close games & deciders, streaks & bounce-back, and the full match log.
+- **Trends:** rolling 20-match form, performance by event, by date and by matchup strength,
+  close games & deciders, streaks & bounce-back. **Matches:** the full match log.
 - **Opponents & Partners:** the Partner / Opponent Index (expected vs actual results), ranked
   lists with your DUPR change per match, and patterns: you vs your partner's rating, balanced vs
   lopsided opponents, repeat meetings.
@@ -59,12 +59,15 @@ Anyone or anything with fewer than 4 matches is shown separately as a small samp
 ## How "expected" works
 
 Expected win % = `1 / (1 + 10^(−Δ / S))`, where Δ is (your DUPR + partner's) / 2 minus the
-opponents' average, everyone's rating going into the match. S is fitted to **your own** matches.
+opponents' average, everyone's rating going into the match (all edges, Avg opponent and Value
+use ratings going into the match; after-match ratings already contain the result). S is fitted to
+**your own** matches; expected margin is a straight line through zero on Δ, so both are measured
+against the ratings. Matches entered into DUPR weeks late, and singles, are left out.
 **Wins vs expected** = actual wins − expected wins; **Signal** says whether that gap is bigger than
 chance, weighing your points (margin vs expected) as well as your wins, with an arrow for the
 direction. Strong means beyond chance even allowing for how many people the table lists (about
 3.3× for 45 people, never below 2×); Some is 2× or more; Leaning is 1–2× (a direction only);
-otherwise Could be luck.
+otherwise Could be luck. Each Index table also says how many of each to expect from luck alone.
 
 ## Good to know
 
