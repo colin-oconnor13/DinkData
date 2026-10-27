@@ -2367,18 +2367,15 @@
     // Why this row sits where it does, in words: record vs what the ratings expected, whether the
     // points agree, how much luck could explain, the verdict, and how many more matches would settle it.
     const zc=zCrit(k);
-    const why=r=>{const s=r.s,nm=r.name.split(' ')[0],a=Math.abs(s.woe),z=zA(r),W=opp?'Against':'With';
-      let t=`${W} ${nm} you went ${s.w}–${s.n-s.w}${r.ms.length>s.n?` in the ${s.n} rated matches`:''}. The ratings gave you ${pct(s.expPct)} a match on average, so they expected about ${s.exp.toFixed(1)} wins`
-        +(a<0.5?': right about what you got.':`: you got ${a.toFixed(1)} ${s.woe>0?'more':'fewer'}.`);
-      const pa=s.mres!=null&&Math.abs(s.mres)>=0.3&&a>=0.5,agree=pa&&(s.mres>0)===(s.woe>0);
-      if(s.mres!=null){t+=` On points you were ${(s.mres>=0?'+':'−')+Math.abs(s.mres).toFixed(1)} per game to 11 against expected`;
-        t+=(Math.abs(s.mres)>=0.3&&a>=0.5&&(s.mres>0)!==(s.woe>0))?', the opposite way to the wins, so the two partly cancel out.':(Math.abs(s.mres)>=0.3&&a>=0.5)?', which backs up the wins.':'.';}
-      const L=`luck alone could move the wins by about ±${r.rng.toFixed(1)}`;
-      t+=` With ${s.n} matches, `+(a<r.rng&&z>=2&&agree?`${L}. The wins alone are inside that, but the points push the same way, so together this is `
-        :a>=r.rng&&z<2&&s.mres!=null?`${L}. The wins are past that, but the points don’t back them up, so overall this is `:`${L}, so this is `)
-        +(z<1?'<b>Too early</b>: well within what luck produces.':z<2?'<b>Leaning</b>: a direction, not proof yet.':z<zc?`<b>Likely</b>: beyond normal luck, though in a list of ${k} one or two can get there by chance.`:'<b>Clear</b>: very unlikely to be luck.');
-      const tg=z<2?2:zc;if(z>=0.5&&z<zc){const more=Math.ceil(s.n*(tg/z)**2)-s.n;
-        t+=` If it carries on like this, about ${more} more match${more>1?'es':''} ${opp?'against them':'together'} would make it ${tg===2?'Likely':'Clear'}.`;}
+    const why=r=>{const s=r.s,a=Math.abs(s.woe),z=zA(r),rec=`${s.w}–${s.n-s.w}${r.ms.length>s.n?` (${s.n} rated)`:''}`;
+      const pa=s.mres!=null&&Math.abs(s.mres)>=0.3&&a>=0.5,agree=pa&&(s.mres>0)===(s.woe>0),lk=`±${r.rng.toFixed(1)}`;
+      const word=z<1?'<b>Too early</b>':z<2?'<b>Leaning</b>':z<zc?'<b>Likely</b>':'<b>Clear</b>';
+      let t=a<0.5?`${rec}, about the ${s.exp.toFixed(1)} wins the ratings expected.`:`${rec} vs ${s.exp.toFixed(1)} wins expected (${s.woe>0?'+':'−'}${a.toFixed(1)}).`;
+      if(s.mres!=null&&a>=0.5)t+=` Points ${(s.mres>=0?'+':'−')+Math.abs(s.mres).toFixed(1)} per 11 `+(Math.abs(s.mres)<0.3?'about as expected.':agree?'back it up.':'pull the other way.');
+      t+=' '+(a<r.rng&&z>=2&&agree?`Wins alone are within luck (${lk}), but the points tip it: ${word}.`
+        :a>=r.rng&&z<2&&s.mres!=null?`Wins are past luck (${lk}), but the points don’t back them: ${word}.`
+        :z<2?`Luck could explain ${lk}: ${word}.`:`Beyond luck (${lk}): ${word}.`);
+      const tg=z<2?2:zc;if(z>=0.5&&z<zc){const more=Math.ceil(s.n*(tg/z)**2)-s.n;t+=` ~${more} more matches like this → ${tg===2?'Likely':'Clear'}.`;}
       return t;};
     const row=r=>{const v=r.s.woe,pos=v>=0,e=zA(r)<1,w=!e&&zA(r)<2,L=at(Math.min(v,0)),R=at(Math.max(v,0)),o=plOpen===r.id;
       const wl=r.ms.filter(m=>m.won).length;
