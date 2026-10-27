@@ -267,7 +267,8 @@
   .pplbar{position:sticky;top:var(--fbh,0px);z-index:4;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg);padding:6px 0 12px;margin-top:-6px}
   .toggle.big button{font-size:13.5px;padding:7px 18px}
   .crow.clk{cursor:pointer} .crow .pdet{grid-column:1/-1;font-size:12.5px;color:var(--muted);background:var(--surface-2);border-radius:8px;padding:7px 10px}
-  .crow .pdet a{color:var(--accent);cursor:pointer} .crow .pwhy{color:var(--ink);font-size:13.5px;line-height:1.5;margin-bottom:6px}
+  .crow .pdet a{color:var(--accent);cursor:pointer}
+  .pltip{position:fixed;z-index:30;max-width:360px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13px;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none} .crow .pwhy{color:var(--ink);font-size:13.5px;line-height:1.5;margin-bottom:6px}
   /* partner list diverging bars */
   .pw{display:grid;grid-template-columns:150px 1fr 60px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
   .pw:first-child{border-top:0}
@@ -2358,7 +2359,7 @@
       const ps=r.ms.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId)&&m.confirmed!==false).map(m=>MODEL.pWin(m.diffPre));
       return {id:r.id,name:r.name,ms:r.ms,s,rng:2*Math.sqrt(ps.reduce((t,p)=>t+p*(1-p),0))};}).filter(Boolean).filter(matchName);
     byId('plTitle').textContent=opp?'Your opponents':'Your partners';
-    byId('plHint').textContent=`Wins ${opp?'against':'with'} each ${who} minus what the ratings expected. The thin line is the range luck alone could produce. Grouped by Signal, which also counts your points. ${TAP} a name to see why${TOUCH?'':' (or hover)'}. ${PPL_MIN}+ matches.`;
+    byId('plHint').textContent=`Extra wins (or fewer) ${opp?'against':'with'} each ${who}, compared with what the ratings predicted. The thin line shows normal luck. ${TOUCH?'Tap':'Click or hover over'} a name to see why.`;
     card.hidden=false;
     if(!rows.length){byId('pl').innerHTML=`<div class="caphint" style="padding:4px 0">${emptyWhy(who)}</div>`;return;}
     rows.sort((a,b)=>b.s.woe-a.s.woe);
@@ -2367,30 +2368,42 @@
     // Why this row sits where it does, in words: record vs what the ratings expected, whether the
     // points agree, how much luck could explain, the verdict, and how many more matches would settle it.
     const zc=zCrit(k);
-    const why=r=>{const s=r.s,a=Math.abs(s.woe),z=zA(r),rec=`${s.w}–${s.n-s.w}${r.ms.length>s.n?` (${s.n} rated)`:''}`;
-      const pa=s.mres!=null&&Math.abs(s.mres)>=0.3&&a>=0.5,agree=pa&&(s.mres>0)===(s.woe>0),lk=`±${r.rng.toFixed(1)}`;
-      const word=z<1?'<b>Too early</b>':z<2?'<b>Leaning</b>':z<zc?'<b>Likely</b>':'<b>Clear</b>';
-      let t=a<0.5?`${rec}, about the ${s.exp.toFixed(1)} wins the ratings expected.`:`${rec} vs ${s.exp.toFixed(1)} wins expected (${s.woe>0?'+':'−'}${a.toFixed(1)}).`;
-      if(s.mres!=null&&a>=0.5)t+=` Points ${(s.mres>=0?'+':'−')+Math.abs(s.mres).toFixed(1)} per 11 `+(Math.abs(s.mres)<0.3?'about as expected.':agree?'back it up.':'pull the other way.');
-      t+=' '+(a<r.rng&&z>=2&&agree?`Wins alone are within luck (${lk}), but the points tip it: ${word}.`
-        :a>=r.rng&&z<2&&s.mres!=null?`Wins are past luck (${lk}), but the points don’t back them: ${word}.`
-        :z<2?`Luck could explain ${lk}: ${word}.`:`Beyond luck (${lk}): ${word}.`);
-      const tg=z<2?2:zc;if(z>=0.5&&z<zc){const more=Math.ceil(s.n*(tg/z)**2)-s.n;t+=` ~${more} more matches like this → ${tg===2?'Likely':'Clear'}.`;}
+    // "about 4–5" for 4.5, "about 6" for 6.1: half-wins don't exist, and a range reads as an estimate.
+    const about=v=>Math.abs(v-Math.round(v))<0.25?String(Math.round(v)):`${Math.floor(v)}–${Math.ceil(v)}`;
+    const why=r=>{const s=r.s,a=Math.abs(s.woe),z=zA(r),nm=r.name.split(' ')[0],up=s.woe>0;
+      const sc=s.mres==null||Math.abs(s.mres)<0.3?0:(s.mres>0)===up?1:-1,luck=Math.max(1,Math.round(r.rng));
+      let t=`<b>${s.w}–${s.n-s.w} ${opp?'against':'with'} ${enc(nm)}.</b> `;
+      if(a<0.5)t+=`About what the ratings expected (${about(s.exp)}).`;
+      else{t+=`The ratings expected about ${about(s.exp)}.<br>You won ${a<1.25?'1':about(a)} ${up?'more':'fewer'} than expected`
+        +(sc>0?(up?', and the scores back it up.':', and the scores were worse than expected too.'):sc<0?(up?', but the games were closer than that, so some of it was winning the close ones.':', but the scores were better than that, so some of it was losing the close ones.'):'.');}
+      t+='<br>';
+      if(z<1&&a<0.5)t+='Nothing to read into yet.';
+      else if(z<2){t+=`<b>Too early to be sure:</b> over ${s.n} matches, luck alone can swing results by about ${luck} win${luck>1?'s':''} either way.`;
+        if(z>=0.5){const more=Math.ceil(s.n*(2/z)**2)-s.n;t+=` About ${more} more match${more>1?'es':''} ${opp?'against them':'together'} would tell you if it’s real.`;}}
+      else t+=(a<r.rng?'The wins alone could be luck, but with the scores it’s ':`Over ${s.n} matches that’s `)+'more than luck usually explains, so '
+        +(opp?(up?'you really do play well against them.':'they really do have your number.'):(up?'you two really do play well together.':'this pairing really is underperforming.'));
       return t;};
     const row=r=>{const v=r.s.woe,pos=v>=0,e=zA(r)<1,w=!e&&zA(r)<2,L=at(Math.min(v,0)),R=at(Math.max(v,0)),o=plOpen===r.id;
       const wl=r.ms.filter(m=>m.won).length;
-      return `<div class="crow clk${e?' early':w?' watch':''}" data-pl="${enc(r.id)}"${TOUCH?'':` title="${enc(why(r).replace(/<\/?b>/g,''))}"`}><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.ms.length} matches · ${wl}–${r.ms.length-wl} · ${sigPill(r.s,k)}</div></div>`
+      return `<div class="crow clk${e?' early':w?' watch':''}" data-pl="${enc(r.id)}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.ms.length} matches · ${wl}–${r.ms.length-wl} · ${sigPill(r.s,k)}</div></div>`
         +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(v-r.rng).toFixed(1)}%;width:${(at(v+r.rng)-at(v-r.rng)).toFixed(1)}%"></span>`
         +`<i style="left:${L.toFixed(1)}%;width:${(R-L).toFixed(1)}%;background:${e?'var(--dot-dim)':pos?'var(--win)':'var(--loss)'}"></i></div>`
         +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(v).toFixed(1)}${e||w?'':pos?' ▲':' ▼'}</div>`
         +(o?`<div class="pdet"><div class="pwhy">${why(r)}</div>${r.s.imp!=null?`DUPR ${ptsTxt(r.s.imp,true)} / match · `:''}<a data-plgo="${enc(r.id)}">See the ${r.ms.length} matches →</a></div>`:'')+`</div>`;};
     const top=rows.filter(r=>zA(r)>=2),watch=rows.filter(r=>zA(r)>=1&&zA(r)<2),early=rows.filter(r=>zA(r)<1),pl=n=>`${n} ${who}${n>1?'s':''}`;
-    byId('pl').innerHTML=(top.length?top.map(row).join(''):`<div class="caphint" style="padding:2px 0 6px">No ${who} stands out from luck yet.</div>`)
-      +(watch.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watch.length)}</div><div class="caphint" style="padding:0 0 4px">Leaning one way, still within luck: about 1 in 3 land here by chance alone${k>=3?` (${Math.round(k/3)} of these ${k})`:''}.</div>`+watch.map(row).join(''):'')
+    byId('pl').innerHTML=(top.length?top.map(row).join(''):`<div class="caphint" style="padding:2px 0 6px">No ${who} stands out yet. Nobody’s results are far enough from expected to rule out luck.</div>`)
+      +(watch.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watch.length)}</div><div class="caphint" style="padding:0 0 4px">Promising, but could be luck.${k>=3?` With ${k} ${who}s, about ${Math.round(k/3)} would land here by chance.`:''}</div>`+watch.map(row).join(''):'')
       +(early.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${pl(early.length)}</div>`+(plAllEarly?early:early.slice(0,3)).map(row).join('')
         +(early.length>3?`<button class="minibtn" id="plMore" style="margin-top:8px">${plAllEarly?'Show fewer':`Show ${early.length-3} more`}</button>`:''):'');
     const mb=byId('plMore');if(mb)mb.onclick=()=>{plAllEarly=!plAllEarly;renderPL(list);};
-    byId('pl').querySelectorAll('[data-pl]').forEach(el=>el.onclick=e=>{const go=e.target.closest('[data-plgo]');
+    // Desktop hover: the same words in a small box under the pointer (phones open them inline).
+    const tipOf=new Map(rows.map(r=>[r.id,why(r)]));let tip=byId('plTip');
+    if(!tip){tip=document.createElement('div');tip.id='plTip';tip.className='pltip';tip.hidden=true;document.body.appendChild(tip);}
+    if(!TOUCH)byId('pl').querySelectorAll('[data-pl]').forEach(el=>{const id=dec(el.dataset.pl);
+      el.onmousemove=e=>{if(plOpen===id){tip.hidden=true;return;}tip.innerHTML=tipOf.get(id);tip.hidden=false;
+        tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-10)+'px';tip.style.top=Math.min(e.clientY+16,innerHeight-tip.offsetHeight-10)+'px';};
+      el.onmouseleave=()=>tip.hidden=true;});
+    byId('pl').querySelectorAll('[data-pl]').forEach(el=>el.onclick=e=>{tip.hidden=true;const go=e.target.closest('[data-plgo]');
       if(go){pplSel=dec(go.dataset.plgo);render();byId('pplLogCard').scrollIntoView({behavior:SMOOTH,block:'start'});return;}
       const id=dec(el.dataset.pl);plOpen=plOpen===id?'':id;renderPL(list);});
   }
