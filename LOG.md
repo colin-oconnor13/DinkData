@@ -2,6 +2,15 @@
 
 Newest first.
 
+## 2026-10-27 — Active filter can't be missed (branch review-all)
+Filters apply on every tab, and one set by tapping an event row was easy to miss (empty Partner
+Index, short match list).
+- When a filter is set or changed, the Filters panel opens. The bar gets a gold outline, the summary
+  is shown in bold, and a **✕ Clear** button sits in the header, so it's visible even when collapsed.
+- Empty Index or partner lists name the filter (or the 60-day switch) and offer ✕ Clear filters or Show all time
+  (`emptyWhy`).
+- SW cache rj-v97.
+
 ## 2026-10-27 — UX review fixes (batch 1, branch review-all)
 From two UX reviews (the first on the live site, the second on this branch).
 - **Trust:** Signal words Clear ●●● / Likely ●●○ / Leaning ●○○ / Too early ○○○; "vs expected"
