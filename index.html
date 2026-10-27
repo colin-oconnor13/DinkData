@@ -578,7 +578,7 @@
     <a class="syncbtn" href="./?demo=1" style="display:inline-block;text-decoration:none;margin-left:6px">👀 See a demo first</a>
   </div>
   <div class="viewbar" id="viewBar" hidden></div>
-  <div class="banner demobar" id="demoBar" hidden>👀 <span><b>Demo:</b> made-up players and matches, to show what Dink Data does with your DUPR history.</span>
+  <div class="banner demobar" id="demoBar" hidden>👀 <span><b>Demo:</b> a real match history with every name, event and venue made up, to show what Dink Data does with yours. Ratings are shifted a little to anonymise it, so a few Signals differ slightly from the real history.</span>
     <a class="dbtn prim" href="./?setup=1">Set up with my DUPR →</a><a class="dbtn" href="./">Exit demo</a></div>
   <div class="banner" id="staleBanner" hidden>⏰ Last synced from DUPR <b><span id="staleDays"></span> days ago</b>. Played since?<button id="bannerFix">🔄 Sync now</button></div>
   <div class="synctip" id="syncTip" hidden></div>
@@ -1763,7 +1763,7 @@
       const sc=m.scores.length?m.scores.map((s,i)=>s+'-'+(m.oppScores[i]??'')).join(', '):'—';
       const imp=m.impact,ih=imp==null?'':`<div class="m-imp ${imp>=0?'imp-up':'imp-dn'} mono">${ptsTxt(imp,true)}</div>`;
       return`<div class="match" data-mid="${m.matchId}"><div class="wl ${m.won?'W':'L'}">${m.won?'W':'L'}</div>
-        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}<div class="m-event">${enc(((levelOf(m)?levelOf(m)+' ':'')+typeOf(m))+' - '+evName(m))}</div></div>
+        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}<div class="m-event">${enc(((levelOf(m)?levelOf(m)+' ':'')+typeOf(m))+' - '+evName(m)+(m.confirmed===false?' · unconfirmed in DUPR':''))}</div></div>
         <div class="m-right"><div class="m-score mono">${sc}</div><div class="m-date mono">${m.date}</div>${ih}</div></div>`;}).join('')+
       (rows.length>12?`<button class="showmore">Show all ${rows.length}</button>`:'');
     const sm=log.querySelector('.showmore');if(sm)sm.onclick=()=>{log.classList.remove('collapsed');sm.remove();};
@@ -1809,10 +1809,13 @@
   const MODEL=(function(){
     // Late-entered matches carry ratings from when DUPR processed them, not when they were
     // played, so their edge is from the wrong time: they sit out the fit (and the Signal).
-    const X=M.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId));
+    const X=M.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId)&&m.confirmed!==false);
     const ll=S=>X.reduce((s,m)=>{const p=1/(1+Math.pow(10,-m.diffPre/S));return s+Math.log(Math.max(1e-12,m.won?p:1-p));},0);
-    let S=0.4,fitted=false;
-    if(X.length>=30){let best=-Infinity;for(let i=10;i<=300;i++){const s=i/100,v=ll(s);if(v>best){best=v;S=s;}}fitted=true;}
+    // S is pulled toward a typical 0.48 in proportion to how little history there is (worth 40
+    // matches), so a short or lucky history can't set an extreme curve.
+    const S0=0.48,N0=40;let S=S0,fitted=false;
+    if(X.length>=30){let best=-Infinity,Sm=S0;for(let i=10;i<=300;i++){const s=i/100,v=ll(s);if(v>best){best=v;Sm=s;}}
+      S=(X.length*Sm+N0*S0)/(X.length+N0);fitted=true;}
     const Y=X.filter(m=>m.normMargin!=null);let a=0,b=0;
     // Expected margin = b·edge, fitted through zero: an even matchup is expected to be even,
     // the same baseline as the win curve. (With an intercept, your usual margin at an even
@@ -1831,9 +1834,27 @@
       rho=vw&&vm?Math.max(0,cov/Math.sqrt(vw*vm)):0;}
     return {S,fitted,n:X.length,nPre:X.filter(m=>m.allPre).length,a,b,sig,rho,pWin,margin};
   })();
+  // Inverse standard normal (Acklam), for turning an exact tail probability back into a z score.
+  function invPhi(p){if(p<=0)return -Infinity;if(p>=1)return Infinity;
+    const a=[-39.69683028665376,220.9460984245205,-275.9285104469687,138.357751867269,-30.66479806614716,2.506628277459239],
+      b=[-54.47609879822406,161.5858368580409,-155.6989798598866,66.80131188771972,-13.28068155288572],
+      c=[-.007784894002430293,-.3223964580411365,-2.400758277161838,-2.549732539343734,4.374664141464968,2.938163982698783],
+      d=[.007784695709041462,.3224671290700398,2.445134137142996,3.754408661907416],pl=.02425;
+    if(p<pl){const q=Math.sqrt(-2*Math.log(p));return (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+    if(p>1-pl){const q=Math.sqrt(-2*Math.log(1-p));return -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5])/((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);}
+    const q=p-.5,r=q*q;return (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q/(((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);}
+  // Wins surprise as a z score from the exact distribution of wins (Poisson-binomial: each match
+  // its own win chance), using the mid-p two-sided tail. At 4–10 matches the normal approximation
+  // over- or under-states it; with many matches the two agree.
+  function winsZ(ps,w){let dist=[1];
+    ps.forEach(p=>{const nx=new Array(dist.length+1).fill(0);dist.forEach((v,k)=>{nx[k]+=v*(1-p);nx[k+1]+=v*p;});dist=nx;});
+    const exp=ps.reduce((s,p)=>s+p,0);if(Math.abs(w-exp)<1e-9)return 0;
+    const gt=dist.slice(w+1).reduce((s,v)=>s+v,0),lt=dist.slice(0,w).reduce((s,v)=>s+v,0),eq=dist[w]||0;
+    const tail=Math.min(.5,(w>exp?gt:lt)+eq/2),z=-invPhi(tail);   // one-sided mid-p, as a z
+    return w>exp?Math.max(0,z):-Math.max(0,z);}
   // Expected-vs-actual for any set of matches (same maths as the index), one table row each.
   function expStats(ms){
-    ms=ms.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId));if(!ms.length)return null;
+    ms=ms.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId)&&m.confirmed!==false);if(!ms.length)return null;
     const ps=ms.map(m=>MODEL.pWin(m.diffPre)),exp=ps.reduce((s,p)=>s+p,0),w=ms.filter(m=>m.won).length;
     const sd=Math.sqrt(ps.reduce((s,p)=>s+p*(1-p),0)),mr=ms.filter(m=>m.normMargin!=null).map(m=>m.normMargin-MODEL.margin(m.diffPre));
     const im=ms.filter(m=>m.impact!=null).map(m=>m.impact);
@@ -1841,7 +1862,7 @@
     // Evidence score z: the wins surprise (zw) and the points surprise (zm, margin vs expected in
     // units of its normal spread) added, then scaled down for how much they overlap (rho), so the
     // same evidence isn't counted twice. Falls back to wins alone without score data.
-    const zw=sd?(w-exp)/sd:0,zm=(MODEL.sig&&mr.length)?mres*Math.sqrt(mr.length)/MODEL.sig:null;
+    const zw=sd?winsZ(ps,w):0,zm=(MODEL.sig&&mr.length)?mres*Math.sqrt(mr.length)/MODEL.sig:null;
     const z=zm==null?zw:(zw+zm)/Math.sqrt(2+2*MODEL.rho);
     return {n:ms.length,w,exp,woe:w-exp,z,zw,zm,expPct:exp/ms.length,mres,imp:im.length?im.reduce((s,v)=>s+v,0)/im.length:null};
   }
@@ -2251,7 +2272,7 @@
       const duprLink=(curId!=null&&/^\d+$/.test(String(curId)))?`<a class="vdupr" href="https://dashboard.dupr.com/dashboard/player/${enc(String(curId))}" target="_blank" rel="noopener">DUPR page ↗</a>`:'';
       bar.innerHTML=`<span>👁 Viewing</span><select id="viewSel"><option value="">${mine}</option>`
         +ids.map(id=>`<option value="${enc(id)}"${id===VIEW?' selected':''}>${enc(nm(SCOUTS[id]))} · ${SCOUTS[id].matches.length} matches</option>`).join('')+`</select>`+duprLink
-        +(VIEW?`<span class="vnote">synced ${enc((SCOUTS[VIEW].generated||'').slice(0,10))} · kept in this browser only${BROWSER?'':', never saved to GitHub'}</span><button class="danger" id="viewDel">Remove</button>`:'');
+        +(VIEW?`<span class="vnote">synced ${enc((SCOUTS[VIEW].generated||'').slice(0,10))}${SCOUTS[VIEW].capped?` · based on their last ${SCOUTS[VIEW].capped} DUPR matches, not their full history`:''} · kept in this browser only${BROWSER?'':', never saved to GitHub'}</span><button class="danger" id="viewDel">Remove</button>`:'');
       byId('viewSel').onchange=e=>setView(e.target.value);
       const del=byId('viewDel');if(del)del.onclick=()=>{if(!del.dataset.sure){del.dataset.sure=1;del.textContent='Tap again to remove';return;}
         IDB.del(VIEW).catch(()=>{}).then(()=>setView(''));};}
@@ -2347,6 +2368,8 @@
       let alsoTxt='';const scouts=[];
       if(Array.isArray(d.scouts)&&d.scouts.length){
         d.scouts.forEach(x=>{try{const sd=duprToData({profile:x.profile,hits:x.hits,now:d.now||{}});
+          // "Me + recent people" fetches at most 150 matches per person (SCOUT_CAP in the bookmark).
+          if((x.hits||[]).length>=150)sd.capped=(x.hits||[]).length;
           if(sd.matches.length)scouts.push(sd);}catch(err){}});
         const k=scouts.length;
         alsoTxt=` Includes ${k} recent player${k===1?'':'s'} to view (👁 bar at the top; this browser only).`;}

@@ -22,6 +22,12 @@ newest match is yesterday, skips viewed players / pb-fresh / saved clean-up edit
 no-op, hides the Clean-up button (export/import/delete) and shows a banner with "Set up with my
 DUPR" (`./?setup=1` opens the sync card) and "Exit demo". The welcome card links to it.
 
+**Numbers regression check:** `python tools/check_numbers.py` loads the app on `?demo=1` in
+headless Chrome/Edge (`tools/_cdp.py`, stdlib only), reads the key tables and compares them with
+`tests/demo_snapshot.json` (dates scrubbed). Run it after any change to the maths; if a change is
+intended, `--update` the snapshot and say why in LOG.md. Regenerating `data/demo.json` also needs
+an `--update`.
+
 ## Architecture
 - `index.html` — the whole app. Async IIFE: fetches `./data/data.json` then
   `./data/overrides.json`, merges committed overrides with `localStorage` (local wins), renders.

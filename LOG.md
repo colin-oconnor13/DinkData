@@ -2,6 +2,20 @@
 
 Newest first.
 
+## 2026-10-27 — numbers regression check; exact Signal tails; smaller fixes
+- **`tools/check_numbers.py`** (+ `tools/_cdp.py`, `tests/demo_snapshot.json`): loads the real app
+  on the demo in headless Chrome/Edge and compares 18 readings (record, KPIs, Matchup Strength,
+  Close Games, streaks, Index tables + hints, Repeat Meetings, lists, events) with the snapshot.
+- **Exact wins surprise** (`winsZ`): Poisson-binomial mid-p tail turned into z, instead of the
+  normal approximation, which overstated small samples (4 wins in 4 even matches: 2.00 → 1.86).
+  Checked against an independent Python version to 4 decimals. Snapshot change: a few 4-match
+  opponent rows move Leaning → Could be luck.
+- **S shrinkage:** the fitted S is pulled toward 0.48 with a weight of 40 matches.
+- **Unconfirmed matches** sit out the model and the Signal and are marked in the match log.
+- **Viewed players** synced via "Me + recent people" (150-match cap) are labelled "based on their
+  last 150 DUPR matches" in the viewing bar (`capped`, set on new syncs).
+- **Demo banner** says ratings are shifted a little to anonymise. SW rj-v93.
+
 ## 2026-10-27 — fixes from the stats/coaching review (checked on real data)
 Checked against Colin's Oct 26 export before and after (241 matches → 238 doubles).
 - **Ratings going into the match everywhere** (`diff = diffPre`, `oppThen` / `partnerThen` from
