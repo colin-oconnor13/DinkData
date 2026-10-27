@@ -214,6 +214,7 @@
   .chartlegend i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
   .chartlegend i.dash{height:0;width:16px;border-top:2px dashed var(--blue);border-radius:0}
   .chartnote{flex-basis:100%;font-size:12px;line-height:1.5;color:var(--muted);margin-top:2px}
+  .chartnote.formline{font-size:14px;color:var(--ink);margin-top:8px} .chartnote .more{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
   .effcell .rng{display:block;font-size:11px;color:var(--muted);font-weight:500}
   @media(max-width:620px){.crow{grid-template-columns:1fr 64px}.crow .cbar{grid-column:1/-1;grid-row:2}}
   /* Tap-to-explain bubble: touch screens never show title text, so a tap shows it here instead. */
@@ -1593,16 +1594,21 @@
       return {t:tms(d),y,up:chg==null?true:chg>=0,dim:!day.some(m=>sub.has(m.matchId)),
         name:`${d} · ${day.length} match${day.length>1?'es':''} (${w}-${day.length-w}) · `
           +`${chg==null?'':ptsTxt(chg,true)+' → '}${y.toFixed(3)}`};});
-    // "Playing at" over your last 20 matches, one point per day, with its luck band (±2 SE).
+    // "Playing at" over your latest 20 matches (whatever the zoom), for the sentence under the chart.
     const seqAll=M.filter(m=>pOf(m)!=null&&m.myPre!=null).sort((a,b)=>a.date.localeCompare(b.date)||(ordOf(a)-ordOf(b)));
-    const ovl=[];for(let i=19;i<seqAll.length;i++){if(i+1<seqAll.length&&seqAll[i+1].date===seqAll[i].date)continue;
-      if(!inZoom(seqAll[i]))continue;const r=playingAt(seqAll.slice(i-19,i+1));
-      if(r&&r.se!=null)ovl.push({t:tms(seqAll[i].date),y:r.R,lo:r.R-2*r.se,hi:r.R+2*r.se});}
-    drawSeries('chart',null,pts,'',{overlay:ovl});
-    const lp=ovl[ovl.length-1];
-    byId('chartLegend').innerHTML=`<span><i style="background:var(--optic)"></i>Your DUPR (▲ up / ▼ down that day)</span>`
-      +(ovl.length?`<span><i class="dash"></i>“Playing at”</span><span><i style="background:var(--accent);opacity:.4"></i>range luck could explain</span>`
-        +(lp?`<div class="chartnote">The <b>blue dashed line</b> is the rating your last 20 matches were worth: if everyone had played to their rating, your results would fit a <b>${lp.y.toFixed(2)}</b> player. Luck alone could explain anything from ${lp.lo.toFixed(2)} to ${lp.hi.toFixed(2)} (the shaded band), so read it as a direction: when it stays above your DUPR for a while, your DUPR has room to rise.</div>`:''):'');
+    const r20=seqAll.length>=20?playingAt(seqAll.slice(-20)):null,lp=r20&&r20.se!=null?{y:r20.R,lo:r20.R-2*r20.se,hi:r20.R+2*r20.se}:null;
+    drawSeries('chart',null,pts);
+    // One plain sentence instead of a second line on the chart (the full line lives on Form).
+    const cur=ME_NOW,gap=lp&&cur!=null?lp.y-cur:null;
+    byId('chartLegend').innerHTML=`<span>▲ rating went up that day · ▼ went down</span>`
+      +(gap==null?'':`<div class="chartnote formline">${gap>0.05?'📈':gap<-0.05?'📉':'➡️'} <b>Lately you’ve been playing like a ${lp.y.toFixed(2)}</b>`
+        +(Math.abs(gap)<=0.05?`, about level with your DUPR of ${cur.toFixed(2)}.`:`, ${gap>0?'above':'below'} your DUPR of ${cur.toFixed(2)}.`)
+        // How far the DUPR sits outside the luck range decides the wording; a hair past the edge is "only just".
+        +(Math.abs(gap)<=0.05?'':(()=>{const out=gap>0?lp.lo-cur:cur-lp.hi;
+          if(out<=0)return ' 20 matches is a small sample, so this could still be luck.';
+          if(out<0.05)return ` That’s probably more than luck, but only just${gap>0?', so your DUPR may have room to rise':''}.`;
+          return gap>0?' That’s more than luck usually explains, so your DUPR may have room to rise.':' That’s more than luck usually explains, so it’s worth a look.';})())
+        +` <span class="more">Based on your last 20 matches · see Form on Trends</span></div>`);
     // Matches per month in the same window: quiet months and busy months read differently.
     const mc={};M.filter(inZoom).forEach(m=>{const k=m.date.slice(0,7);mc[k]=(mc[k]||0)+1;});
     const ks=Object.keys(mc).sort(),mx=Math.max(1,...Object.values(mc));
@@ -1647,7 +1653,8 @@
     drawSeries('chartForm',null,pts,'',{step:fm.step,fmt:fm.fmt,ref:whole,refLabel:'Overall: '+(whole==null?'—':fm.fmt(whole))});
     if(last!=null&&whole!=null){
       byId('formSub').textContent=`· latest ${fm.fmt(last)} vs ${fm.fmt(whole)} overall`;
-      byId('formHint').textContent=`Each point is your last ${ROLL} matches up to that day (within the filters). Above the dashed overall line means you're playing better than your average. `
+      byId('formHint').textContent=(formMetric==='pa'?`“Playing at” is the rating your last ${ROLL} matches were worth: the level of player those results fit, given who you played with and against. `:'')
+        +`Each point is your last ${ROLL} matches up to that day (within the filters). Above the dashed overall line means you're playing better than your average. `
         +`Hover a point for the full numbers, including your DUPR on that day.`;}
   }
 
