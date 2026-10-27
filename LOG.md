@@ -2,6 +2,31 @@
 
 Newest first.
 
+## 2026-10-27 — review build: every mock-up from the stats/coaching review (branch review-all)
+Built from the approved mock-up gallery; reviewed locally on Colin's Oct 26 export before publishing.
+- **Value retired** (option A): gone from the Overview, event / date / people tables and Form;
+  Context shows Avg opponent + Expected win %; people rank by Wins vs expected by default.
+- **Opponent-strength buckets removed**; Matchup Strength adds Expected win %, Wins vs expected and
+  DUPR change / match (Pts%, Value, Opponent columns dropped there).
+- **Record strip:** the expected record and a tick for the expected win %.
+- **Close Games:** Expected win % + Wins vs expected (each game carries its match's win chance).
+- **Upsets:** under 40% / over 60% win chance; "Wins above expected" (underdog matches) replaces Net.
+- **Partner chemistry:** margin vs expected with ±2 SE luck range (was raw margin vs your overall).
+- **Standouts:** ranked by the evidence score with the Signal pill; "Nobody stands out yet" < |z| 2.
+- **Performance by Date:** nights under 6 matches greyed and tagged "few matches".
+- **Playing at** (`playingAt`): rating your last 20 results were worth, as a dashed line with a
+  luck band (clipped) on Rating Over Time, and the default Form metric. Matches per month below
+  the chart. Rating dots are ▲/▼ shapes as well as colours.
+- **Tournament results** card (record, expected, played at, DUPR change), **rating-adjusted splits**
+  (match number in a day, days off, playing up / at / down, partner rated above / below, venue),
+  **What to work on** (only |z| ≥ 2, else the biggest lean and how many more matches would tell),
+  **opponent pairs** (3+ meetings).
+- **Index:** Effect (DUPR) column with likely range (empirical Bayes, `effectsOf`); when results
+  don't spread beyond luck the effect reads "0.00 · within luck". A robustness line: matches with
+  someone whose rating has since moved 0.3+, and which labels change without them (†).
+- Guide: Playing at and Effect (DUPR) added, Value removed, Trends description updated.
+- Regression snapshot updated for these intended changes. SW rj-v95.
+
 ## 2026-10-27 — viewing dropdown sorted
 - The 👁 Viewing dropdown lists My matches first, then viewed players alphabetically by name
   (first name first, case-insensitive) instead of in the order they were synced. SW rj-v94.

@@ -201,6 +201,19 @@
   .tile .l{font-size:12px;color:var(--muted);margin-top:5px}
   .tile .l .sub{color:var(--muted);opacity:.8}
   .help{border-bottom:1px dotted var(--muted);cursor:help}
+  /* Review round: expected record, chemistry luck range, what to work on, months, effects. */
+  .wl-exp{font-size:12px;color:var(--muted);margin-top:7px}
+  .wl-bar{position:relative} .wl-tick{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:1px}
+  .crow{display:grid;grid-template-columns:minmax(110px,190px) 1fr 76px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+  .crow:first-child{border-top:0} .crow .nm{font-weight:700;font-size:13.5px} .crow .sb{font-size:11.5px;color:var(--muted)}
+  .cbar{position:relative;height:18px;border-radius:6px;background:var(--surface-2)} .cbar i{position:absolute;top:3px;bottom:3px;border-radius:4px}
+  .cbar .mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted)} .cbar .ci{position:absolute;top:8px;height:2px;background:var(--ink);opacity:.45}
+  .wtw{margin:4px 0 0;padding-left:18px;line-height:1.6;font-size:14px} .wtw li{margin-bottom:6px}
+  .months{margin-top:6px} .months .mh{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin:4px 0 2px}
+  .chartlegend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-top:4px}
+  .chartlegend i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  .effcell .rng{display:block;font-size:11px;color:var(--muted);font-weight:500}
+  @media(max-width:620px){.crow{grid-template-columns:1fr 64px}.crow .cbar{grid-column:1/-1;grid-row:2}}
   /* Tap-to-explain bubble: touch screens never show title text, so a tap shows it here instead. */
   .taptip{position:fixed;z-index:1000;max-width:min(300px,calc(100vw - 24px));background:var(--surface);color:var(--ink);
     border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13px;line-height:1.4;box-shadow:var(--shadow)}
@@ -617,9 +630,17 @@
   <div id="tab-overview">
     <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Your performance</div><div class="wl-strip" id="wlStrip" hidden></div><div class="clusters" id="kpis"></div></div>
 
+    <div class="card pad" id="wtwCard" style="margin-bottom:16px" hidden>
+      <div class="sect-h" style="margin:0 0 4px">What to work on</div>
+      <div class="caphint" style="padding:0 0 4px">Only what clears the bar for “not just luck”, from the rating-adjusted splits on Trends.</div>
+      <ul class="wtw" id="wtw"></ul>
+    </div>
+
     <div class="card pad" style="margin-bottom:16px">
       <div class="chart-head"><h3>Rating Over Time</h3><div class="zoom" id="zoom"></div></div>
       <div id="chart"></div>
+      <div class="chartlegend" id="chartLegend"></div>
+      <div class="months" id="chartMonths"></div>
     </div>
 
     <div class="card" style="overflow:hidden">
@@ -659,6 +680,12 @@
       <div class="tblscroll"><table id="evTable"></table></div>
     </div>
 
+    <div class="card bd" id="tourCard">
+      <div class="bd-head"><div><div class="sect-h" style="margin:0">Tournament results</div>
+        <div class="caphint" style="padding:4px 0 0">Each tournament as a result: your record, the record the ratings expected, the rating you played at over the event (5+ matches), and what it did to your DUPR.</div></div></div>
+      <div class="tblscroll"><table id="tourTable"></table></div>
+    </div>
+
     <div class="card" style="overflow:hidden">
       <div class="logtop"><h2 id="eventLogTitle">Event Matches</h2></div>
       <div id="eventLog"></div>
@@ -679,11 +706,6 @@
       <div class="tblscroll"><table id="bdTable"></table></div>
     </div>
 
-    <div class="card pad">
-      <div class="sect-h" style="margin:0 0 4px">Who you struggle with</div>
-      <div class="caphint" style="padding:0 0 10px">Your record against opponents grouped by their <b>actual</b> DUPR (not your team's edge). Bar is win %; the number is your average margin per 11.</div>
-      <div id="buckets"></div>
-    </div>
 
     <div class="card bd">
       <div class="bd-head">
@@ -698,6 +720,12 @@
         <div class="caphint" style="padding:4px 0 0" id="stkHint"></div></div></div>
       <div class="kpis" id="stkKpis" style="padding:6px 20px 14px"></div>
       <div class="tblscroll"><table id="stkTable"></table></div>
+    </div>
+
+    <div class="card bd">
+      <div class="bd-head"><div><div class="sect-h" style="margin:0">Rating-adjusted splits</div>
+        <div class="caphint" style="padding:4px 0 0">Your results in different situations against what the ratings expected: do you fade later in a day, come back rusty, or play differently up or down a level? (Gender isn’t in DUPR’s match history, so mixed vs same-gender isn’t possible.)</div></div></div>
+      <div class="tblscroll"><table id="splitTable"></table></div>
     </div>
   </div>
 
@@ -730,7 +758,7 @@
 
     <div class="card pad" style="margin-bottom:16px">
       <div class="sect-h" style="margin:0 0 4px">Upset index</div>
-      <div class="caphint" style="padding:0 0 12px">An <b>upset win</b> = you won when your team's average rating was below your opponents'. <b>Given up</b> = you lost when you were the higher-rated team.</div>
+      <div class="caphint" style="padding:0 0 12px">An <b>upset win</b> = you won when the ratings gave you under a 40% chance. <b>Given up</b> = you lost when they gave you over 60%. Small rating gaps don’t count.</div>
       <div class="utiles" id="upsetTiles"></div>
       <div id="upsetBig"></div>
     </div>
@@ -760,7 +788,7 @@
     </div>
     <div class="card pad" id="chemCard" style="margin-bottom:16px" hidden>
       <div class="sect-h" style="margin:0 0 4px">Partner chemistry</div>
-      <div class="caphint" style="padding:0 0 10px">Your average margin <em>with</em> each partner vs your overall (<span id="chemBase" class="mono"></span>). Bars right of the line = you do better together. 4+ matches.</div>
+      <div class="caphint" style="padding:0 0 10px">Your average margin per 11 points <em>with</em> each partner, minus what the ratings expected for those matches. The thin line is the range luck alone could produce: if it crosses the middle, it could be luck. <span id="chemBase" class="mono" hidden></span>4+ matches.</div>
       <div id="chem"></div>
       <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--win)"></span>Better with them</span><span><span class="swatch" style="background:var(--loss)"></span>Worse together</span></div>
     </div>
@@ -779,7 +807,14 @@
         </div>
       </div>
       <div class="tblscroll"><table id="pxTable"></table></div>
+      <div class="caphint" style="padding:8px 20px 0" id="pxRobust"></div>
       <div class="caphint" style="padding:8px 20px 14px" id="pxModel"></div>
+    </div>
+
+    <div class="card bd" id="pairCard">
+      <div class="bd-head"><div><div class="sect-h" style="margin:0">Opponent pairs you meet most</div>
+        <div class="caphint" style="padding:4px 0 0">The same two opponents together, 3+ times.</div></div></div>
+      <div class="tblscroll"><table id="pairTable"></table></div>
     </div>
 
     <div class="card bd">
@@ -806,7 +841,7 @@
           <div class="caphint" style="padding:4px 0 0" id="pplHint"></div></div>
         <div class="pplctl">
           <select id="pplSort" title="Rank by">
-            <option value="value">Rank by Value</option>
+            <option value="woe">Rank by Wins vs expected</option>
             <option value="win">Rank by Win %</option>
             <option value="pts">Rank by Pts %</option>
             <option value="margin">Rank by Margin</option>
@@ -843,7 +878,7 @@
     <div class="card pad guide">
       <h3>The tabs at the top</h3>
       <div class="gdef"><b>Overview</b><span class="d">Your record, your headline numbers, your rating over time, and your most recent day's matches.</span></div>
-      <div class="gdef"><b>Trends</b><span class="d">The deep dives: recent form, performance by event and by date, matchup strength, who you struggle with by opponent level, close games, and streaks.</span></div>
+      <div class="gdef"><b>Trends</b><span class="d">The deep dives: recent form, performance by event (with tournament results) and by date, matchup strength, close games, streaks, and rating-adjusted splits (time of day, days off, playing up or down a level).</span></div>
       <div class="gdef"><b>Opponents &amp; Partners</b><span class="d">Who you play best and worst <em>with</em> (partners) and <em>against</em> (opponents), vs what the ratings expect — plus a matchup predictor and partner chemistry.</span></div>
       <div class="gdef"><b>Matches</b><span class="d">Your full match log, filterable and sortable.</span></div>
       <div class="gdef"><b>Highlights</b><span class="d">The fun stuff: your upset record, and standout matches like your biggest upset win and biggest blowout.</span></div>
@@ -862,7 +897,7 @@
       <div class="gdef"><b>Win %</b><span class="d">The share of matches you won.</span></div>
       <div class="gdef"><b>Points won %</b><span class="d">Of all the points played, how many you won. A truer measure of how close things were than win–loss alone. It pools every point, so a game to 15 counts a little more than a game to 11.</span></div>
       <div class="gdef"><b>Margin</b><span class="d">On average, how many points you win or lose a game by — rescaled to an 11-point game (games to 15 and 21 are scaled down) so an 11–9 and a 15–12 compare fairly. It's an average of games. <em>+2.0 means you typically win by about 2; −2.0 means you lose by about 2.</em> A single game swings a lot, typically by about 5 points either way of what the ratings expect, so one night is never a trend.</span></div>
-      <div class="gdef"><b>Value</b><span class="d">One overall score combining your win %, points won, and how strong your opponents were. Higher is better — around 60 is a solid, even run; 90+ is a strong one; below 40 is a rough patch. It can go above 100 for a dominant stretch, or against opponents you consistently beat.</span></div>
+      <div class="gdef"><b>Playing at</b><span class="d">The DUPR your recent results were worth: the rating at which the ratings would have expected exactly the wins you got over your last 20 matches. It comes with a range, because 20 matches is still noisy. When it sits above your DUPR for a while, your DUPR has room to rise.</span></div>
       <div class="gdef"><b>DUPR change</b><span class="d">How much a match (or a group of matches) moved your rating — DUPR’s own number, shown as a rating amount like <b>+0.013</b>. It already takes the strength of everyone on court into account.</span></div>
       <div class="gdef"><b>Rating went up</b> <span class="d">How often your rating went <em>up</em> after a match. You can lose a match and still gain rating if you played a strong team closely, and that counts here. Matches with no rating change (0.000) are left out.</span></div>
       <div class="gdef"><b>Avg opponent</b><span class="d">The average DUPR of the opponents in that slice, going into each match. Shows how tough your schedule was.</span></div>
@@ -881,6 +916,7 @@
       <h3>How much to trust a row</h3>
       <p>A few good or bad nights can make any split look dramatic. Two things help you tell a real pattern from a fluke:</p>
       <div class="gdef"><b>Signal</b><span class="d">Weighs your wins <em>and</em> your points against what the ratings expected; the arrow says which way (↑ better, ↓ worse). <span class="pill-ex pe-good">Strong</span> unlikely to be luck alone, even allowing for how many people the table lists. Still worth checking against what you see on court. <span class="pill-ex pe-mid">Some</span> worth watching: on its own it would be unusual, but in a long list one or two like it turn up by chance. <span class="pill-ex pe-mid">Leaning</span> a direction only, well within luck so far. <span class="pill-ex pe-mid">Could be luck</span> within the range of normal chance: don’t read into it. Each table says how many of each to expect from luck alone. Matches entered into DUPR weeks after they were played are left out, since their ratings are from the wrong time.</span></div>
+      <div class="gdef"><b>Effect (DUPR)</b><span class="d">The same pattern in DUPR points: how much better or worse your team plays than its ratings with (or against) someone, with a likely range. People you’ve met only a few times are pulled toward 0, so a 4–0 against a stranger can’t top the list.</span></div>
       <div class="gdef"><b>Small samples</b><span class="d">Anyone you’ve played fewer than <b>4</b> times (or fewer than <b>10</b> games, in the games table) is listed separately and greyed out. One result swings these a lot, so treat them as early hints, not conclusions.</span></div>
     </div>
 
@@ -1259,7 +1295,7 @@
   const deltaCell=v=>`<td class="mono ${v==null?'':(v>=0?'imp-up':'imp-dn')}" data-l="Change">${ptsTxt(v,true)}</td>`;
   const statRow=(g,extra)=>`<td class="mono" data-l="M">${g.n}</td><td class="mono" data-l="Win %">${pct(g.winFrac)}</td>`
     +`<td class="mono" data-l="Pts %">${pct(g.ptsFrac)}</td><td class="mono" data-l="Margin">${sgn(g.normMargin)}</td>`
-    +`<td class="mono valcell" data-l="Value">${g.value.toFixed(1)}</td>${extra||''}`
+    +`${extra||''}`
     +`<td class="mono" data-l="Opponent">${f2(g.oThen)}→${f2(g.oNow)}</td>`;
 
   function render(){
@@ -1297,8 +1333,8 @@
           +tile(sgn(a.normMargin),'','Margin','Average points you win or lose a game by, scaled to an 11-point game.','per 11')
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot c"></span>Context</div><div class="tiles">`
-          +tile(a.value.toFixed(1),'accent','Value','Win %, points won and opponent strength in one score. ~60 is even, 90+ strong; can exceed 100.','')
-          +tile(f2(a.oThen),'','Avg opponent','Average rating of the opponents you faced.',`now ${f2(a.oNow)}`)
+          +tile(f2(a.oThen),'','Avg opponent','Average rating of the opponents you faced, going into each match.',`now ${f2(a.oNow)}`)
+          +(()=>{const rl=list.filter(m=>pOf(m)!=null);return rl.length?tile(pct(rl.reduce((s,m)=>s+pOf(m),0)/rl.length),'','Expected win %','The win % the ratings gave you across these matches: how tough your schedule was.','what the ratings gave you'):'';})()
         +`</div></div>`;
     }
 
@@ -1310,15 +1346,16 @@
       const sp=spanOf(groups[e]);
       return {e,g:agg(groups[e],'then'),end:sp.end,delta:sp.delta,lt:lvlType(groups[e]),min:ds.reduce((a,b)=>a<b?a:b),max:ds.reduce((a,b)=>a>b?a:b)};});
     // Sortable columns (click a header). Default: most recent event first.
-    const evKey={event:r=>r.e.toLowerCase(),m:r=>r.g.n,win:r=>r.g.winFrac,pts:r=>r.g.ptsFrac,margin:r=>r.g.normMargin,value:r=>r.g.value,dupr:r=>r.end,change:r=>r.delta,date:r=>r.max};
+    const evKey={event:r=>r.e.toLowerCase(),m:r=>r.g.n,win:r=>r.g.winFrac,pts:r=>r.g.ptsFrac,margin:r=>r.g.normMargin,dupr:r=>r.end,change:r=>r.delta,date:r=>r.max};
     const ek=evKey[evSort.k]||evKey.date;
     evRows.sort((a,b)=>{const x=ek(a),y=ek(b);const c=(x==null&&y==null)?0:x==null?1:y==null?-1:(typeof x==='string'?x.localeCompare(y):x-y);
       return (c*evSort.dir)||b.max.localeCompare(a.max);});
     const arrow=k=>evSort.k===k?(evSort.dir<0?' ▼':' ▲'):'';
     const eh=(k,l)=>`<th class="sortable" data-k="${k}">${l}${arrow(k)}</th>`;
     const evBody=evRows.map(r=>`<tr class="clk ${r.e.trim().endsWith('🏆')?'champ':''}" data-ev="${enc(r.e)}"><td><span class="evname" title="${enc(r.e)}">${enc(r.e)}</span><span class="evtd">${enc(r.lt)} | ${r.min.slice(0,7)}</span></td>${statRow(r.g,endCell(r.end)+barCell(r.delta)+deltaCell(r.delta))}</tr>`).join('');
-    byId('evTable').innerHTML=`<thead><tr>${eh('event','Event')}${eh('m','M')}${eh('win','Win%')}${eh('pts','Pts%')}${eh('margin','Margin')}${eh('value','Value')}${eh('dupr','DUPR')}<th class="chgbar"></th>${eh('change','Change')}<th>Opponent</th></tr></thead>`+
-      `<tbody>${evBody||'<tr class="dim"><td colspan="10" class="caphint">No matches in this filter.</td></tr>'}</tbody>`;
+    byId('evTable').innerHTML=`<thead><tr>${eh('event','Event')}${eh('m','M')}${eh('win','Win%')}${eh('pts','Pts%')}${eh('margin','Margin')}${eh('dupr','DUPR')}<th class="chgbar"></th>${eh('change','Change')}<th>Opponent</th></tr></thead>`+
+      `<tbody>${evBody||'<tr class="dim"><td colspan="9" class="caphint">No matches in this filter.</td></tr>'}</tbody>`;
+    renderTourneys(list);
     byId('evTable').querySelectorAll('[data-ev]').forEach(tr=>tr.onclick=()=>{F.event=[dec(tr.dataset.ev)];render();});
     byId('evTable').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;
       if(evSort.k===k)evSort.dir*=-1;else evSort={k,dir:k==='event'?1:-1};render();});
@@ -1337,28 +1374,33 @@
         evs:Object.keys(seen),evLabels:Object.keys(seen).map(e=>(seen[e]?`[${seen[e]}] `:'')+e),
         champ:[...new Set(ms.map(m=>evName(m)))].some(e=>champEnd[e]===d),
         late:ms.length>0&&ms.every(m=>LATE.has(m.matchId))};});
-    const dBody=dRows.map(r=>`<tr class="clk ${r.champ?'champ':''}${F.date===r.d?' on':''}" data-d="${r.d}">`+
-      `<td><span class="evname">${enc(dayLabel(r.d))}</span><span class="evtd">${enc(r.evLabels.join(' · '))}${r.late?' · entered late, rating is from months afterwards':''}</span></td>`+
+    // Nights under 6 matches swing a lot: greyed and tagged.
+    const dBody=dRows.map(r=>`<tr class="clk ${r.champ?'champ':''}${F.date===r.d?' on':''}${r.g.n<6?' dim':''}" data-d="${r.d}">`+
+      `<td><span class="evname">${enc(dayLabel(r.d))}</span>${r.g.n<6?'<span class="ptag low">few matches</span>':''}<span class="evtd">${enc(r.evLabels.join(' · '))}${r.late?' · entered late, rating is from months afterwards':''}</span></td>`+
       `${statRow(r.g,endCell(r.end)+barCell(r.delta)+deltaCell(r.delta))}</tr>`).join('');
-    byId('dtTable').innerHTML=`<thead><tr><th>Date</th><th>M</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>Value</th><th>DUPR</th><th class="chgbar"></th><th>Change</th><th>Opponent</th></tr></thead>`+
-      `<tbody>${dBody||'<tr class="dim"><td colspan="10" class="caphint">No matches in this filter.</td></tr>'}</tbody>`;
+    byId('dtTable').innerHTML=`<thead><tr><th>Date</th><th>M</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>DUPR</th><th class="chgbar"></th><th>Change</th><th>Opponent</th></tr></thead>`+
+      `<tbody>${dBody||'<tr class="dim"><td colspan="9" class="caphint">No matches in this filter.</td></tr>'}</tbody>`;
     byId('dtTable').querySelectorAll('[data-d]').forEach(tr=>tr.onclick=()=>{
       F.date=(F.date===tr.dataset.d)?'':tr.dataset.d;render();});
 
     // Matchup-strength breakdown (tab 2)
     const dOf=m=>basis==='now'?m.diffNow:m.diff;
-    const rows=BANDS.map(b=>({b,g:agg(list.filter(m=>dOf(m)!=null&&b.test(dOf(m))))}));
-    const body=rows.map(r=>{const b=r.b,lab=`<span class="bandname"><span class="bandtag" style="background:${b.c}"></span>${b.name}${b.hint?` <small style="color:var(--muted)">${b.hint}</small>`:''}</span>`;
-      if(!r.g)return`<tr class="dim"><td>${lab}</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>`;
-      return`<tr><td>${lab}</td>${statRow(r.g)}</tr>`;}).join('');
-    byId('bdTable').innerHTML=`<thead><tr><th>Matchup (your team − opp)</th><th>M</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>Value</th><th>Opponent</th></tr></thead><tbody>${body}</tbody>`;
+    // Which matches should you enter? Each band against what the ratings expected, and what it
+    // does to your rating on average. Expected always uses ratings going into the match.
+    const body=BANDS.map(b=>{const ms=list.filter(m=>dOf(m)!=null&&b.test(dOf(m))),g=agg(ms);
+      const lab=`<span class="bandname"><span class="bandtag" style="background:${b.c}"></span>${b.name}${b.hint?` <small style="color:var(--muted)">${b.hint}</small>`:''}</span>`;
+      if(!g)return`<tr class="dim"><td>${lab}</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>`;
+      const rl=ms.filter(m=>pOf(m)!=null),e=rl.reduce((s,m)=>s+pOf(m),0),woe=rl.filter(m=>m.won).length-e;
+      return`<tr><td>${lab}</td><td class="mono">${g.n}</td><td class="mono">${pct(g.winFrac)}</td><td class="mono">${rl.length?pct(e/rl.length):'—'}</td>`
+        +`<td class="mono valcell ${woe>=0?'imp-up':'imp-dn'}">${rl.length?(woe>=0?'+':'−')+Math.abs(woe).toFixed(1):'—'}</td><td class="mono">${sgn(g.normMargin)}</td>${impCell(g.impAvg,'DUPR change / match')}</tr>`;}).join('');
+    byId('bdTable').innerHTML=`<thead><tr><th>Matchup (your team − opp)</th><th>M</th><th>Win%</th><th title="What the ratings gave you in these matches">Expected win%</th><th>Wins vs expected</th><th>Margin</th><th title="Your average DUPR change per match in this band">DUPR change / match</th></tr></thead><tbody>${body}</tbody>`;
 
     drawZoom();drawOverall();renderManage();
     // The Opponents & Partners page and the Match Log honour the page-level 60-day filter.
     const recentList=recent60?list.filter(inRecent60):list;
     document.querySelectorAll('.recentNote').forEach(e=>e.textContent=recent60?`${recentList.length} matches in the last 60 days`:'');
     renderLog(recentList,'log');renderLatest();
-    renderPeople(recentList);renderIndex(recentList);renderStandouts(recentList);renderChem(recentList);renderPatterns(recentList);renderBuckets(list);renderClose(list);if(!VIEWING_OTHER)renderHighlights();renderStreaks(list);drawForm(list);
+    renderPeople(recentList);renderIndex(recentList);renderStandouts(recentList);renderChem(recentList);renderPatterns(recentList);renderPairs(recentList);renderClose(list);renderSplits(list);renderWTW(list);if(!VIEWING_OTHER)renderHighlights();renderStreaks(list);drawForm(list);
     if(F.event.length){byId('eventLogTitle').textContent=F.event.length===1?'Matches — '+F.event[0]:F.event.length+' events selected';renderLog(list,'eventLog');}
     else{byId('eventLogTitle').textContent='Event Matches';
       byId('eventLog').innerHTML='<div class="caphint" style="padding:32px 20px;text-align:center">Click an event in <b>Performance by Event</b> above to see its matches here.</div>';}
@@ -1460,10 +1502,13 @@
   function renderWL(){
     const ws=byId('wlStrip');ws.hidden=!M.length;if(!M.length)return;
     const list=WL_LIST.filter(inZoom),w=list.filter(m=>m.won).length,n=list.length,wf=n?w/n:0;
+    const rl=list.filter(m=>pOf(m)!=null),ew=rl.reduce((s,m)=>s+pOf(m),0),rw=rl.filter(m=>m.won).length;
     const win=Z.months?(Z.months===12?'last 12 months':`last ${Z.months} months`):Z.year?Z.year:'all time';
     const last=M.reduce((x,m)=>m.date>x?m.date:x,''),day=M.filter(m=>m.date===last).sort((x,y)=>ordOf(x)-ordOf(y)),dw=day.filter(m=>m.won).length;
-    ws.innerHTML=`<div><div class="lbl">Record · ${win}</div><div class="wl-big"><span class="wl-w">${w}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${n-w}</span><span class="u"> L</span></div></div>`
-      +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i></div></div>`
+    ws.innerHTML=`<div><div class="lbl">Record · ${win}</div><div class="wl-big"><span class="wl-w">${w}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${n-w}</span><span class="u"> L</span></div>`
+      +(rl.length?`<div class="wl-exp">Ratings expected <b>${Math.round(ew)}–${rl.length-Math.round(ew)}</b>${rl.length<n?` in the ${rl.length} rated`:''} · <span class="${rw-ew>=0?'imp-up':'imp-dn'}">${rw-ew>=0?'+':'−'}${Math.abs(rw-ew).toFixed(1)} wins vs expected</span></div>`:'')+`</div>`
+      +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i>${rl.length?`<span class="wl-tick" style="left:${(100*ew/rl.length).toFixed(1)}%" title="The win % the ratings expected: ${pct(ew/rl.length)}"></span>`:''}</div>`
+      +(rl.length?`<div class="wl-exp">▏ marks the win % the ratings expected (${pct(ew/rl.length)})</div>`:'')+`</div>`
       +`<div class="wl-latest" title="Your latest day of play: see Latest matches below"><div class="lbl">Latest · ${dayLabel(last)}</div>`
       +`<div class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}<span class="wl-day">${dw}–${day.length-dw}</span></div></div>`;
     ws.querySelector('.wl-latest').onclick=()=>byId('lastDay').scrollIntoView({behavior:'smooth',block:'center'});
@@ -1496,7 +1541,9 @@
     const box=byId(boxId);box.innerHTML='';
     if(pts.length<2){box.innerHTML='<div class="tip" style="padding:30px 0;text-align:center">Not enough data in this window.</div>';const t0=tipId&&byId(tipId);if(t0)t0.textContent='';return;}
     pts=pts.slice().sort((a,b)=>a.t-b.t);
-    const W=680,H=190,pl=6,pr=42,pt=12,pb=26,ys=pts.map(p=>p.y),ts=pts.map(p=>p.t);
+    const W=680,H=190,pl=6,pr=42,pt=12,pb=26,ov=(opt&&opt.overlay)||[];
+    // Scale to the lines only; the overlay's luck band is clipped to the plot area.
+    const ys=pts.map(p=>p.y).concat(ov.map(p=>p.y)),ts=pts.map(p=>p.t);
     const ymin=Math.floor(Math.min(...ys)/STEP)*STEP,ymax=Math.ceil(Math.max(...ys)/STEP)*STEP;
     const t0=Math.min(...ts),t1=Math.max(...ts);
     const X=t=>t1===t0?(pl+(W-pl-pr)/2):pl+((t-t0)/(t1-t0))*(W-pl-pr);
@@ -1513,8 +1560,15 @@
       const up=p.up!=null?p.up:p.win;
       const fill=p.color||(up==null?null:(up?'var(--win)':'var(--loss)'));
       if(!fill)return '';
-      return `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="${p.dim?2.4:3.6}" opacity="${p.dim?.45:1}" fill="${fill}" stroke="var(--surface)" stroke-width="1.3"><title>${enc(p.name||'')}</title></circle>`;}).join('');
-    box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img"><defs><linearGradient id="fl_${boxId}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--optic)" stop-opacity=".22"/><stop offset="1" stop-color="var(--optic)" stop-opacity="0"/></linearGradient></defs>${grid}${xax}<path d="${line} L${X(pts[pts.length-1].t).toFixed(1)} ${H-pb} L${X(pts[0].t).toFixed(1)} ${H-pb} Z" fill="url(#fl_${boxId})"/><path d="${line}" fill="none" stroke="var(--optic)" stroke-width="2" stroke-linejoin="round"/>${dots}</svg>`;
+      const cx=X(p.t),cy=Y(p.y),r=p.dim?2.6:4.2;
+      // Rating direction as a shape too (▲ up / ▼ down), not only green / clay.
+      if(p.up!=null&&!p.color)return `<path d="M${cx.toFixed(1)} ${(cy+(p.up?-r:r)).toFixed(1)} L${(cx+r).toFixed(1)} ${(cy+(p.up?r*.8:-r*.8)).toFixed(1)} L${(cx-r).toFixed(1)} ${(cy+(p.up?r*.8:-r*.8)).toFixed(1)}Z" opacity="${p.dim?.45:1}" fill="${fill}" stroke="var(--surface)" stroke-width="1"><title>${enc(p.name||'')}</title></path>`;
+      return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${p.dim?2.4:3.6}" opacity="${p.dim?.45:1}" fill="${fill}" stroke="var(--surface)" stroke-width="1.3"><title>${enc(p.name||'')}</title></circle>`;}).join('');
+    // Optional overlay: another line with a shaded range (the "playing at" rating and its luck band).
+    const ovs=ov.filter(p=>p.t>=t0&&p.t<=t1).sort((a,b)=>a.t-b.t);
+    const ovBand=ovs.length>1?`<path d="${ovs.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.hi).toFixed(1)).join(' ')} ${ovs.slice().reverse().map(p=>'L'+X(p.t).toFixed(1)+' '+Y(p.lo).toFixed(1)).join(' ')}Z" fill="var(--accent)" opacity=".13" clip-path="url(#cp_${boxId})"/>`:'';
+    const ovLine=ovs.length>1?`<path d="${ovs.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.y).toFixed(1)).join(' ')}" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="5 3"><title>Playing at (last 20 matches)</title></path>`:'';
+    box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img"><defs><clipPath id="cp_${boxId}"><rect x="${pl}" y="${pt}" width="${W-pl-pr}" height="${H-pt-pb}"/></clipPath><linearGradient id="fl_${boxId}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--optic)" stop-opacity=".22"/><stop offset="1" stop-color="var(--optic)" stop-opacity="0"/></linearGradient></defs>${grid}${xax}<path d="${line} L${X(pts[pts.length-1].t).toFixed(1)} ${H-pb} L${X(pts[0].t).toFixed(1)} ${H-pb} Z" fill="url(#fl_${boxId})"/>${ovBand}<path d="${line}" fill="none" stroke="var(--optic)" stroke-width="2" stroke-linejoin="round"/>${ovLine}${dots}</svg>`;
     const tip=tipId&&byId(tipId);if(tip)tip.textContent=label||'';
   }
   function drawOverall(){
@@ -1536,7 +1590,22 @@
       return {t:tms(d),y,up:chg==null?true:chg>=0,dim:!day.some(m=>sub.has(m.matchId)),
         name:`${d} · ${day.length} match${day.length>1?'es':''} (${w}-${day.length-w}) · `
           +`${chg==null?'':ptsTxt(chg,true)+' → '}${y.toFixed(3)}`};});
-    drawSeries('chart',null,pts);
+    // "Playing at" over your last 20 matches, one point per day, with its luck band (±2 SE).
+    const seqAll=M.filter(m=>pOf(m)!=null&&m.myPre!=null).sort((a,b)=>a.date.localeCompare(b.date)||(ordOf(a)-ordOf(b)));
+    const ovl=[];for(let i=19;i<seqAll.length;i++){if(i+1<seqAll.length&&seqAll[i+1].date===seqAll[i].date)continue;
+      if(!inZoom(seqAll[i]))continue;const r=playingAt(seqAll.slice(i-19,i+1));
+      if(r&&r.se!=null)ovl.push({t:tms(seqAll[i].date),y:r.R,lo:r.R-2*r.se,hi:r.R+2*r.se});}
+    drawSeries('chart',null,pts,'',{overlay:ovl});
+    const lp=ovl[ovl.length-1];
+    byId('chartLegend').innerHTML=`<span><i style="background:var(--optic)"></i>DUPR (▲ up / ▼ down that day)</span>`
+      +(ovl.length?`<span><i style="background:var(--blue)"></i>Playing at, last 20 matches${lp?`: <b>${lp.y.toFixed(2)}</b> (${lp.lo.toFixed(2)}–${lp.hi.toFixed(2)})`:''}</span><span><i style="background:var(--accent);opacity:.4"></i>range luck could explain</span>`:'');
+    // Matches per month in the same window: quiet months and busy months read differently.
+    const mc={};M.filter(inZoom).forEach(m=>{const k=m.date.slice(0,7);mc[k]=(mc[k]||0)+1;});
+    const ks=Object.keys(mc).sort(),mx=Math.max(1,...Object.values(mc));
+    byId('chartMonths').innerHTML=ks.length>1?`<div class="mh">Matches per month</div><svg viewBox="0 0 680 56" role="img">`
+      +ks.map((k,i)=>{const w=632/ks.length,x=6+i*w,h=30*mc[k]/mx;return `<rect x="${(x+2).toFixed(1)}" y="${(36-h).toFixed(1)}" width="${Math.max(3,w-4).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="var(--accent)" opacity=".55"/>`
+        +`<text x="${(x+w/2).toFixed(1)}" y="${(33-h).toFixed(1)}" font-size="9" text-anchor="middle" fill="var(--muted)">${mc[k]}</text>`
+        +`<text x="${(x+w/2).toFixed(1)}" y="50" font-size="9" text-anchor="middle" fill="var(--muted)">${MON[+k.slice(5)-1]}</text>`;}).join('')+`</svg>`:'';
   }
   function drawEvents(list){
     const g={};list.forEach(m=>{if(m.postRating==null)return;const e=evName(m);(g[e]=g[e]||[]).push(m);});
@@ -1550,8 +1619,9 @@
   }
 
   // ---- form: rolling window over the filtered matches, in the order DUPR processed them ----
-  const ROLL=20;let formMetric='value';
-  const FORM={value:{label:'Value',step:10,fmt:v=>v.toFixed(0),of:g=>g.value},
+  const ROLL=20;let formMetric='pa';
+  // "Playing at" = the rating your last 20 results were worth (see playingAt); the others are averages.
+  const FORM={pa:{label:'Playing at',step:0.25,fmt:v=>v.toFixed(2),of:(g,ms)=>{const r=playingAt(ms);return r?r.R:null;}},
     margin:{label:'Margin',step:1,fmt:v=>(v>0?'+':'')+v.toFixed(1),of:g=>g.normMargin},
     win:{label:'Win %',step:10,fmt:v=>v.toFixed(0)+'%',of:g=>g.winFrac*100},
     beat:{label:'Rating went up',step:10,fmt:v=>v.toFixed(0)+'%',of:g=>g.upFrac==null?null:g.upFrac*100}};
@@ -1564,12 +1634,12 @@
     byId('formSub').textContent='';byId('formHint').textContent='';
     if(seq.length<ROLL){box.innerHTML=`<div class="tip" style="padding:30px 0;text-align:center">Needs ${ROLL} matches in this filter (${seq.length} now).</div>`;return;}
     const byDay=new Map();   // one point per day, at that day's last match
-    for(let i=ROLL-1;i<seq.length;i++){const g=agg(seq.slice(i-ROLL+1,i+1),'then'),y=fm.of(g);
+    for(let i=ROLL-1;i<seq.length;i++){const win=seq.slice(i-ROLL+1,i+1),g=agg(win,'then'),y=fm.of(g,win);
       if(y!=null)byDay.set(seq[i].date,{y,g,m:seq[i]});}
     const pts=[...byDay.entries()].map(([d,p])=>({t:tms(d),y:p.y,color:'var(--optic)',
-      name:`${d} · last ${ROLL}: ${p.g.wins}–${p.g.losses}, Value ${p.g.value.toFixed(1)}, Margin ${sgn(p.g.normMargin)}, `
+      name:`${d} · last ${ROLL}: ${p.g.wins}–${p.g.losses}, ${fm.label} ${fm.fmt(p.y)}, Margin ${sgn(p.g.normMargin)}, `
         +`rating went up ${pct(p.g.upFrac)}${p.m.postRating!=null?' · DUPR '+p.m.postRating.toFixed(3):''}`}));
-    const whole=fm.of(agg(seq,'then')),last=pts.length?pts[pts.length-1].y:null;
+    const whole=fm.of(agg(seq,'then'),seq),last=pts.length?pts[pts.length-1].y:null;
     drawSeries('chartForm',null,pts,'',{step:fm.step,fmt:fm.fmt,ref:whole,refLabel:'Overall: '+(whole==null?'—':fm.fmt(whole))});
     if(last!=null&&whole!=null){
       byId('formSub').textContent=`· latest ${fm.fmt(last)} vs ${fm.fmt(whole)} overall`;
@@ -1579,23 +1649,11 @@
 
   // ---- close games & deciders (tab 2): every game, not every match ----
   const GAME_MIN=10;
-  // Record against opponents grouped by their actual DUPR (at the time). "Who you struggle with."
-  function renderBuckets(list){
-    const bands=[['Under 3.0',0,3.0],['3.0 – 3.5',3.0,3.5],['3.5 – 4.0',3.5,4.0],['4.0 – 4.5',4.0,4.5],['Over 4.5',4.5,99]];
-    const rated=list.filter(m=>m.oppThen!=null);
-    byId('buckets').innerHTML=bands.map(([lab,lo,hi])=>{
-      const ms=rated.filter(m=>m.oppThen>=lo&&m.oppThen<hi),g=ms.length?agg(ms,'then'):null;
-      if(!g)return `<div class="bucket dim"><div><div class="bk-label">${lab}</div><div class="bk-sub">0 matches</div></div><div class="bk-barwrap"></div><div class="bk-margin">—</div></div>`;
-      const win=g.winFrac*100,col=win>=50?'var(--win)':'var(--loss)';
-      return `<div class="bucket"><div><div class="bk-label">${lab}</div><div class="bk-sub">${ms.length} matches</div></div>`
-        +`<div class="bk-barwrap"><div class="bk-bar" style="width:${Math.max(win,9).toFixed(0)}%;background:${col}"><span>${win.toFixed(0)}%</span></div><div class="bk-mid"></div></div>`
-        +`<div class="bk-margin ${g.normMargin>=0?'imp-up':'imp-dn'} mono">${sgn(g.normMargin)}</div></div>`;
-    }).join('');
-  }
   function renderClose(list){
     const gs=[];
     list.forEach(m=>{const n=Math.min(m.scores.length,m.oppScores.length);
-      for(let i=0;i<n;i++){const a=m.scores[i],b=m.oppScores[i];if(a!==b)gs.push({a,b,i,of:n});}});
+      // Each game carries its match's win chance (a game is treated like its match).
+      for(let i=0;i<n;i++){const a=m.scores[i],b=m.oppScores[i];if(a!==b)gs.push({a,b,i,of:n,p:pOf(m)});}});
     const by=(lo,hi)=>g=>{const d=Math.abs(g.a-g.b);return d>=lo&&d<=hi;};
     const rows=[
       ['All games','',gs],
@@ -1607,13 +1665,70 @@
     const g3=gs.filter(g=>g.of===3&&g.i===2);if(g3.length)rows.push(['Deciding game 3','best-of-3 matches that went to a third game',g3]);
     const body=rows.map(([name,hint,g])=>{
       const lab=`<span class="evname">${name}</span>${hint?`<span class="evtd">${hint}</span>`:''}`;
-      if(!g.length)return`<tr class="dim"><td>${lab}</td><td class="mono">0</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>`;
+      if(!g.length)return`<tr class="dim"><td>${lab}</td><td class="mono">0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>`;
       const w=g.filter(x=>x.a>x.b).length,pf=g.reduce((s,x)=>s+x.a,0),pa=g.reduce((s,x)=>s+x.b,0),low=g.length<GAME_MIN;
       return`<tr${low?' class="dim"':''}><td>${lab}${low?'<span class="ptag low">small sample</span>':''}</td><td class="mono">${g.length}</td>`
         +`<td class="mono">${w}–${g.length-w}</td><td class="mono">${pct(w/g.length)}</td><td class="mono">${pct(pf/(pf+pa))}</td>`
-        +`<td class="mono">${(pf/g.length).toFixed(1)}–${(pa/g.length).toFixed(1)}</td></tr>`;}).join('');
-    byId('cgTable').innerHTML=`<thead><tr><th>Games</th><th>N</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Avg score</th></tr></thead><tbody>${body}</tbody>`;
-    byId('cgHint').textContent=`Every game in the filtered matches. Games are win-by-2, so "close" is mostly 11–9, 12–10 and so on. Under ${GAME_MIN} games is greyed as a small sample.`;
+        +`<td class="mono">${(pf/g.length).toFixed(1)}–${(pa/g.length).toFixed(1)}</td>`
+        +(()=>{const r=g.filter(x=>x.p!=null),e=r.reduce((s,x)=>s+x.p,0),d=r.filter(x=>x.a>x.b).length-e;
+          return r.length?`<td class="mono">${pct(e/r.length)}</td><td class="mono valcell ${d>=0?'imp-up':'imp-dn'}">${(d>=0?'+':'−')+Math.abs(d).toFixed(1)}</td>`:'<td>—</td><td>—</td>';})()+`</tr>`;}).join('');
+    byId('cgTable').innerHTML=`<thead><tr><th>Games</th><th>N</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Avg score</th><th title="The win % the ratings gave you in these games' matches">Expected win%</th><th>Wins vs expected</th></tr></thead><tbody>${body}</tbody>`;
+    byId('cgHint').textContent=`Every game in the filtered matches. Games are win-by-2, so "close" is mostly 11–9, 12–10 and so on. Under ${GAME_MIN} games is greyed as a small sample. Expected uses each match's win chance for its games.`;
+  }
+  // Tournaments as results: record, expected record, playing-at over the event, DUPR change.
+  function renderTourneys(list){
+    const g={};list.filter(m=>typeOf(m)==='Tournament').forEach(m=>{const e=evName(m);(g[e]=g[e]||[]).push(m);});
+    const rows=Object.keys(g).map(e=>{const ms=g[e],rl=ms.filter(m=>pOf(m)!=null),ex=rl.reduce((s,m)=>s+pOf(m),0),w=ms.filter(m=>m.won).length;
+      return {e,ms,w,n:ms.length,ex,rn:rl.length,woe:rl.filter(m=>m.won).length-ex,pa:playingAt(ms),sp:spanOf(ms),last:ms.reduce((a,m)=>m.date>a?m.date:a,'')};})
+      .sort((a,b)=>b.last.localeCompare(a.last));
+    byId('tourCard').hidden=!rows.length;if(!rows.length)return;
+    byId('tourTable').innerHTML=`<thead><tr><th>Tournament</th><th>W–L</th><th title="The record the ratings expected">Expected</th><th>Wins vs expected</th><th title="The rating your results at this event were worth (5+ rated matches)">Played at</th><th>DUPR change</th></tr></thead><tbody>`
+      +rows.map(r=>`<tr class="clk" data-ev="${enc(r.e)}"><td><span class="evname">${enc(r.e)}</span><span class="evtd">${r.last}</span></td><td class="mono">${r.w}–${r.n-r.w}</td>`
+        +`<td class="mono">${r.rn?r.ex.toFixed(1)+'–'+(r.rn-r.ex).toFixed(1):'—'}</td><td class="mono valcell ${r.woe>=0?'imp-up':'imp-dn'}">${r.rn?(r.woe>=0?'+':'−')+Math.abs(r.woe).toFixed(1):'—'}</td>`
+        +`<td class="mono">${r.pa?r.pa.R.toFixed(2):'—'}</td>${deltaCell(r.sp.delta)}</tr>`).join('')+`</tbody>`;
+    byId('tourTable').querySelectorAll('[data-ev]').forEach(tr=>tr.onclick=()=>{F.event=[dec(tr.dataset.ev)];render();});
+  }
+  // Situations for the rating-adjusted splits (also feed "What to work on").
+  function splitRows(list){
+    const byDay=byDate(list),idx=new Map(),gap=new Map(),days=Object.keys(byDay).sort();
+    days.forEach((d,i)=>{byDay[d].slice().sort((a,b)=>ordOf(a)-ordOf(b)).forEach((m,j)=>{idx.set(m.matchId,j+1);
+      gap.set(m.matchId,i?Math.round((tms(d)-tms(days[i-1]))/864e5):null);});});
+    const lvl=m=>{const l=parseFloat(levelOf(m));return isNaN(l)||m.myPre==null?null:l-m.myPre;};
+    const venues={};list.forEach(m=>{if(m.venue)venues[m.venue]=(venues[m.venue]||0)+1;});
+    const topV=Object.keys(venues).sort((a,b)=>venues[b]-venues[a]).slice(0,2);
+    return [
+      ['1st–2nd match of the day','match number within a day',list.filter(m=>idx.get(m.matchId)<=2)],
+      ['3rd–4th match','',list.filter(m=>{const i=idx.get(m.matchId);return i>=3&&i<=4;})],
+      ['5th match or later','',list.filter(m=>idx.get(m.matchId)>=5)],
+      ['Back within 3 days','days since you last played',list.filter(m=>gap.get(m.matchId)!=null&&gap.get(m.matchId)<=3)],
+      ['4–7 days off','',list.filter(m=>{const g=gap.get(m.matchId);return g!=null&&g>=4&&g<=7;})],
+      ['8+ days off','',list.filter(m=>gap.get(m.matchId)!=null&&gap.get(m.matchId)>=8)],
+      ['Playing up','event level 0.25+ above your rating',list.filter(m=>lvl(m)!=null&&lvl(m)>=0.25)],
+      ['Playing at your level','',list.filter(m=>lvl(m)!=null&&Math.abs(lvl(m))<0.25)],
+      ['Playing down','event level 0.25+ below your rating',list.filter(m=>lvl(m)!=null&&lvl(m)<=-0.25)],
+      ['With a partner rated 0.10+ below you','',list.filter(m=>m.gapPre!=null&&m.gapPre>=0.10)],
+      ['With a partner rated 0.10+ above you','',list.filter(m=>m.gapPre!=null&&m.gapPre<=-0.10)],
+      ...topV.map(v=>[v,'venue',list.filter(m=>m.venue===v)]),
+    ].filter(r=>r[2].length);}
+  // Names go into the table as HTML, so escape them (venues come from the data).
+  function renderSplits(list){expTable('splitTable','Situation',splitRows(list).map(([n,h,ms])=>[enc(n),h,ms]));}
+  // "What to work on": 1–3 plain sentences, only past |z| ≥ 2; otherwise the biggest lean and
+  // roughly how many more such matches would show whether it's real.
+  function renderWTW(list){
+    const c=splitRows(list).map(([n,h,ms])=>({n,s:expStats(ms)})).filter(x=>x.s&&x.s.n>=8).sort((a,b)=>Math.abs(b.s.z)-Math.abs(a.s.z));
+    const card=byId('wtwCard');card.hidden=VIEWING_OTHER||!c.length;if(card.hidden)return;
+    const say=x=>`${x.s.w}–${x.s.n-x.s.w} against an expected ${x.s.exp.toFixed(1)} wins (${x.s.woe>=0?'+':'−'}${Math.abs(x.s.woe).toFixed(1)})`;
+    const hits=c.filter(x=>Math.abs(x.s.z)>=2).slice(0,3);
+    byId('wtw').innerHTML=hits.length?hits.map(x=>`<li><b>${x.s.z>0?'Better':'Worse'} than your rating: ${enc(x.n.toLowerCase())}.</b> ${say(x)}. ${sigPill(x.s,c.length)}</li>`).join('')
+      :(()=>{const x=c[0],need=Math.max(0,Math.ceil(x.s.n*Math.pow(2/Math.max(.3,Math.abs(x.s.z)),2)-x.s.n));
+        return `<li><b>Nothing stands out yet.</b> The biggest lean is ${x.s.z>0?'better':'worse'} results in “${enc(x.n.toLowerCase())}”: ${say(x)}, within luck. At that rate, about <b>${need} more</b> such matches would show whether it’s real.</li>`;})();
+  }
+  // The same two opponents together, met 3+ times.
+  function renderPairs(list){
+    const g=new Map();list.forEach(m=>{const o=(m.opponents||[]).filter(p=>p&&p.id!=null);if(o.length!==2)return;
+      const k=o.map(p=>String(p.id)).sort().join('|');const r=g.get(k)||{name:o.map(p=>p.name).sort().join(' & '),ms:[]};r.ms.push(m);g.set(k,r);});
+    const rows=[...g.values()].filter(r=>r.ms.length>=3).sort((a,b)=>b.ms.length-a.ms.length).slice(0,8);
+    byId('pairCard').hidden=!rows.length;if(rows.length)expTable('pairTable','Opponent pair',rows.map(r=>[enc(r.name),'',r.ms]));
   }
 
   // ---- clean-up panel ----
@@ -1773,7 +1888,7 @@
   // Everyone you've played against (or with) in the filtered matches, ranked. Fewer than
   // PPL_MIN matches is too small a sample to rank on, so those go in a separate, muted list.
   const PPL_MIN=4;
-  let pplMode='opp',pplSort='value',pplSel='',pplAll=false;
+  let pplMode='opp',pplSort='woe',pplSel='',pplAll=false;
   const RECENT_DAYS=60;
   // Page-level report filter: limit the Opponents & Partners page and the Match Log to the
   // last 60 days. Does not touch Overview/Trends/Highlights (Highlights has its own window).
@@ -1784,7 +1899,7 @@
     const ago=days<=1?'today':days<30?days+'d ago':days<365?Math.round(days/30)+'mo ago':(Math.round(days/365*10)/10)+'y ago';
     return 'last played '+d+' · '+ago;};
   // Keys take the person row (r.g = their agg); "now" is their current rating, not a result.
-  const PPL_KEY={value:r=>r.g.value,win:r=>r.g.winFrac,pts:r=>r.g.ptsFrac,margin:r=>r.g.normMargin,
+  const PPL_KEY={woe:r=>{const s=expStats(r.ms);return s?s.woe:null;},win:r=>r.g.winFrac,pts:r=>r.g.ptsFrac,margin:r=>r.g.normMargin,
     impact:r=>r.g.impAvg,beat:r=>r.g.upFrac,now:r=>r.now};
   const impCell=(v,l)=>`<td class="mono ${v==null?'':(v>=0?'imp-up':'imp-dn')}" data-l="${l}">${ptsTxt(v,true)}</td>`;
   function peopleOf(list){
@@ -1795,7 +1910,7 @@
     list.forEach(m=>{
       if(pplMode==='opp')(m.opponents||[]).forEach(o=>add(o,o.name,m));
       else if(m.partner)add(m.partner,m.partnerName,m);});
-    const key=PPL_KEY[pplSort]||PPL_KEY.value;
+    const key=PPL_KEY[pplSort]||PPL_KEY.woe;
     return [...g.values()].map(r=>({...r,g:agg(r.ms,'then')}))
       .sort((a,b)=>((key(b)??-1e9)-(key(a)??-1e9))||(b.g.n-a.g.n)||a.name.localeCompare(b.name));
   }
@@ -1866,6 +1981,31 @@
     const z=zm==null?zw:(zw+zm)/Math.sqrt(2+2*MODEL.rho);
     return {n:ms.length,w,exp,woe:w-exp,z,zw,zm,expPct:exp/ms.length,mres,imp:im.length?im.reduce((s,v)=>s+v,0)/im.length:null};
   }
+  // ---- shared by the review-round views ----
+  // Win chance the ratings gave a match (null for unrated, late-entered or unconfirmed matches).
+  const pOf=m=>(m.diffPre!=null&&!CHART_LATE.has(m.matchId)&&m.confirmed!==false)?MODEL.pWin(m.diffPre):null;
+  // "Playing at": the rating at which the ratings would have expected exactly the wins you got
+  // (your own rating moves your team's average by half), with a standard error.
+  function playingAt(ms){ms=ms.filter(m=>pOf(m)!=null&&m.myPre!=null);if(ms.length<5)return null;
+    const w=ms.filter(m=>m.won).length,f=R=>ms.reduce((s,m)=>s+MODEL.pWin(m.diffPre+(R-m.myPre)/2),0)-w;
+    let lo=1.5,hi=6.5;if(f(lo)>0||f(hi)<0)return null;
+    for(let i=0;i<50;i++){const mid=(lo+hi)/2;if(f(mid)>0)hi=mid;else lo=mid;}
+    const R=(lo+hi)/2,ps=ms.map(m=>MODEL.pWin(m.diffPre+(R-m.myPre)/2));
+    const d=ps.reduce((s,p)=>s+p*(1-p)*Math.LN10/MODEL.S/2,0);
+    return {R,se:d?Math.sqrt(ps.reduce((s,p)=>s+p*(1-p),0))/d:null,n:ms.length};}
+  // Partner / opponent effect in DUPR points of team edge, pulled toward 0 (empirical Bayes) by
+  // how little you've played together; lo..hi is the likely (95%) range.
+  function effectsOf(groups){
+    const raw=groups.map(gr=>{const ms=gr.ms.filter(m=>pOf(m)!=null);if(ms.length<PPL_MIN)return null;
+      const ps=ms.map(pOf),g=ps.reduce((s,p)=>s+p*(1-p)*Math.LN10/MODEL.S,0),w=ms.filter(m=>m.won).length,e=ps.reduce((s,p)=>s+p,0);
+      return g?{id:gr.id,d:(w-e)/g,se:Math.sqrt(ps.reduce((s,p)=>s+p*(1-p),0))/g}:null;}).filter(Boolean);
+    const out=new Map();if(!raw.length)return out;
+    const tau2=Math.max(0,raw.reduce((s,r)=>s+r.d*r.d,0)/raw.length-raw.reduce((s,r)=>s+r.se*r.se,0)/raw.length);
+    raw.forEach(r=>{const k=tau2>0?tau2/(tau2+r.se*r.se):0,sd=tau2>0?Math.sqrt(tau2*r.se*r.se/(tau2+r.se*r.se)):0,eff=r.d*k;
+      out.set(r.id,{eff,lo:eff-1.96*sd,hi:eff+1.96*sd});});
+    out.tau=Math.sqrt(tau2);return out;}
+  // Someone in the match whose rating has since moved 0.3+ (new or provisional ratings).
+  const volatileM=m=>[m.partner,...(m.opponents||[])].some(p=>p&&p.ratingNow!=null&&p.ratingPre!=null&&Math.abs(num(p.ratingNow)-num(p.ratingPre))>0.3);
   // Signal for an evidence score z, judged against the k rows tested in the same table.
   // A list of 45 opponents throws up a |z|≥2 or two by luck alone, so Strong needs to clear a
   // Bonferroni cutoff (two-sided 5% shared across k rows, never below 2); |z|≥2 alone is Some;
@@ -1967,7 +2107,14 @@
       return {...r,...s,edge:ms.reduce((s,m)=>s+m.diffPre,0)/ms.length};
     }).filter(Boolean);
     // The Strong cutoff allows for every person in the table, so count them before the name search.
-    const kSig=rows.filter(r=>r.n>=PPL_MIN).length;rows=rows.filter(matchName);
+    const kSig=rows.filter(r=>r.n>=PPL_MIN).length;
+    const EFF=effectsOf(rows.map(r=>({id:r.id,ms:r.ms})));
+    // Robustness: leave out matches with someone whose rating has since moved 0.3+.
+    const lab=z=>Math.abs(z)>=2?'Some or stronger':Math.abs(z)>=1?'Leaning':'Could be luck',flip=new Map();
+    rows.filter(r=>r.n>=PPL_MIN).forEach(r=>{const s2=expStats(r.ms.filter(m=>!volatileM(m)));
+      if(s2&&s2.n>=PPL_MIN&&lab(s2.z)!==lab(r.z))flip.set(r.id,[lab(r.z),lab(s2.z)]);});
+    const nVol=list.filter(volatileM).length;
+    rows=rows.filter(matchName);
     const ord={under:(a,b)=>a.woe-b.woe,over:(a,b)=>b.woe-a.woe,exp:(a,b)=>b.expPct-a.expPct}[pxSort];
     rows.sort((a,b)=>ord(a,b)||(b.n-a.n)||a.name.localeCompare(b.name));
     const solid=rows.filter(r=>r.n>=PPL_MIN),low=rows.filter(r=>r.n<PPL_MIN);
@@ -1981,7 +2128,11 @@
         +`<td class="mono">${r.n}</td><td class="mono">${pct(r.expPct)}</td><td class="mono">${pct(r.w/r.n)}</td>`
         +`<td class="mono">${r.exp.toFixed(1)}–${(r.n-r.exp).toFixed(1)}</td><td class="mono">${r.w}–${r.n-r.w}</td>`
         +`<td class="mono valcell ${r.woe>=0?'imp-up':'imp-dn'}">${(r.woe>=0?'+':'')+r.woe.toFixed(1)}</td>`
-        +`<td class="mono ${r.mres==null?'':(r.mres>=0?'imp-up':'imp-dn')}">${sgn(r.mres)}</td><td>${conf(r)}</td></tr>`;};
+        +`<td class="mono ${r.mres==null?'':(r.mres>=0?'imp-up':'imp-dn')}">${sgn(r.mres)}</td><td>${conf(r)}${flip.has(r.id)?' <span title="Changes without matches involving a rating that has since moved 0.3+">†</span>':''}</td>`
+        +(()=>{const e=EFF.get(r.id);
+          // No spread beyond luck across the whole table: every effect is 0, so say that plainly.
+          if(e&&EFF.tau<0.005)return `<td class="mono effcell" style="color:var(--muted)">0.00<span class="rng">within luck</span></td>`;
+          return e?`<td class="mono effcell ${e.eff>=0?'imp-up':'imp-dn'}">${e.eff>=0?'+':'−'}${Math.abs(e.eff).toFixed(2)} ${e.eff>=0?'▲':'▼'}<span class="rng">${sgn(e.lo)} to ${sgn(e.hi)}</span></td>`:'<td class="mono">—</td>';})()+`</tr>`;};
     byId('pxTitle').textContent=(opp?'Opponent':'Partner')+' Index — expected vs actual';
     byId('pxHint').textContent=opp
       ?'How you should do against each opponent given everyone’s DUPR at the time, against how you actually did. Top of the list: the opponents you should be beating more.'
@@ -1990,11 +2141,15 @@
     if(kSig>=3)byId('pxHint').textContent+=` By luck alone, about ${Math.round(.317*kSig)} of these ${kSig} would show Leaning or stronger, and about ${(.0455*kSig).toFixed(1)} would show Some.`;
     byId('pxTable').innerHTML=`<thead><tr><th>${who}</th><th>M</th><th title="On average, how often the ratings say you should win these">Expected win%</th><th>Win%</th>`
       +`<th title="The win–loss record the ratings predict">Expected W–L</th><th>W–L</th><th title="Your real wins minus the wins the ratings predicted. Positive = you did better than expected">Wins vs expected</th>`
-      +`<th title="How your point margin compares with what the ratings predicted. Positive = you win by more than expected">Margin vs expected</th><th title="How sure we can be this is a real pattern and not just luck">Signal</th></tr></thead><tbody>`
-      +(solid.map(r=>row(r,true)).join('')||`<tr class="dim"><td colspan="9" class="caphint">No ${who.toLowerCase()} has ${PPL_MIN}+ rated matches in this filter.</td></tr>`)
-      +(low.length?`<tr class="sep"><td colspan="9">Small samples — 1 to ${PPL_MIN-1} matches · low reliability</td></tr>`+(pxAll?low:low.slice(0,15)).map(r=>row(r,false)).join(''):'')
-      +'</tbody>'+(low.length>15?`<tfoot><tr><td colspan="9" style="padding:0"><button class="showmore" id="pxMore">${pxAll?'Show fewer':'Show all '+low.length+' small samples'}</button></td></tr></tfoot>`:'');
+      +`<th title="How your point margin compares with what the ratings predicted. Positive = you win by more than expected">Margin vs expected</th><th title="How sure we can be this is a real pattern and not just luck">Signal</th><th title="How much better or worse your team does than its ratings with / against them, in DUPR points of team edge, pulled toward 0 by how few matches there are. Below: the likely range.">Effect (DUPR)</th></tr></thead><tbody>`
+      +(solid.map(r=>row(r,true)).join('')||`<tr class="dim"><td colspan="10" class="caphint">No ${who.toLowerCase()} has ${PPL_MIN}+ rated matches in this filter.</td></tr>`)
+      +(low.length?`<tr class="sep"><td colspan="10">Small samples — 1 to ${PPL_MIN-1} matches · low reliability</td></tr>`+(pxAll?low:low.slice(0,15)).map(r=>row(r,false)).join(''):'')
+      +'</tbody>'+(low.length>15?`<tfoot><tr><td colspan="10" style="padding:0"><button class="showmore" id="pxMore">${pxAll?'Show fewer':'Show all '+low.length+' small samples'}</button></td></tr></tfoot>`:'');
     const pm=byId('pxMore');if(pm)pm.onclick=()=>{pxAll=!pxAll;render();};
+    byId('pxRobust').innerHTML=nVol?`<b>Check:</b> ${nVol} of these matches include someone whose rating has since moved 0.3+ (new or provisional ratings skew “expected”). `
+      +(flip.size?`Leaving them out changes ${flip.size} ${flip.size===1?'label':'labels'}, marked †.`:'Leaving them out changes no labels.')
+      +(EFF.tau==null?'':EFF.tau<0.005?` Across all your ${opp?'opponents':'partners'}, results don’t differ more than luck would explain, so every effect is 0.`
+        :` Effects spread across ${opp?'opponents':'partners'}: ±${EFF.tau.toFixed(2)} DUPR.`):'';
     byId('pxTable').querySelectorAll('[data-pid]').forEach(tr=>tr.onclick=()=>{
       const id=dec(tr.dataset.pid);pplSel=pplSel===id?'':id;render();
       if(pplSel)byId('pplLogCard').scrollIntoView({behavior:'smooth',block:'start'});});
@@ -2026,16 +2181,18 @@
     // Windowed moments (independent of the top filters): recent 60 days or all-time.
     const cut=Date.now()-60*864e5,win=hlWindow==='recent'?M.filter(m=>tms(m.date)>=cut):M;
     byId('hlCount').textContent=hlWindow==='recent'?`last 60 days · ${win.length} matches`:`all ${win.length} matches`;
-    const rated=win.filter(m=>m.diffPre!=null);
-    const uw=rated.filter(m=>m.won&&m.diffPre<0),gu=rated.filter(m=>!m.won&&m.diffPre>0),net=uw.length-gu.length;
+    // Upsets need a real gap: under a 40% win chance (given up: over 60%).
+    const rated=win.filter(m=>pOf(m)!=null);
+    const uw=rated.filter(m=>m.won&&pOf(m)<0.40),gu=rated.filter(m=>!m.won&&pOf(m)>0.60);
+    const dog=rated.filter(m=>pOf(m)<0.5),above=dog.reduce((s,m)=>s+(m.won?1:0)-pOf(m),0);
     byId('upsetTiles').innerHTML=
-      `<div class="ut"><div class="v imp-up mono">${uw.length}</div><div class="l">Upset wins</div></div>`
-      +`<div class="ut"><div class="v imp-dn mono">${gu.length}</div><div class="l">Given up</div></div>`
-      +`<div class="ut"><div class="v mono" style="color:var(--muted)">${net>=0?'+':'−'}${Math.abs(net)}</div><div class="l">Net</div></div>`;
-    const big=uw.slice().sort((a,b)=>a.diffPre-b.diffPre)[0];
+      `<div class="ut"><div class="v imp-up mono">${uw.length}</div><div class="l">Upset wins ▲</div></div>`
+      +`<div class="ut"><div class="v imp-dn mono">${gu.length}</div><div class="l">Given up ▼</div></div>`
+      +`<div class="ut"><div class="v mono ${above>=0?'imp-up':'imp-dn'}">${above>=0?'+':'−'}${Math.abs(above).toFixed(1)}</div><div class="l">Wins above expected <span class="sub">in the ${dog.length} matches you were the underdog</span></div></div>`;
+    const big=uw.slice().sort((a,b)=>pOf(a)-pOf(b))[0];
     byId('upsetBig').innerHTML=big?`<div class="ubig clk" data-mid="${big.matchId}"><div class="ic">🔼</div><div><div class="t">Biggest upset win</div>`
       +`<div class="d">With ${enc(big.partnerName)} you beat ${enc(oppStr(big))} (${Math.abs(big.diffPre).toFixed(2)} higher-rated) ${enc(scoreStr(big))} on ${big.date}.</div></div></div>`:'';
-    const weak=gu.slice().sort((a,b)=>b.diffPre-a.diffPre)[0];
+    const weak=gu.slice().sort((a,b)=>pOf(b)-pOf(a))[0];
     const blow=win.filter(m=>m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
     const close=win.filter(m=>!m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
     const notes=[];
@@ -2047,7 +2204,7 @@
       ||`<div class="caphint">No rated matches ${hlWindow==='recent'?'in the last 60 days':'yet'}.</div>`;
     byId('tab-highlights').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
     // Overview teasers (all-time): biggest upset + biggest win + current streak.
-    const aw=M.filter(m=>m.diffPre!=null&&m.won&&m.diffPre<0).sort((a,b)=>a.diffPre-b.diffPre)[0];
+    const aw=M.filter(m=>pOf(m)!=null&&m.won&&pOf(m)<0.40).sort((a,b)=>pOf(a)-pOf(b))[0];
     const ab=M.filter(m=>m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
     const tz=[];
     if(aw)tz.push([aw.matchId,'🔼',`Biggest upset — beat ${oppStr(aw)} (${Math.abs(aw.diffPre).toFixed(2)} above you)`]);
@@ -2068,17 +2225,14 @@
         if(mode==='opp')(m.opponents||[]).forEach(add);else if(m.partner)add(m.partner);});
       return [...g.values()].map(r=>({name:r.name,s:expStats(r.ms)})).filter(r=>r.s&&r.s.n>=PPL_MIN);};
     const partners=build('partner'),opps=build('opp');
-    const by=(arr,best)=>arr.length?arr.slice().sort((a,b)=>best?b.s.woe-a.s.woe:a.s.woe-b.s.woe)[0]:null;
-    // A "best" tile needs someone above expected and a "toughest" tile someone below; otherwise
-    // it says so (muted) rather than naming, say, a toughest partner who still beat expectations.
-    const tiles=[];const tile=(lab,r,good)=>{if(!r)return;
-      const st=`style="font-size:15px;line-height:1.2"`;
-      if(good?r.s.woe<=0:r.s.woe>=0){tiles.push(`<div class="kpi"><div class="v" style="font-size:15px;line-height:1.2;color:var(--muted)">Nobody</div><div class="l">${lab} <span class="sub">no one ${good?'above':'below'} expected</span></div></div>`);return;}
-      const v=(r.s.woe>=0?'+':'')+r.s.woe.toFixed(1);
-      tiles.push(`<div class="kpi"><div class="v mono ${good?'imp-up':'imp-dn'}" ${st}>${enc(r.name)}</div><div class="l">${lab} <span class="sub">${v} vs exp · ${r.s.n} M</span></div></div>`);};
-    const bp=by(partners,true),wp=by(partners,false),fo=by(opps,true),no=by(opps,false);
-    tile('Best partner',bp,true);if(wp&&wp!==bp)tile('Toughest partner',wp,false);
-    tile('Favourite opponent',fo,true);if(no&&no!==fo)tile('Nemesis',no,false);
+    // Ranked by the Signal's evidence score, not raw wins vs expected; below |z| 2 nobody is named.
+    const by=(arr,best)=>arr.length?arr.slice().sort((a,b)=>best?b.s.z-a.s.z:a.s.z-b.s.z)[0]:null;
+    const tiles=[];const tile=(lab,r,good,k)=>{if(!r)return;
+      const v=(r.s.woe>=0?'+':'−')+Math.abs(r.s.woe).toFixed(1);
+      if(good?r.s.z<2:r.s.z>-2){tiles.push(`<div class="kpi"><div class="v" style="font-size:15px;line-height:1.2;color:var(--muted)">Nobody stands out yet</div><div class="l">${lab} <span class="sub">closest: ${enc(r.name)}, ${v} wins (${r.s.n} M), within luck</span></div></div>`);return;}
+      tiles.push(`<div class="kpi"><div class="v mono ${good?'imp-up':'imp-dn'}" style="font-size:15px;line-height:1.2">${enc(r.name)}</div><div class="l">${lab} ${sigPill(r.s,k)} <span class="sub">${v} wins vs expected · ${r.s.n} M</span></div></div>`);};
+    tile('Best partner',by(partners,true),true,partners.length);tile('Toughest partner',by(partners,false),false,partners.length);
+    tile('Favourite opponent',by(opps,true),true,opps.length);tile('Nemesis',by(opps,false),false,opps.length);
     byId('standCard').hidden=!tiles.length;byId('standKpis').innerHTML=tiles.join('');
   }
   // Your average per-11 margin WITH each partner vs your overall margin (the baseline).
@@ -2088,17 +2242,20 @@
     const g=new Map();
     list.forEach(m=>{if(m.partner&&m.partner.id!=null&&m.normMargin!=null){const k=String(m.partner.id);
       const r=g.get(k)||{name:nameCase(m.partner.name||''),ms:[]};r.ms.push(m);g.set(k,r);}});
-    let rows=[...g.values()].map(r=>{const avg=r.ms.reduce((s,x)=>s+x.normMargin,0)/r.ms.length;
-      return {name:r.name,n:r.ms.length,with:avg,delta:avg-baseM};}).filter(r=>r.n>=PPL_MIN).filter(matchName);
+    // Margin vs what the ratings expected for those matches (strong partners face strong
+    // opponents, so a raw margin makes them look bad), with ±2 SE as the range luck could explain.
+    let rows=[...g.values()].map(r=>{const s=expStats(r.ms);if(!s||s.mres==null)return null;
+      const nm=r.ms.filter(m=>pOf(m)!=null&&m.normMargin!=null).length;
+      return {name:r.name,n:nm,delta:s.mres,se:MODEL.sig&&nm?MODEL.sig/Math.sqrt(nm):0};}).filter(r=>r&&r.n>=PPL_MIN).filter(matchName);
     rows.sort((a,b)=>b.delta-a.delta);
     card.hidden=!rows.length;if(!rows.length)return;
-    byId('chemBase').textContent=sgn(baseM);
-    const maxAbs=Math.max(0.1,...rows.map(r=>Math.abs(r.delta)))*1.1;
-    byId('chem').innerHTML=rows.map(r=>{const pos=r.delta>=0,w=Math.abs(r.delta)/maxAbs*50;
-      const fill=pos?'left:50%;background:var(--win)':'right:50%;background:var(--loss)';
-      return `<div class="pw"><div><div class="pw-name">${enc(r.name)}</div><div class="pw-sub">${r.n} matches · margin ${sgn(r.with)}</div></div>`
-        +`<div class="pw-track"><div class="pw-fill" style="${fill};width:${w.toFixed(1)}%"></div><div class="pw-zero"></div></div>`
-        +`<div class="pw-delta ${pos?'imp-up':'imp-dn'} mono">${(pos?'+':'−')+Math.abs(r.delta).toFixed(1)}</div></div>`;}).join('');
+    const maxAbs=Math.max(0.5,...rows.map(r=>Math.abs(r.delta)+2*r.se));
+    const at=v=>Math.max(0,Math.min(100,50+50*v/maxAbs));
+    byId('chem').innerHTML=rows.map(r=>{const pos=r.delta>=0,L=at(Math.min(r.delta,0)),R=at(Math.max(r.delta,0));
+      return `<div class="crow"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.n} matches</div></div>`
+        +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(r.delta-2*r.se).toFixed(1)}%;width:${(at(r.delta+2*r.se)-at(r.delta-2*r.se)).toFixed(1)}%"></span>`
+        +`<i style="left:${L.toFixed(1)}%;width:${(R-L).toFixed(1)}%;background:${pos?'var(--win)':'var(--loss)'}"></i></div>`
+        +`<div class="mono ${pos?'imp-up':'imp-dn'}" style="text-align:right">${(pos?'+':'−')+Math.abs(r.delta).toFixed(1)} ${pos?'▲':'▼'}</div></div>`;}).join('');
   }
   function renderPeople(list){
     const opp=pplMode==='opp',who=opp?'Opponent':'Partner';
@@ -2108,7 +2265,7 @@
     // Top and bottom few of the reliable list get a Best / Worst tag (never overlapping).
     // Sorting by DUPR now says who is strongest, not how you did, so no Best / Worst tags.
     const tagN=pplSort==='now'?0:solid.length>=6?3:solid.length>=2?1:0;
-    const head=`<thead><tr><th>${who}</th><th>M</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>Value</th>`
+    const head=`<thead><tr><th>${who}</th><th>M</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Margin</th>`
       +`<th title="Your average DUPR change per match">DUPR change / match</th><th title="Your total DUPR change across these matches">DUPR change total</th>`
       +`<th title="Share of matches where your rating went up (a 0.000 change isn't counted)">Rating went up</th><th>DUPR now</th></tr></thead>`;
     const row=(r,i,n,tags)=>{
@@ -2119,11 +2276,11 @@
         +`<span class="evtd">${lastPlayedTxt(r.last)}</span></td>`
         +`<td class="mono" data-l="M">${r.g.n}</td><td class="mono" data-l="W–L">${r.g.wins}–${r.g.losses}</td>`
         +`<td class="mono" data-l="Win %">${pct(r.g.winFrac)}</td><td class="mono" data-l="Pts %">${pct(r.g.ptsFrac)}</td>`
-        +`<td class="mono" data-l="Margin">${sgn(r.g.normMargin)}</td><td class="mono valcell" data-l="Value">${r.g.value.toFixed(1)}</td>`
+        +`<td class="mono" data-l="Margin">${sgn(r.g.normMargin)}</td>`
         +impCell(r.g.impAvg,'DUPR change / match')+impCell(r.g.impSum,'DUPR change total')
         +`<td class="mono" data-l="Rating went up">${pct(r.g.upFrac)}</td>`
         +`<td class="mono" data-l="DUPR now">${f2(r.now)}</td></tr>`;};
-    const empty=t=>`<tr class="dim"><td colspan="11" class="caphint">${t}</td></tr>`;
+    const empty=t=>`<tr class="dim"><td colspan="10" class="caphint">${t}</td></tr>`;
     byId('pplTitle').textContent=(opp?'Opponents':'Partners')+` — ${PPL_MIN}+ matches`;
     byId('pplHint').textContent=(pplSort==='now'?`Highest to lowest current DUPR.`
       :`Best to worst by ${sortName}${opp?' (your results against them)':' (your results together)'}.`)+' Click a row to see the matches.';
@@ -2133,7 +2290,7 @@
     byId('pplLowTitle').textContent=`Small samples — 1 to ${PPL_MIN-1} matches`;
     byId('pplLowHint').textContent=low.length?`Low reliability: ${low.length} ${opp?'opponents':'partners'}, same order. One good or bad night moves these a lot.`:'';
     byId('pplLowTable').innerHTML=head+`<tbody>${shown.map((r,i)=>row(r,i,shown.length,false)).join('')||empty('None in this filter.')}</tbody>`
-      +(low.length>CAP?`<tfoot><tr><td colspan="11" style="padding:0"><button class="showmore" id="pplMore">${pplAll?'Show fewer':'Show all '+low.length}</button></td></tr></tfoot>`:'');
+      +(low.length>CAP?`<tfoot><tr><td colspan="10" style="padding:0"><button class="showmore" id="pplMore">${pplAll?'Show fewer':'Show all '+low.length}</button></td></tr></tfoot>`:'');
     const more=byId('pplMore');if(more)more.onclick=()=>{pplAll=!pplAll;render();};
     document.querySelectorAll('#pplTable [data-pid],#pplLowTable [data-pid]').forEach(tr=>tr.onclick=()=>{
       const id=dec(tr.dataset.pid);pplSel=pplSel===id?'':id;render();
