@@ -2,6 +2,10 @@
 
 Newest first.
 
+## 2026-10-27 — viewing dropdown sorted
+- The 👁 Viewing dropdown lists My matches first, then viewed players alphabetically by name
+  (first name first, case-insensitive) instead of in the order they were synced. SW rj-v94.
+
 ## 2026-10-27 — numbers regression check; exact Signal tails; smaller fixes
 - **`tools/check_numbers.py`** (+ `tools/_cdp.py`, `tests/demo_snapshot.json`): loads the real app
   on the demo in headless Chrome/Edge and compares 18 readings (record, KPIs, Matchup Strength,

@@ -2271,7 +2271,8 @@
       const curId=DATA.player&&DATA.player.id;
       const duprLink=(curId!=null&&/^\d+$/.test(String(curId)))?`<a class="vdupr" href="https://dashboard.dupr.com/dashboard/player/${enc(String(curId))}" target="_blank" rel="noopener">DUPR page ↗</a>`:'';
       bar.innerHTML=`<span>👁 Viewing</span><select id="viewSel"><option value="">${mine}</option>`
-        +ids.map(id=>`<option value="${enc(id)}"${id===VIEW?' selected':''}>${enc(nm(SCOUTS[id]))} · ${SCOUTS[id].matches.length} matches</option>`).join('')+`</select>`+duprLink
+        // "My matches" first, then everyone else alphabetically (names read first name first).
+        +ids.slice().sort((a,b)=>nm(SCOUTS[a]).localeCompare(nm(SCOUTS[b]),undefined,{sensitivity:'base'})).map(id=>`<option value="${enc(id)}"${id===VIEW?' selected':''}>${enc(nm(SCOUTS[id]))} · ${SCOUTS[id].matches.length} matches</option>`).join('')+`</select>`+duprLink
         +(VIEW?`<span class="vnote">synced ${enc((SCOUTS[VIEW].generated||'').slice(0,10))}${SCOUTS[VIEW].capped?` · based on their last ${SCOUTS[VIEW].capped} DUPR matches, not their full history`:''} · kept in this browser only${BROWSER?'':', never saved to GitHub'}</span><button class="danger" id="viewDel">Remove</button>`:'');
       byId('viewSel').onchange=e=>setView(e.target.value);
       const del=byId('viewDel');if(del)del.onclick=()=>{if(!del.dataset.sure){del.dataset.sure=1;del.textContent='Tap again to remove';return;}
