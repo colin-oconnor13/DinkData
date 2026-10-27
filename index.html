@@ -73,6 +73,15 @@
   /* filter bar */
   .filterbar{z-index:20;margin-bottom:14px}
   .filterbar.collapsed-f{position:sticky;top:0}
+  /* One Period for the whole app: always in view at the top of the filter bar. */
+  .per{display:flex;align-items:center;gap:12px;padding:10px 16px 0 18px;flex-wrap:wrap}
+  .per .seg{display:flex;gap:2px;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:2px;flex:1;min-width:0;max-width:440px}
+  .per .seg button{flex:1;font:inherit;font-size:12.5px;font-weight:600;border:0;background:none;color:var(--muted);padding:6px 4px;border-radius:7px;cursor:pointer;white-space:nowrap}
+  .per .seg button.on{background:var(--accent);color:#fff}
+  .per .fb-count{margin-left:auto}
+  .percust{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:10px 18px 0;font-size:12.5px}
+  .percust input{font:inherit;font-size:12.5px;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:4px 6px}
+  .percust .minibtn.on{border-color:var(--accent);color:var(--accent)}
   .fb-head{display:flex;align-items:center;gap:12px;padding:12px 16px 12px 18px;cursor:pointer;flex-wrap:wrap}
   /* A filter is on: say so loudly on every tab, with a one-tap way out. */
   .filterbar.filtered{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
@@ -164,6 +173,8 @@
   .tab.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
   .tab:hover:not(.on){color:var(--ink)}
   .tab .tl-short{display:none}
+  .helpbtn{font-weight:800;min-width:38px}
+  .tabs.four{display:grid;grid-template-columns:repeat(4,auto)}
 
   /* KPIs */
   .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px 12px}
@@ -184,7 +195,7 @@
   .cluster .dot.r{background:var(--blue)} .cluster .dot.w{background:var(--win)} .cluster .dot.c{background:var(--accent)}
   .tiles{display:flex;flex-direction:column;gap:14px}
   /* Overview record strip: W–L (follows the filters), win % bar, and the latest day's results. */
-  .wl-strip{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+  .wl-strip{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
   .wl-strip .lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:7px}
   .wl-strip .lbl b{color:var(--ink)}
   .wl-big{font-family:"Archivo",sans-serif;font-weight:800;font-size:40px;letter-spacing:-.02em;line-height:1;white-space:nowrap}
@@ -192,7 +203,15 @@
   .wl-w{color:var(--win)} .wl-l{color:var(--loss)}
   .wl-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:var(--loss)}
   .wl-bar i{display:block;background:var(--win)}
-  .wl-latest{cursor:pointer}
+  /* Last session: the first card on the Overview, filter-independent. */
+  .ls-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;padding:16px 20px 0}
+  .ls-when{font-size:13px;color:var(--muted)}
+  .ls-rec{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;padding:8px 20px 4px}
+  .ls-rec .big{font-family:"Archivo",sans-serif;font-weight:900;font-size:34px;line-height:1} .ls-rec .big .w{color:var(--win)} .ls-rec .big .l{color:var(--loss)}
+  .ls-lines{display:grid;gap:5px;font-size:13.5px;padding:4px 20px 10px} .ls-lines .sub{color:var(--muted);font-size:12.5px}
+  .ls-m{font-size:13px;padding:8px 20px;border-top:1px solid var(--line);line-height:1.45;cursor:pointer} .ls-m .sub{color:var(--muted)}
+  .ls-tag{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:5px;background:var(--surface-2)}
+  .ls-tag.up{color:var(--win)} .ls-tag.dn{color:var(--loss)}
   .wl-chips{display:flex;gap:4px;flex-wrap:wrap}
   .wl-chip{width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#0E1512}
   .wl-chip.w{background:var(--win)} .wl-chip.l{background:var(--loss)}
@@ -244,7 +263,12 @@
   .switch .track i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--muted);transition:.15s}
   .switch.on .track{background:var(--accent);border-color:var(--accent)} .switch.on .track i{left:16px;background:#fff}
   :root[data-theme="dark"] .switch.on .track i,:root:not([data-theme="light"]) .switch.on .track i{background:#07120f}
-  /* partner chemistry diverging bars */
+  /* People tab: the Partners / Opponents switch stays in view while you scroll. */
+  .pplbar{position:sticky;top:var(--fbh,0px);z-index:4;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--bg);padding:6px 0 12px;margin-top:-6px}
+  .toggle.big button{font-size:13.5px;padding:7px 18px}
+  .crow.clk{cursor:pointer} .crow .pdet{grid-column:1/-1;font-size:12.5px;color:var(--muted);background:var(--surface-2);border-radius:8px;padding:7px 10px}
+  .crow .pdet a{color:var(--accent);cursor:pointer}
+  /* partner list diverging bars */
   .pw{display:grid;grid-template-columns:150px 1fr 60px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
   .pw:first-child{border-top:0}
   .pw-name{font-weight:700;font-size:13px} .pw-sub{font-size:11px;color:var(--muted)}
@@ -267,16 +291,13 @@
   .note .ic{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;font-size:15px}
   .note.good .ic{background:var(--win-soft)} .note.bad .ic{background:var(--loss-soft)} .note.big .ic{background:var(--accent-soft)}
   .note .t{font-weight:700;font-size:13.5px} .note .d{font-size:12.5px;color:var(--muted);margin-top:2px}
-  .teaser{display:flex;gap:10px;align-items:center;padding:11px 20px;border-top:1px solid var(--line);font-size:13px}
-  .teaser:first-child{border-top:0} .teaser .tic{font-size:15px}
   .hlbar{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
-  .note.clk,.ubig.clk,.teaser.clk{cursor:pointer} .note.clk:hover,.ubig.clk:hover{border-color:var(--accent)} .teaser.clk:hover{background:var(--surface-2)}
+  .note.clk,.ubig.clk{cursor:pointer} .note.clk:hover,.ubig.clk:hover{border-color:var(--accent)}
   .match.flash{animation:flash 1.6s ease-out}
   @keyframes flash{0%,30%{background:var(--accent-soft)}100%{background:transparent}}
   /* Viewing another player: hide pieces that need your own / full history and can't update. */
   :root[data-viewing="other"] #predictCard,:root[data-viewing="other"] #goalCard,
-  :root[data-viewing="other"] #teaserCard,:root[data-viewing="other"] [data-tab="highlights"],
-  :root[data-viewing="other"] #tab-highlights{display:none!important}
+  :root[data-viewing="other"] #hlSec,:root[data-viewing="other"] #rangeWrap{display:none!important}
   @media(max-width:620px){.notable{grid-template-columns:1fr}}
 
   /* tables / breakdown */
@@ -417,6 +438,15 @@
   .bmpage .bwsteps{margin-top:0}
   .bmpage .bwsteps:not(.on){display:none}
   .bmpage .bwnote{font-size:12px;margin:0 0 4px}
+  /* One step at a time: a progress bar, Back / Next, and a "Test it here" step. */
+  .bmpage.stepper .step{display:none} .bmpage.stepper .step.cur{display:flex}
+  .bmpage.stepper .steps{margin:0} .bmpage.stepper .steps:has(.cur){margin:18px 0 6px}
+  .bmpage .sphead{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12px;font-weight:700;color:var(--muted)}
+  .bmpage .spdots{display:flex;gap:4px} .bmpage .spdots i{width:20px;height:5px;border-radius:3px;background:var(--surface-2)} .bmpage .spdots i.on{background:var(--accent)}
+  .bmpage .spnav{display:flex;justify-content:space-between;gap:10px;margin:4px 0 14px}
+  .bmpage .spnav [hidden]{display:none}
+  .bmpage .tbox{border:1px dashed var(--line);border-radius:10px;padding:10px 12px;color:var(--muted);font-size:13.5px;margin-top:8px}
+  .bmpage .tbox.ok{border:1px solid var(--win);color:var(--win)}
   .bmpage .use{padding:12px 14px;border-radius:10px;background:var(--accent-soft);font-size:13.5px;line-height:1.5;margin:14px 0}
   .step{display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.5}
   .stepn{flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
@@ -572,6 +602,14 @@
       <div class="step"><span class="stepn">4</span><div><b>Paste the code as its address (URL)</b><br>Keep the name <b>PB Sync</b>, delete the address and paste the code. Save.</div></div>
       <div class="step"><span class="stepn">5</span><div><b>To sync from then on</b><br>On <b>dashboard.dupr.com</b> (logged in), run the bookmark: type <b>PB Sync</b> in the address bar and pick it, or tap it in your bookmarks. Some browsers only run it one of those ways.</div></div>
     </div>
+    <div class="steps" id="testSteps">
+      <div class="step" id="bmTest"><span class="stepn">5</span><div><b>Test it here</b><br>Run your new <b>PB Sync</b> bookmark now, on this page, the same way you will on DUPR: tap the address bar, type <b>PB Sync</b> and pick the bookmark (Safari: open <b>Bookmarks</b> and tap it).
+        <div class="tbox" id="bmTestBox">⏳ Waiting for PB Sync…</div>
+        <div class="muted" id="bmTestHelp" style="font-size:12.5px;margin-top:8px">Nothing happens? Go back a step and check the address starts with <span class="mono">javascript:</span></div></div></div>
+    </div>
+    <div class="sphead"><span id="spOf"></span><span class="spdots" id="spDots"></span></div>
+    <div class="spnav"><button class="syncbtn" id="spBack" type="button">← Back</button><button class="syncbtn prim" id="spNext" type="button">Next →</button>
+      <a class="syncbtn prim" id="spDupr" href="https://dashboard.dupr.com/" target="_blank" rel="noopener" style="text-decoration:none" hidden>Open dashboard.dupr.com ↗</a></div>
     <p class="muted bwnote">Menus differ a little between browser versions. If yours doesn’t match, look for the same idea: bookmark this page, edit it, and paste the code as its address.</p>
     <div class="use"><b>DUPR keeps sending you to its app?</b> On the DUPR page, switch to the desktop site, then log in and run <b>PB Sync</b>. Chrome / Brave: <b>⋮</b> → <b>Desktop site</b>. Edge: <b>…</b> → <b>View desktop site</b>. Safari: the <b>menu button next to the web address</b> (shows <b>aA</b> or <b>⋯</b>, depending on your iPhone) → <b>Request Desktop Website</b>.</div>
     <a class="syncbtn" href="./" style="display:inline-block;text-decoration:none">← Back to the app</a>
@@ -582,9 +620,29 @@
     var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
     var bw=/EdgA|EdgiOS|Edg\//.test(ua)?'edge':(ios&&!/CriOS|FxiOS/.test(ua))?'safari':(/Chrome\//.test(ua)&&!/SamsungBrowser|OPR\//.test(ua)&&!ios)?'chrome':'other';
     var page=document.getElementById('bmPage');
-    function show(b){page.querySelectorAll('[data-bw]').forEach(function(e){e.classList.toggle('on',e.getAttribute('data-bw')===b);});}
+    var cur=0;
+    function show(b){page.querySelectorAll('[data-bw]').forEach(function(e){e.classList.toggle('on',e.getAttribute('data-bw')===b);});step(cur);}
     page.querySelectorAll('.bwpick button').forEach(function(btn){btn.onclick=function(){show(btn.getAttribute('data-bw'));};});
+    // The steps in order: copy, this browser's bookmark / edit / paste, test it here, then use it on DUPR.
+    function seq(){var bs=[].slice.call(page.querySelectorAll('.bwsteps.on .step'));
+      return [page.querySelector('.steps:not(.bwsteps):not(#testSteps) .step')].concat(bs.slice(0,-1),[document.getElementById('bmTest')],bs.slice(-1));}
+    function step(i){var q=seq();cur=Math.max(0,Math.min(q.length-1,i));
+      page.querySelectorAll('.step').forEach(function(e){e.classList.remove('cur');});
+      q.forEach(function(e,k){e.querySelector('.stepn').textContent=k+1;});q[cur].classList.add('cur');
+      document.getElementById('spOf').textContent='Step '+(cur+1)+' of '+q.length;
+      document.getElementById('spDots').innerHTML=q.map(function(e,k){return '<i class="'+(k<=cur?'on':'')+'"></i>';}).join('');
+      document.getElementById('spBack').style.visibility=cur?'visible':'hidden';
+      document.getElementById('spNext').hidden=cur===q.length-1;document.getElementById('spDupr').hidden=cur!==q.length-1;
+      page.querySelector('.use').hidden=cur!==q.length-1;page.querySelector('.bwnote').hidden=cur===0||cur>=q.length-2;}
+    document.getElementById('spBack').onclick=function(){step(cur-1);};
+    document.getElementById('spNext').onclick=function(){step(cur+1);};
+    page.classList.add('stepper');
     show(bw);
+    // PB Sync run on a Dink Data page (not DUPR) reports in here instead of complaining.
+    document.addEventListener('pbsync-test',function(){
+      if(!document.documentElement.classList.contains('bm-only')){alert('✓ PB Sync works. Run it on dashboard.dupr.com to sync your matches.');return;}
+      var b=document.getElementById('bmTestBox');b.className='tbox ok';b.innerHTML='✓ <b>It works.</b> Your bookmark is set up.';
+      document.getElementById('bmTestHelp').hidden=true;step(seq().indexOf(document.getElementById('bmTest')));});
   })();
   </script>
   <div class="top">
@@ -598,6 +656,7 @@
       <span class="idpill mono" id="idpill">DUPR</span>
       <button class="btn" id="hdrSync" title="Sync from DUPR">🔄 Sync</button>
       <button class="btn" id="themeBtn">◐ Theme</button>
+      <button class="btn helpbtn" id="hdrHelp" title="How to read this" aria-label="How to read this">?</button>
     </div>
   </div>
 
@@ -620,14 +679,15 @@
   <div class="syncov" id="syncOv" hidden><div class="card synccard"><h3>🔄 Sync from DUPR</h3><div class="syncstat" id="syncStat">Waiting for DUPR…</div><div class="syncact" id="syncAct"></div></div></div>
 
   <div class="card filterbar collapsed-f" id="filterbar">
+    <div class="per"><div class="seg" id="perSeg" role="group" aria-label="Period"><button data-per="all" class="on">All time</button><button data-per="12m">12 mo</button><button data-per="60d">60 days</button><button data-per="custom">Custom…</button></div>
+      <div class="fb-count"><span id="fCount">0</span> <small>matches</small></div></div>
+    <div class="percust" id="perCust" hidden></div>
     <div class="fb-head" id="fbHead">
       <button class="fb-toggle" type="button"><span class="chev">▼</span> Filters</button>
       <div class="fb-summary" id="fSummary">All matches</div>
       <button class="fb-clear" id="fbClear" type="button" hidden>✕ Clear</button>
-      <div class="fb-count"><span id="fCount">0</span> <small>matches</small></div>
     </div>
     <div class="fb-body" id="fBody">
-      <div class="fld"><label>Year</label><div class="ms" id="msyear" data-all="All years"></div></div>
       <div class="fld"><label>Type</label><div class="ms" id="mstype" data-all="All types"></div></div>
       <div class="fld"><label>Level</label><div class="ms" id="mslevel" data-all="All levels"></div></div>
       <div class="fld"><label>Event</label><div class="ms" id="msevent" data-all="All events"></div></div>
@@ -640,17 +700,20 @@
     <div class="manage" id="managePanel" hidden></div>
   </div>
 
-  <div class="tabs" role="tablist" aria-label="Sections">
+  <div class="tabs four" role="tablist" aria-label="Sections">
     <button class="tab on" role="tab" aria-selected="true" data-tab="overview">Overview</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="analysis">Trends</button>
     <button class="tab" role="tab" aria-selected="false" data-tab="people"><span class="tl-full">Opponents &amp; Partners</span><span class="tl-short">People</span></button>
     <button class="tab" role="tab" aria-selected="false" data-tab="matches">Matches</button>
-    <button class="tab" role="tab" aria-selected="false" data-tab="highlights">Highlights</button>
-    <button class="tab" role="tab" aria-selected="false" data-tab="guide"><span class="tl-full">How to read this</span><span class="tl-short">Guide</span></button>
   </div>
 
   <!-- ===== OVERVIEW ===== -->
   <div id="tab-overview">
+    <div class="card" style="overflow:hidden;margin-bottom:16px" id="lsCard" hidden>
+      <div class="ls-top"><div class="sect-h" style="margin:0">Last session</div><div class="ls-when" id="lsWhen"></div></div>
+      <div id="lsBody"></div>
+      <div id="lastDay"></div>
+    </div>
     <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Your performance</div><div class="wl-strip" id="wlStrip" hidden></div><div class="clusters" id="kpis"></div></div>
 
     <div class="card pad" id="wtwCard" style="margin-bottom:16px" hidden>
@@ -662,16 +725,19 @@
       <div class="chart-head"><h3>Rating Over Time</h3><div class="zoom" id="zoom"></div></div>
       <div id="chart"></div>
       <div class="chartlegend" id="chartLegend"></div>
+      <div id="rangeWrap"><div class="sect-h" style="margin:16px 0 8px">All-time range</div>
+      <div class="utiles" id="rangeTiles"></div></div>
     </div>
 
-    <div class="card" style="overflow:hidden">
-      <div class="logtop"><h2 id="lastDayTitle">Latest matches</h2><span class="lsub" id="lastDaySub"></span></div>
-      <div id="lastDay"></div>
+    <div id="hlSec" style="margin-top:16px">
+    <div class="card pad" style="margin-bottom:16px">
+      <div class="sect-h" style="margin:0 0 4px">Upset index</div>
+      <div class="caphint" style="padding:0 0 12px">An <b>upset win</b> = you won when the ratings gave you under a 40% chance. <b>Given up</b> = you lost when they gave you over 60%. Small rating gaps don’t count.</div>
+      <div class="utiles" id="upsetTiles"></div>
+      <div id="upsetBig"></div>
     </div>
-
-    <div class="card" style="overflow:hidden;margin-top:16px" id="teaserCard" hidden>
-      <div class="logtop"><h2>Worth a look</h2><button class="minibtn" id="teaserGo">See Highlights →</button></div>
-      <div id="teasers"></div>
+    <div class="sec-h" style="margin:22px 0 12px"><h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Notable results</h2><span class="caphint" style="padding:0;font-size:12px">tap one to see the match</span></div>
+    <div class="notable" id="notable"></div>
     </div>
   </div>
 
@@ -755,11 +821,10 @@
 
   <!-- ===== MATCHES ===== -->
   <div id="tab-matches" hidden>
-    <div class="hlbar"><span class="caphint" style="padding:0">Show</span><div class="toggle recentT"><button data-r="0" class="on">All time</button><button data-r="1">Last 60 days</button></div><span class="caphint recentNote" style="padding:0"></span></div>
     <div class="card" style="overflow:hidden">
       <div class="logtop"><h2>Match Log <span class="lsub" id="logSub"></span></h2>
         <div class="tagfilters" role="group" aria-label="Show"><button type="button" class="chip on" aria-pressed="true" data-wl="all">All</button>
-          <button type="button" class="chip" aria-pressed="false" data-wl="W">Wins</button><button type="button" class="chip" aria-pressed="false" data-wl="L">Losses</button>
+          <button type="button" class="chip" aria-pressed="false" data-wl="W">Wins</button><button type="button" class="chip" aria-pressed="false" data-wl="L">Losses</button><button type="button" class="chip" aria-pressed="false" data-wl="UP">Upsets ▲</button><button type="button" class="chip" aria-pressed="false" data-wl="GU">Given up ▼</button>
           <select id="logSort" title="Sort the match log">
             <option value="new">Newest first</option>
             <option value="old">Oldest first</option>
@@ -772,27 +837,16 @@
   </div>
 
   <!-- ===== HIGHLIGHTS ===== -->
-  <div id="tab-highlights" hidden>
-    <div class="card pad" style="margin-bottom:16px">
-      <div class="sect-h" style="margin:0 0 10px">Your rating, all-time</div>
-      <div class="utiles" id="rangeTiles"></div>
-    </div>
-
-    <div class="hlbar"><div class="toggle" id="hlWin"><button data-w="recent" class="on">Recent · 60 days</button><button data-w="all">All-time</button></div><span class="caphint" style="padding:0" id="hlCount"></span></div>
-
-    <div class="card pad" style="margin-bottom:16px">
-      <div class="sect-h" style="margin:0 0 4px">Upset index</div>
-      <div class="caphint" style="padding:0 0 12px">An <b>upset win</b> = you won when the ratings gave you under a 40% chance. <b>Given up</b> = you lost when they gave you over 60%. Small rating gaps don’t count.</div>
-      <div class="utiles" id="upsetTiles"></div>
-      <div id="upsetBig"></div>
-    </div>
-    <div class="sec-h" style="margin:22px 0 12px"><h2 style="font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)">Notable results</h2><span class="caphint" style="padding:0;font-size:12px">tap one to see the match</span></div>
-    <div class="notable" id="notable"></div>
-  </div>
-
   <!-- ===== TAB 3: OPPONENTS (and partners) ===== -->
   <div id="tab-people" hidden>
-    <div class="hlbar"><span class="caphint" style="padding:0">Show</span><div class="toggle recentT"><button data-r="0" class="on">All time</button><button data-r="1">Last 60 days</button></div><span class="caphint recentNote" style="padding:0"></span></div>
+    <div class="pplbar"><div class="toggle big" id="pplMode" role="group" aria-label="Show"><button data-p="partner" class="on">Partners</button><button data-p="opp">Opponents</button></div>
+      <span class="caphint" style="padding:0">every card on this tab follows this</span></div>
+    <div class="card pad" id="plCard" style="margin-bottom:16px" hidden>
+      <div class="sect-h" style="margin:0 0 4px" id="plTitle">Your partners</div>
+      <div class="caphint" style="padding:0 0 10px" id="plHint"></div>
+      <div id="pl"></div>
+      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win);opacity:.45"></span>Worth watching</span><span><span class="swatch" style="background:var(--win)"></span>Better than expected</span><span><span class="swatch" style="background:var(--loss)"></span>Worse than expected</span></div>
+    </div>
     <div class="card pad" id="predictCard" style="margin-bottom:16px">
       <div class="sect-h">Matchup predictor</div>
       <div class="caphint" style="padding:0 0 10px">Pick your partner and two opponents — type a name or a rating — to see your expected win chance and margin before you play.</div>
@@ -805,23 +859,11 @@
       <datalist id="pdPlayers"></datalist>
       <div class="predict-out" id="pdOut"></div>
     </div>
-    <div class="card pad" id="standCard" style="margin-bottom:16px" hidden>
-      <div class="sect-h">Standouts</div>
-      <div class="caphint" style="padding:0 0 8px">Where you do most above or below what the ratings expect (4+ matches together / against).</div>
-      <div class="kpis" id="standKpis"></div>
-    </div>
-    <div class="card pad" id="chemCard" style="margin-bottom:16px" hidden>
-      <div class="sect-h" style="margin:0 0 4px">Partner chemistry</div>
-      <div class="caphint" style="padding:0 0 10px">Your average margin per 11 points <em>with</em> each partner, minus what the ratings expected for those matches. The thin line is the range luck alone could produce: if it crosses the middle, it could be luck. <span id="chemBase" class="mono" hidden></span>4+ matches.</div>
-      <div id="chem"></div>
-      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win);opacity:.45"></span>Worth watching</span><span><span class="swatch" style="background:var(--win)"></span>Better with them</span><span><span class="swatch" style="background:var(--loss)"></span>Worse together</span></div>
-    </div>
     <div class="card bd">
       <div class="bd-head">
         <div><div class="sect-h" style="margin:0" id="pxTitle">Partner Index</div>
           <div class="caphint" style="padding:4px 0 0" id="pxHint"></div></div>
         <div class="pplctl">
-          <div class="toggle" id="pplMode"><button data-p="opp" class="on">Opponents</button><button data-p="partner">Partners</button></div>
           <input id="pplSearch" class="pplsearch" type="search" placeholder="🔎 Search player…" autocomplete="off">
           <select id="pxSort" title="Order">
             <option value="under">Most below expected first</option>
@@ -894,6 +936,7 @@
 
   <!-- ===== TAB 4: HOW TO READ THIS ===== -->
   <div id="tab-guide" hidden>
+    <button class="minibtn" id="guideBack" style="margin:0 0 12px">← Back</button>
     <div class="card pad guide">
       <h2>How to read this</h2>
       <p class="lead">This is your real pickleball history from DUPR, sliced up so you can see what’s actually going on — who you beat, who beats you, and whether you’re playing better or worse than your rating says you should. Here’s what everything means.</p>
@@ -901,16 +944,15 @@
 
     <div class="card pad guide">
       <h3>The tabs at the top</h3>
-      <div class="gdef"><b>Overview</b><span class="d">Your record, your headline numbers, your rating over time, and your most recent day's matches.</span></div>
+      <div class="gdef"><b>Overview</b><span class="d">Your last session first, then your record, headline numbers, rating over time with its all-time range, and highlights: your upset record and standout matches.</span></div>
       <div class="gdef"><b>Trends</b><span class="d">The deep dives: recent form, performance by event (with tournament results) and by date, matchup strength, close games, streaks, and rating-adjusted splits (time of day, days off, playing up or down a level).</span></div>
-      <div class="gdef"><b>Opponents &amp; Partners</b><span class="d">Who you play best and worst <em>with</em> (partners) and <em>against</em> (opponents), vs what the ratings expect — plus a matchup predictor and partner chemistry.</span></div>
-      <div class="gdef"><b>Matches</b><span class="d">Your full match log, filterable and sortable.</span></div>
-      <div class="gdef"><b>Highlights</b><span class="d">The fun stuff: your upset record, and standout matches like your biggest upset win and biggest blowout.</span></div>
-      <div class="gdef"><b>How to read this</b><span class="d">This page.</span></div>
-      <p style="margin-top:12px"><b>Filters</b> (the bar near the top) narrow most of the app to a slice: one year, only tournaments, one partner, and so on. A few things ignore them on purpose:</p>
+      <div class="gdef"><b>Opponents &amp; Partners</b><span class="d">Who you play best and worst <em>with</em> (partners) and <em>against</em> (opponents), vs what the ratings expect — plus a matchup predictor. The switch at the top flips every card between partners and opponents.</span></div>
+      <div class="gdef"><b>Matches</b><span class="d">Your full match log, filterable and sortable, with quick chips for wins, losses, upset wins and given-up losses.</span></div>
+      <div class="gdef"><b>?</b><span class="d">The button at the top opens this page.</span></div>
+      <p style="margin-top:12px"><b>Period</b> (All time · 12 mo · 60 days · Custom… for a year or a date range) and <b>Filters</b> (only tournaments, one partner, and so on) sit in the bar at the top and apply to every tab. When either is on, the bar has a gold outline and a ✕ Clear button. A few things ignore them on purpose:</p>
       <ul>
-        <li><b>Always your latest:</b> Recent rating changes (Trends), Latest matches and the Latest tiles in the record strip, the Overview sparklines, and the rating goal and matchup predictor.</li>
-        <li><b>Their own switch:</b> Highlights has Recent / All-time; Opponents &amp; Partners and Matches have a Last-60-days switch; the record strip's W–L also follows the Rating Over Time zoom.</li>
+        <li><b>Always your latest:</b> Last session, Recent rating changes (Trends), the Overview sparklines, the all-time rating range, and the rating goal and matchup predictor.</li>
+        <li><b>Chart only:</b> the Rating Over Time zoom (3M / 6M / 1Y…) changes the chart, not the numbers.</li>
       </ul>
       <p>Only doubles matches are counted; any singles in your DUPR history are left out.</p>
     </div>
@@ -1044,7 +1086,7 @@
   let VIEW='';if(!DEMO)try{VIEW=localStorage.getItem(VKEY)||'';}catch(e){}
   if(VIEW&&SCOUTS[VIEW]&&Array.isArray(SCOUTS[VIEW].matches))DATA=SCOUTS[VIEW];else VIEW='';
   // Viewing another player: we only hold their (capped) history, so hide the "you"-centric and
-  // full-history pieces that can't update — the matchup predictor, rating goal, teasers and Highlights.
+  // full-history pieces that can't update — the matchup predictor, rating goal and highlights.
   const VIEWING_OTHER=!!VIEW;
   document.documentElement.setAttribute('data-viewing',VIEWING_OTHER?'other':'self');
   const setView=id=>{try{if(id)localStorage.setItem(VKEY,id);else localStorage.removeItem(VKEY);}catch(e){}location.replace(location.pathname);};
@@ -1134,7 +1176,7 @@
   let pplQuery='';                // name filter for the Opponents/Partners people lists
   const matchName=r=>{const q=pplQuery.trim().toLowerCase();return !q||(r.name||'').toLowerCase().includes(q);};
   let tab='overview', basis='then', filtersOpen=false, panelOpen=false, msSig='', fSig=null;
-  const MSKEYS=['year','type','level','event','partner'];
+  const MSKEYS=['type','level','event','partner'];
 
   function optionsFor(key){
     if(key==='year')return [...new Set(M.map(m=>m.year))].sort((a,b)=>b.localeCompare(a));
@@ -1174,9 +1216,15 @@
   }
   function maybeRebuildMulti(){const sig=MSKEYS.map(k=>optionsFor(k).join('|')).join('§');if(sig!==msSig){msSig=sig;buildMulti();}}
 
-  const pass=m=>(!F.year.length||F.year.includes(m.year))&&(!F.type.length||F.type.includes(typeOf(m)))&&
+  // The Period (all time / 12 months / 60 days / a year / a date range) applies everywhere.
+  const PER={k:'all',y:'',from:'',to:''};
+  const inPer=m=>PER.k==='all'?true:PER.k==='12m'?tms(m.date)>=Date.now()-365*864e5:PER.k==='60d'?tms(m.date)>=Date.now()-60*864e5
+    :PER.k==='year'?m.year===PER.y:(!PER.from||m.date>=PER.from)&&(!PER.to||m.date<=PER.to);
+  const perLabel=()=>PER.k==='12m'?'Last 12 months':PER.k==='60d'?'Last 60 days':PER.k==='year'?PER.y
+    :PER.k==='range'?(PER.from?dayLabel(PER.from):'start')+' – '+(PER.to?dayLabel(PER.to):'today'):'';
+  const pass=m=>inPer(m)&&(!F.type.length||F.type.includes(typeOf(m)))&&
     (!F.level.length||F.level.includes(levelOf(m)))&&(!F.event.length||F.event.includes(evName(m)))&&
-    (!F.partner.length||F.partner.includes(m.partnerName))&&(F.wl==='all'||(F.wl==='W'?m.won:!m.won))&&
+    (!F.partner.length||F.partner.includes(m.partnerName))&&(F.wl==='all'||(F.wl==='W'?m.won:F.wl==='L'?!m.won:F.wl==='UP'?m.won&&pOf(m)!=null&&pOf(m)<0.40:!m.won&&pOf(m)!=null&&pOf(m)>0.60))&&
     (!F.date||m.date===F.date);
 
   const VALUE_K=50;
@@ -1299,23 +1347,22 @@
   const enc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
   const dec=s=>String(s).replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&amp;/g,'&');
 
-  // Why a list is empty: name the active filter / 60-day switch and offer to clear it right there.
+  // Why a list is empty: name the active filter (Period included) and offer to clear it right there.
   function emptyWhy(what){
     const filt=!byId('reset').disabled;
-    return `No ${what} has ${PPL_MIN}+ rated matches ${filt?`with the filter <b>${enc(summaryText())}</b>`:recent60?'in the last 60 days':'yet'}.`
-      +(filt?' <button class="minibtn" data-clear="filters">✕ Clear filters</button>':'')
-      +(recent60?' <button class="minibtn" data-clear="recent">Show all time</button>':'');}
+    return `No ${what} has ${PPL_MIN}+ rated matches ${filt?`with the filter <b>${enc(summaryText())}</b>`:'yet'}.`
+      +(filt?' <button class="minibtn" data-clear="filters">✕ Clear filters</button>':'');}
   document.addEventListener('click',e=>{const b=e.target.closest('[data-clear]');if(!b)return;
-    if(b.dataset.clear==='filters'){filtersOpen=false;byId('reset').click();}else{const a=document.querySelector('.recentT [data-r="0"]');if(a)a.click();}});
+    filtersOpen=false;byId('reset').click();});
   function summaryText(){
     const p=[];
-    if(F.year.length)p.push(F.year.join(', '));
+    if(PER.k!=='all')p.push(perLabel());
     if(F.type.length)p.push(F.type.join(', '));
     if(F.level.length)p.push(F.level.join(', '));
     if(F.event.length)p.push(F.event.length===1?F.event[0]:F.event.length+' events');
     if(F.partner.length)p.push('w/ '+(F.partner.length===1?F.partner[0]:F.partner.length+' partners'));
     if(F.date)p.push(dayLabel(F.date));
-    if(F.wl!=='all')p.push(F.wl==='W'?'wins':'losses');
+    if(F.wl!=='all')p.push({W:'wins',L:'losses',UP:'upset wins',GU:'given-up losses'}[F.wl]);
     return p.length?p.join(' · '):'All matches';
   }
   const endCell=v=>`<td class="mono enddupr" data-l="DUPR">${v==null?'—':v.toFixed(3)}</td>`;
@@ -1344,17 +1391,20 @@
     byId('fCount').textContent=list.length;
     renderDeltaKpis();
     byId('fSummary').textContent=summaryText();
-    byId('reset').disabled=!(['year','type','level','event','partner'].some(k=>F[k].length)||F.wl!=='all'||F.date);
+    byId('reset').disabled=!(['type','level','event','partner'].some(k=>F[k].length)||F.wl!=='all'||F.date||PER.k!=='all');
     byId('filterbar').classList.toggle('filtered',!byId('reset').disabled);byId('fbClear').hidden=byId('reset').disabled;
     byId('evClear').hidden=byId('reset').disabled;
     // A filter just changed (or came back from last visit): open the panel so it's in plain view.
-    const sig=JSON.stringify(F);if(sig!==fSig){if(!byId('reset').disabled)filtersOpen=true;fSig=sig;}
+    const sig=JSON.stringify(F);if(sig!==fSig){if(fSig!==null&&(['type','level','event','partner'].some(k=>F[k].length)||F.wl!=='all'||F.date))filtersOpen=true;fSig=sig;}
     byId('filterbar').classList.toggle('collapsed-f',!filtersOpen);
+    // The People switch sticks just under the (sticky, collapsed) filter bar.
+    document.documentElement.style.setProperty('--fbh',filtersOpen?'0px':byId('filterbar').offsetHeight+'px');
+    document.querySelectorAll('#perSeg button').forEach(b=>b.classList.toggle('on',b.dataset.per===(PER.k==='year'||PER.k==='range'?'custom':PER.k)));
+    document.querySelector('#perSeg [data-per="custom"]').textContent=PER.k==='year'?PER.y:PER.k==='range'?'Range':'Custom…';
     byId('tab-overview').hidden=tab!=='overview';
     byId('tab-analysis').hidden=tab!=='analysis';
     byId('tab-people').hidden=tab!=='people';
     byId('tab-matches').hidden=tab!=='matches';
-    byId('tab-highlights').hidden=tab!=='highlights';
     byId('tab-guide').hidden=tab!=='guide';
 
     const a=agg(list,'then');   // always the at-the-time ratings; only the filters move it
@@ -1446,11 +1496,9 @@
     byId('bdTable').innerHTML=`<thead><tr><th>Matchup (your team − opp)</th><th>M</th><th>Win%</th><th title="What the ratings gave you in these matches">Expected win%</th><th>Wins vs expected</th><th>Margin</th><th title="Your average DUPR change per match in this band">DUPR change / match</th></tr></thead><tbody>${body}</tbody>`;
 
     drawZoom();drawOverall();renderManage();
-    // The Opponents & Partners page and the Match Log honour the page-level 60-day filter.
-    const recentList=recent60?list.filter(inRecent60):list;
-    document.querySelectorAll('.recentNote').forEach(e=>e.textContent=recent60?`${recentList.length} matches in the last 60 days`:'');
+    const recentList=list;
     renderLog(recentList,'log');renderLatest();
-    renderPeople(recentList);renderIndex(recentList);renderStandouts(recentList);renderChem(recentList);renderPatterns(recentList);renderPairs(recentList);renderClose(list);renderSplits(list);renderWTW(list);if(!VIEWING_OTHER)renderHighlights();renderStreaks(list);drawForm(list);
+    renderPeople(recentList);renderIndex(recentList);renderPL(recentList);renderPatterns(recentList);renderPairs(recentList);renderClose(list);renderSplits(list);renderWTW(list);if(!VIEWING_OTHER)renderHighlights(list);renderStreaks(list);drawForm(list);
     if(F.event.length){byId('eventLogTitle').textContent=F.event.length===1?'Matches — '+F.event[0]:F.event.length+' events selected';renderLog(list,'eventLog');}
     else{byId('eventLogTitle').textContent='Event Matches';
       byId('eventLog').innerHTML='<div class="caphint" style="padding:32px 20px;text-align:center">'+TAP+' an event in <b>Performance by Event</b> above to see its matches here.</div>';}
@@ -1552,23 +1600,37 @@
   let WL_LIST=[];
   function renderWL(){
     const ws=byId('wlStrip');ws.hidden=!M.length;if(!M.length)return;
-    const list=WL_LIST.filter(inZoom),w=list.filter(m=>m.won).length,n=list.length,wf=n?w/n:0;
+    const list=WL_LIST,w=list.filter(m=>m.won).length,n=list.length,wf=n?w/n:0;
     const rl=list.filter(m=>pOf(m)!=null),ew=rl.reduce((s,m)=>s+pOf(m),0),rw=rl.filter(m=>m.won).length;
-    const win=Z.months?(Z.months===12?'last 12 months':`last ${Z.months} months`):Z.year?Z.year:'all time';
-    const last=M.reduce((x,m)=>m.date>x?m.date:x,''),day=M.filter(m=>m.date===last).sort((x,y)=>ordOf(x)-ordOf(y)),dw=day.filter(m=>m.won).length;
+    const win=PER.k==='all'?'all time':perLabel();
     ws.innerHTML=`<div><div class="lbl">Record · ${win}</div><div class="wl-big"><span class="wl-w">${w}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${n-w}</span><span class="u"> L</span></div>`
       +(rl.length?`<div class="wl-exp">Ratings expected <b>${Math.round(ew)}–${rl.length-Math.round(ew)}</b>${rl.length<n?` in the ${rl.length} rated`:''} · <span class="${rw-ew>=0?'imp-up':'imp-dn'}">${rw-ew>=0?'+':'−'}${Math.abs(rw-ew).toFixed(1)} wins vs expected</span></div>`:'')+`</div>`
       +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i>${rl.length?`<span class="wl-tick" style="left:${(100*ew/rl.length).toFixed(1)}%" title="The win % the ratings expected: ${pct(ew/rl.length)}"></span>`:''}</div>`
-      +(rl.length?`<div class="wl-exp">▏ marks the win % the ratings expected (${pct(ew/rl.length)})</div>`:'')+`</div>`
-      +`<div class="wl-latest" title="Your latest day of play: see Latest matches below"><div class="lbl">Latest · ${dayLabel(last)}</div>`
-      +`<div class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}<span class="wl-day">${dw}–${day.length-dw}</span></div></div>`;
-    ws.querySelector('.wl-latest').onclick=()=>byId('lastDay').scrollIntoView({behavior:SMOOTH,block:'center'});
+      +(rl.length?`<div class="wl-exp">▏ marks the win % the ratings expected (${pct(ew/rl.length)})</div>`:'')+`</div>`;
   }
+  // "How did today go?": your latest day of play, whatever the filters say. Record vs what the
+  // ratings expected, the DUPR move, who you played with, and the one upset / given-up match.
   function renderLatest(){
-    if(!M.length){byId('lastDay').innerHTML='<div class="caphint" style="padding:26px 20px;text-align:center">No matches yet — sync from DUPR.</div>';byId('lastDaySub').textContent='';return;}
+    byId('lsCard').hidden=!M.length;if(!M.length)return;
     const maxDate=M.reduce((a,m)=>m.date>a?m.date:a,'');
-    const day=M.filter(m=>m.date===maxDate),w=day.filter(m=>m.won).length,imp=day.reduce((s,m)=>s+(m.impact||0),0);
-    byId('lastDaySub').innerHTML=`· ${dayLabel(maxDate)} · ${w}–${day.length-w}`+(day.some(m=>m.impact!=null)?` · <span class="${imp>=0?'imp-up':'imp-dn'} mono">${ptsTxt(imp,true)}</span>`:'');
+    const day=M.filter(m=>m.date===maxDate).sort((x,y)=>ordOf(x)-ordOf(y)),w=day.filter(m=>m.won).length;
+    const evs=[...new Set(day.map(evName).filter(Boolean))];
+    byId('lsWhen').textContent=dayLabel(maxDate)+(evs.length?' · '+evs[0]+(evs.length>1?` +${evs.length-1}`:''):'');
+    const s=expStats(day),imp=day.some(m=>m.impact!=null)?day.reduce((t,m)=>t+(m.impact||0),0):null;
+    const r0=day.find(m=>m.preRating!=null),r1=day.slice().reverse().find(m=>m.postRating!=null);
+    const pc=new Map();day.forEach(m=>{if(!m.partnerName)return;const r=pc.get(m.partnerName)||[0,0];r[m.won?0:1]++;pc.set(m.partnerName,r);});
+    const short=n=>{const p=String(n).split(' ');return p.length>1?p[0]+' '+p[p.length-1][0]+'.':n;};
+    const rated=day.filter(m=>pOf(m)!=null);
+    const up=rated.filter(m=>m.won&&pOf(m)<0.40).sort((a,b)=>pOf(a)-pOf(b))[0],gu=rated.filter(m=>!m.won&&pOf(m)>0.60).sort((a,b)=>pOf(b)-pOf(a))[0];
+    const mline=(m,u)=>`<div class="ls-m" data-mid="${m.matchId}"><span class="ls-tag ${u?'up':'dn'}">${u?'Upset ▲':'Given up ▼'}</span> `
+      +`${u?'Beat':'Lost to'} ${enc(oppStr(m))} <span class="mono">${enc(scoreStr(m))}</span><span class="sub"> · with ${enc(m.partnerName||'—')} · ratings gave you ${Math.round(100*pOf(m))}%</span></div>`;
+    byId('lsBody').innerHTML=`<div class="ls-rec"><span class="big"><span class="w">${w}</span>–<span class="l">${day.length-w}</span></span>`
+      +`<span class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}</span></div><div class="ls-lines">`
+      +(s?`<div>Ratings expected <b>${s.exp.toFixed(1)} wins</b> of ${s.n} · <span class="${woeCls(s.woe,s.z)}">${(s.woe>=0?'+':'−')+Math.abs(s.woe).toFixed(1)} wins vs expected</span> ${s.n>=PPL_MIN?sigPill(s,1):''}</div>`:'')
+      +(imp!=null?`<div>DUPR ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} → ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${imp>=0?'imp-up':'imp-dn'}">(${ptsTxt(imp,true)})</span></div>`:'')
+      +(pc.size?`<div class="sub">With ${[...pc].sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).map(([n,[a,b]])=>`${enc(short(n))} ${a}–${b}`).join(', ')}</div>`:'')
+      +`</div>`+(up?mline(up,true):'')+(gu?mline(gu,false):'');
+    byId('lsBody').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
     renderLog(day,'lastDay',null,{compact:true,cap:3,label:dayLabel(maxDate)});
   }
   // Phones open on a tight recent window (the chart is small); desktop shows everything.
@@ -1967,12 +2029,8 @@
   // PPL_MIN matches is too small a sample to rank on, so those go in a separate, muted list.
   const PPL_MIN=4;
   let dtAll=false;
-  let pplMode='opp',pplSort='woe',pplSel='',pplAll=false;
+  let pplMode='partner',plOpen='',plAllEarly=false,pplSort='woe',pplSel='',pplAll=false;
   const RECENT_DAYS=60;
-  // Page-level report filter: limit the Opponents & Partners page and the Match Log to the
-  // last 60 days. Does not touch Overview/Trends/Highlights (Highlights has its own window).
-  let recent60=false;
-  const inRecent60=m=>tms(m.date)>=Date.now()-RECENT_DAYS*864e5;
   // "2026-10-18 · 3d ago"
   const lastPlayedTxt=d=>{if(!d)return 'last played —';const days=Math.round((Date.now()-tms(d))/864e5);
     const ago=days<=1?'today':days<30?days+'d ago':days<365?Math.round(days/30)+'mo ago':(Math.round(days/365*10)/10)+'y ago';
@@ -2244,8 +2302,7 @@
         :`but partners’ and opponents’ ratings are from just after each match (sync again to use their before-match ratings, which are more accurate here).`)
       +(unrated?` ${unrated} ${opp?'opponent':'partner'}${unrated>1?'s':''} left out: no ratings on file for those matches.`:'');
   }
-  // Upset index + notable results (Highlights tab) and the Overview teaser strip.
-  let hlWindow='recent';
+  // Upset index + notable results (bottom of the Overview), in the Period and filters picked.
   const oppStr=m=>(m.opponents||[]).map(o=>o.name).join(' & ')||'—';
   const scoreStr=m=>m.scores.length?m.scores.map((s,i)=>s+'–'+(m.oppScores[i]??'')).join(', '):'—';
   // Jump from a highlight to that match in the Match Log: switch tab, un-collapse, scroll, flash.
@@ -2253,7 +2310,7 @@
     const sm=log&&log.querySelector('.showmore');if(sm)sm.remove();
     const row=log&&log.querySelector(`[data-mid="${mid}"]`);
     if(row){row.scrollIntoView({behavior:SMOOTH,block:'center'});row.classList.add('flash');setTimeout(()=>row.classList.remove('flash'),1600);}},80);}
-  function renderHighlights(){
+  function renderHighlights(list){
     // Lifetime rating range (peak / low / current), always all-time.
     if(series.length){let hi=series[0],lo=series[0];series.forEach(m=>{if(m.postRating>hi.postRating)hi=m;if(m.postRating<lo.postRating)lo=m;});
       byId('rangeTiles').innerHTML=
@@ -2263,9 +2320,8 @@
           :`<div class="ut"><div class="v imp-up mono">${hi.postRating.toFixed(3)}</div><div class="l">Peak <span class="sub">${dayLabel(hi.date)}</span></div></div>`
             +`<div class="ut"><div class="v blue mono">${ME_NOW==null?'—':ME_NOW.toFixed(3)}</div><div class="l">Current</div></div>`)
         +`<div class="ut"><div class="v imp-dn mono">${lo.postRating.toFixed(3)}</div><div class="l">Lowest <span class="sub">${dayLabel(lo.date)}</span></div></div>`;}
-    // Windowed moments (independent of the top filters): recent 60 days or all-time.
-    const cut=Date.now()-60*864e5,win=hlWindow==='recent'?M.filter(m=>tms(m.date)>=cut):M;
-    byId('hlCount').textContent=hlWindow==='recent'?`last 60 days · ${win.length} matches`:`all ${win.length} matches`;
+    // Moments in the Period and filters you've picked.
+    const win=list;
     // Upsets need a real gap: under a 40% win chance (given up: over 60%).
     const rated=win.filter(m=>pOf(m)!=null);
     const uw=rated.filter(m=>m.won&&pOf(m)<0.40),gu=rated.filter(m=>!m.won&&pOf(m)>0.60);
@@ -2286,70 +2342,44 @@
     if(blow)notes.push(['big','🎯','Biggest win',`${scoreStr(blow)} vs ${oppStr(blow)} — margin ${sgn(blow.normMargin)} per 11.`,blow.matchId]);
     if(close)notes.push(['bad','⏱️','Closest call',`Lost ${scoreStr(close)} to ${oppStr(close)} — nearly stole it.`,close.matchId]);
     byId('notable').innerHTML=notes.map(([c,ic,t,d,mid])=>`<div class="note clk ${c}" data-mid="${mid}"><div class="ic">${ic}</div><div><div class="t">${enc(t)}</div><div class="d">${enc(d)}</div></div></div>`).join('')
-      ||`<div class="caphint">No rated matches ${hlWindow==='recent'?'in the last 60 days':'yet'}.</div>`;
-    byId('tab-highlights').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
-    // Overview teasers (all-time): biggest upset + biggest win + current streak.
-    const aw=M.filter(m=>pOf(m)!=null&&m.won&&pOf(m)<0.40).sort((a,b)=>pOf(a)-pOf(b))[0];
-    const ab=M.filter(m=>m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
-    const tz=[];
-    if(aw)tz.push([aw.matchId,'🔼',`Biggest upset — beat ${oppStr(aw)} (${Math.abs(aw.diffPre).toFixed(2)} above you)`]);
-    if(ab)tz.push([ab.matchId,'🎯',`Biggest win — ${scoreStr(ab)} vs ${oppStr(ab)}`]);
-    const st=streakNow();if(st)tz.push(['','🔥',`Current streak — ${st}`]);
-    byId('teaserCard').hidden=!tz.length;
-    byId('teasers').innerHTML=tz.map(([mid,ic,t])=>`<div class="teaser${mid?' clk':''}"${mid?` data-mid="${mid}"`:''}><span class="tic">${ic}</span><span>${enc(t)}</span></div>`).join('');
-    byId('teasers').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
+      ||`<div class="caphint">No rated matches ${byId('reset').disabled?'yet':'with these filters'}.</div>`;
+    byId('hlSec').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
   }
   // Current win/loss streak across all matches in processing order.
   function streakNow(){const s=M.slice().sort((a,b)=>a.date.localeCompare(b.date)||(ordOf(a)-ordOf(b)));if(!s.length)return '';
     let r=s[s.length-1].won,k=0;for(let i=s.length-1;i>=0;i--){if(!!s[i].won===!!r)k++;else break;}return k+(r?' win'+(k>1?'s':''):' loss'+(k>1?'es':''));}
-  // Best/worst partner and opponent by wins-vs-expected, at a glance (reuses expStats).
-  function renderStandouts(list){
-    const build=mode=>{const g=new Map();
-      list.forEach(m=>{if(m.diffPre==null)return;const add=p=>{if(!p||p.id==null)return;const k=String(p.id);
-          const r=g.get(k)||{name:nameCase(p.name||''),ms:[]};r.ms.push(m);g.set(k,r);};
-        if(mode==='opp')(m.opponents||[]).forEach(add);else if(m.partner)add(m.partner);});
-      return [...g.values()].map(r=>({name:r.name,s:expStats(r.ms)})).filter(r=>r.s&&r.s.n>=PPL_MIN);};
-    const partners=build('partner'),opps=build('opp');
-    // Ranked by the Signal's evidence score, not raw wins vs expected; below |z| 2 nobody is named.
-    const by=(arr,best)=>arr.length?arr.slice().sort((a,b)=>best?b.s.z-a.s.z:a.s.z-b.s.z)[0]:null;
-    const tiles=[];const tile=(lab,r,good,k)=>{if(!r)return;
-      const v=(r.s.woe>=0?'+':'−')+Math.abs(r.s.woe).toFixed(1);
-      // Named only at Clear: in a list of 45, a Likely or two turns up by luck alone.
-      const zc=zCrit(k);if(good?r.s.z<zc:r.s.z>-zc){tiles.push(`<div class="kpi none"><div class="l"><b>${lab}:</b> no clear standout yet</div><div class="l sub">closest: ${enc(r.name)}, ${v} wins vs expected (${r.s.n} M) ${sigPill(r.s,k)}</div></div>`);return;}
-      tiles.push(`<div class="kpi"><div class="v mono ${good?'imp-up':'imp-dn'}" style="font-size:15px;line-height:1.2">${enc(r.name)}</div><div class="l">${lab} ${sigPill(r.s,k)} <span class="sub">${v} wins vs expected · ${r.s.n} M</span></div></div>`);};
-    tile('Best partner',by(partners,true),true,partners.length);tile('Toughest partner',by(partners,false),false,partners.length);
-    tile('Favourite opponent',by(opps,true),true,opps.length);tile('Nemesis',by(opps,false),false,opps.length);
-    byId('standCard').hidden=!tiles.length;byId('standKpis').innerHTML=tiles.join('');
-  }
-  // Your average per-11 margin WITH each partner vs your overall margin (the baseline).
-  function renderChem(list){
-    const base=agg(list,'then'),baseM=base?base.normMargin:null,card=byId('chemCard');
-    if(baseM==null){card.hidden=true;return;}
-    const g=new Map();
-    list.forEach(m=>{if(m.partner&&m.partner.id!=null&&m.normMargin!=null){const k=String(m.partner.id);
-      const r=g.get(k)||{name:nameCase(m.partner.name||''),ms:[]};r.ms.push(m);g.set(k,r);}});
-    // Margin vs what the ratings expected for those matches (strong partners face strong
-    // opponents, so a raw margin makes them look bad), with ±2 SE as the range luck could explain.
-    let rows=[...g.values()].map(r=>{const s=expStats(r.ms);if(!s||s.mres==null)return null;
-      const nm=r.ms.filter(m=>pOf(m)!=null&&m.normMargin!=null).length;
-      return {name:r.name,n:nm,delta:s.mres,se:MODEL.sig&&nm?MODEL.sig/Math.sqrt(nm):0};}).filter(r=>r&&r.n>=PPL_MIN).filter(matchName);
-    rows.sort((a,b)=>b.delta-a.delta);
-    card.hidden=!rows.length;if(!rows.length)return;
-    const maxAbs=Math.max(0.5,...rows.map(r=>Math.abs(r.delta)+2*r.se));
-    const at=v=>Math.max(0,Math.min(100,50+50*v/maxAbs));
-    // Three groups by how far past 0 the result is, in luck units (SE): 2+ is coloured with an
-    // arrow; 1–2 is "worth watching" (faint colour, Leaning ●○○, ~1 in 3 get here by luck);
-    // under 1 is "too early to tell": grey, no arrow.
-    const zOf=r=>r.se?Math.abs(r.delta)/r.se:0,early=r=>zOf(r)<1,watch=r=>zOf(r)>=1&&zOf(r)<2;
-    const crow=r=>{const pos=r.delta>=0,L=at(Math.min(r.delta,0)),R=at(Math.max(r.delta,0)),e=early(r),w=watch(r);
-      return `<div class="crow${e?' early':w?' watch':''}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.n} matches${w?' · Leaning ●○○':''}</div></div>`
-        +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(r.delta-2*r.se).toFixed(1)}%;width:${(at(r.delta+2*r.se)-at(r.delta-2*r.se)).toFixed(1)}%"></span>`
+  // One list of partners (or opponents): wins vs what the ratings expected, the range luck
+  // alone could produce (±2 SD of the win count), and the Signal. Grouped by the Signal's z:
+  // 2+ coloured with an arrow, 1–2 "worth watching" (about 1 in 3 land there by chance), under
+  // 1 "too early to tell". Best and toughest are simply the top and bottom.
+  function renderPL(list){
+    const opp=pplMode==='opp',card=byId('plCard'),who=opp?'opponent':'partner';
+    const rows=peopleOf(list).map(r=>{const s=expStats(r.ms);if(!s||s.n<PPL_MIN)return null;
+      const ps=r.ms.filter(m=>m.diffPre!=null&&!CHART_LATE.has(m.matchId)&&m.confirmed!==false).map(m=>MODEL.pWin(m.diffPre));
+      return {id:r.id,name:r.name,ms:r.ms,s,rng:2*Math.sqrt(ps.reduce((t,p)=>t+p*(1-p),0))};}).filter(Boolean).filter(matchName);
+    byId('plTitle').textContent=opp?'Your opponents':'Your partners';
+    byId('plHint').textContent=`Wins ${opp?'against':'with'} each ${who} minus what the ratings expected. The thin line is the range luck alone could produce. Grouped by Signal, which also counts your points. ${TAP} a name for more. ${PPL_MIN}+ matches.`;
+    card.hidden=false;
+    if(!rows.length){byId('pl').innerHTML=`<div class="caphint" style="padding:4px 0">${emptyWhy(who)}</div>`;return;}
+    rows.sort((a,b)=>b.s.woe-a.s.woe);
+    const k=rows.length,maxAbs=Math.max(1,...rows.map(r=>Math.abs(r.s.woe)+r.rng));
+    const at=v=>Math.max(0,Math.min(100,50+50*v/maxAbs)),zA=r=>Math.abs(r.s.z);
+    const row=r=>{const v=r.s.woe,pos=v>=0,e=zA(r)<1,w=!e&&zA(r)<2,L=at(Math.min(v,0)),R=at(Math.max(v,0)),o=plOpen===r.id;
+      const wl=r.ms.filter(m=>m.won).length;
+      return `<div class="crow clk${e?' early':w?' watch':''}" data-pl="${enc(r.id)}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.ms.length} matches · ${wl}–${r.ms.length-wl} · ${sigPill(r.s,k)}</div></div>`
+        +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(v-r.rng).toFixed(1)}%;width:${(at(v+r.rng)-at(v-r.rng)).toFixed(1)}%"></span>`
         +`<i style="left:${L.toFixed(1)}%;width:${(R-L).toFixed(1)}%;background:${e?'var(--dot-dim)':pos?'var(--win)':'var(--loss)'}"></i></div>`
-        +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(r.delta).toFixed(1)}${e||w?'':pos?' ▲':' ▼'}</div></div>`;};
-    const clear=rows.filter(r=>zOf(r)>=2),watched=rows.filter(watch),grey=rows.filter(early),pl=n=>`${n} partner${n>1?'s':''}`;
-    byId('chem').innerHTML=(clear.length?clear.map(crow).join(''):'<div class="caphint" style="padding:4px 0 8px">No partner is clearly better or worse yet.</div>')
-      +(watched.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watched.length)}</div><div class="caphint" style="padding:0 0 4px">Leaning one way, still within luck: about 1 in 3 partners land here by chance alone${rows.length>=3?` (${Math.round(rows.length/3)} of these ${rows.length})`:''}.</div>`+watched.map(crow).join(''):'')
-      +(grey.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${pl(grey.length)}</div>`+grey.map(crow).join(''):'');
+        +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(v).toFixed(1)}${e||w?'':pos?' ▲':' ▼'}</div>`
+        +(o?`<div class="pdet">Expected ${r.s.exp.toFixed(1)} wins of ${r.s.n}${r.s.mres!=null?` · points: ${sgn(r.s.mres)} per 11 vs expected`:''}${r.s.imp!=null?` · DUPR ${ptsTxt(r.s.imp,true)} / match`:''} · <a data-plgo="${enc(r.id)}">See the ${r.ms.length} matches →</a></div>`:'')+`</div>`;};
+    const top=rows.filter(r=>zA(r)>=2),watch=rows.filter(r=>zA(r)>=1&&zA(r)<2),early=rows.filter(r=>zA(r)<1),pl=n=>`${n} ${who}${n>1?'s':''}`;
+    byId('pl').innerHTML=(top.length?top.map(row).join(''):`<div class="caphint" style="padding:2px 0 6px">No ${who} stands out from luck yet.</div>`)
+      +(watch.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watch.length)}</div><div class="caphint" style="padding:0 0 4px">Leaning one way, still within luck: about 1 in 3 land here by chance alone${k>=3?` (${Math.round(k/3)} of these ${k})`:''}.</div>`+watch.map(row).join(''):'')
+      +(early.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${pl(early.length)}</div>`+(plAllEarly?early:early.slice(0,3)).map(row).join('')
+        +(early.length>3?`<button class="minibtn" id="plMore" style="margin-top:8px">${plAllEarly?'Show fewer':`Show ${early.length-3} more`}</button>`:''):'');
+    const mb=byId('plMore');if(mb)mb.onclick=()=>{plAllEarly=!plAllEarly;renderPL(list);};
+    byId('pl').querySelectorAll('[data-pl]').forEach(el=>el.onclick=e=>{const go=e.target.closest('[data-plgo]');
+      if(go){pplSel=dec(go.dataset.plgo);render();byId('pplLogCard').scrollIntoView({behavior:SMOOTH,block:'start'});return;}
+      const id=dec(el.dataset.pl);plOpen=plOpen===id?'':id;renderPL(list);});
   }
   function renderPeople(list){
     const opp=pplMode==='opp',who=opp?'Opponent':'Partner';
@@ -2397,13 +2427,11 @@
   }
 
   // ---- wiring ----
-  document.querySelectorAll('#pplMode button').forEach(b=>b.onclick=()=>{pplMode=b.dataset.p;pplSel='';pplAll=false;pxAll=false;render();});
+  document.querySelectorAll('#pplMode button').forEach(b=>b.onclick=()=>{pplMode=b.dataset.p;pplSel='';plOpen='';plAllEarly=false;pplAll=false;pxAll=false;render();});
   byId('pplSort').onchange=e=>{pplSort=e.target.value;render();};
   byId('pxSort').onchange=e=>{pxSort=e.target.value;render();};
   byId('pplSearch').addEventListener('input',e=>{pplQuery=e.target.value;render();});
   // Page-level 60-day filter, shared across both its toggles (Opponents page + Match Log).
-  const syncRecent=()=>document.querySelectorAll('.recentT button').forEach(b=>b.classList.toggle('on',(b.dataset.r==='1')===recent60));
-  document.querySelectorAll('.recentT button').forEach(b=>b.onclick=()=>{recent60=b.dataset.r==='1';syncRecent();render();});
   // ---- matchup predictor (independent of filters; reuses MODEL) ----
   (function initPredict(){
     // Players from your own history, keyed by DUPR id so two people with the same name stay
@@ -2466,18 +2494,30 @@
   byId('fbHead').onclick=e=>{if(e.target.closest('select'))return;filtersOpen=!filtersOpen;render();};
   const goTab=name=>{tab=name;document.querySelectorAll('.tab').forEach(x=>{const on=x.dataset.tab===name;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);});render();window.scrollTo(0,0);};
   document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>goTab(t.dataset.tab));
-  byId('teaserGo').onclick=()=>goTab('highlights');
-  document.querySelectorAll('#hlWin button').forEach(b=>b.onclick=()=>{hlWindow=b.dataset.w;
-    document.querySelectorAll('#hlWin button').forEach(x=>x.classList.toggle('on',x===b));renderHighlights();});
+  let tabBeforeGuide='overview';
+  addEventListener('resize',()=>{if(!filtersOpen)document.documentElement.style.setProperty('--fbh',byId('filterbar').offsetHeight+'px');});
+  byId('hdrHelp').onclick=()=>{if(tab!=='guide')tabBeforeGuide=tab;goTab('guide');};
+  byId('guideBack').onclick=()=>goTab(tabBeforeGuide);
   document.querySelectorAll('.basisToggle button').forEach(b=>b.onclick=()=>{basis=b.dataset.b;render();});
   byId('logSort').onchange=e=>{logSort=e.target.value;render();};
   document.querySelectorAll('[data-wl]').forEach(c=>c.onclick=()=>{F.wl=c.dataset.wl;
     document.querySelectorAll('[data-wl]').forEach(x=>{x.classList.toggle('on',x===c);x.setAttribute('aria-pressed',x===c);});render();});
   byId('cleanup').onclick=e=>{e.stopPropagation();panelOpen=!panelOpen;
     byId('cleanup').textContent=panelOpen?'✕ Close clean up':'⚙ Clean up data';renderManage();};
-  byId('reset').onclick=e=>{e.stopPropagation();Object.assign(F,{year:[],type:[],level:[],event:[],partner:[],wl:'all',date:''});
+  byId('reset').onclick=e=>{e.stopPropagation();Object.assign(F,{year:[],type:[],level:[],event:[],partner:[],wl:'all',date:''});Object.assign(PER,{k:'all',y:'',from:'',to:''});byId('perCust').hidden=true;
     document.querySelectorAll('[data-wl]').forEach(x=>x.classList.toggle('on',x.dataset.wl==='all'));render();};
   byId('evClear').onclick=()=>byId('reset').click();
+  // Period: the three presets apply at once; Custom… opens year shortcuts and a date range.
+  function drawPerCust(){const ys=[...new Set(M.map(m=>m.year))].sort((a,b)=>b.localeCompare(a));
+    byId('perCust').innerHTML='<span class="muted">Year</span> '+ys.map(y=>`<button class="minibtn${PER.k==='year'&&PER.y===y?' on':''}" data-y="${y}">${y}</button>`).join('')
+      +`<label>From <input type="date" id="perFrom" value="${PER.k==='range'?PER.from:''}"></label><label>To <input type="date" id="perTo" value="${PER.k==='range'?PER.to:''}"></label>`;
+    byId('perCust').querySelectorAll('[data-y]').forEach(b=>b.onclick=()=>{Object.assign(PER,{k:'year',y:b.dataset.y});drawPerCust();render();});
+    ['perFrom','perTo'].forEach(id=>byId(id).onchange=()=>{Object.assign(PER,{k:'range',from:byId('perFrom').value,to:byId('perTo').value});
+      if(!PER.from&&!PER.to)PER.k='all';drawPerCust();render();});}
+  document.querySelectorAll('#perSeg button').forEach(b=>b.onclick=()=>{const k=b.dataset.per;
+    if(k==='custom'){const c=byId('perCust');c.hidden=!c.hidden;if(!c.hidden)drawPerCust();
+      if(PER.k!=='year'&&PER.k!=='range')b.classList.toggle('on',!c.hidden);return;}
+    Object.assign(PER,{k,y:'',from:'',to:''});byId('perCust').hidden=true;render();});
   byId('fbClear').onclick=e=>{e.stopPropagation();filtersOpen=false;byId('reset').click();};
   byId('themeBtn').onclick=()=>{const r=document.documentElement,c=r.getAttribute('data-theme');
     const next=c?(c==='dark'?'light':'dark')

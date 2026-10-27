@@ -16,6 +16,7 @@
   let ID = '';
   const RECENT = 14, SCOUT_CAP = 150;
   if (!/(^|\.)dupr\.com$/.test(location.hostname)) {
+    if (document.getElementById('bmPage')) { document.dispatchEvent(new CustomEvent('pbsync-test')); return; }
     alert('Open dashboard.dupr.com (logged in), then run this bookmark there.');
     return;
   }

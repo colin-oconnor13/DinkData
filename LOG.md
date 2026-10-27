@@ -2,6 +2,27 @@
 
 Newest first.
 
+## 2026-10-27 — UX review batch 2 (branch review-b2)
+- **A · Last session** card opens the Overview: record vs what the ratings expected (with Signal),
+  DUPR move, partners, the session's upset / given-up match, then 3 match rows + All N. Replaces
+  "Latest matches" and the Latest chips in the record strip.
+- **B · One partner list** (`renderPL`) replaces Standouts and Partner chemistry: wins vs expected
+  with a ±2 SD luck range, grouped by Signal (2+ / Worth watching 1–2 / Too early, which shows 3 +
+  Show more); tap for points, DUPR and the matches. The Partners / Opponents switch is a sticky bar
+  at the top of the People tab (default Partners) and drives every card there.
+- **C · Phone set-up** (?bm=1) is one step at a time with a progress bar and a new **Test it here**
+  step. PB Sync run on any Dink Data page (it has #bmPage) fires `pbsync-test` instead of the
+  "open DUPR" alert; sync.js rebuilt.
+- **D · Four tabs:** Overview · Trends · People · Matches. Guide opens from **?** in the header (with
+  Back). Highlights folded in: all-time range under the rating chart; Upset index + Notable results
+  at the bottom of the Overview (the "Worth a look" teaser is gone); Matches gains Upsets ▲ / Given
+  up ▼ chips (F.wl 'UP' / 'GU').
+- **E · One Period** (All time · 12 mo · 60 days · Custom… with year shortcuts and a date range) at
+  the top of the filter bar, part of `pass`. Gone: the Year filter, both Last-60-days switches,
+  Highlights' own switch; the record strip follows the Period, not the chart zoom. Period counts as
+  a filter (gold outline, ✕ Clear) but doesn't open the Filters panel.
+- Guide text updated. SW cache rj-v99.
+
 ## 2026-10-27 — Chemistry: "Worth watching" group (branch review-all)
 - Partner chemistry now has three groups by how far the result sits from 0 in luck units (SE):
   2+ = coloured with ▲/▼ (as before); 1–2 = **Worth watching** (faint colour, Leaning ●○○, with a
