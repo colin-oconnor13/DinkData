@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-10-27 — Chemistry: "Worth watching" group (branch review-all)
+- Partner chemistry now has three groups by how far the result sits from 0 in luck units (SE):
+  2+ = coloured with ▲/▼ (as before); 1–2 = **Worth watching** (faint colour, Leaning ●○○, with a
+  note that about 1 in 3 partners land there by chance); under 1 = Too early to tell (grey).
+  Legend gains a "Worth watching" swatch. SW cache rj-v98.
+
 ## 2026-10-27 — Active filter can't be missed (branch review-all)
 Filters apply on every tab, and one set by tapping an event row was easy to miss (empty Partner
 Index, short match list).

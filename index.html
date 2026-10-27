@@ -210,6 +210,7 @@
   .wl-bar{position:relative} .wl-tick{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:1px}
   .crow{display:grid;grid-template-columns:minmax(110px,190px) 1fr 76px;gap:14px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
   .crow:first-child{border-top:0} .crow .nm{font-weight:700;font-size:13.5px} .crow .sb{font-size:11.5px;color:var(--muted)}
+  .crow.watch .cbar i{opacity:.45} .crow.watch .mono{opacity:.8}
   .cbar{position:relative;height:18px;border-radius:6px;background:var(--surface-2)} .cbar i{position:absolute;top:3px;bottom:3px;border-radius:4px}
   .cbar .mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--muted)} .cbar .ci{position:absolute;top:8px;height:2px;background:var(--ink);opacity:.45}
   .wtw{margin:4px 0 0;padding-left:18px;line-height:1.6;font-size:14px} .wtw li{margin-bottom:6px} .wtw li.ok{list-style:none;margin-left:-18px}
@@ -813,7 +814,7 @@
       <div class="sect-h" style="margin:0 0 4px">Partner chemistry</div>
       <div class="caphint" style="padding:0 0 10px">Your average margin per 11 points <em>with</em> each partner, minus what the ratings expected for those matches. The thin line is the range luck alone could produce: if it crosses the middle, it could be luck. <span id="chemBase" class="mono" hidden></span>4+ matches.</div>
       <div id="chem"></div>
-      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win)"></span>Better with them</span><span><span class="swatch" style="background:var(--loss)"></span>Worse together</span></div>
+      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win);opacity:.45"></span>Worth watching</span><span><span class="swatch" style="background:var(--win)"></span>Better with them</span><span><span class="swatch" style="background:var(--loss)"></span>Worse together</span></div>
     </div>
     <div class="card bd">
       <div class="bd-head">
@@ -2336,16 +2337,19 @@
     card.hidden=!rows.length;if(!rows.length)return;
     const maxAbs=Math.max(0.5,...rows.map(r=>Math.abs(r.delta)+2*r.se));
     const at=v=>Math.max(0,Math.min(100,50+50*v/maxAbs));
-    // A row whose luck range crosses zero is "too early to tell": grey, no arrow, grouped below.
-    const early=r=>r.delta-2*r.se<=0&&r.delta+2*r.se>=0;
-    const crow=r=>{const pos=r.delta>=0,L=at(Math.min(r.delta,0)),R=at(Math.max(r.delta,0)),e=early(r);
-      return `<div class="crow${e?' early':''}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.n} matches</div></div>`
+    // Three groups by how far past 0 the result is, in luck units (SE): 2+ is coloured with an
+    // arrow; 1–2 is "worth watching" (faint colour, Leaning ●○○, ~1 in 3 get here by luck);
+    // under 1 is "too early to tell": grey, no arrow.
+    const zOf=r=>r.se?Math.abs(r.delta)/r.se:0,early=r=>zOf(r)<1,watch=r=>zOf(r)>=1&&zOf(r)<2;
+    const crow=r=>{const pos=r.delta>=0,L=at(Math.min(r.delta,0)),R=at(Math.max(r.delta,0)),e=early(r),w=watch(r);
+      return `<div class="crow${e?' early':w?' watch':''}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.n} matches${w?' · Leaning ●○○':''}</div></div>`
         +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(r.delta-2*r.se).toFixed(1)}%;width:${(at(r.delta+2*r.se)-at(r.delta-2*r.se)).toFixed(1)}%"></span>`
         +`<i style="left:${L.toFixed(1)}%;width:${(R-L).toFixed(1)}%;background:${e?'var(--dot-dim)':pos?'var(--win)':'var(--loss)'}"></i></div>`
-        +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(r.delta).toFixed(1)}${e?'':pos?' ▲':' ▼'}</div></div>`;};
-    const clear=rows.filter(r=>!early(r)),grey=rows.filter(early);
+        +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(r.delta).toFixed(1)}${e||w?'':pos?' ▲':' ▼'}</div></div>`;};
+    const clear=rows.filter(r=>zOf(r)>=2),watched=rows.filter(watch),grey=rows.filter(early),pl=n=>`${n} partner${n>1?'s':''}`;
     byId('chem').innerHTML=(clear.length?clear.map(crow).join(''):'<div class="caphint" style="padding:4px 0 8px">No partner is clearly better or worse yet.</div>')
-      +(grey.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${grey.length} partner${grey.length>1?'s':''}</div>`+grey.map(crow).join(''):'');
+      +(watched.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watched.length)}</div><div class="caphint" style="padding:0 0 4px">Leaning one way, still within luck: about 1 in 3 partners land here by chance alone${rows.length>=3?` (${Math.round(rows.length/3)} of these ${rows.length})`:''}.</div>`+watched.map(crow).join(''):'')
+      +(grey.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${pl(grey.length)}</div>`+grey.map(crow).join(''):'');
   }
   function renderPeople(list){
     const opp=pplMode==='opp',who=opp?'Opponent':'Partner';
