@@ -2,6 +2,22 @@
 
 Newest first.
 
+## 2026-10-27 — UX review 3: plain words everywhere (branch review-b2)
+- **One "why" for every Signal** (`explain()`): the partner-row template (what happened / vs
+  expected / could it be luck) now backs every How-sure pill, on hover (360 px box, any
+  `[data-why]`) and on tap (bubble). Builder numbers (z, cut-offs) only with `?debug=1`.
+- **No half-wins:** `about()` / `woeTxt()`: "about 3–4", "+3"; Last session has no pill ("You won 6,
+  a great night"); tournaments "about 1 win"; Expected W–L whole. Percentages whole (`pct`).
+- **Plain columns:** Matches, Games, Points won, Score vs expected, Rating change per match, How
+  sure. Matchup bands named in words (cut-offs in tap text). "Given up" → Upset losses; DUPR at
+  the time / Hindsight → Ratings then / now; "Worth watching" → "Leaning one way".
+- **Copy:** Overview tiles, record line, playing-at sentence (1 decimal), Upsets card; Trends
+  captions (form, tournaments, streaks, "When you play best" splits, rating goal admits a wide
+  range); People index title/hint/footnotes (model note moved to the Guide, linked); match rows
+  ("57% chance to win", event name only, "Oct 26"); sync messages (raw errors behind "details").
+- **Guide:** new lead; Form and Signal passages fixed (they contradicted the app); Margin,
+  Playing at, How sure, Ratings then / now rewritten.
+
 ## 2026-10-27 — UX review batch 2 (branch review-b2)
 - **A · Last session** card opens the Overview: record vs what the ratings expected (with Signal),
   DUPR move, partners, the session's upset / given-up match, then 3 match rows + All N. Replaces

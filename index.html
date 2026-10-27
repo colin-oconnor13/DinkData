@@ -732,8 +732,8 @@
 
     <div id="hlSec" style="margin-top:16px">
     <div class="card pad" style="margin-bottom:16px">
-      <div class="sect-h" style="margin:0 0 4px">Upset index</div>
-      <div class="caphint" style="padding:0 0 12px">An <b>upset win</b> = you won when the ratings gave you under a 40% chance. <b>Given up</b> = you lost when they gave you over 60%. Small rating gaps don’t count.</div>
+      <div class="sect-h" style="margin:0 0 4px">Upsets</div>
+      <div class="caphint" style="padding:0 0 12px"><b>Upset win:</b> you won with under a 40% chance. <b>Upset loss:</b> you lost with over a 60% chance.</div>
       <div class="utiles" id="upsetTiles"></div>
       <div id="upsetBig"></div>
     </div>
@@ -744,10 +744,10 @@
 
   <!-- ===== TRENDS ===== -->
   <div id="tab-analysis" hidden>
-    <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Recent rating changes <span style="font-weight:500;text-transform:none;letter-spacing:0;opacity:.7">— your most recent matches; the filters above don’t change these</span></div><div class="kpis" id="dkpis"></div><div class="caphint" style="padding:10px 0 0">“Per event / date / match” is the <b>typical swing</b> (how much your rating moves either way). “Per win / loss” is the <b>average change</b>, with its sign.</div></div>
+    <div class="card pad" style="margin-bottom:16px"><div class="sect-h">Recent rating changes <span style="font-weight:500;text-transform:none;letter-spacing:0;opacity:.7">— your most recent matches; the filters above don’t change these</span></div><div class="kpis" id="dkpis"></div></div>
 
     <div class="card pad" style="margin-bottom:16px">
-      <div class="chart-head"><h3>Form — Rolling <span id="formN"></span> Matches <span class="lsub" id="formSub" style="font-weight:500"></span></h3>
+      <div class="chart-head"><h3>Form: your last <span id="formN"></span> matches <span class="lsub" id="formSub" style="font-weight:500"></span></h3>
         <div class="zoom" id="formMetric"></div></div>
       <div id="chartForm"></div>
       <div class="caphint" style="padding:6px 0 0" id="formHint"></div>
@@ -769,7 +769,7 @@
 
     <div class="card bd" id="tourCard">
       <div class="bd-head"><div><div class="sect-h" style="margin:0">Tournament results</div>
-        <div class="caphint" style="padding:4px 0 0">Each tournament as a result: your record, the record the ratings expected, the rating you played at over the event (5+ matches), and what it did to your DUPR.</div></div></div>
+        <div class="caphint" style="padding:4px 0 0">How each tournament went: your record, what was expected, and what it did to your rating.</div></div></div>
       <div class="tblscroll"><table id="tourTable"></table></div>
     </div>
 
@@ -784,7 +784,7 @@
     <div class="card bd">
       <div class="bd-head">
         <div><div class="sect-h" style="margin:0">Performance by Matchup Strength</div></div>
-        <div class="toggle basisToggle"><button data-b="then" class="on" title="Everyone's DUPR going into each match">DUPR at the time</button><button data-b="now" title="Your rating at the time, everyone else's rating today: who were they really?">Hindsight</button></div>
+        <div class="toggle basisToggle"><button data-b="then" class="on" title="Everyone's DUPR going into each match">Ratings then</button><button data-b="now" title="Your rating at the time, everyone else's rating today: who were they really?">Ratings now</button></div>
       </div>
       <div class="tblscroll"><table id="bdTable"></table></div>
     </div>
@@ -806,8 +806,8 @@
     </div>
 
     <div class="card bd">
-      <div class="bd-head"><div><div class="sect-h" style="margin:0">Rating-adjusted splits</div>
-        <div class="caphint" style="padding:4px 0 0">Your results in different situations against what the ratings expected: do you fade later in a day, come back rusty, or play differently up or down a level?</div></div></div>
+      <div class="bd-head"><div><div class="sect-h" style="margin:0">When you play best</div>
+        <div class="caphint" style="padding:4px 0 0">Late in the night, after a break, playing up a level: how you do against what was expected.</div></div></div>
       <div class="tblscroll"><table id="splitTable"></table></div>
     </div>
 
@@ -825,12 +825,12 @@
     <div class="card" style="overflow:hidden">
       <div class="logtop"><h2>Match Log <span class="lsub" id="logSub"></span></h2>
         <div class="tagfilters" role="group" aria-label="Show"><button type="button" class="chip on" aria-pressed="true" data-wl="all">All</button>
-          <button type="button" class="chip" aria-pressed="false" data-wl="W">Wins</button><button type="button" class="chip" aria-pressed="false" data-wl="L">Losses</button><button type="button" class="chip" aria-pressed="false" data-wl="UP">Upsets ▲</button><button type="button" class="chip" aria-pressed="false" data-wl="GU">Given up ▼</button>
+          <button type="button" class="chip" aria-pressed="false" data-wl="W">Wins</button><button type="button" class="chip" aria-pressed="false" data-wl="L">Losses</button><button type="button" class="chip" aria-pressed="false" data-wl="UP">Upset wins ▲</button><button type="button" class="chip" aria-pressed="false" data-wl="GU">Upset losses ▼</button>
           <select id="logSort" title="Sort the match log">
             <option value="new">Newest first</option>
             <option value="old">Oldest first</option>
-            <option value="up">Biggest DUPR gain</option>
-            <option value="down">Biggest DUPR drop</option>
+            <option value="up">Biggest rating gain</option>
+            <option value="down">Biggest rating drop</option>
           </select></div>
       </div>
       <div id="log"></div>
@@ -841,16 +841,16 @@
   <!-- ===== TAB 3: OPPONENTS (and partners) ===== -->
   <div id="tab-people" hidden>
     <div class="pplbar"><div class="toggle big" id="pplMode" role="group" aria-label="Show"><button data-p="partner" class="on">Partners</button><button data-p="opp">Opponents</button></div>
-      <span class="caphint" style="padding:0">every card on this tab follows this</span></div>
+</div>
     <div class="card pad" id="plCard" style="margin-bottom:16px" hidden>
       <div class="sect-h" style="margin:0 0 4px" id="plTitle">Your partners</div>
       <div class="caphint" style="padding:0 0 10px" id="plHint"></div>
       <div id="pl"></div>
-      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win);opacity:.45"></span>Worth watching</span><span><span class="swatch" style="background:var(--win)"></span>Better than expected</span><span><span class="swatch" style="background:var(--loss)"></span>Worse than expected</span></div>
+      <div class="legend" style="margin-top:12px"><span><span class="swatch" style="background:var(--dot-dim)"></span>Too early to tell</span><span><span class="swatch" style="background:var(--win);opacity:.45"></span>Leaning one way</span><span><span class="swatch" style="background:var(--win)"></span>Better than expected</span><span><span class="swatch" style="background:var(--loss)"></span>Worse than expected</span></div>
     </div>
     <div class="card pad" id="predictCard" style="margin-bottom:16px">
       <div class="sect-h">Matchup predictor</div>
-      <div class="caphint" style="padding:0 0 10px">Pick your partner and two opponents — type a name or a rating — to see your expected win chance and margin before you play.</div>
+      <div class="caphint" style="padding:0 0 10px"><b>Before you play:</b> pick your partner and opponents (a name or a rating) to see your chances.</div>
       <div class="predict-grid">
         <label class="pdfld">You<input id="pdMe" type="text" inputmode="decimal" autocomplete="off" placeholder="3.50"></label>
         <label class="pdfld">Partner<input id="pdPartner" list="pdPlayers" autocomplete="off" placeholder="name or rating"></label>
@@ -908,9 +908,9 @@
           <div class="caphint" style="padding:4px 0 0" id="pplHint"></div></div>
         <div class="pplctl">
           <select id="pplSort" title="Rank by">
-            <option value="woe">Rank by Wins vs expected</option>
+            <option value="woe">Rank by Most above expected</option>
             <option value="win">Rank by Win %</option>
-            <option value="pts">Rank by Pts %</option>
+            <option value="pts">Rank by Points won</option>
             <option value="margin">Rank by Margin</option>
             <option value="impact">Rank by DUPR change</option>
             <option value="beat">Rank by Rating went up</option>
@@ -940,7 +940,7 @@
     <button class="minibtn" id="guideBack" style="margin:0 0 12px">← Back</button>
     <div class="card pad guide">
       <h2>How to read this</h2>
-      <p class="lead">This is your real pickleball history from DUPR, sliced up so you can see what’s actually going on — who you beat, who beats you, and whether you’re playing better or worse than your rating says you should. Here’s what everything means.</p>
+      <p class="lead">Dink Data answers three questions: <b>How did I do? Am I getting better? Who do I play best with?</b> Here’s what each number means. “Expected” always means what the ratings predicted.</p>
     </div>
 
     <div class="card pad guide">
@@ -963,35 +963,36 @@
       <div class="gdef"><b>DUPR</b><span class="d">Your official rating from DUPR. Higher is stronger.</span></div>
       <div class="gdef"><b>Win %</b><span class="d">The share of matches you won.</span></div>
       <div class="gdef"><b>Points won %</b><span class="d">Of all the points played, how many you won. A truer measure of how close things were than win–loss alone. It pools every point, so a game to 15 counts a little more than a game to 11.</span></div>
-      <div class="gdef"><b>Margin</b><span class="d">On average, how many points you win or lose a game by — rescaled to an 11-point game (games to 15 and 21 are scaled down) so an 11–9 and a 15–12 compare fairly. It's an average of games. <em>+2.0 means you typically win by about 2; −2.0 means you lose by about 2.</em> A single game swings a lot, typically by about 5 points either way of what the ratings expect, so one night is never a trend.</span></div>
-      <div class="gdef"><b>Playing at</b><span class="d">The DUPR your recent results were worth: the rating at which the ratings would have expected exactly the wins you got over your last 20 matches. It comes with a range, because 20 matches is still noisy. When it sits above your DUPR for a while, your DUPR has room to rise.</span></div>
+      <div class="gdef"><b>Margin</b><span class="d">How many points you win or lose a game by, on average. +2 means you usually win by about 2. One game swings a lot, so one night is never a trend.</span></div>
+      <div class="gdef"><b>Playing at</b><span class="d">The level your last 20 results fit. If it stays above your DUPR for a while, your DUPR will probably rise.</span></div>
       <div class="gdef"><b>DUPR change</b><span class="d">How much a match (or a group of matches) moved your rating — DUPR’s own number, shown as a rating amount like <b>+0.013</b>. It already takes the strength of everyone on court into account.</span></div>
       <div class="gdef"><b>Rating went up</b> <span class="d">How often your rating went <em>up</em> after a match. You can lose a match and still gain rating if you played a strong team closely, and that counts here. Matches with no rating change (0.000) are left out.</span></div>
       <div class="gdef"><b>Avg opponent</b><span class="d">The average DUPR of the opponents in that slice, going into each match. Shows how tough your schedule was.</span></div>
     </div>
 
     <div class="card pad guide">
-      <h3>Expected vs actual — the big idea</h3>
-      <p>Because every player has a rating, the app can work out how you <em>should</em> do in a match, then compare it with what really happened. This is what the <b>Opponents &amp; Partners</b> tab is built on.</p>
+      <h3 id="gExpected">Expected vs actual — the big idea</h3>
+      <p>Because every player has a rating, the app can work out how you <em>should</em> do in a match, then compare it with what really happened. This is what the <b>People</b> tab is built on.</p>
       <div class="gdef"><b>Expected Win% / W–L</b><span class="d">What the ratings say should happen when you play these people.</span></div>
       <div class="gdef"><b>Wins vs expected</b><span class="d">Your real wins minus the wins the ratings predicted. <em>+2 = you won two more than expected (you punch above your rating here). −2 = two fewer (something isn’t clicking).</em></span></div>
-      <div class="gdef"><b>Margin vs expected</b><span class="d">The same idea for the score: do you win (or lose) by more or less than the ratings say you should?</span></div>
+      <div class="gdef"><b>Score vs expected</b><span class="d">The same idea for the score: do you win (or lose) by more or less than the ratings say you should?</span></div>
+      <p id="gModel"></p>
       <div class="tip">This is why a partner can show a winning record but still read as “below expected” — if you <em>should</em> have won even more given how the ratings stacked up. It’s how the tab finds the people you should be winning with, but aren’t.</div>
     </div>
 
     <div class="card pad guide">
       <h3>How much to trust a row</h3>
       <p>A few good or bad nights can make any split look dramatic. Two things help you tell a real pattern from a fluke:</p>
-      <div class="gdef"><b>Signal</b><span class="d">Weighs your wins <em>and</em> your points against what the ratings expected; the arrow says which way (↑ better, ↓ worse). <span class="pill-ex pe-good">Clear ●●●</span> with this many matches, a gap this big rarely happens by chance. Still check it against what you see on court. <span class="pill-ex pe-mid">Likely ●●○</span> worth watching: on its own it would be unusual, but in a long list one or two like it turn up by chance. <span class="pill-ex pe-mid">Leaning ●○○</span> a direction only, well within luck so far. <span class="pill-ex pe-mid">Too early ○○○</span> within the range of normal chance: don’t read into it. The “vs expected” numbers are only coloured for Likely and Clear. Each table says how many of each to expect from luck alone. Matches entered into DUPR weeks after they were played are left out, since their ratings are from the wrong time.</span></div>
-      <div class="gdef"><b>Effect (DUPR)</b><span class="d">The same pattern in DUPR points: how much better or worse your team plays than its ratings with (or against) someone, with a likely range. People you’ve met only a few times are pulled toward 0, so a 4–0 against a stranger can’t top the list.</span></div>
+      <div class="gdef"><b>How sure</b><span class="d"><span class="pill-ex pe-good">Clear ●●●</span> almost certainly real · <span class="pill-ex pe-mid">Likely ●●○</span> probably real · <span class="pill-ex pe-mid">Leaning ●○○</span> a hint, could be luck · <span class="pill-ex pe-mid">Too early ○○○</span> don’t read into it. In a long list, a few people will look Leaning by chance alone. Tap (or hover over) any of these to see why. Matches entered into DUPR weeks after they were played are left out, since their ratings are from the wrong time.</span></div>
+      <div class="gdef"><b>Effect (DUPR)</b><span class="d">The same pattern in DUPR points: how much better or worse your team plays than its ratings with (or against) someone, with a likely range. People you’ve met only a few times count for less, so a 4–0 against a stranger can’t top the list.</span></div>
       <div class="gdef"><b>Small samples</b><span class="d">Anyone you’ve played fewer than <b>4</b> times (or fewer than <b>10</b> games, in the games table) is listed separately and greyed out. One result swings these a lot, so treat them as early hints, not conclusions.</span></div>
     </div>
 
     <div class="card pad guide">
       <h3>The charts and the rating line</h3>
       <p><b>Rating Over Time</b> plots your DUPR after each day of play. The <b>3M / 6M / 1Y / All</b> pills zoom the time range.</p>
-      <p><b>Form</b> (on Trends) smooths out some of the noise: each dot is your last 20 matches rolled together. When the line sits <em>above</em> the dashed line, you’ve been doing better than your own average lately. Twenty matches is still a small sample, so read the overall direction, not single bumps.</p>
-      <p><b>DUPR at the time / Hindsight</b> (the switch on Performance by Matchup Strength, which also sets the ratings shown in the match log): “at the time” uses everyone’s rating going into each match. “Hindsight” keeps your rating from then but uses everyone else’s rating today, which shows who you were really playing.</p>
+      <p><b>Form</b> (on Trends) smooths out some of the noise: each dot is your last 20 matches rolled together. Above the dashed line means you’ve been playing above your DUPR. Read the overall direction, not single bumps.</p>
+      <p><b>Ratings then / now</b> (the switch on Performance by Matchup Strength, which also sets the ratings shown in the match log): “then” uses everyone’s rating on the day; “now” uses today’s ratings, which shows who you were really playing.</p>
     </div>
 
     <div class="card pad guide">
@@ -1004,7 +1005,7 @@
   <div class="card pad tokenhelp" id="tokenHelp">
     <div class="th-head" id="thHead"><span>🔄 Sync from DUPR</span><span class="chev2">▾</span></div>
     <div class="th-body" id="thBody" hidden>
-      <p>Pull in your latest matches whenever you’ve played. The sync runs in your own browser while you’re logged in to DUPR, so no DUPR token is stored anywhere.</p>
+      <p>Pull in your latest matches whenever you’ve played. The sync runs in your own browser while you’re logged in to DUPR. We never see or store your DUPR login.</p>
       <div class="syncgo"><button class="syncbtn prim big" id="cardSync">🔄 Sync now</button>
         <span class="muted">Already set up the bookmark below? Use this. It opens DUPR — then run <b>PB Sync</b> there.</span></div>
       <div class="setup-h">First time on this device? Set up the <span style="white-space:nowrap">PB Sync</span> bookmark</div>
@@ -1102,9 +1103,10 @@
   // Respect reduced motion for scrolling too, not only CSS transitions.
   const SMOOTH=matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
   // Touch screens get “tap”, mice get “click” / “hover”.
-  const TOUCH=matchMedia('(hover: none)').matches,TAP=TOUCH?'Tap':'Click';
+  const TOUCH=matchMedia('(hover: none)').matches,TAP=TOUCH?'Tap':'Click',DEBUG=/[?&]debug=1/.test(location.search);
   const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const tms=d=>+new Date(d+'T00:00:00');
+  const shortDay=d=>{const [y,m,dd]=d.split('-');return `${MON[+m-1]} ${+dd}`+(y===String(new Date().getFullYear())?'':`, ${y}`);};
   const dayLabel=d=>{const [y,m,dd]=d.split('-');return `${MON[+m-1]} ${+dd}, ${y}`;};
   const titleCase=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim().replace(/(^|[\s\-'])([a-z])/g,(m,p,c)=>p+c.toUpperCase());
   // Fix all-lowercase names from DUPR (e.g. "clark janssen") without mangling cased ones ("OConnor").
@@ -1336,14 +1338,14 @@
     return {end,delta:use.some(m=>ordOf(m)===0)?null:end-use[0].preRating};
   }
   const endRating=list=>spanOf(list).end;
-  const pct=v=>v==null?'—':(v*100).toFixed(1)+'%', f2=v=>v==null?'—':v.toFixed(2), sgn=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(2);
+  const pct=v=>v==null?'—':Math.round(v*100)+'%', f2=v=>v==null?'—':v.toFixed(2), sgn=v=>v==null?'—':(v>=0?'+':'')+v.toFixed(2);
 
   const BANDS=[
-    {name:'Outmatched',hint:'≤ −0.25',c:'#C7522A',test:d=>d<=-0.25},
-    {name:'Underdog',hint:'',c:'#E08A2B',test:d=>d>-0.25&&d<=-0.10},
-    {name:'Even',hint:'±0.10',c:'#8895A0',test:d=>d>-0.10&&d<0.10},
-    {name:'Favored',hint:'',c:'#3E9E8E',test:d=>d>=0.10&&d<0.25},
-    {name:'Dominant',hint:'≥ +0.25',c:'#0B7A6B',test:d=>d>=0.25},
+    {name:'Much weaker team',hint:'',tip:'Your team rated 0.25 or more below the opponents',c:'#C7522A',test:d=>d<=-0.25},
+    {name:'Weaker team',hint:'',tip:'Your team rated 0.10 to 0.25 below',c:'#E08A2B',test:d=>d>-0.25&&d<=-0.10},
+    {name:'About even',hint:'',tip:'Within 0.10 of each other',c:'#8895A0',test:d=>d>-0.10&&d<0.10},
+    {name:'Stronger team',hint:'',tip:'Your team rated 0.10 to 0.25 above',c:'#3E9E8E',test:d=>d>=0.10&&d<0.25},
+    {name:'Much stronger team',hint:'',tip:'Your team rated 0.25 or more above',c:'#0B7A6B',test:d=>d>=0.25},
   ];
   const enc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
   const dec=s=>String(s).replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&amp;/g,'&');
@@ -1363,7 +1365,7 @@
     if(F.event.length)p.push(F.event.length===1?F.event[0]:F.event.length+' events');
     if(F.partner.length)p.push('w/ '+(F.partner.length===1?F.partner[0]:F.partner.length+' partners'));
     if(F.date)p.push(dayLabel(F.date));
-    if(F.wl!=='all')p.push({W:'wins',L:'losses',UP:'upset wins',GU:'given-up losses'}[F.wl]);
+    if(F.wl!=='all')p.push({W:'wins',L:'losses',UP:'upset wins',GU:'upset losses'}[F.wl]);
     return p.length?p.join(' · '):'All matches';
   }
   const endCell=v=>`<td class="mono enddupr" data-l="DUPR">${v==null?'—':v.toFixed(3)}</td>`;
@@ -1382,7 +1384,7 @@
   };
   const deltaCell=v=>{if(v!=null&&Math.abs(v)<0.0005)v=0;return `<td class="mono ${v==null||v===0?'':(v>0?'imp-up':'imp-dn')}" data-l="Change">${v===0?'0.000':ptsTxt(v,true)}</td>`;};
   const statRow=(g,extra)=>`<td class="mono" data-l="M">${g.n}</td><td class="mono" data-l="Win %">${pct(g.winFrac)}</td>`
-    +`<td class="mono" data-l="Pts %">${pct(g.ptsFrac)}</td><td class="mono" data-l="Margin">${sgn(g.normMargin)}</td>`
+    +`<td class="mono" data-l="Points won">${pct(g.ptsFrac)}</td><td class="mono" data-l="Margin">${sgn(g.normMargin)}</td>`
     +`${extra||''}`
     +`<td class="mono" data-l="Opponent">${f2(g.oThen)}→${f2(g.oNow)}</td>`;
 
@@ -1420,15 +1422,15 @@
       k.innerHTML=
         `<div class="cluster"><div class="cluster-h"><span class="dot r"></span>Rating</div><div class="tiles">`
           +tile(ME_NOW==null?'—':ME_NOW.toFixed(3),'blue','Current DUPR','Your official DUPR doubles rating.','',sp(SPARK.dupr,'blue'))
-          +tile(pct(a.upFrac),'','of matches raised your rating','A good loss against a strong team can still raise your rating, so this counts those too.',a.lossUp?`incl. ${a.lossUp} losses`:'',sp(SPARK.rose,'win'))
+          +tile(pct(a.upFrac),'','of your matches raised your rating','A good loss against a strong team can still raise your rating, so this counts those too.',a.lossUp?`including ${a.lossUp} losses`:'',sp(SPARK.rose,'win'))
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot w"></span>Results</div><div class="tiles">`
           +tile(pct(a.ptsFrac),'','Points won','Of all points played, the share you won — a truer read of how close matches were.','',sp(SPARK.pts,'win'))
-          +tile(sgn(a.normMargin),'',a.normMargin==null?'Avg game margin':`Avg game: ${a.normMargin>=0?'win':'lose'} by ${Math.abs(a.normMargin).toFixed(1)}`,'Average points you win or lose a game by, scaled to an 11-point game so games to 15 or 21 compare fairly.','scaled to a game to 11')
+          +tile(a.normMargin==null?'—':Math.abs(a.normMargin)<0.5?'Even':(a.normMargin>0?'+':'−')+Math.round(Math.abs(a.normMargin)),'',a.normMargin==null||Math.abs(a.normMargin)<0.5?'Your games are level on average':`You ${a.normMargin>0?'win':'lose'} games by about ${Math.max(1,Math.round(Math.abs(a.normMargin)))} on average`,'Average points you win or lose a game by (games to 15 or 21 are scaled to 11 so they compare fairly).','')
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot c"></span>Context</div><div class="tiles">`
-          +tile(f2(a.oThen),'','Opponents averaged','Average rating of the opponents you faced, going into each match (and what they are rated today).',`${f2(a.oNow)} today`)
-          +(()=>{const rl=list.filter(m=>pOf(m)!=null);return rl.length?tile(pct(rl.reduce((s,m)=>s+pOf(m),0)/rl.length),'','Expected win %','The win % the ratings gave you across these matches: how tough your schedule was.','what the ratings gave you'):'';})()
+          +tile(f2(a.oThen),'','Average opponent','Average rating of the opponents you faced, going into each match (and what they are rated now).',`(${f2(a.oNow)} now)`)
+          +(()=>{const rl=list.filter(m=>pOf(m)!=null);return rl.length?tile(pct(rl.reduce((s,m)=>s+pOf(m),0)/rl.length),'','Your average expected chance','The win chance the ratings gave you, on average: how tough your schedule was.','how tough your schedule was'):'';})()
         +`</div></div>`;
     }
 
@@ -1450,7 +1452,7 @@
     const expWL=ms=>{const rl=ms.filter(m=>pOf(m)!=null);if(!rl.length)return '—';const e=rl.reduce((s,m)=>s+pOf(m),0),w=rl.filter(m=>m.won).length;
       return `${w}–${rl.length-w} <span class="evtd" style="display:inline">exp ${Math.round(e)}–${rl.length-Math.round(e)}</span>`;};
     const evBody=evRows.map(r=>`<tr class="clk ${r.e.trim().endsWith('🏆')?'champ':''}" data-ev="${enc(r.e)}"><td><span class="evname" title="${enc(r.e)}">${enc(r.e)}</span><span class="evtd">${enc(r.lt)} | ${r.min.slice(0,7)}</span></td><td class="mono" data-l="W–L vs expected">${expWL(groups[r.e])}</td>${statRow(r.g,endCell(r.end)+barCell(r.delta)+deltaCell(r.delta))}</tr>`).join('');
-    byId('evTable').innerHTML=`<thead><tr>${eh('event','Event')}<th title="Your record, then the record the ratings expected">W–L vs expected</th>${eh('m','M')}${eh('win','Win%')}${eh('pts','Pts%')}${eh('margin','Margin')}${eh('dupr','DUPR')}<th class="chgbar"></th>${eh('change','Change')}<th>Opponent</th></tr></thead>`+
+    byId('evTable').innerHTML=`<thead><tr>${eh('event','Event')}<th title="Your record, then the record the ratings expected">W–L vs expected</th>${eh('m','Matches')}${eh('win','Win%')}${eh('pts','Points won')}${eh('margin','Margin')}${eh('dupr','DUPR')}<th class="chgbar"></th>${eh('change','Change')}<th>Opponent</th></tr></thead>`+
       `<tbody>${evBody||'<tr class="dim"><td colspan="10" class="caphint">No matches in this filter.</td></tr>'}</tbody>`;
     renderTourneys(list);
     byId('evTable').querySelectorAll('[data-ev]').forEach(tr=>tr.onclick=()=>{F.event=[dec(tr.dataset.ev)];render();});
@@ -1478,7 +1480,7 @@
     // The last 6 days, then "Show all" (the full list ran to thousands of px on a phone).
     const dtShown=dtAll?dRows:dRows.slice(0,6);
     const dtFoot=dRows.length>6?`<tfoot><tr><td colspan="9" style="padding:0"><button class="showmore" id="dtMore">${dtAll?'Show fewer':'Show all '+dRows.length+' days'}</button></td></tr></tfoot>`:'';
-    byId('dtTable').innerHTML=`<thead><tr><th>Date</th><th>M</th><th>Win%</th><th>Pts%</th><th>Margin</th><th>DUPR</th><th class="chgbar"></th><th>Change</th><th>Opponent</th></tr></thead>`+
+    byId('dtTable').innerHTML=`<thead><tr><th>Date</th><th>Matches</th><th>Win%</th><th>Points won</th><th>Margin</th><th>DUPR</th><th class="chgbar"></th><th>Change</th><th>Opponent</th></tr></thead>`+
       `<tbody>${dBody||'<tr class="dim"><td colspan="9" class="caphint">No matches in this filter.</td></tr>'}</tbody>`+dtFoot;
     const dm=byId('dtMore');if(dm)dm.onclick=()=>{dtAll=!dtAll;render();};
     byId('dtTable').querySelectorAll('[data-d]').forEach(tr=>tr.onclick=()=>{
@@ -1489,12 +1491,12 @@
     // Which matches should you enter? Each band against what the ratings expected, and what it
     // does to your rating on average. Expected always uses ratings going into the match.
     const body=BANDS.map(b=>{const ms=list.filter(m=>dOf(m)!=null&&b.test(dOf(m))),g=agg(ms);
-      const lab=`<span class="bandname"><span class="bandtag" style="background:${b.c}"></span>${b.name}${b.hint?` <small style="color:var(--muted)">${b.hint}</small>`:''}</span>`;
+      const lab=`<span class="bandname" title="${b.tip}"><span class="bandtag" style="background:${b.c}"></span>${b.name}${b.hint?` <small style="color:var(--muted)">${b.hint}</small>`:''}</span>`;
       if(!g)return`<tr class="dim"><td>${lab}</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>`;
       const rl=ms.filter(m=>pOf(m)!=null),e=rl.reduce((s,m)=>s+pOf(m),0),woe=rl.filter(m=>m.won).length-e;
       return`<tr><td>${lab}</td><td class="mono">${g.n}</td><td class="mono">${pct(g.winFrac)}</td><td class="mono">${rl.length?pct(e/rl.length):'—'}</td>`
-        +`<td class="mono valcell ${woeCls(woe,(expStats(ms)||{}).z)}">${rl.length?(woe>=0?'+':'−')+Math.abs(woe).toFixed(1):'—'}</td><td class="mono">${sgn(g.normMargin)}</td>${impCell(g.impAvg,'DUPR change / match')}</tr>`;}).join('');
-    byId('bdTable').innerHTML=`<thead><tr><th>Matchup (your team − opp)</th><th>M</th><th>Win%</th><th title="What the ratings gave you in these matches">Expected win%</th><th>Wins vs expected</th><th>Margin</th><th title="Your average DUPR change per match in this band">DUPR change / match</th></tr></thead><tbody>${body}</tbody>`;
+        +`<td class="mono valcell ${woeCls(woe,(expStats(ms)||{}).z)}">${rl.length?woeTxt(woe):'—'}</td><td class="mono">${sgn(g.normMargin)}</td>${impCell(g.impAvg,'Rating change per match')}</tr>`;}).join('');
+    byId('bdTable').innerHTML=`<thead><tr><th>Matchup</th><th>Matches</th><th>Win%</th><th title="What the ratings gave you in these matches">Expected win%</th><th>Wins vs expected</th><th>Margin</th><th title="Your average DUPR change per match in this band">Rating change per match</th></tr></thead><tbody>${body}</tbody>`;
 
     drawZoom();drawOverall();renderManage();
     const recentList=list;
@@ -1528,18 +1530,28 @@
     document.addEventListener('click',e=>{
       const prev=openEl;hide();
       if(!touch||e.target.closest('button,select,input,textarea,a,label'))return;
-      const el=e.target.closest('[title],[data-tip]');if(!el||el.closest('svg'))return;
-      const text=(el.getAttribute('title')||el.dataset.tip||'').trim();
+      const el=e.target.closest('[data-why],[title],[data-tip]');if(!el||el.closest('svg')||el.matches('[data-pl]'))return;
+      const html=el.dataset.why,text=(html?plain(html):(el.getAttribute('title')||el.dataset.tip||'')).trim();
       if(!text||text===el.textContent.trim())return;
       e.stopPropagation();e.preventDefault();
       if(el===prev)return;   // second tap on the same item closes it
-      openEl=el;tip=document.createElement('div');tip.className='taptip';tip.setAttribute('role','tooltip');tip.textContent=text;
+      openEl=el;tip=document.createElement('div');tip.className='taptip';tip.setAttribute('role','tooltip');if(html)tip.innerHTML=html;else tip.textContent=text;
       document.body.appendChild(tip);
       const r=el.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;
       tip.style.left=Math.max(12,Math.min(r.left+r.width/2-w/2,innerWidth-w-12))+'px';
       tip.style.top=(r.bottom+8+h>innerHeight?Math.max(8,r.top-h-8):r.bottom+8)+'px';
     },true);
   })();
+
+  // Desktop: a small (360 px) box under the pointer for anything with data-why.
+  (()=>{if(TOUCH)return;let tip=null;
+    document.addEventListener('mousemove',e=>{const el=e.target.closest&&e.target.closest('[data-why]');
+      if(!el||el.closest('.crow.open')){if(tip)tip.hidden=true;return;}
+      if(!tip){tip=document.createElement('div');tip.className='pltip';document.body.appendChild(tip);}
+      if(tip.dataset.src!==el.dataset.why){tip.innerHTML=el.dataset.why;tip.dataset.src=el.dataset.why;}tip.hidden=false;
+      tip.style.left=Math.max(8,Math.min(e.clientX+14,innerWidth-tip.offsetWidth-10))+'px';
+      tip.style.top=(e.clientY+16+tip.offsetHeight>innerHeight-10?Math.max(8,e.clientY-tip.offsetHeight-12):e.clientY+16)+'px';},{passive:true});
+    addEventListener('scroll',()=>{if(tip)tip.hidden=true;},{passive:true,capture:true});})();
 
   // ---- recent DUPR movement (fixed windows, independent of the filters) ----
   function renderDeltaKpis(){
@@ -1567,7 +1579,7 @@
       +`<div class="l">Current DUPR</div></div>`;
     byId('dkpis').innerHTML=(rated.length||w12.length)
       ? now
-        +tile(abs(evD),'A typical event moves you',evD.length)
+        +tile(abs(evD),'A typical event moves your rating',evD.length?`last ${evD.length} events`:null)
         +tile(abs(dayD),'A typical day',dayD.length)
         +tile(abs(last50.map(m=>m.impact)),'A typical match',null)
         +'<div class="kpi-bar"></div>'
@@ -1605,9 +1617,10 @@
     const rl=list.filter(m=>pOf(m)!=null),ew=rl.reduce((s,m)=>s+pOf(m),0),rw=rl.filter(m=>m.won).length;
     const win=PER.k==='all'?'all time':perLabel();
     ws.innerHTML=`<div><div class="lbl">Record · ${win}</div><div class="wl-big"><span class="wl-w">${w}</span><span class="u"> W</span> <span class="dash">–</span> <span class="wl-l">${n-w}</span><span class="u"> L</span></div>`
-      +(rl.length?`<div class="wl-exp">Ratings expected <b>${Math.round(ew)}–${rl.length-Math.round(ew)}</b>${rl.length<n?` in the ${rl.length} rated`:''} · <span class="${rw-ew>=0?'imp-up':'imp-dn'}">${rw-ew>=0?'+':'−'}${Math.abs(rw-ew).toFixed(1)} wins vs expected</span></div>`:'')+`</div>`
-      +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i>${rl.length?`<span class="wl-tick" style="left:${(100*ew/rl.length).toFixed(1)}%" title="The win % the ratings expected: ${pct(ew/rl.length)}"></span>`:''}</div>`
-      +(rl.length?`<div class="wl-exp">▏ marks the win % the ratings expected (${pct(ew/rl.length)})</div>`:'')+`</div>`;
+      +(rl.length?(()=>{const st=expStats(rl),z=st?st.z:0,up=rw>ew;
+        return `<div class="wl-exp"><b>${Math.abs(z)<1?'About what your ratings predicted':Math.abs(z)<2?(up?'A few more wins than predicted, could be luck':'A few fewer wins than predicted, could be luck'):(up?'More wins than your ratings predicted':'Fewer wins than your ratings predicted')}</b> (expected ${Math.round(ew)}–${rl.length-Math.round(ew)})</div>`;})():'')+`</div>`
+      +`<div><div class="lbl">Win % <b>${n?pct(wf):'—'}</b> · ${n} match${n===1?'':'es'}</div><div class="wl-bar"${n?'':' style="background:var(--line)"'}><i style="width:${(wf*100).toFixed(1)}%"></i>${rl.length?`<span class="wl-tick" style="left:${(100*ew/rl.length).toFixed(1)}%" title="Expected: ${pct(ew/rl.length)}"></span>`:''}</div>`
+      +(rl.length?`<div class="wl-exp">▏ = expected (${pct(ew/rl.length)})</div>`:'')+`</div>`;
   }
   // "How did today go?": your latest day of play, whatever the filters say. Record vs what the
   // ratings expected, the DUPR move, who you played with, and the one upset / given-up match.
@@ -1623,12 +1636,12 @@
     const short=n=>{const p=String(n).split(' ');return p.length>1?p[0]+' '+p[p.length-1][0]+'.':n;};
     const rated=day.filter(m=>pOf(m)!=null);
     const up=rated.filter(m=>m.won&&pOf(m)<0.40).sort((a,b)=>pOf(a)-pOf(b))[0],gu=rated.filter(m=>!m.won&&pOf(m)>0.60).sort((a,b)=>pOf(b)-pOf(a))[0];
-    const mline=(m,u)=>`<div class="ls-m" data-mid="${m.matchId}"><span class="ls-tag ${u?'up':'dn'}">${u?'Upset ▲':'Given up ▼'}</span> `
-      +`${u?'Beat':'Lost to'} ${enc(oppStr(m))} <span class="mono">${enc(scoreStr(m))}</span><span class="sub"> · with ${enc(m.partnerName||'—')} · ratings gave you ${Math.round(100*pOf(m))}%</span></div>`;
+    const mline=(m,u)=>`<div class="ls-m" data-mid="${m.matchId}"><span class="ls-tag ${u?'up':'dn'}">${u?'Upset win ▲':'Upset loss ▼'}</span> `
+      +`${u?'Beat':'Lost to'} ${enc(oppStr(m))} <span class="mono">${enc(scoreStr(m))}</span><span class="sub"> · with ${enc(m.partnerName||'—')} · ${Math.round(100*pOf(m))}% chance to win</span></div>`;
     byId('lsBody').innerHTML=`<div class="ls-rec"><span class="big"><span class="w">${w}</span>–<span class="l">${day.length-w}</span></span>`
       +`<span class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}</span></div><div class="ls-lines">`
-      +(s?`<div>Ratings expected <b>${s.exp.toFixed(1)} wins</b> of ${s.n} · <span class="${woeCls(s.woe,s.z)}">${(s.woe>=0?'+':'−')+Math.abs(s.woe).toFixed(1)} wins vs expected</span> ${s.n>=PPL_MIN?sigPill(s,1):''}</div>`:'')
-      +(imp!=null?`<div>DUPR ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} → ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${imp>=0?'imp-up':'imp-dn'}">(${ptsTxt(imp,true)})</span></div>`:'')
+      +(s?`<div>Expected about ${about(s.exp)} wins. <b>You won ${s.w}${s.woe>=1.5?', a great night':s.woe>=0.5?', a good night':s.woe<=-1.5?', a tough night':s.woe<=-0.5?', a bit below par':', about as expected'}.</b></div>`:'')
+      +(imp!=null?`<div>Rating ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} to ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${imp>=0?'imp-up':'imp-dn'}">(${ptsTxt(imp,true)})</span></div>`:'')
       +(pc.size?`<div class="sub">With ${[...pc].sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).map(([n,[a,b]])=>`${enc(short(n))} ${a}–${b}`).join(', ')}</div>`:'')
       +`</div>`+(up?mline(up,true):'')+(gu?mline(gu,false):'');
     byId('lsBody').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
@@ -1641,7 +1654,7 @@
   const inZoom=m=>{if(Z.months){const c=zoomCut();return c==null||tms(m.date)>=c;}return !(Z.year&&m.year!==Z.year);};
   function drawZoom(){
     const z=byId('zoom');const pres=[['3M',3],['6M',6],['1Y',12]];
-    z.innerHTML='<span class="zlabel">Zoom</span>'+
+    z.innerHTML=
       pres.map(([l,mo])=>`<span class="chip ${Z.months===mo?'on':''}" data-z="m:${mo}">${l}</span>`).join('')+
       `<span class="chip ${!Z.year&&!Z.months?'on':''}" data-z="all">All</span>`+
       yearsPresent.map(y=>`<span class="chip ${Z.year===y?'on':''}" data-z="y:${y}">${y}</span>`).join('');
@@ -1713,10 +1726,10 @@
     const cur=ME_NOW,gap=lp&&cur!=null?lp.y-cur:null;
     byId('chartLegend').innerHTML=`<span>▲ rating went up that day · ▼ went down</span>`
       +(gap==null?'':(()=>{const out=gap>0?lp.lo-cur:cur-lp.hi;
-        const verdict=out<=0?'Could be luck: 20 matches is a small sample.'
+        const verdict=out<=0?'20 matches is too few to be sure.'
           :out<0.05?`Probably a bit ${gap>0?'above':'below'} your rating, but only just.`
           :gap>0?'Clearly above your rating lately, so your DUPR has room to rise.':'Clearly below your rating lately: worth a look.';
-        return `<div class="chartnote formline">${out<=0?'➡️':gap>0?'📈':'📉'} Lately you’ve played like a <b>${lp.lo.toFixed(2)}–${lp.hi.toFixed(2)}</b> player (your DUPR is ${cur.toFixed(2)}). ${verdict}`
+        return `<div class="chartnote formline">${out<=0?'➡️':gap>0?'📈':'📉'} Lately you’ve played like a <b>${lp.lo.toFixed(1)}–${lp.hi.toFixed(1)}</b> player${out<=0?`, ${(lp.lo+lp.hi)/2>cur?'so maybe above':'so maybe below'} your ${cur.toFixed(2)}`:` (your DUPR is ${cur.toFixed(2)})`}. ${verdict}`
           +` <span class="more">Based on your last 20 matches · see Form on Trends</span></div>`;})());
   }
   function drawEvents(list){
@@ -1766,10 +1779,10 @@
     const pa=formMetric==='pa',refV=pa?ME_NOW:whole;
     drawSeries('chartForm',null,pts,'',{step:fm.step,fmt:fm.fmt,ref:refV,refLabel:(pa?'Your DUPR: ':'Overall: ')+(refV==null?'—':fm.fmt(refV))});
     if(last!=null&&whole!=null){
-      byId('formSub').textContent=pa&&ME_NOW!=null?`· latest ${fm.fmt(last)} vs your DUPR ${ME_NOW.toFixed(2)}`:`· latest ${fm.fmt(last)} vs ${fm.fmt(whole)} overall`;
-      byId('formHint').textContent=(pa?`“Playing at” is the rating your last ${ROLL} matches were worth: the level of player those results fit, given who you played with and against. Above the dashed line = playing above your DUPR. `
+      byId('formSub').textContent=pa&&ME_NOW!=null?`· now playing like ${fm.fmt(last)} (DUPR ${ME_NOW.toFixed(2)})`:`· latest ${fm.fmt(last)} vs ${fm.fmt(whole)} overall`;
+      byId('formHint').textContent=(pa?`The level your last ${ROLL} results fit. Above the dashed line = playing above your DUPR. `
           :`Above the dashed line = better than your overall average. `)
-        +`Each point is your last ${ROLL} matches up to that day (within the filters). ${TOUCH?'Tap':'Hover over'} a point for the full numbers.`;}
+        +`${TOUCH?'Tap':'Hover over'} a point for details.`;}
   }
 
   // ---- close games & deciders (tab 2): every game, not every match ----
@@ -1798,8 +1811,8 @@
         +(()=>{const r=g.filter(x=>x.p!=null),e=r.reduce((s,x)=>s+x.p,0),d=r.filter(x=>x.a>x.b).length-e;
           const sd=Math.sqrt(r.reduce((s,x)=>s+x.p*(1-x.p),0));
           return r.length?`<td class="mono">${pct(e/r.length)}</td><td class="mono valcell ${woeCls(d,sd?d/sd:0)}">${(d>=0?'+':'−')+Math.abs(d).toFixed(1)}</td>`:'<td>—</td><td>—</td>';})()+`</tr>`;}).join('');
-    byId('cgTable').innerHTML=`<thead><tr><th>Games</th><th>N</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Avg score</th><th title="The win % the ratings gave you in these games' matches">Expected win%</th><th>Wins vs expected</th></tr></thead><tbody>${body}</tbody>`;
-    byId('cgHint').textContent=`Every game in the filtered matches. Games are win-by-2, so "close" is mostly 11–9, 12–10 and so on. Under ${GAME_MIN} games is greyed as a small sample. Expected uses each match's win chance for its games.`;
+    byId('cgTable').innerHTML=`<thead><tr><th>Games</th><th>Games</th><th>W–L</th><th>Win%</th><th>Points won</th><th>Avg score</th><th title="The win % the ratings gave you in these games' matches">Expected win%</th><th>Wins vs expected</th></tr></thead><tbody>${body}</tbody>`;
+    byId('cgHint').textContent=`Every game in the filtered matches. Games are win-by-2, so "close" is mostly 11–9, 12–10 and so on. Under ${GAME_MIN} games is greyed as a small sample.`;
   }
   // Tournaments as results: record, expected record, playing-at over the event, DUPR change.
   function renderTourneys(list){
@@ -1809,8 +1822,8 @@
       .sort((a,b)=>b.last.localeCompare(a.last));
     byId('tourCard').hidden=!rows.length;if(!rows.length)return;
     byId('tourTable').innerHTML=`<thead><tr><th>Tournament</th><th>W–L</th><th title="The record the ratings expected">Expected</th><th>Wins vs expected</th><th title="The rating your results at this event were worth (5+ rated matches)">Played at</th><th>DUPR change</th></tr></thead><tbody>`
-      +rows.map(r=>`<tr class="clk" data-ev="${enc(r.e)}"><td><span class="evname">${enc(r.e)}</span><span class="evtd">${r.last}</span></td><td class="mono">${r.w}–${r.n-r.w}</td>`
-        +`<td class="mono">${r.rn?r.ex.toFixed(1)+'–'+(r.rn-r.ex).toFixed(1):'—'}</td><td class="mono valcell ${woeCls(r.woe,(expStats(r.ms)||{}).z)}">${r.rn?(r.woe>=0?'+':'−')+Math.abs(r.woe).toFixed(1):'—'}</td>`
+      +rows.map(r=>`<tr class="clk" data-ev="${enc(r.e)}"><td><span class="evname">${enc(r.e)}</span><span class="evtd">${shortDay(r.last)}</span></td><td class="mono">${r.w}–${r.n-r.w}</td>`
+        +`<td class="mono">${r.rn?'about '+about(r.ex)+(about(r.ex)==='1'?' win':' wins'):'—'}</td><td class="mono valcell ${woeCls(r.woe,(expStats(r.ms)||{}).z)}">${r.rn?woeTxt(r.woe):'—'}</td>`
         +`<td class="mono">${r.pa?r.pa.R.toFixed(2):'—'}</td>${deltaCell(r.sp.delta)}</tr>`).join('')+`</tbody>`;
     byId('tourTable').querySelectorAll('[data-ev]').forEach(tr=>tr.onclick=()=>{F.event=[dec(tr.dataset.ev)];render();});
   }
@@ -1829,11 +1842,11 @@
       ['Back within 3 days','days since you last played',list.filter(m=>gap.get(m.matchId)!=null&&gap.get(m.matchId)<=3)],
       ['4–7 days off','',list.filter(m=>{const g=gap.get(m.matchId);return g!=null&&g>=4&&g<=7;})],
       ['8+ days off','',list.filter(m=>gap.get(m.matchId)!=null&&gap.get(m.matchId)>=8)],
-      ['Playing up','event level 0.25+ above your rating',list.filter(m=>lvl(m)!=null&&lvl(m)>=0.25)],
+      ['Playing up a level','events rated above you',list.filter(m=>lvl(m)!=null&&lvl(m)>=0.25)],
       ['Playing at your level','',list.filter(m=>lvl(m)!=null&&Math.abs(lvl(m))<0.25)],
-      ['Playing down','event level 0.25+ below your rating',list.filter(m=>lvl(m)!=null&&lvl(m)<=-0.25)],
-      ['With a partner rated 0.10+ below you','',list.filter(m=>m.gapPre!=null&&m.gapPre>=0.10)],
-      ['With a partner rated 0.10+ above you','',list.filter(m=>m.gapPre!=null&&m.gapPre<=-0.10)],
+      ['Playing down a level','events rated below you',list.filter(m=>lvl(m)!=null&&lvl(m)<=-0.25)],
+      ['With a lower-rated partner','',list.filter(m=>m.gapPre!=null&&m.gapPre>=0.10)],
+      ['With a higher-rated partner','',list.filter(m=>m.gapPre!=null&&m.gapPre<=-0.10)],
       ...topV.map(v=>[v,'venue',list.filter(m=>m.venue===v)]),
     ].filter(r=>r[2].length);}
   // Names go into the table as HTML, so escape them (venues come from the data).
@@ -1852,11 +1865,11 @@
       if(l.startsWith('4–7'))return better?'A few days’ rest between sessions suits you.':'A week off costs you a little: warm up well when you come back.';
       if(l.startsWith('playing up'))return better?'You rise to tougher events.':'Playing up a level costs you more than the ratings expect.';
       if(l.startsWith('playing down'))return better?'You take care of business against weaker fields.':'You play down to weaker events: stay sharp against lower brackets.';
-      if(l.includes('below you'))return better?'You lift lower-rated partners.':'With lower-rated partners you do worse than expected: take more of the court, or pick stronger partners.';
-      if(l.includes('above you'))return better?'You play up with stronger partners.':'With stronger partners you underperform: stay involved rather than deferring.';
+      if(l.includes('lower-rated'))return better?'You lift lower-rated partners.':'With lower-rated partners you do worse than expected: take more of the court, or pick stronger partners.';
+      if(l.includes('higher-rated'))return better?'You play up with stronger partners.':'With stronger partners you underperform: stay involved rather than deferring.';
       return better?`${n} suits you.`:`${n} goes worse than the ratings expect.`;};
     const hits=c.filter(x=>Math.abs(x.s.z)>=2).slice(0,2);
-    byId('wtw').innerHTML=hits.length?hits.map(x=>`<li><b>${enc(tip(x.n,x.s.z>0))}</b> ${x.s.w}–${x.s.n-x.s.w} against about ${x.s.exp.toFixed(1)} expected wins, over ${x.s.n} matches. ${sigPill(x.s,c.length)}</li>`).join('')
+    byId('wtw').innerHTML=hits.length?hits.map(x=>`<li><b>${enc(tip(x.n,x.s.z>0))}</b> ${x.s.w}–${x.s.n-x.s.w} when about ${about(x.s.exp)} wins were expected, over ${x.s.n} matches. ${sigPill(x.s,c.length)}</li>`).join('')
       :`<li class="ok">✓ Nothing to fix yet: no pattern in ${list.length} matches beyond normal luck.</li>`;
   }
   // The same two opponents together, met 3+ times.
@@ -2015,11 +2028,11 @@
       const sc=m.scores.length?m.scores.map((s,i)=>s+'-'+(m.oppScores[i]??'')).join(', '):'—';
       const imp=m.impact,ih=imp==null?'':`<div class="m-imp ${imp>=0?'imp-up':'imp-dn'} mono">${ptsTxt(imp,true)}</div>`;
       // The win chance the ratings gave this match, with the same upset rule as Highlights.
-      const pw=pOf(m),ex=pw==null?'':`<div class="m-exp">Ratings gave you <b>${Math.round(pw*100)}%</b> to win`
-        +(m.won&&pw<0.40?' <span class="ptag best">Upset ▲</span>':!m.won&&pw>0.60?' <span class="ptag worst">Given up ▼</span>':'')+`</div>`;
+      const pw=pOf(m),ex=pw==null?'':`<div class="m-exp"><b>${Math.round(pw*100)}%</b> chance to win`
+        +(m.won&&pw<0.40?' <span class="ptag best">Upset ▲</span>':!m.won&&pw>0.60?' <span class="ptag worst">Upset loss ▼</span>':'')+`</div>`;
       return`<div class="match" data-mid="${m.matchId}"><div class="wl ${m.won?'W':'L'}">${m.won?'W':'L'}</div>
-        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}${compact?'':`<div class="m-event">${enc(((levelOf(m)?levelOf(m)+' ':'')+typeOf(m))+' - '+evName(m)+(m.confirmed===false?' · unconfirmed in DUPR':''))}</div>`}${ex}</div>
-        <div class="m-right"><div class="m-score mono">${sc}</div>${compact?'':`<div class="m-date mono">${m.date}</div>`}${ih}</div></div>`;}).join('')+
+        <div><div class="m-opp">vs ${enc(opp)}</div>${partner?`<div class="m-partner">${enc(partner)}</div>`:''}${compact?'':`<div class="m-event">${enc(evName(m)+(m.confirmed===false?' · unconfirmed in DUPR':''))}</div>`}${ex}</div>
+        <div class="m-right"><div class="m-score mono">${sc}</div>${compact?'':`<div class="m-date mono">${shortDay(m.date)}</div>`}${ih}</div></div>`;}).join('')+
       (cap&&rows.length>cap?`<button class="showmore" data-all="1">All ${rows.length}${opt.label?' from '+opt.label:''}</button>`
         :!cap&&rows.length>12?`<button class="showmore">Show all ${rows.length}</button>`:'');
     const sm=log.querySelector('.showmore');if(sm)sm.onclick=sm.dataset.all?()=>renderLog(list,boxId,emptyMsg,{compact}):()=>{log.classList.remove('collapsed');sm.remove();};
@@ -2117,7 +2130,7 @@
     // same evidence isn't counted twice. Falls back to wins alone without score data.
     const zw=sd?winsZ(ps,w):0,zm=(MODEL.sig&&mr.length)?mres*Math.sqrt(mr.length)/MODEL.sig:null;
     const z=zm==null?zw:(zw+zm)/Math.sqrt(2+2*MODEL.rho);
-    return {n:ms.length,w,exp,woe:w-exp,z,zw,zm,expPct:exp/ms.length,mres,imp:im.length?im.reduce((s,v)=>s+v,0)/im.length:null};
+    return {n:ms.length,w,exp,woe:w-exp,z,zw,zm,sd,expPct:exp/ms.length,mres,imp:im.length?im.reduce((s,v)=>s+v,0)/im.length:null};
   }
   // ---- shared by the review-round views ----
   // Win chance the ratings gave a match (null for unrated, late-entered or unconfirmed matches).
@@ -2151,16 +2164,36 @@
   const zTail=z=>{const x=z/Math.SQRT2,t=1/(1+0.3275911*x);   // two-sided normal tail, A&S 7.1.26
     return t*(0.254829592+t*(-0.284496736+t*(1.421413741+t*(-1.453152027+t*1.061405429))))*Math.exp(-x*x);};
   const zCrit=k=>{let lo=0,hi=10;for(let i=0;i<50;i++){const mid=(lo+hi)/2;if(zTail(mid)>0.05/Math.max(1,k))lo=mid;else hi=mid;}return Math.max(2,hi);};
-  const sigPill=(r,k)=>{if(r.n<PPL_MIN)return'<span class="pxconf c0" title="Too few matches to judge">—</span>';
+  // Whole numbers for wins: "+3", "−1", "0".
+  const s1=v=>v==null?'—':(v>=0?'+':'−')+Math.abs(v).toFixed(1);
+  const woeTxt=v=>{const r=Math.round(v);return r===0?'0':(r>0?'+':'−')+Math.abs(r);};
+  // "about 4–5" for 4.5, "about 6" for 6.1: half-wins don't exist, and a range reads as an estimate.
+  const about=v=>Math.abs(v-Math.round(v))<0.25?String(Math.round(v)):`${Math.floor(v)}–${Math.ceil(v)}`;
+  // What happened, does it beat what was expected, and can you trust it yet: three short lines.
+  // o.head replaces the opening record ("7–3 with Maulik."); o.opp / o.together word the ending.
+  function explain(r,k,o={}){
+    const a=Math.abs(r.woe),z=Math.abs(r.z),zc=zCrit(k),up=r.woe>0,rng=2*(r.sd||0),luck=Math.max(1,Math.round(rng));
+    const sc=r.mres==null||Math.abs(r.mres)<0.3?0:(r.mres>0)===up?1:-1;
+    let t=`<b>${o.head||`${r.w}–${r.n-r.w}.`}</b> `;
+    if(a<0.5)t+=`About what was expected (${about(r.exp)}).`;
+    else t+=`Expected about ${about(r.exp)}.<br>You won ${a<1.25?'1':about(a)} ${up?'more':'fewer'} than expected`
+      +(sc>0?(up?', and the scores back it up.':', and the scores were worse than expected too.')
+        :sc<0?(up?', but the games were closer than that, so some of it was winning the close ones.':', but the scores were better than that, so some of it was losing the close ones.'):'.');
+    t+='<br>';
+    if(z<1&&a<0.5)t+='Nothing to read into yet.';
+    else if(z<2){t+=`<b>Too early to be sure:</b> over ${r.n} matches, luck alone can swing results by about ${luck} win${luck>1?'s':''} either way.`;
+      if(z>=0.5){const more=Math.ceil(r.n*(2/z)**2)-r.n;t+=more>2*r.n?' It would take a lot more matches to tell.':` About ${more} more match${more>1?'es':''}${o.together?' '+o.together:''} would tell you if it’s real.`;}}
+    else t+=(a<rng?'The wins alone could be luck, but with the scores it’s ':`Over ${r.n} matches that’s `)
+      +(z>=zc?'well beyond luck: ':'more than luck usually explains: ')+(o.real?o.real(up):z>=zc?'almost certainly real.':'probably real.');
+    return t;}
+  const plain=h=>h.replace(/<br>/g,' ').replace(/<[^>]+>/g,'');
+  const sigPill=(r,k,o)=>{if(r.n<PPL_MIN)return'<span class="pxconf c0" title="Too few matches to judge">—</span>';
     const z=Math.abs(r.z),zc=zCrit(k),up=r.z>0,arrow=`<span class="${up?'imp-up':'imp-dn'}">${up?'↑':'↓'}</span>`;
-    const dir=up?'better':'worse',ev=`Evidence score ${z.toFixed(1)} from wins and points (${r.woe>=0?'+':''}${r.woe.toFixed(1)} wins`
-      +(r.mres!=null?`, ${sgn(r.mres)} per 11 points`:'')+` vs expected). Leaning from 1, Likely from 2, Clear from ${zc.toFixed(1)} for this ${k}-row table.`;
     // Words plus a dot meter, so the level reads without colour: Clear ●●● · Likely ●●○ · Leaning ●○○ · Too early ○○○.
-    const pill=(c,l,d,t)=>`<span class="pxconf ${c}" title="${t} ${ev}">${l} <span class="dots" aria-hidden="true">${d}</span></span>`;
-    return z>=zc?pill('c2',`Clear ${arrow}`,'●●●',`With this many matches, a gap this big rarely happens by chance: ${dir} than the ratings expect. Still check it against what you see on court.`)
-      :z>=2?pill('c1',`Likely ${arrow}`,'●●○',`Probably ${dir} than the ratings expect, but in a long list one or two rows like this turn up by luck.`)
-      :z>=1?pill('c0',`Leaning ${arrow}`,'●○○',`Tilting ${dir} than the ratings expect, but well within normal luck so far.`)
-      :pill('c0','Too early','○○○','Close to what the ratings expect: too early to tell.');};
+    // The why text shows on hover (capped box) and on tap (bubble); the builder's numbers only with ?debug=1.
+    const dbg=DEBUG?` [z ${z.toFixed(2)} · Likely 2 · Clear ${zc.toFixed(1)} for ${k} rows]`:'';
+    const pill=(c,l,d)=>`<span class="pxconf ${c}" data-why="${enc(explain(r,k,o)+dbg)}">${l} <span class="dots" aria-hidden="true">${d}</span></span>`;
+    return z>=zc?pill('c2',`Clear ${arrow}`,'●●●'):z>=2?pill('c1',`Likely ${arrow}`,'●●○'):z>=1?pill('c0',`Leaning ${arrow}`,'●○○'):pill('c0','Too early','○○○');};
   // "Vs expected" numbers are coloured only when the Signal is Likely or Clear; otherwise plain.
   const woeCls=(v,z)=>v==null||z==null||Math.abs(z)<2?'':(v>=0?'imp-up':'imp-dn');
   function expTable(id,label,rows){
@@ -2171,10 +2204,10 @@
       const low=s.n<PPL_MIN;
       return`<tr${low?' class="dim"':''}><td>${lab}${low?'<span class="ptag low">small sample</span>':''}</td><td class="mono">${s.n}</td>`
         +`<td class="mono">${s.w}–${s.n-s.w}</td><td class="mono">${pct(s.w/s.n)}</td><td class="mono">${pct(s.expPct)}</td>`
-        +`<td class="mono valcell ${woeCls(s.woe,s.z)}">${(s.woe>=0?'+':'')+s.woe.toFixed(1)}</td>`
-        +`<td class="mono ${woeCls(s.mres,s.z)}">${sgn(s.mres)}</td>`
-        +impCell(s.imp,'DUPR change / match')+`<td class="sigcell">${sig(s)}</td></tr>`;}).join('');
-    byId(id).innerHTML=`<thead><tr><th>${label}</th><th>M</th><th>W–L</th><th>Win%</th><th>Expected win%</th><th>Wins vs expected</th><th>Margin vs expected</th><th>DUPR change / match</th><th>Signal</th></tr></thead><tbody>${body}</tbody>`;
+        +`<td class="mono valcell ${woeCls(s.woe,s.z)}">${woeTxt(s.woe)}</td>`
+        +`<td class="mono ${woeCls(s.mres,s.z)}">${s1(s.mres)}</td>`
+        +impCell(s.imp,'Rating change per match')+`<td class="sigcell">${sig(s)}</td></tr>`;}).join('');
+    byId(id).innerHTML=`<thead><tr><th>${label}</th><th>Matches</th><th>W–L</th><th>Win%</th><th>Expected win%</th><th>Wins vs expected</th><th>Score vs expected</th><th>Rating change per match</th><th>How sure</th></tr></thead><tbody>${body}</tbody>`;
   }
   // Nth time you've met each opponent / played with each partner, counted over the whole history
   // in entry order (date, then matchId), so filters don't renumber them.
@@ -2234,9 +2267,8 @@
     // Typical longest run by chance for n matches at win rate p: about ln(n·(1−p)) / ln(1/p).
     const n=seq.length,p=n?seq.filter(m=>m.won).length/n:0,run=(q,r)=>q>0&&q<1&&n*r>1?Math.round(Math.log(n*r)/Math.log(1/q)):null;
     const cw=run(p,1-p),cl=run(1-p,p);
-    byId('stkHint').textContent='Matches in the order DUPR rated them, taken as the order you played them. '
-      +'“After a loss” compares your next match that night with what the ratings expected, so a tough next draw doesn’t count against you.'
-      +(cw!=null&&cl!=null?` With your ${Math.round(p*100)}% win rate over ${n} matches, chance alone typically produces a longest win streak of about ${cw} and a longest losing streak of about ${cl}.`:'');
+    byId('stkHint').innerHTML=(cw!=null&&cl!=null?`<b>Streaks happen by chance more than you’d think:</b> over ${n} matches, runs of about ${cw} wins or ${cl} losses are normal. `:'')
+      +'“After a loss” asks: do you bounce back better than expected?';
   }
   let pxSort='under',pxAll=false;
   function renderIndex(list){
@@ -2265,43 +2297,32 @@
       const tag=!tags?'':r.z<=-2?'<span class="ptag worst">Below expected</span>'
         :r.z>=2?'<span class="ptag best">Above expected</span>':'';
       return`<tr class="clk${pplSel===r.id?' on':''}" data-pid="${enc(r.id)}"><td><span class="evname" title="${enc(r.name)}">${enc(r.name)}</span>${tag}`
-        +`<span class="evtd">avg edge ${sgn(r.edge)} DUPR · DUPR now ${f2(r.now)}</span></td>`
+        +`<span class="evtd">${Math.abs(r.edge)<0.05?'Even teams on average':r.edge>0?'Your team usually rated higher':'Your team usually rated lower'} · now rated ${f2(r.now)}</span></td>`
         +`<td class="mono">${r.n}</td><td class="mono">${pct(r.expPct)}</td><td class="mono">${pct(r.w/r.n)}</td>`
-        +`<td class="mono">${r.exp.toFixed(1)}–${(r.n-r.exp).toFixed(1)}</td><td class="mono">${r.w}–${r.n-r.w}</td>`
-        +`<td class="mono valcell ${woeCls(r.woe,r.z)}">${(r.woe>=0?'+':'')+r.woe.toFixed(1)}</td>`
-        +`<td class="mono ${woeCls(r.mres,r.z)}">${sgn(r.mres)}</td><td class="sigcell">${conf(r)}${flip.has(r.id)?' <span title="Changes without matches involving a rating that has since moved 0.3+">†</span>':''}</td>`
+        +`<td class="mono">${Math.round(r.exp)}–${r.n-Math.round(r.exp)}</td><td class="mono">${r.w}–${r.n-r.w}</td>`
+        +`<td class="mono valcell ${woeCls(r.woe,r.z)}">${woeTxt(r.woe)}</td>`
+        +`<td class="mono ${woeCls(r.mres,r.z)}">${s1(r.mres)}</td><td class="sigcell">${conf(r)}${flip.has(r.id)?' <span title="Someone in these matches has a rating that has moved a lot since, so expected is shakier here">†</span>':''}</td>`
         +(()=>{const e=EFF.get(r.id);
           // No spread beyond luck across the whole table: every effect is 0, so say that plainly.
-          if(e&&EFF.tau<0.005)return `<td class="mono effcell" style="color:var(--muted)">0.00<span class="rng">within luck</span></td>`;
+          if(e&&EFF.tau<0.005)return `<td class="effcell" style="color:var(--muted)">No real effect</td>`;
           return e?`<td class="mono effcell ${e.eff>=0?'imp-up':'imp-dn'}">${e.eff>=0?'+':'−'}${Math.abs(e.eff).toFixed(2)} ${e.eff>=0?'▲':'▼'}<span class="rng">${sgn(e.lo)} to ${sgn(e.hi)}</span></td>`:'<td class="mono">—</td>';})()+`</tr>`;};
-    byId('pxTitle').textContent=(opp?'Opponent':'Partner')+' Index — expected vs actual';
-    byId('pxHint').textContent=opp
-      ?'How you should do against each opponent given everyone’s DUPR at the time, against how you actually did. Top of the list: the opponents you should be beating more.'
-      :'How each partnership should do given everyone’s DUPR at the time, against how it actually did. Top of the list: the partners you should be winning more with.';
+    byId('pxTitle').textContent=opp?'All opponents: the detail':'All partners: the detail';
+    byId('pxHint').textContent=`Every ${opp?'opponent':'partner'}’s record next to what was expected. Only Likely and Clear are more than luck.`;
     // What chance alone produces in a table this size (|z|≥1 ≈ 31.7% of rows, |z|≥2 ≈ 4.6%).
-    if(kSig>=3)byId('pxHint').textContent+=` Even if nobody really helped or hurt you, about ${Math.round(.317*kSig)} of these ${kSig} would look like they do (Leaning or more), and about ${Math.max(1,Math.round(.0455*kSig))} would reach Likely. Trust Likely and Clear.`;
-    byId('pxTable').innerHTML=`<thead><tr><th>${who}</th><th>M</th><th title="On average, how often the ratings say you should win these">Expected win%</th><th>Win%</th>`
+    byId('pxTable').innerHTML=`<thead><tr><th>${who}</th><th>Matches</th><th title="On average, how often the ratings say you should win these">Expected win%</th><th>Win%</th>`
       +`<th title="The win–loss record the ratings predict">Expected W–L</th><th>W–L</th><th title="Your real wins minus the wins the ratings predicted. Positive = you did better than expected">Wins vs expected</th>`
-      +`<th title="How your point margin compares with what the ratings predicted. Positive = you win by more than expected">Margin vs expected</th><th title="How sure we can be this is a real pattern and not just luck">Signal</th><th title="How much better or worse your team does than its ratings with / against them, in DUPR points of team edge, pulled toward 0 by how few matches there are. Below: the likely range.">Effect (DUPR)</th></tr></thead><tbody>`
+      +`<th title="How your point margin compares with what the ratings predicted. Positive = you win by more than expected">Score vs expected</th><th title="How sure we can be this is a real pattern and not just luck">How sure</th><th title="How much this ${opp?'opponent seems to lower (or lift)':'partner seems to lift (or lower)'} your team, in rating points. Shrunk toward zero until there are enough matches to trust it. Below: the likely range.">Effect (DUPR)</th></tr></thead><tbody>`
       +(solid.map(r=>row(r,true)).join('')||`<tr class="dim"><td colspan="10" class="caphint">${emptyWhy(who.toLowerCase())}</td></tr>`)
-      +(low.length?`<tr class="sep"><td colspan="10">Small samples — 1 to ${PPL_MIN-1} matches · low reliability</td></tr>`+(pxAll?low:low.slice(0,15)).map(r=>row(r,false)).join(''):'')
+      +(low.length?`<tr class="sep"><td colspan="10">Played 1–${PPL_MIN-1} times: too few to judge</td></tr>`+(pxAll?low:low.slice(0,15)).map(r=>row(r,false)).join(''):'')
       +'</tbody>'+(low.length>15?`<tfoot><tr><td colspan="10" style="padding:0"><button class="showmore" id="pxMore">${pxAll?'Show fewer':'Show all '+low.length+' small samples'}</button></td></tr></tfoot>`:'');
     const pm=byId('pxMore');if(pm)pm.onclick=()=>{pxAll=!pxAll;render();};
-    byId('pxRobust').innerHTML=nVol?`<b>Check:</b> ${nVol} of these matches include someone whose rating has since moved 0.3+ (new or provisional ratings skew “expected”). `
-      +(flip.size?`Leaving them out changes ${flip.size} ${flip.size===1?'label':'labels'}, marked †.`:'Leaving them out changes no labels.')
-      +(EFF.tau==null?'':EFF.tau<0.005?` Across all your ${opp?'opponents':'partners'}, results don’t differ more than luck would explain, so every effect is 0.`
-        :` Effects spread across ${opp?'opponents':'partners'}: ±${EFF.tau.toFixed(2)} DUPR.`):'';
+    byId('pxRobust').innerHTML=nVol&&flip.size?`† Some players’ ratings have moved a lot since (often new players), so “expected” is shakier for these rows.`:'';
     byId('pxTable').querySelectorAll('[data-pid]').forEach(tr=>tr.onclick=()=>{
       const id=dec(tr.dataset.pid);pplSel=pplSel===id?'':id;render();
       if(pplSel)byId('pplLogCard').scrollIntoView({behavior:SMOOTH,block:'start'});});
-    byId('pxModel').textContent=`How “expected” works: for each match we take the rating gap between the teams and turn it into a win chance, `
-      +(MODEL.fitted?`tuned to your own results — for you, a team that’s 0.25 higher rated wins about ${pct(MODEL.pWin(0.25))} of the time. `
-        :`using a standard setting (you have fewer than 30 rated matches to tune it from). `)
-      +`“Expected margin” does the same for the score: how much you’d win or lose by given the rating gap. The gap is your team’s average DUPR minus your opponents’, `
-      +(MODEL.nPre===MODEL.n?'using everyone’s rating as it was going into the match.'
-        :MODEL.nPre?`using everyone’s rating going into the match (${MODEL.n-MODEL.nPre} older matches fall back to after-match ratings — sync again to fix).`
-        :`but partners’ and opponents’ ratings are from just after each match (sync again to use their before-match ratings, which are more accurate here).`)
-      +(unrated?` ${unrated} ${opp?'opponent':'partner'}${unrated>1?'s':''} left out: no ratings on file for those matches.`:'');
+    byId('gModel').textContent=`For each match we turn the rating gap between the teams into a win chance${MODEL.fitted?`, tuned to your own results: for you, a team rated 0.25 higher wins about ${pct(MODEL.pWin(0.25))} of the time`:''}. The gap is your team’s average rating minus your opponents’, going into the match.`;
+    byId('pxModel').innerHTML=`<a href="#" class="guidego" style="color:var(--accent)">How “expected” works ›</a>`+(unrated?` · ${unrated} ${opp?'opponent':'partner'}${unrated>1?'s':''} left out: no ratings on file.`:'');
+    byId('pxModel').querySelector('.guidego').onclick=e=>{e.preventDefault();byId('hdrHelp').click();setTimeout(()=>{const g=byId('gExpected');if(g)g.scrollIntoView({behavior:SMOOTH,block:'start'});},60);};
   }
   // Upset index + notable results (bottom of the Overview), in the Period and filters picked.
   const oppStr=m=>(m.opponents||[]).map(o=>o.name).join(' & ')||'—';
@@ -2311,6 +2332,7 @@
     const sm=log&&log.querySelector('.showmore');if(sm)sm.remove();
     const row=log&&log.querySelector(`[data-mid="${mid}"]`);
     if(row){row.scrollIntoView({behavior:SMOOTH,block:'center'});row.classList.add('flash');setTimeout(()=>row.classList.remove('flash'),1600);}},80);}
+  const a3w=v=>Math.abs(v)<1.25?'1':about(Math.abs(v));
   function renderHighlights(list){
     // Lifetime rating range (peak / low / current), always all-time.
     if(series.length){let hi=series[0],lo=series[0];series.forEach(m=>{if(m.postRating>hi.postRating)hi=m;if(m.postRating<lo.postRating)lo=m;});
@@ -2323,24 +2345,24 @@
         +`<div class="ut"><div class="v imp-dn mono">${lo.postRating.toFixed(3)}</div><div class="l">Lowest <span class="sub">${dayLabel(lo.date)}</span></div></div>`;}
     // Moments in the Period and filters you've picked.
     const win=list;
-    // Upsets need a real gap: under a 40% win chance (given up: over 60%).
+    // Upsets need a real gap: under a 40% win chance (upset loss: over 60%).
     const rated=win.filter(m=>pOf(m)!=null);
     const uw=rated.filter(m=>m.won&&pOf(m)<0.40),gu=rated.filter(m=>!m.won&&pOf(m)>0.60);
     const dog=rated.filter(m=>pOf(m)<0.5),above=dog.reduce((s,m)=>s+(m.won?1:0)-pOf(m),0);
     byId('upsetTiles').innerHTML=
       `<div class="ut"><div class="v imp-up mono">${uw.length}</div><div class="l">Upset wins ▲</div></div>`
-      +`<div class="ut"><div class="v imp-dn mono">${gu.length}</div><div class="l">Given up ▼</div></div>`
-      +`<div class="ut"><div class="v mono ${above>=0?'imp-up':'imp-dn'}">${above>=0?'+':'−'}${Math.abs(above).toFixed(1)}</div><div class="l">Wins above expected <span class="sub">in the ${dog.length} matches you were the underdog</span></div></div>`;
+      +`<div class="ut"><div class="v imp-dn mono">${gu.length}</div><div class="l">Upset losses ▼</div></div>`
+      +`<div class="ut"><div class="v mono ${Math.abs(above)<0.5?'':above>0?'imp-up':'imp-dn'}">${Math.abs(above)<0.5?'Even':woeTxt(above)}</div><div class="l">As the underdog (${dog.length} matches): ${Math.abs(above)<0.5?'about what was expected':`${a3w(above)} ${above>0?'more':'fewer'} win${a3w(above)==='1'?'':'s'} than expected`}</div></div>`;
     const big=uw.slice().sort((a,b)=>pOf(a)-pOf(b))[0];
     byId('upsetBig').innerHTML=big?`<div class="ubig clk" data-mid="${big.matchId}"><div class="ic">🔼</div><div><div class="t">Biggest upset win</div>`
-      +`<div class="d">With ${enc(big.partnerName)} you beat ${enc(oppStr(big))} (${Math.abs(big.diffPre).toFixed(2)} higher-rated) ${enc(scoreStr(big))} on ${big.date}.</div></div></div>`:'';
+      +`<div class="d">With ${enc(big.partnerName)} you beat ${enc(oppStr(big))} (rated ${Math.abs(big.diffPre).toFixed(2)} higher) ${enc(scoreStr(big))} on ${shortDay(big.date)}.</div></div></div>`:'';
     const weak=gu.slice().sort((a,b)=>pOf(b)-pOf(a))[0];
     const blow=win.filter(m=>m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
     const close=win.filter(m=>!m.won&&m.normMargin!=null).sort((a,b)=>b.normMargin-a.normMargin)[0];
     const notes=[];
     if(big)notes.push(['good','🔼','Biggest upset win',`Beat ${oppStr(big)} — ${Math.abs(big.diffPre).toFixed(2)} above you — with ${big.partnerName}.`,big.matchId]);
-    if(weak)notes.push(['bad','🔽','Toughest loss on paper',`Lost to ${oppStr(weak)} with your team ${weak.diffPre.toFixed(2)} higher rated.`,weak.matchId]);
-    if(blow)notes.push(['big','🎯','Biggest win',`${scoreStr(blow)} vs ${oppStr(blow)} — margin ${sgn(blow.normMargin)} per 11.`,blow.matchId]);
+    if(weak)notes.push(['bad','🔽','Biggest upset loss',`Lost to ${oppStr(weak)} with your team ${weak.diffPre.toFixed(2)} higher rated.`,weak.matchId]);
+    if(blow)notes.push(['big','🎯','Biggest win',`${scoreStr(blow)} vs ${oppStr(blow)}.`,blow.matchId]);
     if(close)notes.push(['bad','⏱️','Closest call',`Lost ${scoreStr(close)} to ${oppStr(close)} — nearly stole it.`,close.matchId]);
     byId('notable').innerHTML=notes.map(([c,ic,t,d,mid])=>`<div class="note clk ${c}" data-mid="${mid}"><div class="ic">${ic}</div><div><div class="t">${enc(t)}</div><div class="d">${enc(d)}</div></div></div>`).join('')
       ||`<div class="caphint">No rated matches ${byId('reset').disabled?'yet':'with these filters'}.</div>`;
@@ -2351,7 +2373,7 @@
     let r=s[s.length-1].won,k=0;for(let i=s.length-1;i>=0;i--){if(!!s[i].won===!!r)k++;else break;}return k+(r?' win'+(k>1?'s':''):' loss'+(k>1?'es':''));}
   // One list of partners (or opponents): wins vs what the ratings expected, the range luck
   // alone could produce (±2 SD of the win count), and the Signal. Grouped by the Signal's z:
-  // 2+ coloured with an arrow, 1–2 "worth watching" (about 1 in 3 land there by chance), under
+  // 2+ coloured with an arrow, 1–2 "leaning one way" (about 1 in 3 land there by chance), under
   // 1 "too early to tell". Best and toughest are simply the top and bottom.
   function renderPL(list){
     const opp=pplMode==='opp',card=byId('plCard'),who=opp?'opponent':'partner';
@@ -2368,42 +2390,23 @@
     // Why this row sits where it does, in words: record vs what the ratings expected, whether the
     // points agree, how much luck could explain, the verdict, and how many more matches would settle it.
     const zc=zCrit(k);
-    // "about 4–5" for 4.5, "about 6" for 6.1: half-wins don't exist, and a range reads as an estimate.
-    const about=v=>Math.abs(v-Math.round(v))<0.25?String(Math.round(v)):`${Math.floor(v)}–${Math.ceil(v)}`;
-    const why=r=>{const s=r.s,a=Math.abs(s.woe),z=zA(r),nm=r.name.split(' ')[0],up=s.woe>0;
-      const sc=s.mres==null||Math.abs(s.mres)<0.3?0:(s.mres>0)===up?1:-1,luck=Math.max(1,Math.round(r.rng));
-      let t=`<b>${s.w}–${s.n-s.w} ${opp?'against':'with'} ${enc(nm)}.</b> `;
-      if(a<0.5)t+=`About what the ratings expected (${about(s.exp)}).`;
-      else{t+=`The ratings expected about ${about(s.exp)}.<br>You won ${a<1.25?'1':about(a)} ${up?'more':'fewer'} than expected`
-        +(sc>0?(up?', and the scores back it up.':', and the scores were worse than expected too.'):sc<0?(up?', but the games were closer than that, so some of it was winning the close ones.':', but the scores were better than that, so some of it was losing the close ones.'):'.');}
-      t+='<br>';
-      if(z<1&&a<0.5)t+='Nothing to read into yet.';
-      else if(z<2){t+=`<b>Too early to be sure:</b> over ${s.n} matches, luck alone can swing results by about ${luck} win${luck>1?'s':''} either way.`;
-        if(z>=0.5){const more=Math.ceil(s.n*(2/z)**2)-s.n;t+=` About ${more} more match${more>1?'es':''} ${opp?'against them':'together'} would tell you if it’s real.`;}}
-      else t+=(a<r.rng?'The wins alone could be luck, but with the scores it’s ':`Over ${s.n} matches that’s `)+'more than luck usually explains, so '
-        +(opp?(up?'you really do play well against them.':'they really do have your number.'):(up?'you two really do play well together.':'this pairing really is underperforming.'));
-      return t;};
+    const why=r=>{const nm=enc(r.name.split(' ')[0]),s=r.s;
+      return explain({...s,sd:r.rng/2},k,{head:`${s.w}–${s.n-s.w} ${opp?'against':'with'} ${nm}.`,together:opp?'against them':'together',
+        real:up=>opp?(up?'you really do play well against them.':'they really do have your number.'):(up?'you two really do play well together.':'this pairing really is underperforming.')});};
     const row=r=>{const v=r.s.woe,pos=v>=0,e=zA(r)<1,w=!e&&zA(r)<2,L=at(Math.min(v,0)),R=at(Math.max(v,0)),o=plOpen===r.id;
       const wl=r.ms.filter(m=>m.won).length;
-      return `<div class="crow clk${e?' early':w?' watch':''}" data-pl="${enc(r.id)}"><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.ms.length} matches · ${wl}–${r.ms.length-wl} · ${sigPill(r.s,k)}</div></div>`
+      return `<div class="crow clk${e?' early':w?' watch':''}${o?' open':''}" data-pl="${enc(r.id)}"${o?'':` data-why="${enc(why(r))}"`}><div><div class="nm">${enc(r.name)}</div><div class="sb">${r.ms.length} matches · ${wl}–${r.ms.length-wl} · ${sigPill(r.s,k,{head:'',together:''})}</div></div>`
         +`<div class="cbar"><span class="mid"></span><span class="ci" style="left:${at(v-r.rng).toFixed(1)}%;width:${(at(v+r.rng)-at(v-r.rng)).toFixed(1)}%"></span>`
         +`<i style="left:${L.toFixed(1)}%;width:${(R-L).toFixed(1)}%;background:${e?'var(--dot-dim)':pos?'var(--win)':'var(--loss)'}"></i></div>`
         +`<div class="mono ${e?'':pos?'imp-up':'imp-dn'}" style="text-align:right${e?';color:var(--muted)':''}">${(pos?'+':'−')+Math.abs(v).toFixed(1)}${e||w?'':pos?' ▲':' ▼'}</div>`
-        +(o?`<div class="pdet"><div class="pwhy">${why(r)}</div>${r.s.imp!=null?`DUPR ${ptsTxt(r.s.imp,true)} / match · `:''}<a data-plgo="${enc(r.id)}">See the ${r.ms.length} matches →</a></div>`:'')+`</div>`;};
+        +(o?`<div class="pdet"><div class="pwhy">${why(r)}</div>${r.s.imp!=null?`Your rating: ${ptsTxt(r.s.imp,true)} a match ${opp?'against them':'together'} · `:''}<a data-plgo="${enc(r.id)}">See the ${r.ms.length} matches →</a></div>`:'')+`</div>`;};
     const top=rows.filter(r=>zA(r)>=2),watch=rows.filter(r=>zA(r)>=1&&zA(r)<2),early=rows.filter(r=>zA(r)<1),pl=n=>`${n} ${who}${n>1?'s':''}`;
     byId('pl').innerHTML=(top.length?top.map(row).join(''):`<div class="caphint" style="padding:2px 0 6px">No ${who} stands out yet. Nobody’s results are far enough from expected to rule out luck.</div>`)
-      +(watch.length?`<div class="sect-h" style="margin:14px 0 2px">Worth watching · ${pl(watch.length)}</div><div class="caphint" style="padding:0 0 4px">Promising, but could be luck.${k>=3?` With ${k} ${who}s, about ${Math.round(k/3)} would land here by chance.`:''}</div>`+watch.map(row).join(''):'')
+      +(watch.length?`<div class="sect-h" style="margin:14px 0 2px">Leaning one way · ${pl(watch.length)}</div><div class="caphint" style="padding:0 0 4px">Leaning one way, could still be luck.${k>=3?` With ${k} ${who}s, about ${Math.round(k/3)} would land here by chance.`:''}</div>`+watch.map(row).join(''):'')
       +(early.length?`<div class="sect-h" style="margin:14px 0 2px">Too early to tell · ${pl(early.length)}</div>`+(plAllEarly?early:early.slice(0,3)).map(row).join('')
         +(early.length>3?`<button class="minibtn" id="plMore" style="margin-top:8px">${plAllEarly?'Show fewer':`Show ${early.length-3} more`}</button>`:''):'');
     const mb=byId('plMore');if(mb)mb.onclick=()=>{plAllEarly=!plAllEarly;renderPL(list);};
-    // Desktop hover: the same words in a small box under the pointer (phones open them inline).
-    const tipOf=new Map(rows.map(r=>[r.id,why(r)]));let tip=byId('plTip');
-    if(!tip){tip=document.createElement('div');tip.id='plTip';tip.className='pltip';tip.hidden=true;document.body.appendChild(tip);}
-    if(!TOUCH)byId('pl').querySelectorAll('[data-pl]').forEach(el=>{const id=dec(el.dataset.pl);
-      el.onmousemove=e=>{if(plOpen===id){tip.hidden=true;return;}tip.innerHTML=tipOf.get(id);tip.hidden=false;
-        tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-10)+'px';tip.style.top=Math.min(e.clientY+16,innerHeight-tip.offsetHeight-10)+'px';};
-      el.onmouseleave=()=>tip.hidden=true;});
-    byId('pl').querySelectorAll('[data-pl]').forEach(el=>el.onclick=e=>{tip.hidden=true;const go=e.target.closest('[data-plgo]');
+    byId('pl').querySelectorAll('[data-pl]').forEach(el=>el.onclick=e=>{const go=e.target.closest('[data-plgo]');
       if(go){pplSel=dec(go.dataset.plgo);render();byId('pplLogCard').scrollIntoView({behavior:SMOOTH,block:'start'});return;}
       const id=dec(el.dataset.pl);plOpen=plOpen===id?'':id;renderPL(list);});
   }
@@ -2415,8 +2418,8 @@
     // Top and bottom few of the reliable list get a Best / Worst tag (never overlapping).
     // Sorting by DUPR now says who is strongest, not how you did, so no Best / Worst tags.
     const tagN=pplSort==='now'?0:solid.length>=6?3:solid.length>=2?1:0;
-    const head=`<thead><tr><th>${who}</th><th>M</th><th>W–L</th><th>Win%</th><th>Pts%</th><th>Margin</th>`
-      +`<th title="Your average DUPR change per match">DUPR change / match</th><th title="Your total DUPR change across these matches">DUPR change total</th>`
+    const head=`<thead><tr><th>${who}</th><th>Matches</th><th>W–L</th><th>Win%</th><th>Points won</th><th>Margin</th>`
+      +`<th title="Your average DUPR change per match">Rating change per match</th><th title="Your total DUPR change across these matches">DUPR change total</th>`
       +`<th title="Share of matches where your rating went up (a 0.000 change isn't counted)">Rating went up</th><th>DUPR now</th></tr></thead>`;
     const row=(r,i,n,tags)=>{
       // Only when the Signal clears |z| ≥ 2: a top-of-the-list spot alone is usually luck.
@@ -2425,9 +2428,9 @@
       return`<tr class="clk${pplSel===r.id?' on':''}" data-pid="${enc(r.id)}"><td><span class="evname" title="${enc(r.name)}">${enc(r.name)}</span>${tag}`
         +`<span class="evtd">${lastPlayedTxt(r.last)}</span></td>`
         +`<td class="mono" data-l="M">${r.g.n}</td><td class="mono" data-l="W–L">${r.g.wins}–${r.g.losses}</td>`
-        +`<td class="mono" data-l="Win %">${pct(r.g.winFrac)}</td><td class="mono" data-l="Pts %">${pct(r.g.ptsFrac)}</td>`
+        +`<td class="mono" data-l="Win %">${pct(r.g.winFrac)}</td><td class="mono" data-l="Points won">${pct(r.g.ptsFrac)}</td>`
         +`<td class="mono" data-l="Margin">${sgn(r.g.normMargin)}</td>`
-        +impCell(r.g.impAvg,'DUPR change / match')+impCell(r.g.impSum,'DUPR change total')
+        +impCell(r.g.impAvg,'Rating change per match')+impCell(r.g.impSum,'DUPR change total')
         +`<td class="mono" data-l="Rating went up">${pct(r.g.upFrac)}</td>`
         +`<td class="mono" data-l="DUPR now">${f2(r.now)}</td></tr>`;};
     const empty=t=>`<tr class="dim"><td colspan="10" class="caphint">${t}</td></tr>`;
@@ -2437,7 +2440,7 @@
     byId('pplTable').innerHTML=head+`<tbody>${solid.map((r,i)=>row(r,i,solid.length,true)).join('')
       ||empty(emptyWhy(opp?'opponent':'partner'))}</tbody>`;
     const CAP=15,shown=pplAll?low:low.slice(0,CAP);
-    byId('pplLowTitle').textContent=`Small samples — 1 to ${PPL_MIN-1} matches`;
+    byId('pplLowTitle').textContent=`Played 1–${PPL_MIN-1} times: too few to judge`;
     byId('pplLowHint').textContent=low.length?`Low reliability: ${low.length} ${opp?'opponents':'partners'}, same order. One good or bad night moves these a lot.`:'';
     byId('pplLowTable').innerHTML=head+`<tbody>${shown.map((r,i)=>row(r,i,shown.length,false)).join('')||empty('None in this filter.')}</tbody>`
       +(low.length>CAP?`<tfoot><tr><td colspan="10" style="padding:0"><button class="showmore" id="pplMore">${pplAll?'Show fewer':'Show all '+low.length}</button></td></tr></tfoot>`:'');
@@ -2476,7 +2479,7 @@
     const compute=()=>{
       const you=resolve(me.value),pa=resolve(byId('pdPartner').value),o1=resolve(byId('pdOpp1').value),o2=resolve(byId('pdOpp2').value);
       const out=byId('pdOut');
-      if([you,pa,o1,o2].some(v=>v==null)){out.innerHTML='<span class="caphint" style="padding:0">Enter all four — pick a player or type a rating (1–8).</span>';return;}
+      if([you,pa,o1,o2].some(v=>v==null)){out.innerHTML='<span class="caphint" style="padding:0">Fill in all four (a name, or a rating from 1 to 8).</span>';return;}
       const edge=(you+pa)/2-(o1+o2)/2,p=MODEL.pWin(edge),mg=MODEL.margin(edge),fav=p>=0.5;
       out.innerHTML=`<div class="pd-big ${fav?'imp-up':'imp-dn'}">${pct(p)} to win</div>`
         +`<div class="pd-sub">Expected margin ${mg>=0?'+':''}${mg.toFixed(1)} per 11 · your team’s edge ${edge>=0?'+':''}${edge.toFixed(2)} DUPR</div>`
@@ -2499,21 +2502,20 @@
     const perMatch=wr*gw+(1-wr)*gl;
     if(!ti.value)ti.value=(Math.floor(cur/0.25)*0.25+0.25).toFixed(2);
     const tgt=parseFloat(ti.value);
-    const stat=`From your last ${rated.length} rated matches: ${pct(wr)} wins · +${gw.toFixed(3)} per win · ${gl.toFixed(3)} per loss`;
     if(!(tgt>0&&tgt<=8)){out.innerHTML='<span class="caphint" style="padding:0">Enter a target rating (1–8).</span>';return;}
-    if(tgt<=cur){out.innerHTML=`<div class="pd-big imp-up">Already there</div><div class="pd-sub">You’re at ${cur.toFixed(3)}, at or above ${tgt.toFixed(2)}.</div><div class="caphint" style="padding:6px 0 0">${stat}</div>`;return;}
+    if(tgt<=cur){out.innerHTML=`<div class="pd-big imp-up">Already there</div><div class="pd-sub">You’re at ${cur.toFixed(3)}, at or above ${tgt.toFixed(2)}.</div>`;return;}
     if(perMatch<=0){const wrNeeded=(gw-gl)?(-gl)/(gw-gl):null;
       out.innerHTML=`<div class="pd-big imp-dn">Not on current pace</div>`
         +`<div class="pd-sub">At ${pct(wr)} wins your rating isn’t climbing toward ${tgt.toFixed(2)}.${wrNeeded!=null&&wrNeeded>0&&wrNeeded<1?` You’d need to win about ${pct(wrNeeded)} to start gaining.`:''}</div>`
-        +`<div class="caphint" style="padding:6px 0 0">${stat}</div>`;return;}
+;return;}
     // A range, not a point: the per-match gain is uncertain (±1 standard error), and months are
     // easier to picture than matches, using how often you've played over the last 3 months.
     const sd=Math.sqrt(rated.reduce((s,m)=>s+Math.pow(m.impact-perMatch,2),0)/Math.max(1,rated.length-1))/Math.sqrt(rated.length);
     const fast=Math.ceil((tgt-cur)/(perMatch+sd)),slow=perMatch-sd>0?Math.ceil((tgt-cur)/(perMatch-sd)):null;
     const pm=M.filter(m=>tms(m.date)>=Date.now()-91*864e5).length/3||null,mo=n=>Math.max(1,Math.round(n/pm));
-    out.innerHTML=`<div class="pd-big imp-up">${pm?(slow?`Probably ${mo(fast)}–${mo(slow)} months`:`At least ${mo(fast)} months`):(slow?`${fast}–${slow} matches`:`${fast}+ matches`)}</div>`
-      +`<div class="pd-sub">to reach ${tgt.toFixed(2)} from ${cur.toFixed(3)} at your current pace${pm?` (${fast}${slow?'–'+slow:'+'} matches, at about ${Math.round(pm)} a month)`:''}.</div>`
-      +`<div class="caphint" style="padding:6px 0 0">${stat}. A rough range: it assumes similar opponents, and DUPR leans on your recent results.</div>`;
+    const wide=pm&&slow&&mo(slow)>=3*mo(fast);
+    out.innerHTML=`<div class="pd-big imp-up">${pm?(slow?(wide?`Hard to say: anywhere from ${mo(fast)} to ${mo(slow)} months`:`Probably ${mo(fast)}–${mo(slow)} months`):`At least ${mo(fast)} months`):(slow?`${fast}–${slow} matches`:`${fast}+ matches`)}</div>`
+      +`<div class="pd-sub">to reach ${tgt.toFixed(2)} from ${cur.toFixed(2)}${pm?`, playing about ${Math.round(pm)} matches a month`:''}. It depends mostly on whether your recent form holds.</div>`;
   }
   byId('goalTarget').addEventListener('input',renderGoal);
   renderGoal();
@@ -2673,7 +2675,9 @@
     history.replaceState(null,'',location.pathname+'?sync=1');
     const ov=byId('syncOv'),stat=byId('syncStat'),act=byId('syncAct');
     ov.hidden=false;
-    const show=(t,err)=>{stat.textContent=t;stat.classList.toggle('err',!!err);};
+    // The raw error goes behind a "details" tap, not in front of the player.
+    const show=(t,err,det)=>{stat.textContent=t;stat.classList.toggle('err',!!err);
+      if(det){const d=document.createElement('details'),su=document.createElement('summary');su.textContent='details';d.append(su,document.createTextNode(String(det)));d.style.cssText='font-size:12px;margin-top:6px;opacity:.8';stat.appendChild(d);}};
     const buttons=list=>{act.innerHTML='';list.forEach(([label,fn,prim])=>{const b=document.createElement('button');
       b.className='syncbtn'+(prim?' prim':'');b.textContent=label;b.onclick=fn;act.appendChild(b);});};
     const closeBtn=['Close',()=>{history.replaceState(null,'','./');ov.hidden=true;}];
@@ -2701,10 +2705,10 @@
       if(Array.isArray(d.skipped)&&d.skipped.length)alsoTxt+=` Skipped: ${d.skipped.join(', ')}.`;
       const keepScouts=()=>Promise.all(scouts.map(sd=>{const id=String(sd.player.id);SCOUTS[id]=sd;return IDB.put(id,sd).catch(()=>{});}));
       const had=OWN.matches.length,n=fresh.matches.length;
-      if(n<had){show(`DUPR returned ${n} matches but you already have ${had}, so your own data wasn’t replaced. DUPR may have changed its data format.`+alsoTxt,true);
+      if(n<had){show(`DUPR sent fewer matches than you already have (${n} vs ${had}), so we kept yours. Try again later.`+alsoTxt,true);
         buttons(scouts.length?[[`Keep the ${scouts.length} recent players`,()=>keepScouts().then(()=>setView('')),true],closeBtn]:[closeBtn]);return;}
       const rt=fresh.player.currentDoubles;
-      const summary=`${n} matches${n>had?` (${n-had} new)`:''}${rt!=null?', DUPR '+rt.toFixed(3):''}`;
+      const summary=`${n} matches${n>had?` (${n-had} new)`:''}`;
       const who=nameCase(fresh.player.name)||('player '+fresh.player.id);
       const open=()=>{try{sessionStorage.setItem('pb-fresh',JSON.stringify(fresh));}catch(err){}setView('');};
       const same=x=>JSON.stringify([x.player,x.matches]);
@@ -2737,13 +2741,13 @@
           di=day.reduce((s,m)=>s+(m.impact||0),0),allLast=day.length>=n-had;
         show(`${n-had} new match${n-had>1?'es':''} · ${dayLabel(ld)} · ${dw}–${day.length-dw}${day.some(m=>m.impact!=null)?' · '+ptsTxt(di,true):''}`+alsoTxt);
         buttons([[allLast?'See your last session →':'See your new matches →',save,true],['View without saving',open],closeBtn]);return;}
-      if(confirmFirst||other){show(`Fetched ${summary} for ${who}. Save it ${WHERE}?`+warn+alsoTxt,!!other);
+      if(confirmFirst||other){show(`Got ${summary} for ${who}. Save ${WHERE==='in this browser'?'them on this device':'them '+WHERE}?`+warn+alsoTxt,!!other);
         buttons([[LOCAL||BROWSER?'Save':'Save to GitHub',save,true],['View without saving',open],closeBtn]);return;}
       save();
     }
     if(hash){
       show('Reading the data from DUPR…');buttons([]);
-      decodePb(hash).then(d=>handle(d,true),err=>{show('The sync data didn’t come through intact ('+err.message+'). Run the bookmark again on dashboard.dupr.com.',true);buttons([closeBtn]);});
+      decodePb(hash).then(d=>handle(d,true),err=>{show('That didn’t come through. Go back to DUPR and run PB Sync again.',true,err.message);buttons([closeBtn]);});
       return;
     }
     if(!window.opener){show('To sync, open dashboard.dupr.com (logged in) and run your PB Sync bookmark there.');buttons([closeBtn]);return;}
@@ -2754,7 +2758,7 @@
       if(e.origin!==DUPR_ORIGIN||e.source!==window.opener||!e.data||got)return;
       const d=e.data;
       if(d.type==='pb-progress'){show(d.text);return;}
-      if(d.type==='pb-error'){got=true;clearTimeout(timer);show('DUPR sync failed: '+d.text,true);buttons([closeBtn]);return;}
+      if(d.type==='pb-error'){got=true;clearTimeout(timer);show('Sync didn’t work. Check you’re logged in to DUPR, then try again.',true,d.text);buttons([closeBtn]);return;}
       if(d.type!=='pb-data')return;
       got=true;clearTimeout(timer);handle(d,false);
     });
