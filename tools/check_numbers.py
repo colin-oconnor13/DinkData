@@ -42,7 +42,7 @@ READ = {  # name -> [tab to open or None, JS returning text]
 DATES = [(re.compile(r"\b20\d\d-\d\d-\d\d\b"), "<date>"),
          (re.compile(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \d{1,2}, 20\d\d\b"), "<date>"),
          (re.compile(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) '\d\d\b"), "<month>"),
-         (re.compile(r"\b\d+[dwmy] ago\b|\btoday\b|\byesterday\b"), "<ago>")]
+         (re.compile(r"\b\d+(?:\.\d+)?(?:d|w|mo|y) ago\b|\btoday\b|\byesterday\b"), "<ago>")]
 
 
 def scrub(v):

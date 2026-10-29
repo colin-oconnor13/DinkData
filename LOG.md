@@ -2,6 +2,13 @@
 
 Newest first.
 
+## 2026-10-29 — People: names link to DUPR profiles
+- Player names on the People tab (partner/opponent list, the detail table, the people table, small
+  samples, opponent pairs) open the player's DUPR profile in a new tab (`duprA`). Clicking a name
+  doesn't select or expand its row. Plain text in the demo (made-up ids). SW cache rj-v103.
+- tools/check_numbers.py: "4mo ago" style relative dates are normalised too, so the snapshot
+  doesn't drift as the demo's dates move.
+
 ## 2026-10-27 — Highlights for other players with a full history
 - Viewing another player now shows the Upsets / Notable results and the all-time range, unless
   their history was cut off at 150 matches (`HL_PARTIAL`: the `capped` flag from a "me + recent
