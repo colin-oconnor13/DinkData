@@ -413,6 +413,30 @@
   .setup-h{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-family:"Archivo",sans-serif;font-weight:800;font-size:16px;color:var(--ink)}
   /* First-time setup: one panel per device, side by side; stacked on phones with the phone first. */
   .devices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  /* Set-up: a looping picture of dragging PB Sync onto the bookmarks bar (drawn, so it stays
+     sharp and follows the theme). Reduced motion shows the finished state, no movement. */
+  .bmdemo{position:relative;width:300px;max-width:100%;height:150px;margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);font-family:inherit;user-select:none}
+  .bmdemo .bd-top{position:absolute;left:0;right:0;top:0;height:22px;background:var(--surface-2);display:flex;align-items:center;gap:4px;padding:0 8px}
+  .bmdemo .bd-top i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .bmdemo .bd-url{margin-left:8px;flex:1;height:12px;border-radius:6px;background:var(--bg);font-size:8px;line-height:12px;padding:0 6px;color:var(--muted);overflow:hidden;white-space:nowrap}
+  .bmdemo .bd-bar{position:absolute;left:0;right:0;top:22px;height:20px;border-bottom:1px solid var(--line);background:var(--bg);display:flex;align-items:center;gap:6px;padding:0 8px}
+  .bmdemo .bd-fav{width:34px;height:8px;border-radius:4px;background:var(--line)} .bmdemo .bd-fav.w2{width:24px}
+  .bmdemo .bd-lbl{position:absolute;right:8px;top:26px;font-size:8px;color:var(--muted)}
+  .bmdemo .bd-btn,.bmdemo .bd-ghost,.bmdemo .bd-new{position:absolute;left:0;top:0;background:var(--optic-bright);color:#0E1512;font-weight:800;font-size:9.5px;line-height:18px;height:18px;padding:0 8px;border-radius:5px;white-space:nowrap}
+  .bmdemo .bd-btn{transform:translate(110px,87px);animation:bdPress 6s infinite}
+  .bmdemo .bd-ghost{opacity:0;box-shadow:0 4px 10px rgba(0,0,0,.3);animation:bdGhost 6s infinite}
+  .bmdemo .bd-new{height:14px;line-height:14px;font-size:8.5px;padding:0 6px;border-radius:4px;transform:translate(96px,25px);opacity:0;animation:bdNew 6s infinite}
+  .bmdemo .bd-drop{position:absolute;left:0;top:0;width:2px;height:16px;background:var(--accent);transform:translate(92px,24px);opacity:0;animation:bdDrop 6s infinite}
+  .bmdemo .bd-cur{position:absolute;left:0;top:0;width:14px;height:20px;animation:bdCur 6s infinite}
+  @keyframes bdCur{0%{transform:translate(250px,135px)}12%,16%{transform:translate(138px,96px);animation-timing-function:ease-in-out}
+    50%,54%{transform:translate(124px,34px)}70%,100%{transform:translate(232px,122px)}}
+  @keyframes bdPress{0%,12%{transform:translate(110px,87px) scale(1)}14%{transform:translate(110px,87px) scale(.93)}18%,100%{transform:translate(110px,87px) scale(1)}}
+  @keyframes bdGhost{0%,13%{opacity:0;transform:translate(110px,87px)}16%{opacity:.9;transform:translate(110px,87px);animation-timing-function:ease-in-out}
+    49%{opacity:.9;transform:translate(96px,25px)}53%,100%{opacity:0;transform:translate(96px,25px)}}
+  @keyframes bdDrop{0%,38%{opacity:0}42%,50%{opacity:1}53%,100%{opacity:0}}
+  @keyframes bdNew{0%,51%{opacity:0;transform:translate(96px,25px) scale(.6)}55%{opacity:1;transform:translate(96px,25px) scale(1.12)}
+    59%,90%{opacity:1;transform:translate(96px,25px) scale(1)}97%,100%{opacity:0;transform:translate(96px,25px) scale(1)}}
+  @media (prefers-reduced-motion:reduce){.bmdemo *{animation:none!important}.bmdemo .bd-new{opacity:1}.bmdemo .bd-cur,.bmdemo .bd-ghost,.bmdemo .bd-drop{display:none}}
   .device{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
   .dev-head{display:flex;gap:12px;align-items:center;margin-bottom:6px}
   .dev-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
@@ -1016,7 +1040,18 @@
             <div><b>On a computer</b><span>About 10 seconds</span></div></div>
           <ol class="dev-steps">
             <li>Show your bookmarks bar: <b>Ctrl+Shift+B</b> (Mac: <b>⌘+Shift+B</b>).</li>
-            <li>Drag this button onto it: <a class="bm" id="syncBm" href="javascript:(()=>{const s=document.createElement('script');s.src='https://colin-oconnor13.github.io/DinkData/sync.js?'+Date.now();s.onerror=()=>alert('PB Sync could not load https://colin-oconnor13.github.io/DinkData/sync.js. Check your connection and try again.');document.body.appendChild(s);})()">🔄 PB Sync</a></li>
+            <li>Drag this button onto it: <a class="bm" id="syncBm" href="javascript:(()=>{const s=document.createElement('script');s.src='https://colin-oconnor13.github.io/DinkData/sync.js?'+Date.now();s.onerror=()=>alert('PB Sync could not load https://colin-oconnor13.github.io/DinkData/sync.js. Check your connection and try again.');document.body.appendChild(s);})()">🔄 PB Sync</a>
+              <div class="bmdemo" aria-hidden="true">
+                <div class="bd-top"><i></i><i></i><i></i><span class="bd-url">colin-oconnor13.github.io/DinkData</span></div>
+                <div class="bd-bar"><span class="bd-fav"></span><span class="bd-fav w2"></span></div>
+                <span class="bd-lbl">bookmarks bar</span>
+                <span class="bd-btn">🔄 PB Sync</span>
+                <span class="bd-drop"></span>
+                <span class="bd-new">🔄 PB Sync</span>
+                <span class="bd-ghost">🔄 PB Sync</span>
+                <svg class="bd-cur" viewBox="0 0 14 20"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h5.5z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              </div>
+            </li>
             <li>To sync: open <a href="https://dashboard.dupr.com/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">dashboard.dupr.com ↗</a>, log in, and click <b>PB Sync</b> on your bookmarks bar. After your first sync, <b>🔄 Sync</b> opens DUPR for you.</li>
           </ol>
         </div>

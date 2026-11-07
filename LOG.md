@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-11-07 — Set-up: drag animation for the computer bookmark
+- "On a computer" step 2 shows a looping animation (`.bmdemo`, CSS only, 6 s): a cursor drags
+  the PB Sync button up to a browser's bookmarks bar and it lands there. Drawn in code so it's
+  sharp, tiny and follows the theme; reduced motion shows the finished state. SW cache rj-v104.
+- tools/check_numbers.py also normalises "2026-10" year-month labels (the demo's dates move).
+
 ## 2026-10-29 — People: names link to DUPR profiles
 - Player names on the People tab (partner/opponent list, the detail table, the people table, small
   samples, opponent pairs) open the player's DUPR profile in a new tab (`duprA`). Clicking a name
