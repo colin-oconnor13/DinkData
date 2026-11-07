@@ -2,6 +2,13 @@
 
 Newest first.
 
+## 2026-11-07 — Set-up: phone sync animation, by browser
+- "On a phone" step 2 shows a looping phone picture (`.phdemo`, CSS only, 12 s) of a sync: on
+  DUPR, run PB Sync, answer "Just my matches", then Save in Dink Data. Two versions, picked by the
+  set-up helper's browser guess (root `data-bw`): Chrome / Edge / Android / other type PB Sync in
+  the address bar and tap the ☆ suggestion (`.ph-cr`); iPhone Safari taps 📖 Bookmarks, then PB
+  Sync (`.ph-sf`). Reduced motion shows the key tap. SW cache rj-v106.
+
 ## 2026-11-07 — Set-up: sync animation
 - "On a computer" step 3 shows a second looping animation (`.syncdemo`, CSS only, 10 s): on DUPR
   the cursor clicks PB Sync in the bookmarks bar; the PB Sync panel reads the profile, asks about

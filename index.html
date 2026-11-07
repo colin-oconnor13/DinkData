@@ -482,6 +482,84 @@
   @keyframes sdAsk{0%,75%{opacity:1}76%,100%{opacity:0}}
   @keyframes sdOk{0%,75%{opacity:0}77%,100%{opacity:1}}
   @media (prefers-reduced-motion:reduce){.syncdemo *{animation:none!important}.syncdemo .sd-panel,.syncdemo .sd-m1{opacity:1}.syncdemo .sd-cur{transform:translate(118px,33px)}}
+  /* Set-up: a looping picture of a phone sync (12 s): on DUPR, type PB Sync in the address bar,
+     tap the ☆ suggestion, answer PB Sync's question, then Save in Dink Data. Drawn like
+     .syncdemo; reduced motion shows the ☆ suggestion being tapped. */
+  .phdemo{position:relative;width:170px;height:232px;margin:10px 0 4px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);user-select:none;font-size:7.5px;line-height:1.35;color:var(--ink)}
+  .phdemo>*{position:absolute}
+  .phdemo .ph-status{left:12px;right:12px;top:4px;height:10px;font-size:7px;color:var(--muted);display:flex;justify-content:space-between}
+  .phdemo .ph-addr{left:8px;right:8px;top:16px;height:20px;border-radius:10px;background:var(--surface-2)}
+  .phdemo .ph-t{left:18px;top:16px;height:20px;line-height:20px;font-size:8px;white-space:nowrap;color:var(--muted);opacity:0}
+  .phdemo .ph-t.typed{color:var(--ink)} .phdemo .ph-t.typed:after{content:"";display:inline-block;width:1px;height:10px;margin-left:1px;vertical-align:-2px;background:var(--accent)}
+  .phdemo .ph-sug{left:0;right:0;top:40px;height:40px;background:var(--surface);border-bottom:1px solid var(--line);opacity:0;z-index:2}
+  .phdemo .ph-sug div{height:18px;line-height:18px;padding:0 10px;white-space:nowrap;overflow:hidden}
+  .phdemo .ph-sug .hi{background:var(--surface-2)} .phdemo .ph-sug small{color:var(--muted);font-size:6.5px;margin-left:6px}
+  .phdemo .ph-dupr{left:12px;top:48px;right:12px}
+  .phdemo .ph-dupr b{display:block;font-size:12px;letter-spacing:.06em;color:var(--muted)}
+  .phdemo .ph-dupr i,.phdemo .ph-app i{display:block;height:9px;border-radius:4px;background:var(--line);margin-top:9px} .phdemo i.s{width:60%} .phdemo i.t{width:80%}
+  .phdemo .ph-app{left:12px;top:46px;right:12px;opacity:0} .phdemo .ph-app b{font-size:10px}
+  .phdemo .ph-panel{box-sizing:border-box;left:10px;top:60px;width:150px;height:96px;background:#14201a;color:#eef3ef;border:1px solid #35B79E;border-radius:9px;padding:6px 8px;box-shadow:0 6px 16px rgba(0,0,0,.35);opacity:0}
+  .phdemo .ph-panel>b,.phdemo .ph-card>b{font-size:8.5px}
+  .phdemo .ph-msg{position:absolute;left:8px;right:8px;top:20px;opacity:0}
+  .phdemo .ph-pb{display:block;margin-top:4px;height:13px;line-height:13px;border-radius:4px;text-align:center;font-weight:700;font-size:7px}
+  .phdemo .ph-pb.p{background:#35B79E;color:#0E1512} .phdemo .ph-pb.o{border:1px solid #35B79E;color:#35B79E;height:11px;line-height:11px}
+  .phdemo .ph-card{box-sizing:border-box;left:10px;top:72px;width:150px;height:72px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:6px 8px;box-shadow:0 6px 16px rgba(0,0,0,.25);opacity:0}
+  .phdemo .ph-ask,.phdemo .ph-ok{position:absolute;left:8px;right:8px;top:20px}
+  .phdemo .ph-ok{opacity:0;color:var(--win);font-weight:700;font-size:9px;top:30px}
+  .phdemo .ph-save{display:inline-block;margin-top:4px;padding:1px 9px;border-radius:4px;background:var(--accent);color:#fff;font-weight:700;font-size:7px}
+  .phdemo .ph-alt{margin-left:5px;color:var(--accent);font-size:7px}
+  .phdemo .ph-tap{z-index:5;left:0;top:0;width:18px;height:18px;animation:phTapAt 12s step-end infinite}
+  .phdemo .ph-tap i{display:block;width:18px;height:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px rgba(255,255,255,.7),0 0 0 3px rgba(0,0,0,.25);opacity:0;animation:phTap 12s infinite}
+  .phdemo .ph-u1{animation:phU1 12s infinite} .phdemo .ph-u2{animation:phU2 12s infinite}
+  .phdemo .ph-k1{animation:phK1 12s infinite} .phdemo .ph-k2{animation:phK2 12s infinite} .phdemo .ph-k3{animation:phK3 12s infinite} .phdemo .ph-k4{animation:phK4 12s infinite}
+  .phdemo .ph-sug{animation:phSug 12s infinite} .phdemo .ph-dupr{animation:phDupr 12s infinite} .phdemo .ph-app{animation:phApp 12s infinite}
+  .phdemo .ph-panel{animation:phPanel 12s infinite} .phdemo .ph-m1{animation:phM1 12s infinite} .phdemo .ph-m2{animation:phM2 12s infinite} .phdemo .ph-m3{animation:phM3 12s infinite}
+  .phdemo .ph-card{animation:phCard 12s infinite} .phdemo .ph-ask{animation:phAsk 12s infinite} .phdemo .ph-ok{animation:phOk 12s infinite}
+  @keyframes phTapAt{0%{transform:translate(86px,17px)}20%{transform:translate(51px,42px)}40%{transform:translate(76px,110px)}65%{transform:translate(26px,111px)}100%{transform:translate(26px,111px)}}
+  @keyframes phTap{0%,5.9%{opacity:0;transform:scale(.6)}7%{opacity:.75;transform:scale(1)}10%{opacity:0;transform:scale(1.6)}
+    28.9%{opacity:0;transform:scale(.6)}30%{opacity:.75;transform:scale(1)}33%{opacity:0;transform:scale(1.6)}
+    49.9%{opacity:0;transform:scale(.6)}51%{opacity:.75;transform:scale(1)}54%{opacity:0;transform:scale(1.6)}
+    77.9%{opacity:0;transform:scale(.6)}79%{opacity:.75;transform:scale(1)}82%,100%{opacity:0;transform:scale(1.6)}}
+  @keyframes phU1{0%,10%{opacity:1}11%,34%{opacity:0}35%,60%{opacity:1}62%,100%{opacity:0}}
+  @keyframes phU2{0%,60%{opacity:0}62%,98%{opacity:1}100%{opacity:0}}
+  @keyframes phK1{0%,11%{opacity:0}12%,14.9%{opacity:1}15%,100%{opacity:0}}
+  @keyframes phK2{0%,14.9%{opacity:0}15%,17.9%{opacity:1}18%,100%{opacity:0}}
+  @keyframes phK3{0%,17.9%{opacity:0}18%,20.9%{opacity:1}21%,100%{opacity:0}}
+  @keyframes phK4{0%,20.9%{opacity:0}21%,33.9%{opacity:1}34%,100%{opacity:0}}
+  @keyframes phSug{0%,12%{opacity:0}13%,33.9%{opacity:1}34%,100%{opacity:0}}
+  @keyframes phDupr{0%,60%{opacity:1}62%,98%{opacity:0}100%{opacity:1}}
+  @keyframes phApp{0%,60%{opacity:0}62%,98%{opacity:1}100%{opacity:0}}
+  @keyframes phPanel{0%,34%{opacity:0}36%,59%{opacity:1}61%,100%{opacity:0}}
+  @keyframes phM1{0%,35%{opacity:0}36%,43.9%{opacity:1}44%,100%{opacity:0}}
+  @keyframes phM2{0%,43.9%{opacity:0}44%,54.9%{opacity:1}55%,100%{opacity:0}}
+  @keyframes phM3{0%,54.9%{opacity:0}55%,59%{opacity:1}60%,100%{opacity:0}}
+  @keyframes phCard{0%,63%{opacity:0}66%,96%{opacity:1}99%,100%{opacity:0}}
+  @keyframes phAsk{0%,80%{opacity:1}81%,100%{opacity:0}}
+  @keyframes phOk{0%,80%{opacity:0}82%,100%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.phdemo *{animation:none!important}.phdemo .ph-u1{opacity:0}.phdemo .ph-k4,.phdemo .ph-sug{opacity:1}
+    .phdemo .ph-tap{transform:translate(51px,42px)}.phdemo .ph-tap i{opacity:.6}}
+  /* iPhone Safari runs a bookmark from the Bookmarks sheet, not the address bar: same phone
+     picture (.phdemo), address bar at the bottom, tap 📖 then PB Sync. Shown instead of the
+     address-bar version when the browser is Safari on iPhone (root data-bw="safari"). */
+  .phdemo.ph-sf{display:none} :root[data-bw="safari"] .phdemo.ph-sf{display:block} :root[data-bw="safari"] .phdemo.ph-cr{display:none}
+  .ph-sf .sf-addr{left:8px;right:8px;top:190px;height:18px;border-radius:9px;background:var(--surface-2)}
+  .ph-sf .sf-t{left:0;right:0;top:190px;height:18px;line-height:18px;text-align:center;font-size:7.5px;color:var(--muted)}
+  .ph-sf .sf-tools{left:10px;right:10px;top:212px;height:14px;display:flex;justify-content:space-between;font-size:10px;color:var(--accent);line-height:14px}
+  .ph-sf .ph-dupr{top:20px} .ph-sf .ph-app{top:20px}
+  .ph-sf .sf-sheet{left:0;right:0;top:70px;height:162px;background:var(--surface);border-top:1px solid var(--line);border-radius:12px 12px 0 0;box-shadow:0 -6px 16px rgba(0,0,0,.25);transform:translateY(170px);z-index:3;animation:sfSheet 12s infinite}
+  .ph-sf .sf-sheet b{display:block;text-align:center;font-size:8.5px;padding:7px 0 5px;border-bottom:1px solid var(--line)}
+  .ph-sf .sf-sheet div{height:20px;line-height:20px;padding:0 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  .ph-sf .sf-sheet div.hi{background:var(--surface-2);font-weight:700}
+  .ph-sf .ph-tap{animation-name:sfTapAt} .ph-sf .ph-tap i{animation-name:sfTap}
+  .ph-sf .ph-u1{animation-name:sfU1}
+  @keyframes sfSheet{0%,11%{transform:translateY(170px)}15%,32%{transform:translateY(0)}35%,100%{transform:translateY(170px)}}
+  @keyframes sfU1{0%,60%{opacity:1}62%,100%{opacity:0}}
+  @keyframes sfTapAt{0%{transform:translate(109px,210px)}20%{transform:translate(51px,115px)}40%{transform:translate(76px,110px)}65%{transform:translate(26px,111px)}100%{transform:translate(26px,111px)}}
+  @keyframes sfTap{0%,5.9%{opacity:0;transform:scale(.6)}7%{opacity:.75;transform:scale(1)}10%{opacity:0;transform:scale(1.6)}
+    25.9%{opacity:0;transform:scale(.6)}27%{opacity:.75;transform:scale(1)}30%{opacity:0;transform:scale(1.6)}
+    49.9%{opacity:0;transform:scale(.6)}51%{opacity:.75;transform:scale(1)}54%{opacity:0;transform:scale(1.6)}
+    77.9%{opacity:0;transform:scale(.6)}79%{opacity:.75;transform:scale(1)}82%,100%{opacity:0;transform:scale(1.6)}}
+  @media (prefers-reduced-motion:reduce){.ph-sf .ph-u1{opacity:1}.ph-sf .sf-sheet{transform:none}.ph-sf .ph-tap{transform:translate(51px,115px)}}
   /* Phones: shrink the set-up pictures to fit rather than clip them. */
   @media (max-width:420px){.bmdemo,.syncdemo{zoom:.84;max-width:none}}
   @media (max-width:375px){.bmdemo,.syncdemo{zoom:.74}}
@@ -712,6 +790,8 @@
     document.getElementById('spNext').onclick=function(){step(cur+1);};
     page.classList.add('stepper');
     show(bw);
+    // The phone sync picture on the main page follows the same guess (Safari: Bookmarks sheet).
+    document.documentElement.setAttribute('data-bw',bw);
     // PB Sync run on a Dink Data page (not DUPR) reports in here instead of complaining.
     document.addEventListener('pbsync-test',function(){
       if(!document.documentElement.classList.contains('bm-only')){alert('✓ PB Sync works. Run it on dashboard.dupr.com to sync your matches.');return;}
@@ -1127,7 +1207,44 @@
           <p class="dev-note">You can’t drag a bookmark on a phone, so you make a second one just for syncing. Your normal bookmark for this app stays.</p>
           <ol class="dev-steps">
             <li>Tap this and follow the steps:<br><a class="syncbtn prim" id="bmOpen" href="./?bm=1" style="display:inline-block;text-decoration:none;margin-top:6px">📌 Set up on this phone</a></li>
-            <li>To sync: open <b>dashboard.dupr.com</b>, log in, and run <b>PB Sync</b> there (the setup page shows how in your browser). After your first sync, <b>🔄 Sync</b> opens DUPR for you.</li>
+            <li>To sync: open <b>dashboard.dupr.com</b>, log in, and run <b>PB Sync</b> there (the setup page shows how in your browser). After your first sync, <b>🔄 Sync</b> opens DUPR for you.
+              <div class="phdemo ph-cr" aria-hidden="true">
+                <div class="ph-status"><span>9:41</span><span>●●●</span></div>
+                <span class="ph-addr"></span>
+                <span class="ph-t ph-u1">dashboard.dupr.com</span>
+                <span class="ph-t typed ph-k1">P</span><span class="ph-t typed ph-k2">PB</span><span class="ph-t typed ph-k3">PB S</span><span class="ph-t typed ph-k4">PB Sync</span>
+                <span class="ph-t ph-u2">…github.io/DinkData</span>
+                <div class="ph-dupr"><b>DUPR</b><i class="t"></i><i></i><i class="s"></i><i></i><i class="t"></i></div>
+                <div class="ph-app"><b>Dink Data</b><i></i><i class="t"></i><i class="s"></i></div>
+                <div class="ph-sug"><div class="hi">☆ <b>PB Sync</b><small>javascript:(()=&gt;{…</small></div><div>🔍 pb sync</div></div>
+                <div class="ph-panel"><b>🔄 PB Sync</b>
+                  <div class="ph-msg ph-m1">Reading your DUPR profile…</div>
+                  <div class="ph-msg ph-m2">Got your 238 matches. Also sync the people you played recently?<span class="ph-pb p">Just my matches</span><span class="ph-pb o">Me + 14 people</span></div>
+                  <div class="ph-msg ph-m3">Opening the app…</div></div>
+                <div class="ph-card"><b>🔄 Sync from DUPR</b>
+                  <div class="ph-ask">Got 238 matches (3 new). Save them on this device?<br><span class="ph-save">Save</span><span class="ph-alt">View without saving</span></div>
+                  <div class="ph-ok">✓ Saved</div></div>
+                <span class="ph-tap"><i></i></span>
+              </div>
+              <div class="phdemo ph-sf" aria-hidden="true">
+                <div class="ph-status"><span>9:41</span><span>●●●</span></div>
+                <div class="ph-dupr"><b>DUPR</b><i class="t"></i><i></i><i class="s"></i><i></i><i class="t"></i></div>
+                <div class="ph-app"><b>Dink Data</b><i></i><i class="t"></i><i class="s"></i></div>
+                <span class="sf-addr"></span>
+                <span class="sf-t ph-u1">dashboard.dupr.com</span>
+                <span class="sf-t ph-u2">…github.io/DinkData</span>
+                <div class="sf-tools"><span>‹</span><span>›</span><span>⬆</span><span>📖</span><span>⧉</span></div>
+                <div class="sf-sheet"><b>Bookmarks</b><div>★ Favorites</div><div class="hi">📖 PB Sync</div><div>📖 Dink Data</div></div>
+                <div class="ph-panel"><b>🔄 PB Sync</b>
+                  <div class="ph-msg ph-m1">Reading your DUPR profile…</div>
+                  <div class="ph-msg ph-m2">Got your 238 matches. Also sync the people you played recently?<span class="ph-pb p">Just my matches</span><span class="ph-pb o">Me + 14 people</span></div>
+                  <div class="ph-msg ph-m3">Opening the app…</div></div>
+                <div class="ph-card"><b>🔄 Sync from DUPR</b>
+                  <div class="ph-ask">Got 238 matches (3 new). Save them on this device?<br><span class="ph-save">Save</span><span class="ph-alt">View without saving</span></div>
+                  <div class="ph-ok">✓ Saved</div></div>
+                <span class="ph-tap"><i></i></span>
+              </div>
+            </li>
           </ol>
           <div class="dev-tip"><b>DUPR keeps sending you to its app?</b> On the DUPR page in your browser, switch to the desktop site, then log in and run <b>PB Sync</b>. DUPR’s app redirect is aimed at phones, so the desktop site should stay in the browser.
             <ul>
