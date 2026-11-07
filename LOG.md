@@ -2,6 +2,13 @@
 
 Newest first.
 
+## 2026-11-07 — Set-up: sync animation
+- "On a computer" step 3 shows a second looping animation (`.syncdemo`, CSS only, 10 s): on DUPR
+  the cursor clicks PB Sync in the bookmarks bar; the PB Sync panel reads the profile, asks about
+  recent players ("Just my matches"), opens Dink Data; Save gives ✓ Saved. Reduced motion shows
+  the panel opening. On phones both set-up pictures scale down (`zoom`) instead of clipping, and
+  `.device` can shrink (`min-width:0`). SW cache rj-v105.
+
 ## 2026-11-07 — Set-up: drag animation for the computer bookmark
 - "On a computer" step 2 shows a looping animation (`.bmdemo`, CSS only, 6 s): a cursor drags
   the PB Sync button up to a browser's bookmarks bar and it lands there. Drawn in code so it's

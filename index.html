@@ -437,7 +437,55 @@
   @keyframes bdNew{0%,51%{opacity:0;transform:translate(96px,25px) scale(.6)}55%{opacity:1;transform:translate(96px,25px) scale(1.12)}
     59%,90%{opacity:1;transform:translate(96px,25px) scale(1)}97%,100%{opacity:0;transform:translate(96px,25px) scale(1)}}
   @media (prefers-reduced-motion:reduce){.bmdemo *{animation:none!important}.bmdemo .bd-new{opacity:1}.bmdemo .bd-cur,.bmdemo .bd-ghost,.bmdemo .bd-drop{display:none}}
-  .device{background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  /* Set-up: a looping picture of a sync (10 s): click PB Sync on DUPR, answer its question,
+     then Save in Dink Data. Same drawn browser as .bmdemo; reduced motion shows the first click. */
+  .syncdemo{position:relative;width:300px;max-width:100%;height:180px;margin:10px 0 4px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);user-select:none}
+  .syncdemo>*{position:absolute}
+  .syncdemo .sd-top{left:0;right:0;top:0;height:22px;background:var(--surface-2);display:flex;align-items:center;gap:4px;padding:0 8px}
+  .syncdemo .sd-top i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .syncdemo .sd-url{left:48px;top:5px;width:232px;height:12px;border-radius:6px;background:var(--bg);font-size:8px;line-height:12px;padding:0 6px;color:var(--muted);white-space:nowrap;overflow:hidden}
+  .syncdemo .sd-bar{left:0;right:0;top:22px;height:20px;border-bottom:1px solid var(--line);background:var(--bg);display:flex;align-items:center;gap:6px;padding:0 8px}
+  .syncdemo .sd-fav{width:34px;height:8px;border-radius:4px;background:var(--line)} .syncdemo .sd-fav.w2{width:24px}
+  .syncdemo .sd-bm{left:96px;top:25px;height:14px;line-height:14px;padding:0 6px;border-radius:4px;background:var(--optic-bright);color:#0E1512;font-weight:800;font-size:8.5px;white-space:nowrap;animation:sdBm 10s infinite}
+  .syncdemo .sd-dupr{left:14px;top:52px;right:14px;bottom:10px}
+  .syncdemo .sd-dupr b{display:block;font-size:13px;letter-spacing:.06em;color:var(--muted)}
+  .syncdemo .sd-dupr i{display:block;height:9px;border-radius:4px;background:var(--line);margin-top:8px} .syncdemo .sd-dupr i.s{width:60%} .syncdemo .sd-dupr i.t{width:80%}
+  .syncdemo .sd-app{left:14px;top:50px;right:14px;bottom:10px;opacity:0}
+  .syncdemo .sd-app b{display:block;font-size:11px;color:var(--ink)}
+  .syncdemo .sd-app i{display:inline-block;width:62px;height:30px;border-radius:6px;background:var(--surface-2);margin:8px 6px 0 0}
+  .syncdemo .sd-panel{box-sizing:border-box;left:24px;top:50px;width:252px;height:72px;background:#14201a;color:#eef3ef;border:1px solid #35B79E;border-radius:9px;padding:7px 10px;box-shadow:0 6px 16px rgba(0,0,0,.35);opacity:0;font-size:8.5px;line-height:1.35}
+  .syncdemo .sd-panel>b{font-size:9.5px}
+  .syncdemo .sd-msg{position:absolute;left:10px;right:10px;top:21px;opacity:0}
+  .syncdemo .sd-pb{display:inline-block;margin-top:5px;padding:2px 7px;border-radius:5px;font-weight:700;font-size:8px}
+  .syncdemo .sd-pb.p{background:#35B79E;color:#0E1512} .syncdemo .sd-pb.o{border:1px solid #35B79E;color:#35B79E;margin-left:5px}
+  .syncdemo .sd-card{box-sizing:border-box;left:30px;top:62px;width:240px;height:62px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:7px 10px;box-shadow:0 6px 16px rgba(0,0,0,.25);opacity:0;font-size:8.5px;line-height:1.35;color:var(--ink)}
+  .syncdemo .sd-card>b{font-size:9.5px}
+  .syncdemo .sd-ask,.syncdemo .sd-ok{position:absolute;left:10px;right:10px;top:21px}
+  .syncdemo .sd-ok{opacity:0;color:var(--win);font-weight:700;font-size:10px;top:30px}
+  .syncdemo .sd-save{display:inline-block;margin-top:5px;padding:2px 10px;border-radius:5px;background:var(--accent);color:#fff;font-weight:700;font-size:8px}
+  .syncdemo .sd-alt{display:inline-block;margin-left:6px;color:var(--accent);font-size:8px}
+  .syncdemo .sd-cur{left:0;top:0;width:14px;height:20px;animation:sdCur 10s infinite}
+  .syncdemo .sd-m1{animation:sdM1 10s infinite} .syncdemo .sd-m2{animation:sdM2 10s infinite} .syncdemo .sd-m3{animation:sdM3 10s infinite}
+  .syncdemo .sd-panel{animation:sdPanel 10s infinite} .syncdemo .sd-dupr{animation:sdDupr 10s infinite} .syncdemo .sd-app{animation:sdApp 10s infinite}
+  .syncdemo .sd-card{animation:sdCard 10s infinite} .syncdemo .sd-ask{animation:sdAsk 10s infinite} .syncdemo .sd-ok{animation:sdOk 10s infinite}
+  .syncdemo .sd-u1{animation:sdDupr 10s infinite} .syncdemo .sd-u2{opacity:0;animation:sdApp 10s infinite}
+  @keyframes sdCur{0%{transform:translate(260px,160px)}12%,17%{transform:translate(118px,33px);animation-timing-function:ease-in-out}
+    36%,41%{transform:translate(66px,103px);animation-timing-function:ease-in-out}72%,77%{transform:translate(62px,113px)}90%,100%{transform:translate(260px,160px)}}
+  @keyframes sdBm{0%,13%{transform:scale(1)}15%{transform:scale(.9)}17%,100%{transform:scale(1)}}
+  @keyframes sdPanel{0%,18%{opacity:0}20%,58%{opacity:1}61%,100%{opacity:0}}
+  @keyframes sdM1{0%,19%{opacity:0}20%,29%{opacity:1}30%,100%{opacity:0}}
+  @keyframes sdM2{0%,29%{opacity:0}30%,41%{opacity:1}42%,100%{opacity:0}}
+  @keyframes sdM3{0%,42%{opacity:0}43%,58%{opacity:1}59%,100%{opacity:0}}
+  @keyframes sdDupr{0%,60%{opacity:1}62%,98%{opacity:0}100%{opacity:1}}
+  @keyframes sdApp{0%,60%{opacity:0}62%,98%{opacity:1}100%{opacity:0}}
+  @keyframes sdCard{0%,63%{opacity:0}66%,96%{opacity:1}99%,100%{opacity:0}}
+  @keyframes sdAsk{0%,75%{opacity:1}76%,100%{opacity:0}}
+  @keyframes sdOk{0%,75%{opacity:0}77%,100%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.syncdemo *{animation:none!important}.syncdemo .sd-panel,.syncdemo .sd-m1{opacity:1}.syncdemo .sd-cur{transform:translate(118px,33px)}}
+  /* Phones: shrink the set-up pictures to fit rather than clip them. */
+  @media (max-width:420px){.bmdemo,.syncdemo{zoom:.84;max-width:none}}
+  @media (max-width:375px){.bmdemo,.syncdemo{zoom:.74}}
+  .device{min-width:0;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
   .dev-head{display:flex;gap:12px;align-items:center;margin-bottom:6px}
   .dev-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
   .dev-ic svg{width:28px;height:28px}
@@ -1052,7 +1100,25 @@
                 <svg class="bd-cur" viewBox="0 0 14 20"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h5.5z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/></svg>
               </div>
             </li>
-            <li>To sync: open <a href="https://dashboard.dupr.com/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">dashboard.dupr.com ↗</a>, log in, and click <b>PB Sync</b> on your bookmarks bar. After your first sync, <b>🔄 Sync</b> opens DUPR for you.</li>
+            <li>To sync: open <a href="https://dashboard.dupr.com/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">dashboard.dupr.com ↗</a>, log in, and click <b>PB Sync</b> on your bookmarks bar. After your first sync, <b>🔄 Sync</b> opens DUPR for you.
+              <div class="syncdemo" aria-hidden="true">
+                <div class="sd-top"><i></i><i></i><i></i></div>
+                <span class="sd-url sd-u1">dashboard.dupr.com</span>
+                <span class="sd-url sd-u2">colin-oconnor13.github.io/DinkData</span>
+                <div class="sd-bar"><span class="sd-fav"></span><span class="sd-fav w2"></span></div>
+                <span class="sd-bm">🔄 PB Sync</span>
+                <div class="sd-dupr"><b>DUPR</b><i class="t"></i><i></i><i class="s"></i></div>
+                <div class="sd-app"><b>Dink Data</b><i></i><i></i><i></i></div>
+                <div class="sd-panel"><b>🔄 PB Sync</b>
+                  <div class="sd-msg sd-m1">Reading your DUPR profile…</div>
+                  <div class="sd-msg sd-m2">Got your 238 matches. Also sync the people you played recently?<br><span class="sd-pb p">Just my matches</span><span class="sd-pb o">Me + 14 people</span></div>
+                  <div class="sd-msg sd-m3">Opening the app…</div></div>
+                <div class="sd-card"><b>🔄 Sync from DUPR</b>
+                  <div class="sd-ask">Got 238 matches (3 new). Save them on this device?<br><span class="sd-save">Save</span><span class="sd-alt">View without saving</span></div>
+                  <div class="sd-ok">✓ Saved</div></div>
+                <svg class="sd-cur" viewBox="0 0 14 20"><path d="M1 1v15l4-4 3 7 3-1.4-3-6.6h5.5z" fill="#fff" stroke="#111" stroke-width="1.2" stroke-linejoin="round"/></svg>
+              </div>
+            </li>
           </ol>
         </div>
         <div class="device dev-phone">
