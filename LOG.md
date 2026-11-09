@@ -2,6 +2,12 @@
 
 Newest first.
 
+## 2026-11-09 — Last session grouped by event
+- When the last day you played has more than one event (an organiser can split a night in two),
+  the Last session card says "N events" and lists each event with its own record and matches
+  (3 + "All N from …"); the day's totals, expected wins, rating move and partners cover them all.
+  SW cache rj-v107.
+
 ## 2026-11-07 — Set-up: phone sync animation, by browser
 - "On a phone" step 2 shows a looping phone picture (`.phdemo`, CSS only, 12 s) of a sync: on
   DUPR, run PB Sync, answer "Just my matches", then Save in Dink Data. Two versions, picked by the
