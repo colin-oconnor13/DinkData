@@ -1873,7 +1873,10 @@
     const when=joined?(prev.slice(0,7)===maxDate.slice(0,7)?`${MON[+prev.slice(5,7)-1]} ${+prev.slice(8)}–${+maxDate.slice(8)}, ${maxDate.slice(0,4)}`:`${shortDay(prev)} – ${dayLabel(maxDate)}`):dayLabel(maxDate);
     byId('lsWhen').textContent=when+(evs.length===1?' · '+evs[0]:evs.length>1?` · ${evs.length} events`:'');
     const s=expStats(day),imp=day.some(m=>m.impact!=null)?day.reduce((t,m)=>t+(m.impact||0),0):null;
-    const r0=day.find(m=>m.preRating!=null),r1=day.slice().reverse().find(m=>m.postRating!=null);
+    // Start and end in the order DUPR rated them (not the order of dates: a split night can be
+    // rated later-date first), and the change is end minus start so the line adds up.
+    const byOrd=day.filter(m=>m.preRating!=null&&m.postRating!=null).sort((a,b)=>ordOf(a)-ordOf(b));
+    const r0=byOrd[0],r1=byOrd[byOrd.length-1],chg=r0&&r1?r1.postRating-r0.preRating:imp;
     const pc=new Map();day.forEach(m=>{if(!m.partnerName)return;const r=pc.get(m.partnerName)||[0,0];r[m.won?0:1]++;pc.set(m.partnerName,r);});
     const short=n=>{const p=String(n).split(' ');return p.length>1?p[0]+' '+p[p.length-1][0]+'.':n;};
     const rated=day.filter(m=>pOf(m)!=null);
@@ -1883,7 +1886,7 @@
     byId('lsBody').innerHTML=`<div class="ls-rec"><span class="big"><span class="w">${w}</span>–<span class="l">${day.length-w}</span></span>`
       +`<span class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}</span></div><div class="ls-lines">`
       +(s?`<div>Expected about ${about(s.exp)} wins. <b>You won ${s.w}${s.woe>=1.5?', a great night':s.woe>=0.5?', a good night':s.woe<=-1.5?', a tough night':s.woe<=-0.5?', a bit below par':', about as expected'}.</b></div>`:'')
-      +(imp!=null?`<div>Rating ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} to ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${imp>=0?'imp-up':'imp-dn'}">(${ptsTxt(imp,true)})</span></div>`:'')
+      +(imp!=null?`<div>Rating ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} to ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${chg>=0?'imp-up':'imp-dn'}">(${ptsTxt(chg,true)})</span></div>`:'')
       +(pc.size?`<div class="sub">With ${[...pc].sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).map(([n,[a,b]])=>`${enc(short(n))} ${a}–${b}`).join(', ')}</div>`:'')
       +`</div>`+(up?mline(up,true):'')+(gu?mline(gu,false):'');
     byId('lsBody').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));

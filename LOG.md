@@ -13,6 +13,9 @@ Newest first.
 - Venue no longer decides it: DUPR names the same club differently by event type (league matches
   carry the street address, ladder events "Courts and Pints"), so a split night failed the check.
   Consecutive days join on the 10-match rule alone. SW cache rj-v110.
+- Last session's rating line takes the start and end in the order DUPR rated the matches
+  (`ordOf`), not by date: a split night can be rated later-date first. The change shown is end
+  minus start, so the line adds up. SW cache rj-v111.
 
 ## 2026-11-09 — Last session grouped by event
 - When the last day you played has more than one event (an organiser can split a night in two),
