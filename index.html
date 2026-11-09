@@ -211,6 +211,8 @@
   .ls-lines{display:grid;gap:5px;font-size:13.5px;padding:4px 20px 10px} .ls-lines .sub{color:var(--muted);font-size:12.5px}
   .ls-m{font-size:13px;padding:8px 20px;border-top:1px solid var(--line);line-height:1.45;cursor:pointer} .ls-m .sub{color:var(--muted)}
   .ls-ev{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 20px 6px;border-top:1px solid var(--line);background:var(--surface-2);font-size:13px}
+  .wl-chip.up{width:auto;padding:0 6px;display:flex;align-items:center;gap:2px} .wl-chip.up small{font-size:9px}
+  .ls-key{font-size:11.5px;color:var(--muted);padding:0 20px 4px}
   .ls-tag{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:5px;background:var(--surface-2)}
   .ls-tag.up{color:var(--win)} .ls-tag.dn{color:var(--loss)}
   .wl-chips{display:flex;gap:4px;flex-wrap:wrap}
@@ -1880,11 +1882,14 @@
     const pc=new Map();day.forEach(m=>{if(!m.partnerName)return;const r=pc.get(m.partnerName)||[0,0];r[m.won?0:1]++;pc.set(m.partnerName,r);});
     const short=n=>{const p=String(n).split(' ');return p.length>1?p[0]+' '+p[p.length-1][0]+'.':n;};
     const rated=day.filter(m=>pOf(m)!=null);
+    // ▲ won with under a 40% chance, ▼ lost with over 60% (the same rule as the Upset tags).
+    const upOf=m=>{const p=pOf(m);return p==null?0:m.won&&p<0.40?1:!m.won&&p>0.60?-1:0;};
     const up=rated.filter(m=>m.won&&pOf(m)<0.40).sort((a,b)=>pOf(a)-pOf(b))[0],gu=rated.filter(m=>!m.won&&pOf(m)>0.60).sort((a,b)=>pOf(b)-pOf(a))[0];
     const mline=(m,u)=>`<div class="ls-m" data-mid="${m.matchId}"><span class="ls-tag ${u?'up':'dn'}">${u?'Upset win ▲':'Upset loss ▼'}</span> `
       +`${u?'Beat':'Lost to'} ${enc(oppStr(m))} <span class="mono">${enc(scoreStr(m))}</span><span class="sub"> · with ${enc(m.partnerName||'—')} · ${Math.round(100*pOf(m))}% chance to win</span></div>`;
     byId('lsBody').innerHTML=`<div class="ls-rec"><span class="big"><span class="w">${w}</span>–<span class="l">${day.length-w}</span></span>`
-      +`<span class="wl-chips">${day.map(m=>`<span class="wl-chip ${m.won?'w':'l'}">${m.won?'W':'L'}</span>`).join('')}</span></div><div class="ls-lines">`
+      +`<span class="wl-chips">${day.map(m=>{const u=upOf(m);return `<span class="wl-chip ${m.won?'w':'l'}${u?' up':''}"${u?` title="${u>0?'Upset win':'Upset loss'}: ${Math.round(100*pOf(m))}% chance to win"`:''}>${m.won?'W':'L'}${u>0?'<small>▲</small>':u<0?'<small>▼</small>':''}</span>`;}).join('')}</span></div>`
+      +(day.some(upOf)?`<div class="ls-key">▲ upset win · ▼ upset loss</div>`:'')+`<div class="ls-lines">`
       +(s?`<div>Expected about ${about(s.exp)} wins. <b>You won ${s.w}${s.woe>=1.5?', a great night':s.woe>=0.5?', a good night':s.woe<=-1.5?', a tough night':s.woe<=-0.5?', a bit below par':', about as expected'}.</b></div>`:'')
       +(imp!=null?`<div>Rating ${r0&&r1?`<span class="mono">${r0.preRating.toFixed(3)} to ${r1.postRating.toFixed(3)}</span> `:''}<span class="mono ${chg>=0?'imp-up':'imp-dn'}">(${ptsTxt(chg,true)})</span></div>`:'')
       +(pc.size?`<div class="sub">With ${[...pc].sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).map(([n,[a,b]])=>`${enc(short(n))} ${a}–${b}`).join(', ')}</div>`:'')

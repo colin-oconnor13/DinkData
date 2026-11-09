@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-11-09 — Last session: upset arrows on the W/L chips
+- Upset wins show "W▲" and upset losses "L▼" inside their chip (same 40% / 60% rule as the Upset
+  tags), with a one-line key under the chips when there are any; hover/tap gives the chance.
+  SW cache rj-v112.
+
 ## 2026-11-09 — Last session joins a night DUPR dated across two days
 - DUPR dates each match by its event, so a night split into two events can land on two dates.
   The Last session card now also takes the day before the latest date when those matches were
