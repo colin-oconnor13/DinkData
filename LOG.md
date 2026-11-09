@@ -10,6 +10,9 @@ Newest first.
   them apart). SW cache rj-v108.
 - Only when the two days add up to 10 matches or fewer: a league night is 7–8, so more is likely
   two real sessions and they stay separate. SW cache rj-v109.
+- Venue no longer decides it: DUPR names the same club differently by event type (league matches
+  carry the street address, ladder events "Courts and Pints"), so a split night failed the check.
+  Consecutive days join on the 10-match rule alone. SW cache rj-v110.
 
 ## 2026-11-09 — Last session grouped by event
 - When the last day you played has more than one event (an organiser can split a night in two),
