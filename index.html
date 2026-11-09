@@ -210,6 +210,7 @@
   .ls-rec .big{font-family:"Archivo",sans-serif;font-weight:900;font-size:34px;line-height:1} .ls-rec .big .w{color:var(--win)} .ls-rec .big .l{color:var(--loss)}
   .ls-lines{display:grid;gap:5px;font-size:13.5px;padding:4px 20px 10px} .ls-lines .sub{color:var(--muted);font-size:12.5px}
   .ls-m{font-size:13px;padding:8px 20px;border-top:1px solid var(--line);line-height:1.45;cursor:pointer} .ls-m .sub{color:var(--muted)}
+  .ls-ev{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 20px 6px;border-top:1px solid var(--line);background:var(--surface-2);font-size:13px}
   .ls-tag{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:5px;background:var(--surface-2)}
   .ls-tag.up{color:var(--win)} .ls-tag.dn{color:var(--loss)}
   .wl-chips{display:flex;gap:4px;flex-wrap:wrap}
@@ -1862,7 +1863,7 @@
     const maxDate=M.reduce((a,m)=>m.date>a?m.date:a,'');
     const day=M.filter(m=>m.date===maxDate).sort((x,y)=>ordOf(x)-ordOf(y)),w=day.filter(m=>m.won).length;
     const evs=[...new Set(day.map(evName).filter(Boolean))];
-    byId('lsWhen').textContent=dayLabel(maxDate)+(evs.length?' · '+evs[0]+(evs.length>1?` +${evs.length-1}`:''):'');
+    byId('lsWhen').textContent=dayLabel(maxDate)+(evs.length===1?' · '+evs[0]:evs.length>1?` · ${evs.length} events`:'');
     const s=expStats(day),imp=day.some(m=>m.impact!=null)?day.reduce((t,m)=>t+(m.impact||0),0):null;
     const r0=day.find(m=>m.preRating!=null),r1=day.slice().reverse().find(m=>m.postRating!=null);
     const pc=new Map();day.forEach(m=>{if(!m.partnerName)return;const r=pc.get(m.partnerName)||[0,0];r[m.won?0:1]++;pc.set(m.partnerName,r);});
@@ -1878,7 +1879,13 @@
       +(pc.size?`<div class="sub">With ${[...pc].sort((a,b)=>(b[1][0]+b[1][1])-(a[1][0]+a[1][1])).map(([n,[a,b]])=>`${enc(short(n))} ${a}–${b}`).join(', ')}</div>`:'')
       +`</div>`+(up?mline(up,true):'')+(gu?mline(gu,false):'');
     byId('lsBody').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
-    renderLog(day,'lastDay',null,{compact:true,cap:3,label:dayLabel(maxDate)});
+    // One event: its matches. Several (an organiser can split a night in two): a heading and
+    // record per event, each with its own matches, in the order you played them.
+    if(evs.length<2){renderLog(day,'lastDay',null,{compact:true,cap:3,label:dayLabel(maxDate)});return;}
+    byId('lastDay').className='';
+    byId('lastDay').innerHTML=evs.map((e,i)=>{const ms=day.filter(m=>evName(m)===e),ew=ms.filter(m=>m.won).length;
+      return `<div class="ls-ev"><b>${enc(e)}</b><span class="mono"><span class="imp-up">${ew}</span>–<span class="imp-dn">${ms.length-ew}</span></span></div><div id="lastDay${i}"></div>`;}).join('');
+    evs.forEach((e,i)=>renderLog(day.filter(m=>evName(m)===e),'lastDay'+i,null,{compact:true,cap:3,label:e}));
   }
   // Phones open on a tight recent window (the chart is small); desktop shows everything.
   if(!Z.year&&!Z.months&&yearsPresent.length&&matchMedia('(max-width:620px)').matches)
