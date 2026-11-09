@@ -1861,9 +1861,15 @@
   function renderLatest(){
     byId('lsCard').hidden=!M.length;if(!M.length)return;
     const maxDate=M.reduce((a,m)=>m.date>a?m.date:a,'');
-    const day=M.filter(m=>m.date===maxDate).sort((x,y)=>ordOf(x)-ordOf(y)),w=day.filter(m=>m.won).length;
+    // DUPR dates each match by its event, so a night an organiser split into two events can land
+    // on two dates. The day before joins the session when it was at the same venue.
+    const prev=new Date(Date.parse(maxDate+'T00:00:00Z')-864e5).toISOString().slice(0,10);
+    const venues=new Set(M.filter(m=>m.date===maxDate).map(m=>m.venue).filter(Boolean));
+    const joined=M.some(m=>m.date===prev&&m.venue&&venues.has(m.venue));
+    const day=M.filter(m=>m.date===maxDate||(joined&&m.date===prev)).sort((x,y)=>x.date.localeCompare(y.date)||(ordOf(x)-ordOf(y))),w=day.filter(m=>m.won).length;
     const evs=[...new Set(day.map(evName).filter(Boolean))];
-    byId('lsWhen').textContent=dayLabel(maxDate)+(evs.length===1?' · '+evs[0]:evs.length>1?` · ${evs.length} events`:'');
+    const when=joined?(prev.slice(0,7)===maxDate.slice(0,7)?`${MON[+prev.slice(5,7)-1]} ${+prev.slice(8)}–${+maxDate.slice(8)}, ${maxDate.slice(0,4)}`:`${shortDay(prev)} – ${dayLabel(maxDate)}`):dayLabel(maxDate);
+    byId('lsWhen').textContent=when+(evs.length===1?' · '+evs[0]:evs.length>1?` · ${evs.length} events`:'');
     const s=expStats(day),imp=day.some(m=>m.impact!=null)?day.reduce((t,m)=>t+(m.impact||0),0):null;
     const r0=day.find(m=>m.preRating!=null),r1=day.slice().reverse().find(m=>m.postRating!=null);
     const pc=new Map();day.forEach(m=>{if(!m.partnerName)return;const r=pc.get(m.partnerName)||[0,0];r[m.won?0:1]++;pc.set(m.partnerName,r);});
@@ -1881,10 +1887,11 @@
     byId('lsBody').querySelectorAll('[data-mid]').forEach(el=>el.onclick=()=>goToMatch(el.dataset.mid));
     // One event: its matches. Several (an organiser can split a night in two): a heading and
     // record per event, each with its own matches, in the order you played them.
-    if(evs.length<2){renderLog(day,'lastDay',null,{compact:true,cap:3,label:dayLabel(maxDate)});return;}
+    if(evs.length<2){renderLog(day,'lastDay',null,{compact:true,cap:3,label:when});return;}
     byId('lastDay').className='';
     byId('lastDay').innerHTML=evs.map((e,i)=>{const ms=day.filter(m=>evName(m)===e),ew=ms.filter(m=>m.won).length;
-      return `<div class="ls-ev"><b>${enc(e)}</b><span class="mono"><span class="imp-up">${ew}</span>–<span class="imp-dn">${ms.length-ew}</span></span></div><div id="lastDay${i}"></div>`;}).join('');
+      const ds=[...new Set(ms.map(m=>m.date))].map(shortDay).join(', ');
+      return `<div class="ls-ev"><b>${enc(e)}${joined?` <span class="sub" style="font-weight:500">· ${ds}</span>`:''}</b><span class="mono"><span class="imp-up">${ew}</span>–<span class="imp-dn">${ms.length-ew}</span></span></div><div id="lastDay${i}"></div>`;}).join('');
     evs.forEach((e,i)=>renderLog(day.filter(m=>evName(m)===e),'lastDay'+i,null,{compact:true,cap:3,label:e}));
   }
   // Phones open on a tight recent window (the chart is small); desktop shows everything.

@@ -2,6 +2,13 @@
 
 Newest first.
 
+## 2026-11-09 — Last session joins a night DUPR dated across two days
+- DUPR dates each match by its event, so a night split into two events can land on two dates.
+  The Last session card now also takes the day before the latest date when those matches were
+  at the same venue ("Nov 7–8, 2026 · 2 events", each event heading shows its date). Two days in
+  a row at different venues stay separate; at the same venue they join (no match times to tell
+  them apart). SW cache rj-v108.
+
 ## 2026-11-09 — Last session grouped by event
 - When the last day you played has more than one event (an organiser can split a night in two),
   the Last session card says "N events" and lists each event with its own record and matches
