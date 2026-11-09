@@ -1862,10 +1862,11 @@
     byId('lsCard').hidden=!M.length;if(!M.length)return;
     const maxDate=M.reduce((a,m)=>m.date>a?m.date:a,'');
     // DUPR dates each match by its event, so a night an organiser split into two events can land
-    // on two dates. The day before joins the session when it was at the same venue.
+    // on two dates. The day before joins the session when it was at the same venue and the two
+    // add up to 10 matches or fewer (a league night is 7–8; more is likely two real sessions).
     const prev=new Date(Date.parse(maxDate+'T00:00:00Z')-864e5).toISOString().slice(0,10);
     const venues=new Set(M.filter(m=>m.date===maxDate).map(m=>m.venue).filter(Boolean));
-    const joined=M.some(m=>m.date===prev&&m.venue&&venues.has(m.venue));
+    const joined=M.some(m=>m.date===prev&&m.venue&&venues.has(m.venue))&&M.filter(m=>m.date===maxDate||m.date===prev).length<=10;
     const day=M.filter(m=>m.date===maxDate||(joined&&m.date===prev)).sort((x,y)=>x.date.localeCompare(y.date)||(ordOf(x)-ordOf(y))),w=day.filter(m=>m.won).length;
     const evs=[...new Set(day.map(evName).filter(Boolean))];
     const when=joined?(prev.slice(0,7)===maxDate.slice(0,7)?`${MON[+prev.slice(5,7)-1]} ${+prev.slice(8)}–${+maxDate.slice(8)}, ${maxDate.slice(0,4)}`:`${shortDay(prev)} – ${dayLabel(maxDate)}`):dayLabel(maxDate);

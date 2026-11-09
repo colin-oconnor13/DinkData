@@ -8,6 +8,8 @@ Newest first.
   at the same venue ("Nov 7–8, 2026 · 2 events", each event heading shows its date). Two days in
   a row at different venues stay separate; at the same venue they join (no match times to tell
   them apart). SW cache rj-v108.
+- Only when the two days add up to 10 matches or fewer: a league night is 7–8, so more is likely
+  two real sessions and they stay separate. SW cache rj-v109.
 
 ## 2026-11-09 — Last session grouped by event
 - When the last day you played has more than one event (an organiser can split a night in two),
