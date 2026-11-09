@@ -1624,6 +1624,12 @@
     +`${extra||''}`
     +`<td class="mono" data-l="Opponent">${f2(g.oThen)}→${f2(g.oNow)}</td>`;
 
+  // DUPR change over the last 30 days (filter-independent, like Current DUPR): today's rating
+  // minus where you stood after your last match dated more than 30 days ago.
+  const D30=(()=>{if(ME_NOW==null||VIEWING_OTHER&&HL_PARTIAL)return null;const cut=new Date(Date.now()-30*864e5).toISOString().slice(0,10);
+    const before=M.filter(m=>m.postRating!=null&&m.date<=cut);if(!before.length)return null;
+    const last=before.reduce((a,m)=>m.date>a.date||(m.date===a.date&&ordOf(m)>ordOf(a))?m:a);
+    return {from:last.postRating,chg:ME_NOW-last.postRating,n:M.filter(m=>m.date>cut).length};})();
   function render(){
     maybeRebuildMulti();syncMulti();
     const list=M.filter(pass);
@@ -1658,6 +1664,7 @@
       k.innerHTML=
         `<div class="cluster"><div class="cluster-h"><span class="dot r"></span>Rating</div><div class="tiles">`
           +tile(ME_NOW==null?'—':ME_NOW.toFixed(3),'blue','Current DUPR','Your official DUPR doubles rating.','',sp(SPARK.dupr,'blue'))
+          +(D30?tile((D30.chg>=0?'+':'−')+Math.abs(D30.chg).toFixed(3),Math.abs(D30.chg)<0.0005?'':D30.chg>0?'imp-up':'imp-dn','DUPR change, last 30 days','Your DUPR today minus your rating after your last match more than 30 days ago. The filters don’t change this.',`from ${D30.from.toFixed(3)} · ${D30.n} match${D30.n===1?'':'es'}`):'')
           +tile(pct(a.upFrac),'','of your matches raised your rating','A good loss against a strong team can still raise your rating, so this counts those too.',a.lossUp?`including ${a.lossUp} losses`:'',sp(SPARK.rose,'win'))
         +`</div></div>`
         +`<div class="cluster"><div class="cluster-h"><span class="dot w"></span>Results</div><div class="tiles">`

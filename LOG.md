@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-11-09 — Overview: DUPR change over the last 30 days
+- New tile in the Rating box (`D30`): today's DUPR minus your rating after your last match dated
+  more than 30 days ago, with "from 3.505 · 56 matches". Filter-independent like Current DUPR;
+  green up, red down; hidden with no match older than 30 days. SW cache rj-v113.
+
 ## 2026-11-09 — Last session: upset arrows on the W/L chips
 - Upset wins show "W▲" and upset losses "L▼" inside their chip (same 40% / 60% rule as the Upset
   tags), with a one-line key under the chips when there are any; hover/tap gives the chance.
