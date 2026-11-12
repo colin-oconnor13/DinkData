@@ -1341,6 +1341,9 @@
   const dayLabel=d=>{const [y,m,dd]=d.split('-');return `${MON[+m-1]} ${+dd}, ${y}`;};
   const titleCase=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim().replace(/(^|[\s\-'])([a-z])/g,(m,p,c)=>p+c.toUpperCase());
   // Fix all-lowercase names from DUPR (e.g. "clark janssen") without mangling cased ones ("OConnor").
+  // DUPR profile names can carry leading spaces or invisible marks, which sort them first: drop
+  // anything before the first letter or digit.
+  const cleanName=s=>String(s||'').replace(/^[^\p{L}\p{N}]+/u,'').replace(/\s+/g,' ').trim();
   const nameCase=s=>{s=String(s||'');return s&&s===s.toLowerCase()?titleCase(s):s;};
 
   function eventType(e){e=(e||'').toLowerCase();
@@ -2852,7 +2855,7 @@
     document.querySelectorAll(BROWSER?'.gh-only':'.br-only').forEach(el=>el.hidden=true);
     // Player switcher: shown once any other player has been synced from their DUPR page.
     const ids=Object.keys(SCOUTS);
-    if(ids.length){const bar=byId('viewBar'),nm=d=>nameCase((d.player&&d.player.name)||'')||('player '+(d.player&&d.player.id));
+    if(ids.length){const bar=byId('viewBar'),nm=d=>nameCase(cleanName((d.player&&d.player.name)||''))||('player '+(d.player&&d.player.id));
       const mine=OWN.matches.length?`My matches (${enc(nm(OWN))})`:'My matches';
       bar.hidden=false;bar.classList.toggle('other',!!VIEW);
       // Link to the current player's DUPR page (works for "My matches" and any scouted player).
@@ -2916,7 +2919,7 @@
     }
     matches.sort((x,y)=>x.date<y.date?-1:x.date>y.date?1:(x.matchId-y.matchId));
     const at=new Date();
-    return {player:{id:ID,name:d.profile.fullName,currentDoubles:nr(d.profile.doubles)},
+    return {player:{id:ID,name:cleanName(d.profile.fullName),currentDoubles:nr(d.profile.doubles)},
       generated:at.toISOString().slice(0,10),syncedAt:at.toISOString(),matches};
   }
 

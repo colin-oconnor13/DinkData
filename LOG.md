@@ -2,6 +2,11 @@
 
 Newest first.
 
+## 2026-11-11 — Player list: names with hidden leading characters sorted first
+- DUPR profile names can start with a space or an invisible mark (e.g. U+200E), which put that
+  player first in the 👁 Viewing list. `cleanName` drops anything before the first letter or digit:
+  used for the list's sort and display, and when a synced player's name is saved. SW cache rj-v114.
+
 ## 2026-11-09 — Overview: DUPR change over the last 30 days
 - New tile in the Rating box (`D30`): today's DUPR minus your rating after your last match dated
   more than 30 days ago, with "from 3.505 · 56 matches". Filter-independent like Current DUPR;
